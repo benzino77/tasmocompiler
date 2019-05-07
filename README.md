@@ -1,68 +1,69 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### What it is?
+TasmotaCompiler is a simple web GUI which allows you to compile fantastic [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware with your own settings:
+- You can select which features/sensors of Tasmota firmware you want to use
+- Credentials for your IOT WiFi network, so even after unexpected problems with the device (complete lost of configuration), credentials for your network will still be there, but mainly you don't have to connect to AP, served by Tasmota to configure your Home WiFi
+- You can select Tasmota version you want to compile. You can select `development` bleading edge version, or ie. previous stable release `6.4.1` or `6.2.1` if this is the one you like
+- You can also select with what Core version you want to compile your custom firmware: 2.3.0, 2.4.2 or maybe 2.5.0
+- Hardware version (Sonoffs, Wemos, NodeMCU).
+- Language version
+- You can also provide custom `#defines` if you want to build even more suitable firmaware for your needs
 
-## Available Scripts
+#### Why?
+Well, there are two reasons. First is that I want to build my first application written in NodeJS/React. The second one is based on the observation that everytime I prepare a new device I have to start atom with platformio installed, configure all `#defines` (well, I have template which I copy) and prepare `platformio.ini`, create a branch from version I like to use, etc..
 
-In the project directory, you can run:
+That's why I decided to prepare a solution which is easier to use (just a few clicks) and does not require knowledge how to install dev environment to build custom firmware.
 
-### `npm start`
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### How it works?
+The easiest way is to look at the screenshots (the whole process is five steps only). After compilation you will be able to download three files:
+1. Your new `firmware.bin` file, which can be uploaded to your device via Tasmota WebGUI, espotool, ESPEasy flasher or any other tool you used to use to flash your device
+2. `platformio.ini` file, to check what options for platformio were used to compile the custom firmware file
+3. `user_config_override.h` file to check what features are included/excluded from resulting firmware
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+You have to upload only the first `firmware.bin` file to your device. How to do that is perfeclty described on [Tasmota wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing).
 
-### `npm test`
+![Step01](./docs/images/step01.png)
+![Step02](./docs/images/step02.png)
+![Step03](./docs/images/step03.png)
+![Step04](./docs/images/step04.png)
+![Step05](./docs/images/step05.png)
+![Compile01](./docs/images/compile01.png)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### How to start using TasmoCompiler?
+##### Easy way
+Start TasmoCompiler in docker:
 
-### `npm run build`
+`docker pull benzino77/tasmocompiler`
+`docker run --rm --name tasmocompiler -p 3000:3000 benzino77/tasmocompiler`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then point your browser to http://localhost:3000
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+If you want to see debug messages on docker console you can run a container with env variable:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+`docker run --rm --name tasmocompiler -p 3000:3000 -e DEBUG=server,git,compile benzino77/tasmocompiler`
 
-### `npm run eject`
+- `server` to see http server messages
+- `git` to see git operation messages
+- `compile` to see messages during compilation
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+You can also specify different port on which TasmoCompiler will be available on the host:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`docker run --rm --name tasmocompiler -p 8080:3000 benzino77/tasmocompiler`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Then point your browser to http://localhost:8080
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+##### Less easy way
+1. Install `NodeJS` and `Python 2.7.x`
+2. Install [`yarn`](https://yarnpkg.com/en/docs/install)
+3. Install [`platformio`](https://docs.platformio.org/en/latest/installation.html)
+4. Clone/download the repository from github and change directory to the cloned repo
+5. run `yarn install`
+6. run `yarn build`
+7. run `node server/server.js`
+8. point your browser to http://localhost:3000
 
-## Learn More
+#### Disclaimer
+Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+##### Credits
+Thanks to [The Arends](https://github.com/arendst) and the entire Tasmota Dev Team for fantastic work!
