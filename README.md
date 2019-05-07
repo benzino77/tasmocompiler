@@ -34,6 +34,7 @@ You have to upload only the first `firmware.bin` file to your device. How to do 
 Start TasmoCompiler in docker:
 
 `docker pull benzino77/tasmocompiler`
+
 `docker run --rm --name tasmocompiler -p 3000:3000 benzino77/tasmocompiler`
 
 Then point your browser to http://localhost:3000
@@ -66,4 +67,4 @@ Then point your browser to http://localhost:8080
 Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
 
 ##### Credits
-Thanks to [The Arends](https://github.com/arendst) and the entire Tasmota Dev Team for fantastic work!
+Thanks to [Theo Arends](https://github.com/arendst) and the entire Tasmota Dev Team for fantastic work!
