@@ -1,0 +1,7 @@
+image: gitpod/workspace-full
+tasks:
+  - init: install dependencies and start server
+    command: yarn install && yarn build && pip install -U platformio && node server/server.js
+ports:
+  - port: 3000
+    onOpen: open-preview
