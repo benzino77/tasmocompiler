@@ -30,7 +30,7 @@ You have to upload only the first `firmware.bin` file to your device. How to do 
 ![Compile01](./docs/images/compile01.png)
 
 #### How to start using TasmoCompiler?
-##### Super easy way (Thanks to @meingraham and @Json2866)
+##### Super easy way (Thanks to @meingraham and @Jason2866)
 Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while you will see something similar to this:
 
 ![gitpod](./docs/images/gitpod01.png)
