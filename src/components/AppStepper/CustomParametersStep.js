@@ -41,7 +41,7 @@ class CustomParametersStep extends Component {
       <Step  {...other}>
         <StepLabel>{stepName}</StepLabel>
         <StepContent>
-          <Typography>Below you can enter custom parameters, which will be included at the end of <em>user_config_overwrite.h</em> file. If you don't know what it is, just click Next.</Typography>
+          <Typography>Below you can enter custom parameters, which will be included at the end of <em>user_config_override.h</em> file. If you don't know what it is, just click Next.</Typography>
           <form  noValidate autoComplete='off'>
             <div className={classes.actionsContainer}>
             <TextField
