@@ -71,6 +71,68 @@ Then point your browser to http://localhost:8080
 7. run `node server/server.js`
 8. point your browser to http://localhost:3000
 
+#### How to use "Custom parameters"?
+
+The configuration options is limited on purpose. I don't want to _overload_ the GUI with too many options. But there is _Custom prameters_ step which allows you to define other Tasmota parameters. Let's say you want to define your MQTT broker and credentials for it. You have to put these lines in _Custom parameters_ field:
+```C++
+#ifdef MQTT_HOST
+  #undef MQTT_HOST
+#endif
+#define MQTT_HOST               "mqtt.yourhost.iot"
+
+#ifdef MQTT_PORT
+  #undef MQTT_PORT
+#endif
+#define MQTT_PORT               1883
+
+#ifdef MQTT_USER
+  #undef MQTT_USER
+#endif
+#define MQTT_USER            "mqttuser"
+
+#ifdef MQTT_PASS
+  #undef MQTT_PASS
+#endif
+#define MQTT_PASS            "mqttpassword"
+```
+
+To define _Friendly name_ for your device you have to put these lines in _Custom parametrs_ field:
+
+```C++
+#ifdef FRIENDLY_NAME
+  #undef FRIENDLY_NAME
+#endif
+#define FRIENDLY_NAME          "Watering controller"
+
+```
+
+
+Let's assume that you want to _compile in_ information about your ntp server, your time zone and location (this is used by timers for events like _sunrise/sunset_). You can do this by putting these lines in _Custom parameters_ field:
+
+```C++
+#ifdef NTP_SERVER1
+  #undef NTP_SERVER1
+#endif
+#define NTP_SERVER1             "ntp.yourserver.iot"
+
+#ifdef LATITUDE
+  #undef LATITUDE
+#endif
+#define LATITUDE               34.4348
+
+#ifdef LONGITUDE
+  #undef LONGITUDE
+#endif
+#define LONGITUDE              10.0508
+
+#ifdef APP_TIMEZONE
+  #undef APP_TIMEZONE
+#endif
+#define APP_TIMEZONE           99           
+```
+
+You can find additional inforamtion what can be set by _Custom parameters_ field in [my_user_config.h](https://github.com/arendst/Sonoff-Tasmota/blob/development/sonoff/my_user_config.h) in Tasmota sorce code.
+
 #### Disclaimer
 Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
 
