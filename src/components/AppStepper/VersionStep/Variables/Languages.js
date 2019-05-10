@@ -12,6 +12,10 @@ const languages = [
     value: 'cz-CZ',
   },
   {
+    name: 'German',
+    value: 'de-DE',
+  },
+  {
     name: 'Greek',
     value: 'el-GR',
   },
