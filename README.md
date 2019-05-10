@@ -73,7 +73,7 @@ Then point your browser to http://localhost:8080
 
 #### How to use "Custom parameters"?
 
-The configuration options is limited on purpose. I don't want to _overload_ the GUI with too many options. But there is _Custom prameters_ step which allows you to define other Tasmota parameters. Let's say you want to define your MQTT broker and credentials for it. You have to put these lines in _Custom parameters_ field:
+The configuration options are limited on purpose. I don't want to _overload_ the GUI with too many options. But there is _Custom prameters_ step which allows you to define other Tasmota parameters. Let's say you want to define your MQTT broker and credentials for it. You have to put these lines in _Custom parameters_ field:
 ```C++
 #ifdef MQTT_HOST
   #undef MQTT_HOST
