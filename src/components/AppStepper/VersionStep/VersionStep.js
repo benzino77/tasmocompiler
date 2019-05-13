@@ -37,10 +37,10 @@ class VersionStep extends Component {
       if (this.state.boardVersion.mem === 4) {
         memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
       } else { // memory 1Mbit
-        if (event.target.value.platform === 'core_2_5_0') {
+        if (event.target.value.platform.startsWith('core_2_5_')) {
           memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
         } else {
-            memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
+          memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
         }
       }
     }
@@ -50,7 +50,7 @@ class VersionStep extends Component {
       if (event.target.value.mem === 4) {
         memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
       } else {
-        if (this.state.coreVersion.platform === 'core_2_5_0') {
+        if (this.state.coreVersion.platform.startsWith('core_2_5_')) {
           memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
         } else {
           memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
