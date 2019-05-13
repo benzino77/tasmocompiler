@@ -20,7 +20,10 @@ The easiest way is to look at the screenshots (the whole process is five steps o
 2. `platformio.ini` file, to check what options for platformio were used to compile the custom firmware file
 3. `user_config_override.h` file to check what features are included/excluded from resulting firmware
 
+The links to download these files will show up under _Compiling progress_ field (look at the bottom of the last screenshot). __These links will show up only when compilation is successful__.
+
 You have to upload only the first `firmware.bin` file to your device. How to do that is perfeclty described on [Tasmota wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing).
+
 
 ![Step01](./docs/images/step01.png)
 ![Step02](./docs/images/step02.png)
