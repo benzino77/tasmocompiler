@@ -34,7 +34,9 @@ You have to upload only the first `firmware.bin` file to your device. How to do 
 
 #### How to start using TasmoCompiler?
 ##### Super easy way (Thanks to @meingraham and @Jason2866)
-Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open.
+Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open. If the new tab does not open or you cannot see the pop-up notification, click on the _Open Browser_ link:
+
+![Open Browser](./docs/images/gitpod_newtab.png)
 
 
 ###### Note
@@ -134,6 +136,10 @@ Let's assume that you want to _compile in_ information about your ntp server, yo
 ```
 
 You can find additional inforamtion what can be set by _Custom parameters_ field in [my_user_config.h](https://github.com/arendst/Sonoff-Tasmota/blob/development/sonoff/my_user_config.h) in Tasmota sorce code.
+
+#### Troubleshooting
+
+If you have problems with the compiler, please refer to the [ADVANCED](https://github.com/benzino77/tasmocompiler/blob/master/ADVANCED.md) tips for more information.
 
 #### Disclaimer
 Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
