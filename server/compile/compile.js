@@ -33,7 +33,7 @@ const prepareFiles = async (data) => {
   });
 
   if (data.customParams) {
-    outputOverwrites.push(data.customParams);
+    outputOverwrites.push(`${data.customParams}\n\n`);
   }
   outputOverwrites.unshift('#warning **** user_config_override.h: Using Settings from this File ****\n\n');
   outputOverwrites.unshift('#ifndef _USER_CONFIG_OVERRIDE_H_\n', '#define _USER_CONFIG_OVERRIDE_H_\n\n');
