@@ -20,7 +20,7 @@ const availableFeatures = [
       description: 'mDNS discovery',
     },
     {
-      name: 'USE_TIMESRS',
+      name: 'USE_TIMERS',
       value: true,
       description: 'Timers',
     },
