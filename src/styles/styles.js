@@ -45,22 +45,30 @@ const styles = theme => ({
     // width: 300,
   },
   compileMessagesBox: {
-    'margin-left': theme.spacing.unit * 3,
-    'margin-top': 0,
-    // display: 'flex',
+    marginLeft: theme.spacing.unit * 3,
+    marginTop: 0,
     maxWidth: '80%',
   },
   inputFont: {
     // display: 'block',
-    'font-family': 'monospace',
+    fontFamily: 'monospace',
   },
   checkboxContainer: {
     marginBottom: 0,
     marginLeft: theme.spacing.unit * 2,
     minWidth: 160,
   },
-  link: {
-    'margin-left': theme.spacing.unit * 3,
+  links: {
+    marginLeft: theme.spacing.unit * 3,
+  },
+  rightIcon: {
+    marginLeft: theme.spacing.unit,
+  },
+  downloadButtons: {
+    marginRight: theme.spacing.unit * 2,
+    marginTop:  theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
+    position: 'relative',
   },
 });
 

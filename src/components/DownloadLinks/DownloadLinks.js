@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
 
 class DownloadLinks extends Component {
   constructor(props) {
@@ -18,14 +19,23 @@ class DownloadLinks extends Component {
 
     return (
       <div ref={this.downloadLinksElement}>
-        <Typography variant='caption' className={classes.link}>
+        <Typography variant='caption' className={classes.links}>
           You can now download custom compiled binary and files used during compilation:
         </Typography>
-        <Typography>
-          <Link href={'/download/firmware.bin'} className={classes.link}>firmware.bin</Link>
-          <Link href={'/download/platformio.ini'} className={classes.link}>platformio.ini</Link>
-          <Link href={'/download/user_config_override.h'} className={classes.link}>user_config_override.h</Link>
-        </Typography>
+        <div className={classes.links}>
+            <Button variant='contained' color='primary' href={'/download/firmware.bin'} className={classes.downloadButtons}>
+              firmware.bin
+              <CloudDownloadIcon className={classes.rightIcon}/>
+            </Button>
+            <Button variant='contained' color='primary' href={'/download/platformio.ini'} className={classes.downloadButtons}>
+              platformio.ini
+              <CloudDownloadIcon className={classes.rightIcon}/>
+            </Button>
+            <Button variant='contained' color='primary' href={'/download/user_config_override.h'} className={classes.downloadButtons}>
+              user_config_override.h
+              <CloudDownloadIcon className={classes.rightIcon}/>
+            </Button>
+        </div>
       </div>
     )
   }
