@@ -20,6 +20,8 @@
 /.venv
 /playground
 upload-firmware.sh
+qemu-arm-static
+qemu-aarch64-static
 
 npm-debug.log*
 yarn-debug.log*
