@@ -20,3 +20,37 @@ If you have TasmoCompiler docker running (started by `docker run --rm --name tas
 5. exit docker container shell by pressing `ctrl+d`
 
 ![Docker Advanced](./docs/images/docker_advanced.png)
+
+#### Compile someone fork of Tasmota code
+If you want to use someone fork of Tasmota project, and want to use TasmoCompiler to compile it, it is possible (at least with this one used in the example). The steps below, are based on [Stefan Bode](https://github.com/stefanbode/Sonoff-Tasmota) fork of Tasmota code. 
+
+##### Gitpod
+1. start your gitpod workspace
+2. close all tabs/windows with TasmoCompiler GUI (it is important, because the problem with WebSockets can arise)
+3. in the gitpod console (bottom part of the view, where the information _Server started on port 3000_ is displayed) hit ctrl+c
+4. type: `cd /tmp`
+5. type: `rm -rf Sonoff-Tasmota`
+6. type: `git clone https://github.com/stefanbode/Sonoff-Tasmota.git`
+7. type: `cd Sonoff-Tasmota`
+8. type: `git checkout -b development`
+9. type: `cd /workspace/tasmocompiler`
+10. type: `node server/server.js`
+11. open TasmoCompiler GUI by clicking "Open Browser" (if it didn't open automatically)
+
+In step **8** the `development` branch is created from current master of [Stefan Bode](https://github.com/stefanbode/Sonoff-Tasmota) fork. You can also create `develepment` branch from any commit from the past by typing:
+
+`git checkout -b development <sha1-of-commit>`
+
+##### Docker
+1. close all tabs/windows with TasmoCompiler GUI (it is important, because the problem with WebSockets can arise)
+2. run `docker exec -it tasmocompiler /bin/bash` on machine where your container is running
+3. type: `cd /tmp`
+4. type: `rm -rf Sonoff-Tasmota`
+5. type: `git clone https://github.com/stefanbode/Sonoff-Tasmota.git`
+6. type: `cd Sonoff-Tasmota`
+7. type: `git checkout -b development`
+8. exit docker container shell by pressing `ctrl+d`
+9. point the browser to the address and port of your docker host
+
+##### Notes
+At the _Select version and compile_ step, you will be able to choose only `development` version of Tasmota. If you want to see other versions, you have to create git tags (with names compatibile with original Tasmota tags) from commits in [Stefan Bode](https://github.com/stefanbode/) git repo. TasmoCompiler will only look at tags which names starts with `v6*` or `v7*`.
