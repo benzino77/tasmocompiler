@@ -1,7 +1,7 @@
 image: gitpod/workspace-full
 tasks:
   - init: yarn install
-    command: yarn build && pip install -U platformio && node server/server.js
+    command: yarn build && pip install platformio==3.6.7 && node server/server.js
 ports:
   - port: 3000
     onOpen: open-browser
