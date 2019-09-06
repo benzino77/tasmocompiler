@@ -9,7 +9,7 @@ ADD src /tasmocompiler/src/
 ADD server /tasmocompiler/server/
 ADD package.json yarn.lock .yarnrc /tasmocompiler/
 RUN apt-get update && apt-get install -y python python-pip git && \
-  pip install --no-cache-dir -U platformio && \
+  pip install --no-cache-dir platformio==3.6.7 && \
   cd /tmp && \
   git clone https://github.com/arendst/Sonoff-Tasmota.git && \
   cd /tasmocompiler && \
