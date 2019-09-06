@@ -35,6 +35,25 @@ const getFeatureGroup = (name) => {
   return [];
 };
 
+const getFeatureExclude = (name) => {
+  const filtered = availableFeatures.filter((e) => e.name === name && e.exclude);
+  
+  if (filtered.length > 0) {
+    return filtered[0].exclude;
+  }
+
+  return [];
+};
+
+const setFeature = (name, state) => {
+  const newState = {}
+  const group = getFeatureGroup(name);
+
+  newState[name] = state;
+  group.forEach((item) => newState[item] = state);
+  return newState;
+};
+
 class FeaturesStep extends Component {
   constructor(props) {
     super(props);
@@ -48,14 +67,12 @@ class FeaturesStep extends Component {
   }
 
   handleChangeCheckBox(event) {
-    const params = {};
-    const group = getFeatureGroup(event.target.name);
+    let featureState = setFeature(event.target.name, event.target.checked);
+    const excludeGroup = getFeatureExclude(event.target.name);
 
-    params[event.target.name] = event.target.checked;
-    // group.map((item, index) => params[item] = event.target.checked);
-    group.forEach((item) => params[item] = event.target.checked);
-
-    this.setState(params);
+    event.target.checked && excludeGroup.forEach((item) => featureState = { ...featureState, ...setFeature(item, !event.target.checked) });
+  
+    this.setState(featureState);
   }
 
   handleNext() {
