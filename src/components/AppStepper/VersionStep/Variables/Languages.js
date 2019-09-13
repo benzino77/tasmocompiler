@@ -60,7 +60,7 @@ const languages = [
     value: 'pt-PT',
   },
   {
-    name: 'Russina',
+    name: 'Russian',
     value: 'ru-RU',
   },
   {
