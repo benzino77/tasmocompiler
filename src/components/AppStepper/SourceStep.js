@@ -30,6 +30,7 @@ class SourceStep extends Component {
     fetch(uri)
       .then(res => res.json())
       .then(ret => {
+        if (!ret.ok) throw new Error(ret.message);
         this.tags = ret.tags;
         this.setState({ isRepo: true, cloning: false });
       })

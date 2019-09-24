@@ -18,10 +18,10 @@ class VersionStep extends Component {
 
     this.state = {
       tasmotaVersion: 'development',
-      coreVersion: coreVersions[1].value,
+      coreVersion: coreVersions[3].value,
       MY_LANGUAGE: languages[0].value,
       boardVersion: boardVersions[0].value,
-      memoryBuildFlag: 'eagle.flash.1m0.ld',
+      memoryBuildFlag: 'eagle.flash.1m.ld',
       message: '',
     }
     this.handleChange = this.handleChange.bind(this);
@@ -37,7 +37,7 @@ class VersionStep extends Component {
       if (this.state.boardVersion.mem === 4) {
         memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
       } else { // memory 1Mbit
-        if (event.target.value.platform.startsWith('core_2_5_')) {
+        if ( event.target.value.platform.startsWith('core_2_5_') || event.target.value.platform.startsWith('core_2_6_') ) {
           memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
         } else {
           memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
@@ -50,7 +50,7 @@ class VersionStep extends Component {
       if (event.target.value.mem === 4) {
         memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
       } else {
-        if (this.state.coreVersion.platform.startsWith('core_2_5_')) {
+        if ( this.state.coreVersion.platform.startsWith('core_2_5_') || this.state.coreVersion.platform.startsWith('core_2_6_') ) {
           memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
         } else {
           memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
