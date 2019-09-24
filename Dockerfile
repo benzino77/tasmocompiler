@@ -1,6 +1,6 @@
 ARG BASE_IMAGE=node:10.15.3-stretch-slim
 FROM $BASE_IMAGE
-MAINTAINER Piotr Antczak <antczak.piotr@gmail.com>
+LABEL maintainer="Piotr Antczak <antczak.piotr@gmail.com>"
 
 COPY qemu-arm-static /usr/bin
 COPY qemu-aarch64-static /usr/bin
@@ -9,7 +9,7 @@ ADD src /tasmocompiler/src/
 ADD server /tasmocompiler/server/
 ADD package.json yarn.lock .yarnrc /tasmocompiler/
 RUN apt-get update && apt-get install -y python python-pip git && \
-  pip install --no-cache-dir platformio==3.6.7 && \
+  pip install --no-cache-dir platformio && \
   cd /tmp && \
   git clone https://github.com/arendst/Sonoff-Tasmota.git && \
   cd /tasmocompiler && \
