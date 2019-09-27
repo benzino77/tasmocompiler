@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 
 function CompileButton(props) {
@@ -14,5 +15,10 @@ function CompileButton(props) {
     </Button>
   );
 }
+
+CompileButton.propTypes = {
+  disabled: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+};
 
 export default CompileButton;

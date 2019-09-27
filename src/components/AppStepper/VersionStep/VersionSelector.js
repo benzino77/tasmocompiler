@@ -1,23 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 
 function VersionSelector(props) {
+  const {
+    name,
+    classes,
+    label,
+    value,
+    onChange,
+    items,
+  } = props;
+
   const inProps = {
-    name: props.name,
-    id: `${props.name}-id`,
-  }
+    name,
+    id: `${name}-id`,
+  };
 
   return (
-    <FormControl className={props.classes.actionsContainer}>
-      <InputLabel htmlFor={inProps.id}>{props.label}</InputLabel>
-      <Select value={props.value} onChange={props.onChange} inputProps={inProps}>
-        {props.items.map((item, index) => <MenuItem key={index} value={item.value ? item.value : item}>{item.name ? item.name : item}</MenuItem>)}
+    <FormControl className={classes.actionsContainer}>
+      <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
+      <Select value={value} onChange={onChange} inputProps={inProps}>
+        {items.map(item => <MenuItem key={item.name || item} value={item.value || item}>{item.name || item}</MenuItem>)}
       </Select>
     </FormControl>
   );
 }
+
+VersionSelector.propTypes = {
+  name: PropTypes.string.isRequired,
+  classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  label: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
+  items: PropTypes.oneOfType([PropTypes.array]).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default VersionSelector;

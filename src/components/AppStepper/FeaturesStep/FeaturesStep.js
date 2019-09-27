@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
@@ -6,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 
 import availableFeatures from './AvailableFeatures';
 import FeaturesSelector from './FeaturesSelector';
-import NextButton from './../NextButton';
-import BackButton from './../BackButton';
+import NextButton from '../NextButton';
+import BackButton from '../BackButton';
 
 const getFeaturesDefaultStates = () => {
   const defaults = {};
@@ -26,7 +27,7 @@ const getFeaturesDefaultStates = () => {
 };
 
 const getFeatureGroup = (name) => {
-  const filtered = availableFeatures.filter((e) => e.name === name && e.group);
+  const filtered = availableFeatures.filter(e => e.name === name && e.group);
 
   if (filtered.length > 0) {
     return filtered[0].group;
@@ -36,8 +37,8 @@ const getFeatureGroup = (name) => {
 };
 
 const getFeatureExclude = (name) => {
-  const filtered = availableFeatures.filter((e) => e.name === name && e.exclude);
-  
+  const filtered = availableFeatures.filter(e => e.name === name && e.exclude);
+
   if (filtered.length > 0) {
     return filtered[0].exclude;
   }
@@ -46,11 +47,13 @@ const getFeatureExclude = (name) => {
 };
 
 const setFeature = (name, state) => {
-  const newState = {}
+  const newState = {};
   const group = getFeatureGroup(name);
 
   newState[name] = state;
-  group.forEach((item) => newState[item] = state);
+  group.forEach((item) => {
+    newState[item] = state;
+  });
   return newState;
 };
 
@@ -59,7 +62,7 @@ class FeaturesStep extends Component {
     super(props);
 
     const defaultStates = getFeaturesDefaultStates();
-    this.state = {...defaultStates};
+    this.state = { ...defaultStates };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -70,44 +73,68 @@ class FeaturesStep extends Component {
     let featureState = setFeature(event.target.name, event.target.checked);
     const excludeGroup = getFeatureExclude(event.target.name);
 
-    event.target.checked && excludeGroup.forEach((item) => featureState = { ...featureState, ...setFeature(item, !event.target.checked) });
-  
+    if (event.target.checked) {
+      excludeGroup.forEach((item) => {
+        featureState = { ...featureState, ...setFeature(item, !event.target.checked) };
+      });
+    }
+
     this.setState(featureState);
   }
 
   handleNext() {
-    this.props.nextHandler({ ...this.state });
+    const { nextHandler } = this.props;
+    nextHandler({ ...this.state });
   }
 
   handleBack() {
-    this.props.backHandler();
+    const { backHandler } = this.props;
+    backHandler();
   }
 
   render() {
     const stepName = 'Select features';
-    const { classes, nextHandler, backHandler, ...other } = this.props;
+    const {
+      classes,
+      nextHandler,
+      backHandler,
+      ...other
+    } = this.props;
+
     return (
-      <Step  {...other}>
+      <Step {...other}>
         <StepLabel>{stepName}</StepLabel>
         <StepContent>
           <Typography>Which features should be included in final binary firmware?</Typography>
           <div className={classes.actionsContainer}>
-          {availableFeatures.map((item, index) => (
-            <FeaturesSelector classes={classes} value={this.state[item.name]} item={item} onChange={this.handleChangeCheckBox} key={index}/>
-          ))}
-        </div>
-        <div className={classes.actionsContainer}>
-          <div className={classes.wrapper}>
-            <BackButton onClick={this.handleBack}/>
+            {availableFeatures.map(item => (
+              <FeaturesSelector
+                classes={classes}
+                value={this.state[item.name]}
+                item={item}
+                onChange={this.handleChangeCheckBox}
+                key={item.name}
+              />
+            ))}
           </div>
-          <div className={classes.wrapper}>
-            <NextButton onClick={this.handleNext}/>
+          <div className={classes.actionsContainer}>
+            <div className={classes.wrapper}>
+              <BackButton disabled={false} onClick={this.handleBack} />
+            </div>
+            <div className={classes.wrapper}>
+              <NextButton disabled={false} onClick={this.handleNext} />
+            </div>
           </div>
-        </div>
         </StepContent>
       </Step>
-  );
+    );
   }
 }
+
+FeaturesStep.propTypes = {
+  classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  nextHandler: PropTypes.func.isRequired,
+  backHandler: PropTypes.func.isRequired,
+};
 
 export default FeaturesStep;

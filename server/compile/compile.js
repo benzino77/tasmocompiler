@@ -5,7 +5,12 @@ const ini = require('ini');
 const debug = require('debug')('compile');
 
 const { switchToBranch } = require('../git/git');
-const { tasmotaRepo, userConfigOvewrite, userPlatformioIni, templatePlatformioIni } = require('../config/config');
+const {
+  tasmotaRepo,
+  userConfigOvewrite,
+  userPlatformioIni,
+  templatePlatformioIni,
+} = require('../config/config');
 
 const prepareFiles = async (data) => {
   let config;

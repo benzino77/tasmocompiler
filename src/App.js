@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
+import io from 'socket.io-client';
 
-import styles from './styles/styles.js'
+import styles from './styles/styles';
 import TopAppBar from './components/TopAppBar/TopAppBar';
 import SourceStep from './components/AppStepper/SourceStep';
 import VersionStep from './components/AppStepper/VersionStep/VersionStep';
@@ -13,7 +14,6 @@ import CustomParametersStep from './components/AppStepper/CustomParametersStep';
 import MessageBox from './components/MessageBox/MessageBox';
 import DownloadLinks from './components/DownloadLinks/DownloadLinks';
 
-import io from 'socket.io-client';
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +29,7 @@ class App extends Component {
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.handleCompile = this.handleCompile.bind(this);
-  };
+  }
 
   componentDidMount() {
     const socket = io();
@@ -65,20 +65,34 @@ class App extends Component {
   handleCompile = (data) => {
     const uri = '/api/v1/compile';
 
-    this.setState({ compiling: true, showMessageBox: true, compileMessages: '', showDownloadLinks: false, ...data }, () => {
-      const { compiling, showMessageBox, message, activeStep, tags, compileMessages, ...postData } = this.state;
+    this.setState({
+      compiling: true,
+      showMessageBox: true,
+      compileMessages: '',
+      showDownloadLinks: false,
+      ...data,
+    }, () => {
+      const {
+        compiling,
+        showMessageBox,
+        message,
+        activeStep,
+        tags,
+        compileMessages,
+        ...postData
+      } = this.state;
 
       fetch(uri, {
         method: 'POST',
         body: JSON.stringify(postData),
-        headers:{ 'Content-Type': 'application/json' }
-        })
+        headers: { 'Content-Type': 'application/json' },
+      })
         .then(res => res.json())
-        .then(json => {
+        .then((json) => {
           if (!json.ok) {
             this.setState((state) => {
               let newMessages = state.compileMessages;
-              newMessages = `${newMessages}${json.message}`
+              newMessages = `${newMessages}${json.message}`;
               return { compileMessages: newMessages, compiling: false };
             });
           }
@@ -87,37 +101,52 @@ class App extends Component {
           this.setState({ compileMessages: error.message, compiling: false });
           console.log(error.message);
         });
-
     });
   }
 
   render() {
     const { classes } = this.props;
-    const { activeStep, tags, compiling, showMessageBox, showDownloadLinks } = this.state;
+
+    const {
+      activeStep,
+      tags,
+      compiling,
+      showMessageBox,
+      showDownloadLinks,
+      compileMessages,
+    } = this.state;
+
     const bnHandlersProps = {
       backHandler: this.handleBack,
       nextHandler: this.handleNext,
-    }
+    };
 
     return (
       <div className={classes.root}>
-        <TopAppBar/>
+        <TopAppBar />
         <Stepper activeStep={activeStep} orientation="vertical">
-          <SourceStep {...this.props} nextHandler={this.handleNext} key={1}/>
-          <WifiStep {...this.props} {...bnHandlersProps} key={2}/>
-          <FeaturesStep {...this.props} {...bnHandlersProps} key={3}/>
-          <CustomParametersStep {...this.props} {...bnHandlersProps} key={4}/>
-          <VersionStep {...this.props} repoTags={tags} backHandler={this.handleBack} compileHandler={this.handleCompile} compiling={compiling} key={5}/>
+          <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
+          <WifiStep {...this.props} {...bnHandlersProps} key={2} />
+          <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
+          <CustomParametersStep {...this.props} {...bnHandlersProps} key={4} />
+          <VersionStep
+            {...this.props}
+            repoTags={tags}
+            backHandler={this.handleBack}
+            compileHandler={this.handleCompile}
+            compiling={compiling}
+            key={5}
+          />
         </Stepper>
-        {showMessageBox && <MessageBox {...this.props} compileMessages={this.state.compileMessages}/>}
-        {showDownloadLinks && <DownloadLinks {...this.props}/>}
+        {showMessageBox && <MessageBox {...this.props} compileMessages={compileMessages} />}
+        {showDownloadLinks && <DownloadLinks {...this.props} />}
       </div>
     );
   }
 }
 
 App.propTypes = {
-  classes: PropTypes.object,
+  classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default withStyles(styles)(App);

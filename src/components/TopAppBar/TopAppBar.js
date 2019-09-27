@@ -29,7 +29,8 @@ function TopAppBar(props) {
 }
 
 TopAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+  // classes: PropTypes.object.isRequired,
+  classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default withStyles(styles)(TopAppBar);

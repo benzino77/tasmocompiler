@@ -87,6 +87,6 @@ const languages = [
     name: 'Chinese (Traditional)',
     value: 'zh-TW',
   },
-]
+];
 
 export default languages;

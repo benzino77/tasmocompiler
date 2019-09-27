@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
 
 class MessageBox extends Component {
@@ -16,16 +17,16 @@ class MessageBox extends Component {
 
     return (
       <TextField
-        name='compileMessages'
-        label='Compiling progress'
-        fullWidth={true}
-        multiline={true}
+        name="compileMessages"
+        label="Compiling progress"
+        fullWidth
+        multiline
         rows={9}
         rowsMax={9}
         className={classes.compileMessagesBox}
         value={compileMessages}
-        variant='outlined'
-        margin='normal'
+        variant="outlined"
+        margin="normal"
         inputRef={this.messageBoxElement}
         InputProps={{
           classes: {
@@ -34,8 +35,14 @@ class MessageBox extends Component {
           readOnly: true,
         }}
       />
-    )
+    );
   }
 }
+
+MessageBox.propTypes = {
+  // classes: PropTypes.object.isRequired,
+  classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  compileMessages: PropTypes.string.isRequired,
+};
 
 export default MessageBox;
