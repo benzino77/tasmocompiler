@@ -99,7 +99,6 @@ class App extends Component {
         })
         .catch((error) => {
           this.setState({ compileMessages: error.message, compiling: false });
-          console.log(error.message);
         });
     });
   }

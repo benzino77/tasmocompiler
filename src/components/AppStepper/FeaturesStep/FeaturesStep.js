@@ -94,6 +94,7 @@ class FeaturesStep extends Component {
 
   render() {
     const stepName = 'Select features';
+    const { ...tempState } = this.state;
     const {
       classes,
       nextHandler,
@@ -110,7 +111,8 @@ class FeaturesStep extends Component {
             {availableFeatures.map(item => (
               <FeaturesSelector
                 classes={classes}
-                value={this.state[item.name]}
+                // value={this.state[item.name]}
+                value={tempState[item.name]}
                 item={item}
                 onChange={this.handleChangeCheckBox}
                 key={item.name}

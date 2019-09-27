@@ -24,7 +24,11 @@ function VersionSelector(props) {
     <FormControl className={classes.actionsContainer}>
       <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={inProps}>
-        {items.map(item => <MenuItem key={item.name || item} value={item.value || item}>{item.name || item}</MenuItem>)}
+        {items.map(item => (
+          <MenuItem key={item.name || item} value={item.value || item}>
+            {item.name || item}
+          </MenuItem>
+        ))}
       </Select>
     </FormControl>
   );

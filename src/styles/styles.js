@@ -66,7 +66,7 @@ const styles = theme => ({
   },
   downloadButtons: {
     marginRight: theme.spacing.unit * 2,
-    marginTop:  theme.spacing.unit,
+    marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
     position: 'relative',
   },

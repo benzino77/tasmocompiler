@@ -12,6 +12,12 @@ module.exports = {
             '.jsx',
           ]
         }
-      ]
+      ],
+      'no-param-reassign': [
+        'error',
+        {
+          props: false 
+        },
+      ],
     }
   }       

@@ -33,7 +33,6 @@ class SourceStep extends Component {
         this.setState({ isRepo: ret.result, message: '' });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ isRepo: false, message: error.message });
       });
   }
@@ -51,7 +50,6 @@ class SourceStep extends Component {
         this.setState({ isRepo: true, cloning: false });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ message: error.message, cloning: false });
       });
   }
@@ -69,7 +67,6 @@ class SourceStep extends Component {
           nextHandler({ tags: this.tags });
         })
         .catch((error) => {
-          console.log(error);
           this.setState({ message: error.message, gettingTags: false });
         });
     } else {
@@ -97,8 +94,16 @@ class SourceStep extends Component {
         <StepLabel error={message.length > 0 && other.active}>{stepName}</StepLabel>
         <StepContent>
           {isRepo
-            ? <Typography>You can refresh source code to the latest state or click NEXT to go to the next step</Typography>
-            : <Typography>Before you go to the next step, you have to download Tasmota source code</Typography>
+            ? (
+              <Typography>
+                You can refresh source code to the latest state or click NEXT to go to the next step
+              </Typography>
+            )
+            : (
+              <Typography>
+                Before you go to the next step, you have to download Tasmota source code
+              </Typography>
+            )
           }
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
