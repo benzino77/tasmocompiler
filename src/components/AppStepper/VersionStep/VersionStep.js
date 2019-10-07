@@ -35,25 +35,25 @@ class VersionStep extends Component {
     const { boardVersion, coreVersion } = this.state;
 
     if (event.target.name === 'coreVersion') {
-      memoryBuildFlag = event.target.value.mem_prefix;
+      const mbf = event.target.value.mem_prefix;
       if (boardVersion.mem === 4) {
-        memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
+        memoryBuildFlag = `${mbf}4m1m.ld`;
       } else { // memory 1Mbit
-        memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
+        memoryBuildFlag = `${mbf}1m0.ld`;
         if (event.target.value.platform.startsWith('core_2_5_') || event.target.value.platform.startsWith('core_2_6_')) {
-          memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
+          memoryBuildFlag = `${mbf}1m.ld`;
         }
       }
     }
 
     if (event.target.name === 'boardVersion') {
-      memoryBuildFlag = coreVersion.mem_prefix;
+      const mbf = coreVersion.mem_prefix;
       if (event.target.value.mem === 4) {
-        memoryBuildFlag = `${memoryBuildFlag}4m1m.ld`;
+        memoryBuildFlag = `${mbf}4m1m.ld`;
       } else {
-        memoryBuildFlag = `${memoryBuildFlag}1m0.ld`;
+        memoryBuildFlag = `${mbf}1m0.ld`;
         if (coreVersion.platform.startsWith('core_2_5_') || coreVersion.platform.startsWith('core_2_6_')) {
-          memoryBuildFlag = `${memoryBuildFlag}1m.ld`;
+          memoryBuildFlag = `${mbf}1m.ld`;
         }
       }
     }
