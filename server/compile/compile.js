@@ -1,5 +1,6 @@
 const shell = require('shelljs');
 const fs = require('fs-extra');
+const path = require('path');
 const _ = require('lodash');
 const ini = require('ini');
 const debug = require('debug')('compile');
@@ -12,9 +13,26 @@ const {
   templatePlatformioIni,
 } = require('../config/config');
 
+// Since 6.7.1.1 there is no sonoff src dir. New dir is tasmota
+// if we switch to "old" branch with sonoff dir rename that dir to new name
+const createNewTasmotaStructure = () => {
+  const oldPath = path.resolve(tasmotaRepo, 'sonoff');
+  const newPath = path.resolve(tasmotaRepo, 'tasmota');
+  const isOldStructure = fs.pathExistsSync(oldPath);
+
+  if (isOldStructure) {
+    try {
+      fs.moveSync(oldPath, newPath, { overwrite: true });
+    } catch (e) {
+      throw new Error(`Cannot create new Tasmota structure: ${e}`);
+    }
+  }
+};
+
 const prepareFiles = async (data) => {
   let config;
   await switchToBranch(data.tasmotaVersion);
+  createNewTasmotaStructure();
 
   // only uppercase keys are those which are important to place in user_config_overwrite.h
   // lowercase keys are 'helpers'

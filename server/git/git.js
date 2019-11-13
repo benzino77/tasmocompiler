@@ -60,6 +60,14 @@ const switchToBranch = async (branch) => {
   }
 
   try {
+    await git(tasmotaRepo).clean('dfx');
+  } catch (e) {
+    const message = 'Unable to CLEAN repository';
+    debug(message);
+    throw new Error(message);
+  }
+
+  try {
     const summary = await git(tasmotaRepo).branchLocal();
     const localBranches = Object.keys(summary.branches);
     notLocalBranches = _.difference(tags, localBranches);
