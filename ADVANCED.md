@@ -53,4 +53,4 @@ In step **8** the `development` branch is created from current master of [Stefan
 9. point the browser to the address and port of your docker host
 
 ##### Notes
-At the _Select version and compile_ step, you will be able to choose only `development` version of Tasmota. If you want to see other versions, you have to create git tags (with names compatibile with original Tasmota tags) from commits in [Stefan Bode](https://github.com/stefanbode/) git repo. TasmoCompiler will only look at tags which names starts with `v6*` or `v7*`.
+At the _Select version and compile_ step, you will be able to choose only `development` version of Tasmota. If you want to see other versions, you have to create git tags (with names compatibile with original Tasmota tags) from commits in [Stefan Bode](https://github.com/stefanbode/) git repo. TasmoCompiler will only look at tags which names starts with `v6*, v7*` or `v8*`.
