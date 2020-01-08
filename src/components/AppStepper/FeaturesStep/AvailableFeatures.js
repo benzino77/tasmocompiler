@@ -108,10 +108,21 @@ const availableFeatures = [
     tooltip: 'This feature will work with version 6.6.0.9 or later (latest development).',
   },
   {
+    name: 'USE_TUYA_MCU',
+    value: true,
+    description: 'Tuya MCU',
+  },
+  {
     name: 'USE_ZIGBEE',
     value: false,
     description: 'Zigbee support',
     tooltip: 'Enable serial communication with Zigbee CC2530 flashed with ZNP',
+  },
+  {
+    name: 'USE_TASMOTA_SLAVE',
+    value: false,
+    description: 'Arduino slave',
+    tooltip: 'Support for external microcontroller slave on serial',
   },
 ];
 
