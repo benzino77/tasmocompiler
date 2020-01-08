@@ -91,8 +91,9 @@ const availableFeatures = [
   },
   {
     name: 'USE_RC_SWITCH',
-    value: true,
+    value: false,
     description: 'RcSwitch support',
+    tooltip: 'Support for RF transceiver using library RcSwitch',
   },
   {
     name: 'USE_WEBSERVER',
@@ -105,6 +106,12 @@ const availableFeatures = [
     value: false,
     description: 'MQTT over TLS',
     tooltip: 'This feature will work with version 6.6.0.9 or later (latest development).',
+  },
+  {
+    name: 'USE_ZIGBEE',
+    value: false,
+    description: 'Zigbee support',
+    tooltip: 'Enable serial communication with Zigbee CC2530 flashed with ZNP',
   },
 ];
 

@@ -12,6 +12,7 @@ import VersionSelector from './VersionSelector';
 import coreVersions from './Variables/CoreVersions';
 import languages from './Variables/Languages';
 import boardVersions from './Variables/BoardVersions';
+import boardSpeeds from './Variables/BoardSpeeds';
 
 class VersionStep extends Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class VersionStep extends Component {
       coreVersion: coreVersions[3].value,
       MY_LANGUAGE: languages[0].value,
       boardVersion: boardVersions[0].value,
+      boardSpeed: boardSpeeds[0].value,
       memoryBuildFlag: 'eagle.flash.1m.ld',
       message: '',
     };
@@ -83,6 +85,7 @@ class VersionStep extends Component {
       coreVersion,
       MY_LANGUAGE,
       boardVersion,
+      boardSpeed,
     } = this.state;
 
     const {
@@ -107,7 +110,8 @@ class VersionStep extends Component {
             <VersionSelector items={coreVersions} name="coreVersion" value={coreVersion} label="Core version" onChange={this.handleChange} classes={classes} />
             <VersionSelector items={languages} name="MY_LANGUAGE" value={MY_LANGUAGE} label="Language" onChange={this.handleChange} classes={classes} />
             <VersionSelector items={boardVersions} name="boardVersion" value={boardVersion} label="Board version" onChange={this.handleChange} classes={classes} />
-          </form>
+            <VersionSelector items={boardSpeeds} name="boardSpeed" value={boardSpeed} label="Board speed" onChange={this.handleChange} classes={classes} />
+           </form>
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <BackButton disabled={compiling} onClick={this.handleBack} />
