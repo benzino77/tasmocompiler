@@ -9,7 +9,7 @@ const languages = [
   },
   {
     name: 'Czech',
-    value: 'cz-CZ',
+    value: 'cs-CZ',
   },
   {
     name: 'German',
