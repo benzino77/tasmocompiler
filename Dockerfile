@@ -8,8 +8,8 @@ ADD public /tasmocompiler/public/
 ADD src /tasmocompiler/src/
 ADD server /tasmocompiler/server/
 ADD package.json yarn.lock .yarnrc /tasmocompiler/
-RUN apt-get update && apt-get install -y python python-pip git && \
-  pip install --no-cache-dir platformio && \
+RUN apt-get update && apt-get install -y python3 python3-pip git && \
+  pip3 install --no-cache-dir platformio && \
   cd /tmp && \
   git clone https://github.com/arendst/Tasmota.git && \
   cd /tasmocompiler && \
@@ -19,6 +19,6 @@ RUN apt-get update && apt-get install -y python python-pip git && \
   yarn cache clean && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
-
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 WORKDIR /tasmocompiler
 ENTRYPOINT ["nodemon", "server/server.js"]
