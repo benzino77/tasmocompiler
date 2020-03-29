@@ -20,6 +20,48 @@ class CustomParametersStep extends Component {
     this.handleBack = this.handleBack.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { pstate } = this.props;
+    // let ncp = '';
+    // let pcp = '';
+
+    const ncp = Object.keys(pstate)
+      .filter(name => name.startsWith('precustom_'))
+      .reduce((acc, cval) => `${acc}\n${pstate[cval]}`, '');
+    const pcp = Object.keys(prevProps.pstate)
+      .filter(name => name.startsWith('precustom_'))
+      .reduce((acc, cval) => `${acc}\n${prevProps.pstate[cval]}`, '');
+
+    // Object.keys(pstate).forEach((name) => {
+    //   if (name.startsWith('precustom_')) {
+    //     console.log(name);
+    //     if (ncp) {
+    //       ncp = `${ncp}\n${pstate[name]}`;
+    //     } else {
+    //       ncp = `${pstate[name]}`;
+    //     }
+    //   }
+    // });
+    // Object.keys(prevProps.pstate).forEach((name) => {
+    //   if (name.startsWith('precustom_')) {
+    //     if (pcp) {
+    //       pcp = `${pcp}\n${prevProps.pstate[name]}`;
+    //     } else {
+    //       pcp = `${prevProps.pstate[name]}`;
+    //     }
+    //   }
+    // });
+
+    if (ncp !== pcp) {
+      console.log('Przepisuję propsy');
+      console.log(`PREV: ${pcp}`);
+      // console.log(`PREV2: ${tmp2}`);
+      console.log(`NEW: ${ncp}`);
+      // console.log(`NEW2: ${tmp1}`);
+      this.setState({ customParams: ncp });
+    }
+  }
+
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -94,6 +136,7 @@ class CustomParametersStep extends Component {
 
 CustomParametersStep.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  pstate: PropTypes.oneOfType([PropTypes.object]).isRequired,
   nextHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
 };

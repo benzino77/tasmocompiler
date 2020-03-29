@@ -46,14 +46,42 @@ const getFeatureExclude = (name) => {
   return [];
 };
 
+const getFeatureInclude = (name) => {
+  const filtered = availableFeatures.filter(e => e.name === name && e.include);
+
+  if (filtered.length > 0) {
+    return filtered[0].include;
+  }
+
+  return [];
+};
+
+const getCustomParametersForFeature = (name) => {
+  const filtered = availableFeatures.filter(e => e.name === name && e.custom);
+  if (filtered.length > 0) {
+    return filtered[0].custom;
+  }
+
+  return '';
+};
+
 const setFeature = (name, state) => {
   const newState = {};
   const group = getFeatureGroup(name);
+  const custom = getCustomParametersForFeature(name);
 
   newState[name] = state;
   group.forEach((item) => {
     newState[item] = state;
   });
+
+  if (custom) {
+    if (state) {
+      newState[`precustom_${name}`] = custom;
+    } else {
+      newState[`precustom_${name}`] = '';
+    }
+  }
   return newState;
 };
 
@@ -72,10 +100,14 @@ class FeaturesStep extends Component {
   handleChangeCheckBox(event) {
     let featureState = setFeature(event.target.name, event.target.checked);
     const excludeGroup = getFeatureExclude(event.target.name);
+    const includeGroup = getFeatureInclude(event.target.name);
 
     if (event.target.checked) {
       excludeGroup.forEach((item) => {
         featureState = { ...featureState, ...setFeature(item, !event.target.checked) };
+      });
+      includeGroup.forEach((item) => {
+        featureState = { ...featureState, ...setFeature(item, event.target.checked) };
       });
     }
 
@@ -109,14 +141,16 @@ class FeaturesStep extends Component {
           <Typography>Which features should be included in final binary firmware?</Typography>
           <div className={classes.actionsContainer}>
             {availableFeatures.map(item => (
-              <FeaturesSelector
-                classes={classes}
-                // value={this.state[item.name]}
-                value={tempState[item.name]}
-                item={item}
-                onChange={this.handleChangeCheckBox}
-                key={item.name}
-              />
+              item.show && (
+                <FeaturesSelector
+                  classes={classes}
+                  // value={this.state[item.name]}
+                  value={tempState[item.name]}
+                  item={item}
+                  onChange={this.handleChangeCheckBox}
+                  key={item.name}
+                />
+              )
             ))}
           </div>
           <div className={classes.actionsContainer}>
