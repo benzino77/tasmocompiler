@@ -113,7 +113,7 @@ class App extends Component {
       compiling,
       showMessageBox,
       showDownloadLinks,
-      compileMessages,      
+      compileMessages,
       ...other
     } = this.state;
 
