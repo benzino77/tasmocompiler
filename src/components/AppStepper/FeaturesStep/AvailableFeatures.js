@@ -1,15 +1,10 @@
 const availableFeatures = [
   {
-    name: 'USE_DOMOTICZ',
+    name: 'airsensors',
     value: false,
     show: true,
-    description: 'Domoticz',
-  },
-  {
-    name: 'USE_HOME_ASSISTANT',
-    value: false,
-    show: true,
-    description: 'Home Assistant',
+    description: 'Air/gas sensors',
+    group: ['USE_MHZ19', 'USE_SENSEAIR', 'USE_PMS5003', 'USE_NOVA_SDS', 'USE_HPMA'],
   },
   {
     name: 'alexa',
@@ -19,10 +14,96 @@ const availableFeatures = [
     group: ['USE_EMULATION', 'USE_EMULATION_HUE', 'USE_EMULATION_WEMO'],
   },
   {
+    name: 'USE_TASMOTA_SLAVE',
+    value: false,
+    show: true,
+    description: 'Arduino slave',
+    tooltip: 'Support for external microcontroller slave on serial',
+  },
+  {
+    name: 'displays',
+    value: false,
+    show: true,
+    description: 'Display (I2C/SPI) support',
+    tooltip: 'Add support for I2C and SPI diplays',
+    group: ['USE_DISPLAY', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY_LCD', 'USE_DISPLAY_SSD1306',
+      'USE_DISPLAY_MATRIX', 'USE_DISPLAY_SH1106', 'USE_DISPLAY_ILI9341', 'USE_DISPLAY_EPAPER_29',
+      'USE_DISPLAY_EPAPER_42', 'USE_DISPLAY_ILI9488', 'USE_DISPLAY_SSD1351',
+      'USE_DISPLAY_RA8876'],
+    include: ['USE_SPI', 'USE_I2C'],
+    custom: '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n'
+      + '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n'
+      + '#define MTX_ADDRESS3     0x75              // [DisplayAddress3] I2C address of third 8x8 matrix module\n'
+      + '#define MTX_ADDRESS4     0x72              // [DisplayAddress4] I2C address of fourth 8x8 matrix module\n'
+      + '#define MTX_ADDRESS5     0x73              // [DisplayAddress5] I2C address of fifth 8x8 matrix module\n'
+      + '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n'
+      + '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n'
+      + '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
+  },
+  {
+    name: 'USE_ADC_VCC',
+    value: false,
+    show: true,
+    description: 'Display Vcc',
+    tooltip: 'Disable for use Analog input',
+  },
+  {
+    name: 'USE_DOMOTICZ',
+    value: false,
+    show: true,
+    description: 'Domoticz',
+  },
+  {
+    name: 'energysensors',
+    value: false,
+    show: true,
+    description: 'Energy sensors',
+    group: ['USE_ENERGY_SENSOR', 'USE_PZEM004T', 'USE_PZEM_AC', 'USE_PZEM_DC', 'USE_MCP39F501',
+      'USE_SDM120', 'USE_SDM630', 'USE_DDS2382', 'USE_DDSU666', 'USE_SOLAX_X1', 'USE_LE01MR'],
+  },
+  {
+    name: 'USE_HOME_ASSISTANT',
+    value: false,
+    show: true,
+    description: 'Home Assistant',
+  },
+  {
+    name: 'USE_I2C',
+    value: false,
+    show: false,
+    description: 'I2C support',
+  },
+  {
+    name: 'gpioexpanders',
+    value: false,
+    show: true,
+    description: 'IO port expander',
+    tooltip: 'Add support for Input/Output pin expander: MCP230xx',
+    group: ['USE_MCP230xx', 'USE_MCP230xx_OUTPUT', 'USE_MCP230xx_DISPLAYOUTPUT'],
+    include: ['USE_I2C'],
+    custom: '#define USE_MCP230xx_ADDR 0x20\n',
+  },
+  {
     name: 'USE_KNX',
     value: false,
     show: true,
     description: 'KNX support',
+  },
+  {
+    name: 'USE_IR_REMOTE',
+    value: false,
+    show: true,
+    description: 'IR basic support',
+    tooltip: 'Basic infrared support (smaller binary and memmory usage). Exclude the use of full inrared support.',
+    exclude: ['USE_IR_REMOTE_FULL'],
+  },
+  {
+    name: 'USE_IR_REMOTE_FULL',
+    value: false,
+    show: true,
+    description: 'IR full support',
+    tooltip: 'Full infrared support (biger binary and memmory usage). Exclude the use of basic infrared support.',
+    exclude: ['USE_IR_REMOTE'],
   },
   {
     name: 'USE_DISCOVERY',
@@ -31,10 +112,18 @@ const availableFeatures = [
     description: 'mDNS discovery',
   },
   {
-    name: 'USE_TIMERS',
-    value: true,
+    name: 'USE_MQTT_TLS',
+    value: false,
     show: true,
-    description: 'Timers',
+    description: 'MQTT over TLS',
+    tooltip: 'This feature will work with version 6.6.0.9 or later (latest development).',
+  },
+  {
+    name: 'USE_RC_SWITCH',
+    value: false,
+    show: true,
+    description: 'RF transceiver support',
+    tooltip: 'Support for RF transceiver using library RcSwitch',
   },
   {
     name: 'USE_RULES',
@@ -53,117 +142,16 @@ const availableFeatures = [
     exclude: ['USE_RULES'],
   },
   {
-    name: 'USE_ADC_VCC',
-    value: false,
-    show: true,
-    description: 'Display Vcc',
-    tooltip: 'Disable for use Analog input',
-  },
-  {
-    name: 'USE_I2C',
-    value: false,
-    show: false,
-    description: 'I2C support',
-  },
-  {
     name: 'USE_SPI',
     value: false,
     show: false,
     description: 'SPI support',
   },
   {
-    name: 'displays',
-    value: false,
-    show: true,
-    description: 'Display Support',
-    tooltip: 'Add support for I2C and SPI diplays',
-    group: ['USE_DISPLAY', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY_LCD', 'USE_DISPLAY_SSD1306',
-      'USE_DISPLAY_MATRIX', 'USE_DISPLAY_SH1106', 'USE_DISPLAY_ILI9341', 'USE_DISPLAY_EPAPER_29',
-      'USE_DISPLAY_EPAPER_42', 'USE_DISPLAY_ILI9488', 'USE_DISPLAY_SSD1351',
-      'USE_DISPLAY_RA8876'],
-    include: ['USE_SPI', 'USE_I2C'],
-    custom: '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n'
-      + '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n'
-      + '#define MTX_ADDRESS3     0x75              // [DisplayAddress3] I2C address of third 8x8 matrix module\n'
-      + '#define MTX_ADDRESS4     0x72              // [DisplayAddress4] I2C address of fourth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS5     0x73              // [DisplayAddress5] I2C address of fifth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n'
-      + '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
-  },
-  {
-    name: 'gpioexpanders',
-    value: false,
-    show: true,
-    description: 'IO port expander',
-    tooltip: 'Add support for Input/Output pin expander: MCP230xx',
-    group: ['USE_MCP230xx', 'USE_MCP230xx_OUTPUT', 'USE_MCP230xx_DISPLAYOUTPUT'],
-    include: ['USE_I2C'],
-    custom: '#define USE_MCP230xx_ADDR 0x20\n',
-  },
-  {
-    name: 'airsensors',
-    value: false,
-    show: true,
-    description: 'Air/gas sensors',
-    group: ['USE_MHZ19', 'USE_SENSEAIR', 'USE_PMS5003', 'USE_NOVA_SDS', 'USE_HPMA'],
-  },
-  {
-    name: 'energysensors',
-    value: false,
-    show: true,
-    description: 'Energy sensors',
-    group: ['USE_ENERGY_SENSOR', 'USE_PZEM004T', 'USE_PZEM_AC', 'USE_PZEM_DC', 'USE_MCP39F501',
-      'USE_SDM120', 'USE_SDM630', 'USE_DDS2382', 'USE_DDSU666', 'USE_SOLAX_X1', 'USE_LE01MR'],
-  },
-  {
-    name: 'USE_IR_REMOTE',
-    value: false,
-    show: true,
-    description: 'Basic IR support',
-    tooltip: 'Basic infrared support (smaller binary and memmory usage). Exclude the use of full inrared support.',
-    exclude: ['USE_IR_REMOTE_FULL'],
-  },
-  {
-    name: 'USE_IR_REMOTE_FULL',
-    value: false,
-    show: true,
-    description: 'Full IR support',
-    tooltip: 'Full infrared support (biger binary and memmory usage). Exclude the use of basic infrared support.',
-    exclude: ['USE_IR_REMOTE'],
-  },
-  {
-    name: 'USE_WS2812',
-    value: false,
-    show: true,
-    description: 'WS2812 support',
-  },
-  {
-    name: 'USE_SR04',
-    value: false,
-    show: true,
-    description: 'Ultrasonic sensor',
-  },
-  {
-    name: 'USE_RC_SWITCH',
-    value: false,
-    show: true,
-    description: 'RcSwitch support',
-    tooltip: 'Support for RF transceiver using library RcSwitch',
-  },
-  {
-    name: 'USE_WEBSERVER',
+    name: 'USE_TIMERS',
     value: true,
     show: true,
-    description: 'Web GUI',
-    tooltip: 'For most users this should be enabled. Disable in case you need smaller binary and less memmory usage. If disabled, interaction with Tasmota will only be possible via MQTT broker.',
-  },
-  {
-    name: 'USE_MQTT_TLS',
-    value: false,
-    show: true,
-    description: 'MQTT over TLS',
-    tooltip: 'This feature will work with version 6.6.0.9 or later (latest development).',
+    description: 'Timers',
   },
   {
     name: 'USE_TUYA_MCU',
@@ -172,18 +160,30 @@ const availableFeatures = [
     description: 'Tuya MCU',
   },
   {
+    name: 'USE_SR04',
+    value: false,
+    show: true,
+    description: 'Ultrasonic sensor',
+  },
+  {
+    name: 'USE_WEBSERVER',
+    value: true,
+    show: true,
+    description: 'Web interface',
+    tooltip: 'For most users this should be enabled. Disable in case you need smaller binary and less memmory usage. If disabled, interaction with Tasmota will only be possible via MQTT broker.',
+  },
+  {
+    name: 'USE_WS2812',
+    value: false,
+    show: true,
+    description: 'WS2812 support',
+  },
+  {
     name: 'USE_ZIGBEE',
     value: false,
     show: true,
     description: 'Zigbee support',
     tooltip: 'Enable serial communication with Zigbee CC2530 flashed with ZNP',
-  },
-  {
-    name: 'USE_TASMOTA_SLAVE',
-    value: false,
-    show: true,
-    description: 'Arduino slave',
-    tooltip: 'Support for external microcontroller slave on serial',
   },
 ];
 
