@@ -1,4 +1,5 @@
-image: gitpod/workspace-full
+image:
+  file: .gitpod.Dockerfile
 tasks:
   - init: yarn install
     command: yarn build && pip3 install platformio && node server/server.js
