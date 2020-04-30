@@ -41,6 +41,8 @@ In step **8** the `development` branch is created from current master of [Stefan
 
 `git checkout -b development <sha1-of-commit>`
 
+_You can also copy and paste this oneliner:_ `cd /tmp && rm -rf Tasmota && git clone https://github.com/stefanbode/Sonoff-Tasmota.git Tasmota && cd Tasmota && git checkout -b development && cd /workspace/tasmocompiler && node server/server.js`
+
 ##### Docker
 1. close all tabs/windows with TasmoCompiler GUI (it is important, because the problem with WebSockets can arise)
 2. run `docker exec -it tasmocompiler /bin/bash` on machine where your container is running
@@ -51,6 +53,8 @@ In step **8** the `development` branch is created from current master of [Stefan
 7. type: `git checkout -b development`
 8. exit docker container shell by pressing `ctrl+d`
 9. point the browser to the address and port of your docker host
+
+_You can also copy and paste this oneliner:_ `cd /tmp && rm -rf Tasmota && git clone https://github.com/stefanbode/Sonoff-Tasmota.git Tasmota && cd Tasmota && git checkout -b development`
 
 ##### Notes
 At the _Select version and compile_ step, you will be able to choose only `development` version of Tasmota. If you want to see other versions, you have to create git tags (with names compatibile with original Tasmota tags) from commits in [Stefan Bode](https://github.com/stefanbode/) git repo. TasmoCompiler will only look at tags which names starts with `v6*, v7*` or `v8*`.
