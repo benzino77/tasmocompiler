@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { FormattedMessage } from 'react-intl';
 
 const styles = {
   root: {
@@ -18,11 +19,14 @@ function TopAppBar(props) {
     <div className={classes.root}>
       {/* <AppBar position="static" color="default" {...other} className={classes.appbar}> */}
       <AppBar {...other} position="static" color="primary">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Tasmota Compiler
-          </Typography>
-        </Toolbar>
+          <Toolbar>
+              <Typography variant="h6" color="inherit">
+                TasmoCompiler &nbsp;
+              </Typography>
+              <Typography variant="h8" color="inherit">
+                &nbsp;<FormattedMessage id='language-flag'/>
+              </Typography>
+          </Toolbar>
       </AppBar>
     </div>
   );
