@@ -7,13 +7,16 @@ import 'typeface-roboto';
 import { IntlProvider } from 'react-intl';
 import { allMessages } from './locales/languages';
 
-console.log('Detecting current language of browser...');
-const currentLocale = navigator.language.split(/[-_]/)[0];
-console.log('Browser language is: ' + currentLocale);
-const defaultLocale = 'en';
+let currentLocale = navigator.language.split(/[-_]/)[0];
+console.log('Detected browser language: ' + currentLocale);
+// Set default to english if not defined on supported languages
+if (!allMessages[currentLocale]){
+    console.log('Browser language (' + currentLocale + ') not supported changing to default (en)');
+    currentLocale = 'en';
+};
 
 ReactDOM.render(
-    <IntlProvider locale={currentLocale} messages={allMessages[currentLocale]} defaultLocale={defaultLocale}>
+    <IntlProvider locale={currentLocale} messages={allMessages[currentLocale]}>
         <App />
     </IntlProvider>,
     document.getElementById('root')
