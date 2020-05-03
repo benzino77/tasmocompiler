@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Tooltip from '@material-ui/core/Tooltip';
 import Checkbox from '@material-ui/core/Checkbox';
+import { FormattedMessage } from 'react-intl';
 
 function FeaturesSelector(props) {
   const {
@@ -14,7 +15,7 @@ function FeaturesSelector(props) {
 
   return (
     <div className={classes.checkboxContainer}>
-      <Tooltip title={tooltip || ''}>
+      <Tooltip title={tooltip? (<FormattedMessage id={tooltip}/>) : ('')}>
         <FormControlLabel
           control={(
             <Checkbox
@@ -24,7 +25,7 @@ function FeaturesSelector(props) {
               value={name}
             />
           )}
-          label={description}
+          label={<FormattedMessage id={description}/>}
         />
       </Tooltip>
     </div>

@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import NextButton from './NextButton';
 import BackButton from './BackButton';
+import { FormattedMessage } from 'react-intl';
 
 class CustomParametersStep extends Component {
   constructor(props) {
@@ -63,12 +64,12 @@ class CustomParametersStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>{stepName}</StepLabel>
+        <StepLabel><FormattedMessage id={stepName}/></StepLabel>
         <StepContent>
           <Typography>
-            Below you can enter custom parameters, which will be included at the end of
-            <em> user_config_override.h </em>
-            file. If you don&apos;t know what it is, just click Next.
+            <FormattedMessage id='Below you can enter custom parameters, which will be included at the end of'/>
+            <em> user_config_override.h </em><br/>
+            <FormattedMessage id='file. If you don&apos;t know what it is, just click Next.'/>
           </Typography>
           <form noValidate autoComplete="off">
             <div className={classes.actionsContainer}>
@@ -76,7 +77,7 @@ class CustomParametersStep extends Component {
                 // id='reg_customParams'
                 placeholder={placeholder}
                 name="customParams"
-                label="Custom parameters"
+                label={<FormattedMessage id='Custom parameters'/>}
                 fullWidth
                 multiline
                 rows={9}

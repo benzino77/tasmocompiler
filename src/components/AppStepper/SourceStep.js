@@ -6,6 +6,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
+import { FormattedMessage } from 'react-intl'
 
 import NextButton from './NextButton';
 
@@ -91,17 +92,17 @@ class SourceStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active}>{stepName}</StepLabel>
+        <StepLabel error={message.length > 0 && other.active}><FormattedMessage id={stepName}/></StepLabel>
         <StepContent>
           {isRepo
             ? (
               <Typography>
-                You can refresh source code to the latest state or click NEXT to go to the next step
+                <FormattedMessage id='You can refresh source code to the latest state or click NEXT to go to the next step'/>
               </Typography>
             )
             : (
               <Typography>
-                Before you go to the next step, you have to download Tasmota source code
+                <FormattedMessage id='Before you go to the next step, you have to download Tasmota source code'/>
               </Typography>
             )
           }
@@ -114,7 +115,7 @@ class SourceStep extends Component {
                 onClick={this.handleClonePull}
                 // className={classes.button}
               >
-                {isRepo ? 'Refresh source' : 'Download source'}
+                {isRepo ? <FormattedMessage id='Refresh source'/> : <FormattedMessage id='Download source'/>}
               </Button>
               {cloning && <CircularProgress size={24} className={classes.buttonProgress} />}
             </div>

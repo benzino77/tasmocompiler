@@ -4,6 +4,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { FormattedMessage } from 'react-intl';
 
 function VersionSelector(props) {
   const {
@@ -26,7 +27,7 @@ function VersionSelector(props) {
       <Select value={value} onChange={onChange} inputProps={inProps}>
         {items.map(item => (
           <MenuItem key={item.name || item} value={item.value || item}>
-            {item.name || item}
+            {item.name? <FormattedMessage id={item.name}/> : item}
           </MenuItem>
         ))}
       </Select>

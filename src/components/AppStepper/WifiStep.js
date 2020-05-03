@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import NextButton from './NextButton';
 import BackButton from './BackButton';
 import TextFieldComponent from './TextFieldComponent';
+import { FormattedMessage } from 'react-intl';
 
 class WifiStep extends Component {
   constructor(props) {
@@ -68,13 +69,13 @@ class WifiStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>{stepName}</StepLabel>
+        <StepLabel><FormattedMessage id={stepName}/></StepLabel>
         <StepContent>
-          <Typography>Enter SSID and pasword for your WiFi network</Typography>
+          <Typography><FormattedMessage id='Enter SSID and pasword for your WiFi network'/></Typography>
           <form noValidate autoComplete="off">
             <div className={classes.actionsContainer}>
-              <TextFieldComponent name="STA_SSID1" label="Wifi SSID" classes={classes} value={STA_SSID1} onChange={this.handleChange} />
-              <TextFieldComponent name="STA_PASS1" label="Wifi password" classes={classes} type="password" value={STA_PASS1} onChange={this.handleChange} />
+              <TextFieldComponent name="STA_SSID1" label={<FormattedMessage id='Wifi SSID'/>} classes={classes} value={STA_SSID1} onChange={this.handleChange} />
+              <TextFieldComponent name="STA_PASS1" label={<FormattedMessage id='Wifi password'/>} classes={classes} type="password" value={STA_PASS1} onChange={this.handleChange} />
             </div>
             <div className={classes.checkboxContainer}>
               <FormControlLabel
@@ -85,18 +86,18 @@ class WifiStep extends Component {
                     onChange={this.handleChangeCheckBox}
                     value="staticIPEnabled"
                   />
-)}
-                label="Static IP"
+                  )}
+                label={<FormattedMessage id='Static IP'/>}
               />
             </div>
 
             {staticIPEnabled
               && (
                 <div className={classes.actionsContainer}>
-                  <TextFieldComponent name="WIFI_IP_ADDRESS" label="IP address" classes={classes} value={WIFI_IP_ADDRESS} onChange={this.handleChange} />
-                  <TextFieldComponent name="WIFI_SUBNETMASK" label="Netmask" classes={classes} value={WIFI_SUBNETMASK} onChange={this.handleChange} />
-                  <TextFieldComponent name="WIFI_GATEWAY" label="Gateway" classes={classes} value={WIFI_GATEWAY} onChange={this.handleChange} />
-                  <TextFieldComponent name="WIFI_DNS" label="DNS server" classes={classes} value={WIFI_DNS} onChange={this.handleChange} />
+                  <TextFieldComponent name="WIFI_IP_ADDRESS" label={<FormattedMessage id='IP address'/>} classes={classes} value={WIFI_IP_ADDRESS} onChange={this.handleChange} />
+              <TextFieldComponent name="WIFI_SUBNETMASK" label={<FormattedMessage id='Netmask'/>} classes={classes} value={WIFI_SUBNETMASK} onChange={this.handleChange} />
+              <TextFieldComponent name="WIFI_GATEWAY" label={<FormattedMessage id='Gateway'/>} classes={classes} value={WIFI_GATEWAY} onChange={this.handleChange} />
+              <TextFieldComponent name="WIFI_DNS" label={<FormattedMessage id='DNS server'/>} classes={classes} value={WIFI_DNS} onChange={this.handleChange} />
                 </div>
               )
             }

@@ -13,6 +13,7 @@ import coreVersions from './Variables/CoreVersions';
 import languages from './Variables/Languages';
 import boardVersions from './Variables/BoardVersions';
 import boardSpeeds from './Variables/BoardSpeeds';
+import { FormattedMessage } from 'react-intl';
 
 class VersionStep extends Component {
   constructor(props) {
@@ -78,7 +79,7 @@ class VersionStep extends Component {
   }
 
   render() {
-    const stepName = 'Select versions and compile';
+    const stepName = 'Select version and compile';
     const {
       message,
       tasmotaVersion,
@@ -99,19 +100,19 @@ class VersionStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active}>{stepName}</StepLabel>
+        <StepLabel error={message.length > 0 && other.active}><FormattedMessage id={stepName}/></StepLabel>
         <StepContent>
           <Typography>
-            Select Tasmota and Arduino Core version.
-            + Choose the language you want to use and your hardware.
+            <FormattedMessage id='Select Tasmota and Arduino Core version.'/> 
+            <FormattedMessage id='Choose the language you want to use and your hardware.'/>
           </Typography>
           <form className={classes.actionsContainer} autoComplete="off">
-            <VersionSelector items={repoTags} name="tasmotaVersion" value={tasmotaVersion} label="Tasmota version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={coreVersions} name="coreVersion" value={coreVersion} label="Core version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={languages} name="MY_LANGUAGE" value={MY_LANGUAGE} label="Language" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={boardVersions} name="boardVersion" value={boardVersion} label="Board version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={boardSpeeds} name="boardSpeed" value={boardSpeed} label="Board speed" onChange={this.handleChange} classes={classes} />
-           </form>
+            <VersionSelector items={repoTags} name="tasmotaVersion" value={tasmotaVersion} label={<FormattedMessage id='Tasmota version'/>} onChange={this.handleChange} classes={classes} />
+            <VersionSelector items={coreVersions} name="coreVersion" value={coreVersion} label={<FormattedMessage id='Core version'/>} onChange={this.handleChange} classes={classes} />
+            <VersionSelector items={languages} name="MY_LANGUAGE" value={MY_LANGUAGE} label={<FormattedMessage id='Language'/>} onChange={this.handleChange} classes={classes} />
+            <VersionSelector items={boardVersions} name="boardVersion" value={boardVersion} label={<FormattedMessage id='Board version'/>} onChange={this.handleChange} classes={classes} />
+            <VersionSelector items={boardSpeeds} name="boardSpeed" value={boardSpeed} label={<FormattedMessage id='Board speed'/>} onChange={this.handleChange} classes={classes} />
+          </form>
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <BackButton disabled={compiling} onClick={this.handleBack} />

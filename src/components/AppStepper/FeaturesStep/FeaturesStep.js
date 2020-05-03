@@ -9,6 +9,7 @@ import availableFeatures from './AvailableFeatures';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
+import { FormattedMessage } from 'react-intl';
 
 const getFeaturesDefaultStates = () => {
   const defaults = {};
@@ -136,9 +137,9 @@ class FeaturesStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>{stepName}</StepLabel>
+        <StepLabel><FormattedMessage id={stepName}/></StepLabel>
         <StepContent>
-          <Typography>Which features should be included in final binary firmware?</Typography>
+          <Typography><FormattedMessage id='Which features should be included in final binary firmware?'/></Typography>
           <div className={classes.actionsContainer}>
             {availableFeatures.map(item => (
               item.show && (
