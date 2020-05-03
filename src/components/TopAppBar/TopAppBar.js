@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { FormattedMessage } from 'react-intl';
+import { Button, Tooltip } from '@material-ui/core';
 
 const styles = {
   root: {
@@ -21,11 +22,13 @@ function TopAppBar(props) {
       <AppBar {...other} position="static" color="primary">
           <Toolbar>
               <Typography variant="h6" color="inherit">
-                TasmoCompiler &nbsp;
+                TasmoCompiler &nbsp;&nbsp;
               </Typography>
-              <Typography variant="h8" color="inherit">
-                &nbsp;<FormattedMessage id='language-flag'/>
-              </Typography>
+                <Tooltip placement='right' title={<FormattedMessage id='Change web language setting it on browser settings'/>}>
+                  <Button color='inherit' size='small' disableFocusRipple='true' disableRipple='true' variant='text'>
+                    <FormattedMessage id='language-flag'/>
+                  </Button>
+                </Tooltip>
           </Toolbar>
       </AppBar>
     </div>
