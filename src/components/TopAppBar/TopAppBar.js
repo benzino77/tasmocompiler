@@ -22,9 +22,9 @@ function TopAppBar(props) {
       <AppBar {...other} position="static" color="primary">
           <Toolbar>
               <Typography variant="h6" color="inherit">
-                TasmoCompiler &nbsp;&nbsp;
+                TasmoCompiler &nbsp;
               </Typography>
-                <Tooltip placement='right' title={<FormattedMessage id='Change web language setting it on browser settings'/>}>
+                <Tooltip placement='right' title={<FormattedMessage id='Change web language on browser settings'/>}>
                   <Button color='inherit' size='small' disableFocusRipple='true' disableRipple='true' variant='text'>
                     <FormattedMessage id='language-flag'/>
                   </Button>
