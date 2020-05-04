@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { element } from 'prop-types';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
@@ -19,10 +19,15 @@ class VersionStep extends Component {
   constructor(props) {
     super(props);
 
+    // Search the current locale of browser on languages
+    var languageIndex = languages.findIndex(element => element.value.includes(navigator.language));
+    // Set English if not found current locale of browser on languages
+    if(languageIndex == -1) languageIndex = 0;
+
     this.state = {
       tasmotaVersion: 'development',
       coreVersion: coreVersions[0].value,
-      MY_LANGUAGE: languages[0].value,
+      MY_LANGUAGE: languages[languageIndex].value,
       boardVersion: boardVersions[0].value,
       boardSpeed: boardSpeeds[0].value,
       memoryBuildFlag: 'eagle.flash.1m.ld',
