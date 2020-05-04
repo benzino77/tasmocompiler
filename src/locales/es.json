@@ -65,7 +65,7 @@
     "Below you can enter custom parameters, which will be included at the end of":"A continuación puede introducir los parámetros personalizados, que se incluirán al final del archivo",
     "file. If you don't know what it is, just click Next.":"Si no sabes lo que es, sólo tienes que hacer clic en Siguiente.",
 
-    "Select versions and compile":"Selección de versión y compilar",
+    "Select version and compile":"Selección de versión y compilar",
     "Select Tasmota and Arduino Core version.":"Seleciona las versiones de Tasmota y Arduino Core.",
     "Choose the language you want to use and your hardware.":"Elige el idioma que quieres usar en Tasmota y tu placa.",
     "Tasmota version":"Versión Tasmota",

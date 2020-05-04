@@ -65,7 +65,7 @@
     "Below you can enter custom parameters, which will be included at the end of":"Below you can enter custom parameters, which will be included at the end of",
     "file. If you don't know what it is, just click Next.":"files. If you don&apos;t know what it is, just click Next.",
 
-    "Select versions and compile":"Select version and compile",
+    "Select version and compile":"Select version and compile",
     "Select Tasmota and Arduino Core version.":"Select Tasmota and Arduino Core version.",
     "Choose the language you want to use and your hardware.":"Choose the language you want to use and your hardware.",
     "Tasmota version":"Tasmota version",
@@ -98,6 +98,6 @@
     "Chinese (Traditional)":"Chinese (Traditional)",
 
     "Compiling progress":"Compiling progress",
-    
+
     "":""
 }
