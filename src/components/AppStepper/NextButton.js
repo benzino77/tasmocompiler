@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import { FormattedMessage } from 'react-intl';
 
 function NextButton(props) {
   const { disabled, onClick } = props;
@@ -11,7 +12,7 @@ function NextButton(props) {
       color="primary"
       onClick={onClick}
     >
-    Next
+      <FormattedMessage id="btnNext" />
     </Button>
   );
 }
