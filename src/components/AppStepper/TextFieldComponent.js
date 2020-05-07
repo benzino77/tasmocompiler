@@ -28,7 +28,7 @@ function TextFieldComponent(props) {
 
 TextFieldComponent.propTypes = {
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
+  label: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
   value: PropTypes.string.isRequired,
   type: PropTypes.string,

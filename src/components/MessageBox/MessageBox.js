@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TextField from '@material-ui/core/TextField';
+import { FormattedMessage } from 'react-intl';
 
 class MessageBox extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class MessageBox extends Component {
     return (
       <TextField
         name="compileMessages"
-        label="Compiling progress"
+        label={<FormattedMessage id="stepVersionCompProgress" />}
         fullWidth
         multiline
         rows={9}

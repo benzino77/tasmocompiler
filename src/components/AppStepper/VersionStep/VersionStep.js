@@ -13,15 +13,23 @@ import coreVersions from './Variables/CoreVersions';
 import languages from './Variables/Languages';
 import boardVersions from './Variables/BoardVersions';
 import boardSpeeds from './Variables/BoardSpeeds';
+import { FormattedMessage } from 'react-intl';
 
 class VersionStep extends Component {
   constructor(props) {
     super(props);
 
+    // Search the current locale of browser on languages
+    var languageIndex = languages.findIndex((element) =>
+      element.value.includes(navigator.language)
+    );
+    // Set English if not found current locale of browser on languages
+    if (languageIndex === -1) languageIndex = 0;
+
     this.state = {
       tasmotaVersion: 'development',
       coreVersion: coreVersions[0].value,
-      MY_LANGUAGE: languages[0].value,
+      MY_LANGUAGE: languages[languageIndex].value,
       boardVersion: boardVersions[0].value,
       boardSpeed: boardSpeeds[0].value,
       memoryBuildFlag: 'eagle.flash.1m.ld',
@@ -40,9 +48,13 @@ class VersionStep extends Component {
       const mbf = event.target.value.mem_prefix;
       if (boardVersion.mem === 4) {
         memoryBuildFlag = `${mbf}4m1m.ld`;
-      } else { // memory 1Mbit
+      } else {
+        // memory 1Mbit
         memoryBuildFlag = `${mbf}1m0.ld`;
-        if (event.target.value.platform.startsWith('core_2_6_') || event.target.value.platform.startsWith('core_stage')) {
+        if (
+          event.target.value.platform.startsWith('core_2_6_') ||
+          event.target.value.platform.startsWith('core_stage')
+        ) {
           memoryBuildFlag = `${mbf}1m.ld`;
         }
       }
@@ -54,14 +66,20 @@ class VersionStep extends Component {
         memoryBuildFlag = `${mbf}4m1m.ld`;
       } else {
         memoryBuildFlag = `${mbf}1m0.ld`;
-        if (coreVersion.platform.startsWith('core_2_6_') || event.target.value.platform.startsWith('core_stage')) {
+        if (
+          coreVersion.platform.startsWith('core_2_6_') ||
+          event.target.value.platform.startsWith('core_stage')
+        ) {
           memoryBuildFlag = `${mbf}1m.ld`;
         }
       }
     }
 
     if (memoryBuildFlag) {
-      this.setState({ [event.target.name]: event.target.value, memoryBuildFlag });
+      this.setState({
+        [event.target.name]: event.target.value,
+        memoryBuildFlag,
+      });
     } else {
       this.setState({ [event.target.name]: event.target.value });
     }
@@ -78,7 +96,6 @@ class VersionStep extends Component {
   }
 
   render() {
-    const stepName = 'Select versions and compile';
     const {
       message,
       tasmotaVersion,
@@ -99,26 +116,70 @@ class VersionStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active}>{stepName}</StepLabel>
+        <StepLabel error={message.length > 0 && other.active}>
+          <FormattedMessage id="stepVersionTitle" />
+        </StepLabel>
         <StepContent>
           <Typography>
-            Select Tasmota and Arduino Core version.
-            + Choose the language you want to use and your hardware.
+            <FormattedMessage id="stepVersionDesc" />
           </Typography>
           <form className={classes.actionsContainer} autoComplete="off">
-            <VersionSelector items={repoTags} name="tasmotaVersion" value={tasmotaVersion} label="Tasmota version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={coreVersions} name="coreVersion" value={coreVersion} label="Core version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={languages} name="MY_LANGUAGE" value={MY_LANGUAGE} label="Language" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={boardVersions} name="boardVersion" value={boardVersion} label="Board version" onChange={this.handleChange} classes={classes} />
-            <VersionSelector items={boardSpeeds} name="boardSpeed" value={boardSpeed} label="Board speed" onChange={this.handleChange} classes={classes} />
-           </form>
+            <VersionSelector
+              items={repoTags}
+              name="tasmotaVersion"
+              value={tasmotaVersion}
+              label={<FormattedMessage id="stepVersionTasmota" />}
+              onChange={this.handleChange}
+              classes={classes}
+            />
+            <VersionSelector
+              items={coreVersions}
+              name="coreVersion"
+              value={coreVersion}
+              label={<FormattedMessage id="stepVersionCore" />}
+              onChange={this.handleChange}
+              classes={classes}
+            />
+            <VersionSelector
+              items={languages}
+              name="MY_LANGUAGE"
+              value={MY_LANGUAGE}
+              label={<FormattedMessage id="stepVersionLanguage" />}
+              onChange={this.handleChange}
+              classes={classes}
+            />
+            <VersionSelector
+              items={boardVersions}
+              name="boardVersion"
+              value={boardVersion}
+              label={<FormattedMessage id="stepVersionBoard" />}
+              onChange={this.handleChange}
+              classes={classes}
+            />
+            <VersionSelector
+              items={boardSpeeds}
+              name="boardSpeed"
+              value={boardSpeed}
+              label={<FormattedMessage id="stepVersionBoardSpeed" />}
+              onChange={this.handleChange}
+              classes={classes}
+            />
+          </form>
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <BackButton disabled={compiling} onClick={this.handleBack} />
             </div>
             <div className={classes.wrapper}>
-              <CompileButton disabled={compiling} onClick={this.handleCompile} />
-              {compiling && <CircularProgress size={24} className={classes.buttonProgress} />}
+              <CompileButton
+                disabled={compiling}
+                onClick={this.handleCompile}
+              />
+              {compiling && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
             </div>
           </div>
           {message && (
