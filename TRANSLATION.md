@@ -24,12 +24,12 @@
 ```javascript
 import localeEN from '../locales/en.json';
 import localeES from '../locales/es.json';
-import localesPL from '../locales/pl.json';
+import localePL from '../locales/pl.json';
 
 export const allMessages = {
   en: localeEN,
   es: localeES,
-  pl: localesPL,
+  pl: localePL,
 };
 ```
 
@@ -37,13 +37,13 @@ export const allMessages = {
 ```javascript
 import localeEN from '../locales/en.json';
 import localeES from '../locales/es.json';
-import localesPL from '../locales/pl.json';
-import localesIT from '../locales/it.json'; // add this line 
+import localePL from '../locales/pl.json';
+import localeIT from '../locales/it.json'; // add this line 
 
 export const allMessages = {
   en: localeEN,
   es: localeES,
-  pl: localesPL,
-  it: localesIT, // add this line
+  pl: localePL,
+  it: localeIT, // add this line
 };
 ```
