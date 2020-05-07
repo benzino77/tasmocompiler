@@ -19,7 +19,7 @@ class MessageBox extends Component {
     return (
       <TextField
         name="compileMessages"
-        label={<FormattedMessage id='Compiling progress'/>}
+        label={<FormattedMessage id="stepVersionCompProgress" />}
         fullWidth
         multiline
         rows={9}

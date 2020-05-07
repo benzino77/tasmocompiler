@@ -12,7 +12,7 @@ function CompileButton(props) {
       color="primary"
       onClick={onClick}
     >
-    <FormattedMessage id='Compile'/>
+      <FormattedMessage id="btnCompile" />
     </Button>
   );
 }

@@ -1,10 +1,9 @@
-
-import localeEN from "../locales/en.json";
-import localeES from "../locales/es.json";
-import localeIT from "../locales/it.json";
+import localeEN from '../locales/en.json';
+import localeES from '../locales/es.json';
+import localesPL from '../locales/pl.json';
 
 export const allMessages = {
-    'es': localeES,
-    'en': localeEN,
-    'it': localeIT,
-}
+  en: localeEN,
+  es: localeES,
+  pl: localesPL,
+};

@@ -25,10 +25,10 @@ class CustomParametersStep extends Component {
     const { pstate } = this.props;
 
     const ncp = Object.keys(pstate)
-      .filter(name => name.startsWith('precustom_'))
+      .filter((name) => name.startsWith('precustom_'))
       .reduce((acc, cval) => `${acc}\n${pstate[cval]}`, '');
     const pcp = Object.keys(prevProps.pstate)
-      .filter(name => name.startsWith('precustom_'))
+      .filter((name) => name.startsWith('precustom_'))
       .reduce((acc, cval) => `${acc}\n${prevProps.pstate[cval]}`, '');
 
     if (ncp !== pcp) {
@@ -51,25 +51,23 @@ class CustomParametersStep extends Component {
   }
 
   render() {
-    const stepName = 'Custom parameters';
-    const {
-      classes,
-      nextHandler,
-      backHandler,
-      ...other
-    } = this.props;
+    const { classes, nextHandler, backHandler, ...other } = this.props;
     const { customParams } = this.state;
-    const placeholder = '#ifdef USE_MCP230xx\n #undef USE_MCP230xx\n#endif\n#define USE_MCP230xx\n\n'
-                        + '#ifdef USE_MCP230xx_ADDR\n #undef USE_MCP230xx_ADDR\n#endif\n#define USE_MCP230xx_ADDR 0x20\n';
+    const placeholder =
+      '#ifdef USE_MCP230xx\n #undef USE_MCP230xx\n#endif\n#define USE_MCP230xx\n\n' +
+      '#ifdef USE_MCP230xx_ADDR\n #undef USE_MCP230xx_ADDR\n#endif\n#define USE_MCP230xx_ADDR 0x20\n';
 
     return (
       <Step {...other}>
-        <StepLabel><FormattedMessage id={stepName}/></StepLabel>
+        <StepLabel>
+          <FormattedMessage id="stepCustomParamsTitle" />
+        </StepLabel>
         <StepContent>
           <Typography>
-            <FormattedMessage id='Below you can enter custom parameters, which will be included at the end of'/>
-            <em> user_config_override.h </em><br/>
-            <FormattedMessage id='file. If you don&apos;t know what it is, just click Next.'/>
+            <FormattedMessage
+              values={{ filename: <em>user_config_override.h</em> }}
+              id="stepCustomParamsDesc"
+            />
           </Typography>
           <form noValidate autoComplete="off">
             <div className={classes.actionsContainer}>
@@ -77,7 +75,7 @@ class CustomParametersStep extends Component {
                 // id='reg_customParams'
                 placeholder={placeholder}
                 name="customParams"
-                label={<FormattedMessage id='Custom parameters'/>}
+                label={<FormattedMessage id="stepCustomParamsTitle" />}
                 fullWidth
                 multiline
                 rows={9}

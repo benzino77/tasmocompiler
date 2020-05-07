@@ -124,7 +124,7 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <TopAppBar />
+        <TopAppBar {...this.props}/>
         <Stepper activeStep={activeStep} orientation="vertical">
           <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
           <WifiStep {...this.props} {...bnHandlersProps} key={2} />

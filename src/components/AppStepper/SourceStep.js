@@ -6,7 +6,7 @@ import StepContent from '@material-ui/core/StepContent';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage } from 'react-intl';
 
 import NextButton from './NextButton';
 
@@ -26,10 +26,9 @@ class SourceStep extends Component {
     this.handleNext = this.handleNext.bind(this);
   }
 
-
   componentDidMount() {
     fetch('/api/v1/repoavailability')
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((ret) => {
         this.setState({ isRepo: ret.result, message: '' });
       })
@@ -44,7 +43,7 @@ class SourceStep extends Component {
 
     this.setState({ cloning: true });
     fetch(uri)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((ret) => {
         if (!ret.ok) throw new Error(ret.message);
         this.tags = ret.tags;
@@ -61,7 +60,7 @@ class SourceStep extends Component {
     if (this.tags.length === 0) {
       this.setState({ gettingTags: true });
       fetch('/api/v1/repotags')
-        .then(res => res.json())
+        .then((res) => res.json())
         .then((ret) => {
           this.tags = ret.tags;
           this.setState({ gettingTags: false });
@@ -76,36 +75,25 @@ class SourceStep extends Component {
   }
 
   render() {
-    const stepName = 'Tasmota source code';
-    const {
-      classes,
-      nextHandler,
-      ...other
-    } = this.props;
+    const { classes, nextHandler, ...other } = this.props;
 
-    const {
-      isRepo,
-      message,
-      cloning,
-      gettingTags,
-    } = this.state;
+    const { isRepo, message, cloning, gettingTags } = this.state;
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active}><FormattedMessage id={stepName}/></StepLabel>
+        <StepLabel error={message.length > 0 && other.active}>
+          <FormattedMessage id="stepSourceTitle" />
+        </StepLabel>
         <StepContent>
-          {isRepo
-            ? (
-              <Typography>
-                <FormattedMessage id='You can refresh source code to the latest state or click NEXT to go to the next step'/>
-              </Typography>
-            )
-            : (
-              <Typography>
-                <FormattedMessage id='Before you go to the next step, you have to download Tasmota source code'/>
-              </Typography>
-            )
-          }
+          {isRepo ? (
+            <Typography>
+              <FormattedMessage id="stepSourceDescRefresh" />
+            </Typography>
+          ) : (
+            <Typography>
+              <FormattedMessage id="stepSourceDescDownload" />
+            </Typography>
+          )}
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <Button
@@ -115,13 +103,30 @@ class SourceStep extends Component {
                 onClick={this.handleClonePull}
                 // className={classes.button}
               >
-                {isRepo ? <FormattedMessage id='Refresh source'/> : <FormattedMessage id='Download source'/>}
+                {isRepo ? (
+                  <FormattedMessage id="btnRefreshSrc" />
+                ) : (
+                  <FormattedMessage id="btnDownloadSrc" />
+                )}
               </Button>
-              {cloning && <CircularProgress size={24} className={classes.buttonProgress} />}
+              {cloning && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
             </div>
             <div className={classes.wrapper}>
-              <NextButton disabled={!isRepo || cloning || gettingTags} onClick={this.handleNext} />
-              {gettingTags && <CircularProgress size={24} className={classes.buttonProgress} />}
+              <NextButton
+                disabled={!isRepo || cloning || gettingTags}
+                onClick={this.handleNext}
+              />
+              {gettingTags && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
             </div>
           </div>
           {message && (

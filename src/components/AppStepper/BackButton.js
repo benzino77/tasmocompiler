@@ -12,7 +12,7 @@ function BackButton(props) {
       color="primary"
       onClick={onClick}
     >
-    <FormattedMessage id='Back'/>
+      <FormattedMessage id="btnBack" />
     </Button>
   );
 }

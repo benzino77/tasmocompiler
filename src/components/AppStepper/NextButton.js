@@ -12,7 +12,7 @@ function NextButton(props) {
       color="primary"
       onClick={onClick}
     >
-    <FormattedMessage id='Next'/>
+      <FormattedMessage id="btnNext" />
     </Button>
   );
 }
