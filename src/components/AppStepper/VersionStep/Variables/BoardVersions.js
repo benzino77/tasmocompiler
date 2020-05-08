@@ -1,6 +1,6 @@
 const boardVersions = [
   {
-    name: 'Sonoffs (1MB)',
+    name: 'Sonoff (1MB)',
     // value: { mem_suffix: '.flash.1m0.ld', board: 'esp01_1m' },
     value: { mem: 1, board: 'esp01_1m' },
   },
