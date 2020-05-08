@@ -33,7 +33,7 @@
   "stepFeaturesDispVccTooltip": "Wyłącz jeśli używasz wejscia analogowego",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Czujniki energii",
-  "stepFeaturesGoogleHADesct": "Google Home Assistant",
+  "stepFeaturesGoogleHADesc": "Google Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Ekspander portów IO",
   "stepFeaturesIOExpMCPTooltip": "Wsparcie dla ekspandera MCP230xx",
   "stepFeaturesKNXDesc": "KNX",
