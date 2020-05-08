@@ -14,7 +14,7 @@
   "stepWifiConfTitle": "Configuración Wifi",
   "stepWifiConfDesc": "Introduce el SSID y la contraseña de tu red WiFi",
   "stepWifiConfStaticIP": "IP estática",
-  "stepWifiConfSSID": "stepWifiConfSSID",
+  "stepWifiConfSSID": "Wifi SSID",
   "stepWifiConfPassword": "Contraseña Wifi",
   "stepWifiConfIP": "Dirección IP",
   "stepWifiConfMask": "Máscara de red",
