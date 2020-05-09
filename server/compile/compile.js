@@ -10,6 +10,7 @@ const {
   tasmotaRepo,
   userConfigOvewrite,
   userPlatformioIni,
+  tasmotaVersionFile,
   templatePlatformioIni,
 } = require('../config/config');
 
@@ -41,8 +42,26 @@ const prepareFiles = async (data) => {
     return f !== e[0];
   });
 
+  const getTasmotaVersion = () => {
+    const fileExists = fs.pathExistsSync(tasmotaVersionFile);
+    const versRegexp = /const uint32_t VERSION = (.*);/gm;
+
+    if (fileExists) {
+      const file = fs.readFileSync(tasmotaVersionFile, {encoding:'utf8', flag:'r'});
+      const match = [...file.matchAll(versRegexp)];
+      if (match[0]) {
+        return parseInt(match[0][1]);
+      } else {
+        throw new Error(`Cannot find Tasmota version in ${tasmotaVersionFile}.`);
+      }
+    } else {
+      throw new Error(`${tasmotaVersionFile} does not exists.`);
+    }
+  };
+
   // user_config_override.g file
   const outputOverwrites = userDefines.map((e) => {
+    
     if (_.isBoolean(data[e])) {
       if (data[e]) {
         return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`;
@@ -50,6 +69,10 @@ const prepareFiles = async (data) => {
       return `#ifdef ${e}\n  #undef ${e}\n#endif\n\n`;
     }
     if (e === 'MY_LANGUAGE') {
+      const tasmotaVersion = getTasmotaVersion();
+      if (tasmotaVersion > 0x08020005) { // with Tasmota version 8.2.6 language files ware renamed from pl-PL to pl_PL
+        data[e] = ('' + data[e]).replace('-', '_');
+      }
       return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`;
     }
     return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`;
@@ -58,8 +81,13 @@ const prepareFiles = async (data) => {
   if (data.customParams) {
     outputOverwrites.push(`${data.customParams}\n\n`);
   }
-  outputOverwrites.unshift('#warning **** user_config_override.h: Using Settings from this File ****\n\n');
-  outputOverwrites.unshift('#ifndef _USER_CONFIG_OVERRIDE_H_\n', '#define _USER_CONFIG_OVERRIDE_H_\n\n');
+  outputOverwrites.unshift(
+    '#warning **** user_config_override.h: Using Settings from this File ****\n\n'
+  );
+  outputOverwrites.unshift(
+    '#ifndef _USER_CONFIG_OVERRIDE_H_\n',
+    '#define _USER_CONFIG_OVERRIDE_H_\n\n'
+  );
   outputOverwrites.push('#endif');
 
   try {
@@ -71,7 +99,10 @@ const prepareFiles = async (data) => {
 
   // platformio.ini file
   try {
-    const platformioFileConetent = await fs.readFile(templatePlatformioIni, 'utf8');
+    const platformioFileConetent = await fs.readFile(
+      templatePlatformioIni,
+      'utf8'
+    );
     config = ini.parse(platformioFileConetent);
     // config.user_defined.board_memory = `${data.coreVersion.mem_prefix}${data.boardVersion.mem_suffix}`;
     config.user_defined.board_memory = data.memoryBuildFlag;
@@ -82,7 +113,9 @@ const prepareFiles = async (data) => {
     config.core_active.build_flags = `\${${data.coreVersion.platform}.build_flags}`;
     debug(ini.stringify(config));
   } catch (e) {
-    throw new Error(`Cannot load content from platformio.ini template file\n${e}\n`);
+    throw new Error(
+      `Cannot load content from platformio.ini template file\n${e}\n`
+    );
   }
 
   try {
@@ -93,40 +126,41 @@ const prepareFiles = async (data) => {
 };
 
 const compileCode = (socket, data) => {
-  prepareFiles(data).then((prepared) => {
-    const cdRet = shell.cd(tasmotaRepo);
+  prepareFiles(data)
+    .then((prepared) => {
+      const cdRet = shell.cd(tasmotaRepo);
 
-    if (cdRet.code !== 0) {
-      socket.emit('message', cdRet.stderr);
-      socket.emit('finished', { status: cdRet.code, message: cdRet.stderr });
-      debug(cdRet.stderr);
-      return;
-    }
+      if (cdRet.code !== 0) {
+        socket.emit('message', cdRet.stderr);
+        socket.emit('finished', { status: cdRet.code, message: cdRet.stderr });
+        debug(cdRet.stderr);
+        return;
+      }
 
-    const child = shell.exec('pio run', { silent: true, async: true });
+      const child = shell.exec('pio run', { silent: true, async: true });
 
-    child.on('exit', (code, signal) => {
-      const message = `Finished. Exit code: ${code}.\n`;
-      socket.emit('message', message);
-      socket.emit('finished', { ok: code === 0 });
-      debug(message);
+      child.on('exit', (code, signal) => {
+        const message = `Finished. Exit code: ${code}.\n`;
+        socket.emit('message', message);
+        socket.emit('finished', { ok: code === 0 });
+        debug(message);
+      });
+
+      child.stderr.on('data', (stderrData) => {
+        socket.emit('message', stderrData);
+        debug(stderrData);
+      });
+
+      child.stdout.on('data', (stdoutData) => {
+        socket.emit('message', stdoutData);
+        debug(stdoutData);
+      });
+    })
+    .catch((e) => {
+      socket.emit('message', e.message);
+      socket.emit('finished', { ok: false });
+      debug(e);
     });
-
-    child.stderr.on('data', (stderrData) => {
-      socket.emit('message', stderrData);
-      debug(stderrData);
-    });
-
-    child.stdout.on('data', (stdoutData) => {
-      socket.emit('message', stdoutData);
-      debug(stdoutData);
-    });
-  }).catch((e) => {
-    socket.emit('message', e.message);
-    socket.emit('finished', { ok: false });
-    debug(e);
-  });
 };
-
 
 module.exports = { compileCode };
