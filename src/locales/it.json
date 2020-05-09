@@ -34,7 +34,7 @@
   "stepFeaturesDispVccTooltip": "Disabilitalo per ingresso analogico",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Sensori energia",
-  "stepFeaturesGoogleHADesc": "Google Home Assistant",
+  "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Espansione porte I/O",
   "stepFeaturesIOExpMCPTooltip": "Aggiunge supporto per espansione pin input/output: MCP230xx",
   "stepFeaturesKNXDesc": "KNX",
