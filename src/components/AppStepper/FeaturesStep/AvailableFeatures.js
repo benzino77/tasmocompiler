@@ -65,7 +65,7 @@ const availableFeatures = [
     name: 'USE_HOME_ASSISTANT',
     value: false,
     show: true,
-    description: 'stepFeaturesGoogleHADesc',
+    description: 'stepFeaturesHomeAssistantDesc',
   },
   {
     name: 'gpioexpanders',
