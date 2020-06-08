@@ -10,6 +10,10 @@ import Typography from '@material-ui/core/Typography';
 import NextButton from './NextButton';
 import BackButton from './BackButton';
 import TextFieldComponent from './TextFieldComponent';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import { FormattedMessage } from 'react-intl';
 
 class WifiStep extends Component {
@@ -22,12 +26,15 @@ class WifiStep extends Component {
       WIFI_SUBNETMASK: '',
       WIFI_GATEWAY: '',
       WIFI_DNS: '',
+      showPassword: false,
       staticIPEnabled: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
+    this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
   }
 
   handleChange(event) {
@@ -36,6 +43,14 @@ class WifiStep extends Component {
 
   handleChangeCheckBox(event) {
     this.setState({ [event.target.name]: event.target.checked });
+  }
+
+  handleClickShowPassword(event) {
+    this.setState({ showPassword: !this.state.showPassword });
+  }
+
+  handleMouseDownPassword(event) {
+    event.preventDefault();
   }
 
   handleNext() {
@@ -59,6 +74,7 @@ class WifiStep extends Component {
       WIFI_SUBNETMASK,
       WIFI_GATEWAY,
       WIFI_DNS,
+      showPassword,
     } = this.state;
 
     return (
@@ -83,9 +99,22 @@ class WifiStep extends Component {
                 name="STA_PASS1"
                 label={<FormattedMessage id="stepWifiConfPassword" />}
                 classes={classes}
-                type="password"
+                type={showPassword ? 'text' : 'password'}
                 value={STA_PASS1}
                 onChange={this.handleChange}
+                inputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={this.handleClickShowPassword}
+                        onMouseDown={this.handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </div>
             <div className={classes.checkboxContainer}>
