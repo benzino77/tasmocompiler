@@ -1,5 +1,11 @@
+![Docker Pulls](https://img.shields.io/docker/pulls/benzino77/tasmocompiler)
+[![donate](https://img.shields.io/badge/donate-PayPal-brightgreen.svg)](https://www.paypal.me/tasmocompiler)
+[![donate](https://img.shields.io/badge/donate-KoFi-brightgreen.svg)](https://ko-fi.com/tasmocompiler)
+
 #### What it is?
+
 TasmotaCompiler is a simple web GUI which allows you to compile fantastic [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware with your own settings:
+
 - You can select which features/sensors of Tasmota firmware you want to use
 - Credentials for your IOT WiFi network, so even after unexpected problems with the device (complete lost of configuration), credentials for your network will still be there, but mainly you don't have to connect to AP, served by Tasmota to configure your Home WiFi
 - You can select Tasmota version you want to compile. You can select `development` bleading edge version, or ie. previous stable release `6.4.1` or `6.2.1` if this is the one you like
@@ -9,21 +15,22 @@ TasmotaCompiler is a simple web GUI which allows you to compile fantastic [Tasmo
 - You can also provide custom `#defines` if you want to build even more suitable firmaware for your needs
 
 #### Why?
+
 Well, there are two reasons. First is that I want to build my first application written in NodeJS/React. The second one is based on the observation that everytime I prepare a new device I have to start atom with platformio installed, configure all `#defines` (well, I have template which I copy) and prepare `platformio.ini`, create a branch from version I like to use, etc..
 
 That's why I decided to prepare a solution which is easier to use (just a few clicks) and does not require knowledge how to install dev environment to build custom firmware.
 
-
 #### How it works?
+
 The easiest way is to look at the screenshots (the whole process is five steps only). After compilation you will be able to download three files:
+
 1. Your new `firmware.bin` file, which can be uploaded to your device via Tasmota WebGUI, espotool, ESPEasy flasher or any other tool you used to use to flash your device
 2. `platformio.ini` file, to check what options for platformio were used to compile the custom firmware file
 3. `user_config_override.h` file to check what features are included/excluded from resulting firmware
 
-The links to download these files will show up under _Compiling progress_ field (look at the bottom of the last screenshot). __These links will show up only when compilation is successful__.
+The links to download these files will show up under _Compiling progress_ field (look at the bottom of the last screenshot). **These links will show up only when compilation is successful**.
 
 You have to upload only the first `firmware.bin` file to your device. How to do that is perfeclty described on [Tasmota wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing).
-
 
 ![Step01](./docs/images/step01.png)
 ![Step02](./docs/images/step02.png)
@@ -33,16 +40,19 @@ You have to upload only the first `firmware.bin` file to your device. How to do 
 ![Compile01](./docs/images/compile01.png)
 
 #### How to start using TasmoCompiler?
+
 ##### Super easy way (Thanks to @meingraham and @Jason2866)
+
 Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open. If the new tab does not open or you cannot see the pop-up notification, click on the _Open Browser_ link:
 
 ![Open Browser](./docs/images/gitpod_newtab.png)
 
-
 ###### Note
+
 You have to remember that all compilation is performed on Gitpod servers, so you have to decide if you want to put sensitive data like Wifi/MQTT credentials to Gitpod hands :see_no_evil: :hear_no_evil: :speak_no_evil:
 
 ##### Easy way
+
 Start TasmoCompiler in docker:
 
 `docker pull benzino77/tasmocompiler`
@@ -66,6 +76,7 @@ You can also specify different port on which TasmoCompiler will be available on 
 Then point your browser to http://localhost:8080
 
 ##### Less easy way
+
 1. Install `NodeJS` and `Python 2.7.x`
 2. Install [`yarn`](https://yarnpkg.com/en/docs/install)
 3. Install [`platformio`](https://docs.platformio.org/en/latest/installation.html)
@@ -78,6 +89,7 @@ Then point your browser to http://localhost:8080
 #### How to use "Custom parameters"?
 
 The configuration options are limited on purpose. I don't want to _overload_ the GUI with too many options. But there is _Custom prameters_ step which allows you to define other Tasmota parameters. Let's say you want to define your MQTT broker and credentials for it. You have to put these lines in _Custom parameters_ field:
+
 ```C++
 #ifdef MQTT_HOST
   #undef MQTT_HOST
@@ -110,7 +122,6 @@ To define _Friendly name_ for your device you have to put these lines in _Custom
 
 ```
 
-
 Let's assume that you want to _compile in_ information about your ntp server, your time zone and location (this is used by timers for events like _sunrise/sunset_). You can do this by putting these lines in _Custom parameters_ field:
 
 ```C++
@@ -132,7 +143,7 @@ Let's assume that you want to _compile in_ information about your ntp server, yo
 #ifdef APP_TIMEZONE
   #undef APP_TIMEZONE
 #endif
-#define APP_TIMEZONE           99           
+#define APP_TIMEZONE           99
 ```
 
 You can find additional inforamtion what can be set by _Custom parameters_ field in [my_user_config.h](https://github.com/arendst/Sonoff-Tasmota/blob/development/sonoff/my_user_config.h) in Tasmota sorce code.
@@ -142,7 +153,9 @@ You can find additional inforamtion what can be set by _Custom parameters_ field
 If you have problems with the compiler or you are interested in more advance usage, please refer to the [ADVANCED](https://github.com/benzino77/tasmocompiler/blob/master/ADVANCED.md) tips for more information.
 
 #### Disclaimer
+
 Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
 
 ##### Credits
+
 Thanks to [Theo Arends](https://github.com/arendst) and the entire Tasmota Dev Team for fantastic work!
