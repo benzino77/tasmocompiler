@@ -135,7 +135,7 @@ const compileCode = (socket, data) => {
     .then((prepared) => {
       const cdRet = shell.cd(tasmotaRepo);
       let outputMessages = [];
-      const MESSAGE_BUFFER_SIZE = 20;
+      const MESSAGE_BUFFER_SIZE = 5;
 
       if (cdRet.code !== 0) {
         socket.emit('message', cdRet.stderr);
