@@ -12,6 +12,8 @@ const {
   userPlatformioIni,
   tasmotaVersionFile,
   templatePlatformioIni,
+  tcSrcCoresIni,
+  tcDestCoresIni,
 } = require('../config/config');
 
 // Since 6.7.1.1 there is no sonoff src dir. New dir is tasmota
@@ -125,6 +127,7 @@ const prepareFiles = async (data) => {
 
   try {
     await fs.writeFileSync(userPlatformioIni, ini.stringify(config));
+    await fs.copyFileSync(tcSrcCoresIni, tcDestCoresIni);
   } catch (e) {
     throw new Error(`Cannot write new content to platformio.ini file\n${e}\n`);
   }

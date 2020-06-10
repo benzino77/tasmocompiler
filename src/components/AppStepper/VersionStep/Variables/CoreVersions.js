@@ -4,8 +4,8 @@ const coreVersions = [
     value: { platform: 'core_2_6_1', mem_prefix: 'eagle.flash.' },
   },
   {
-    name: 'core_stage',
-    value: { platform: 'core_stage', mem_prefix: 'eagle.flash.' },
+    name: '2.7.1',
+    value: { platform: 'core_2_7_1', mem_prefix: 'eagle.flash.' },
   },
 ];
 
