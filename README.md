@@ -2,9 +2,15 @@
 [![donate](https://img.shields.io/badge/donate-PayPal-brightgreen.svg)](https://www.paypal.me/tasmocompiler)
 [![donate](https://img.shields.io/badge/donate-KoFi-brightgreen.svg)](https://ko-fi.com/tasmocompiler)
 
+<!-- ![Logo](./docs/logo/tasmocompiler-full.svg) -->
+
+<div align="center">
+  <img src="./docs/logo/tasmocompiler-full.svg" width="40%">
+</div>
+
 #### What it is?
 
-TasmotaCompiler is a simple web GUI which allows you to compile fantastic [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware with your own settings:
+TasmoCompiler is a simple web GUI which allows you to compile fantastic [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware with your own settings:
 
 - You can select which features/sensors of Tasmota firmware you want to use
 - Credentials for your IOT WiFi network, so even after unexpected problems with the device (complete lost of configuration), credentials for your network will still be there, but mainly you don't have to connect to AP, served by Tasmota to configure your Home WiFi
