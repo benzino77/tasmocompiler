@@ -4,7 +4,13 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesAGDesc',
-    group: ['USE_MHZ19', 'USE_SENSEAIR', 'USE_PMS5003', 'USE_NOVA_SDS', 'USE_HPMA'],
+    group: [
+      'USE_MHZ19',
+      'USE_SENSEAIR',
+      'USE_PMS5003',
+      'USE_NOVA_SDS',
+      'USE_HPMA',
+    ],
   },
   {
     name: 'alexa',
@@ -26,19 +32,30 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesDisplaysDesc',
     tooltip: 'stepFeaturesDisplaysTooltip',
-    group: ['USE_DISPLAY', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY_LCD', 'USE_DISPLAY_SSD1306',
-      'USE_DISPLAY_MATRIX', 'USE_DISPLAY_SH1106', 'USE_DISPLAY_ILI9341', 'USE_DISPLAY_EPAPER_29',
-      'USE_DISPLAY_EPAPER_42', 'USE_DISPLAY_ILI9488', 'USE_DISPLAY_SSD1351',
-      'USE_DISPLAY_RA8876'],
+    group: [
+      'USE_DISPLAY',
+      'USE_DISPLAY_MODES1TO5',
+      'USE_DISPLAY_LCD',
+      'USE_DISPLAY_SSD1306',
+      'USE_DISPLAY_MATRIX',
+      'USE_DISPLAY_SH1106',
+      'USE_DISPLAY_ILI9341',
+      'USE_DISPLAY_EPAPER_29',
+      'USE_DISPLAY_EPAPER_42',
+      'USE_DISPLAY_ILI9488',
+      'USE_DISPLAY_SSD1351',
+      'USE_DISPLAY_RA8876',
+    ],
     include: ['USE_SPI', 'USE_I2C'],
-    custom: '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n'
-      + '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n'
-      + '#define MTX_ADDRESS3     0x75              // [DisplayAddress3] I2C address of third 8x8 matrix module\n'
-      + '#define MTX_ADDRESS4     0x72              // [DisplayAddress4] I2C address of fourth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS5     0x73              // [DisplayAddress5] I2C address of fifth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n'
-      + '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n'
-      + '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
+    custom:
+      '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
+      '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
+      '#define MTX_ADDRESS3     0x75              // [DisplayAddress3] I2C address of third 8x8 matrix module\n' +
+      '#define MTX_ADDRESS4     0x72              // [DisplayAddress4] I2C address of fourth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS5     0x73              // [DisplayAddress5] I2C address of fifth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
+      '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
   },
   {
     name: 'USE_ADC_VCC',
@@ -58,8 +75,19 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesEnergyDesc',
-    group: ['USE_ENERGY_SENSOR', 'USE_PZEM004T', 'USE_PZEM_AC', 'USE_PZEM_DC', 'USE_MCP39F501',
-      'USE_SDM120', 'USE_SDM630', 'USE_DDS2382', 'USE_DDSU666', 'USE_SOLAX_X1', 'USE_LE01MR'],
+    group: [
+      'USE_ENERGY_SENSOR',
+      'USE_PZEM004T',
+      'USE_PZEM_AC',
+      'USE_PZEM_DC',
+      'USE_MCP39F501',
+      'USE_SDM120',
+      'USE_SDM630',
+      'USE_DDS2382',
+      'USE_DDSU666',
+      'USE_SOLAX_X1',
+      'USE_LE01MR',
+    ],
   },
   {
     name: 'USE_HOME_ASSISTANT',
@@ -73,7 +101,11 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesIOExpMCPDesc',
     tooltip: 'stepFeaturesIOExpMCPTooltip',
-    group: ['USE_MCP230xx', 'USE_MCP230xx_OUTPUT', 'USE_MCP230xx_DISPLAYOUTPUT'],
+    group: [
+      'USE_MCP230xx',
+      'USE_MCP230xx_OUTPUT',
+      'USE_MCP230xx_DISPLAYOUTPUT',
+    ],
     include: ['USE_I2C'],
     custom: '#define USE_MCP230xx_ADDR 0x20\n',
   },
@@ -90,6 +122,7 @@ const availableFeatures = [
     description: 'stepFeaturesIRBasicDesc',
     tooltip: 'stepFeaturesIRBasicTooltip',
     exclude: ['USE_IR_REMOTE_FULL'],
+    buildflag: '-D_IR_ENABLE_DEFAULT_=false',
   },
   {
     name: 'USE_IR_REMOTE_FULL',
@@ -98,6 +131,8 @@ const availableFeatures = [
     description: 'stepFeaturesIRFullDesc',
     tooltip: 'stepFeaturesIRFullTooltip',
     exclude: ['USE_IR_REMOTE'],
+    buildflag:
+      '-U_IR_ENABLE_DEFAULT_ -DDECODE_PRONTO=false -DSEND_PRONTO=false',
   },
   {
     name: 'USE_DISCOVERY',

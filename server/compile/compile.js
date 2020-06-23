@@ -110,11 +110,16 @@ const prepareFiles = async (data) => {
       templatePlatformioIni,
       'utf8'
     );
+    const buildFlags = Object.keys(data)
+      .filter((e) => e.startsWith('buildflag_'))
+      .reduce((accumulator, current) => `${accumulator} ${data[current]}`, '');
+
     config = ini.parse(platformioFileConetent);
     // config.user_defined.board_memory = `${data.coreVersion.mem_prefix}${data.boardVersion.mem_suffix}`;
     config.user_defined.board_memory = data.memoryBuildFlag;
     config.user_defined.board = data.boardVersion.board;
     config.user_defined.f_cpu = data.boardSpeed;
+    config.user_defined.build_flags = buildFlags.trim();
     config.core_active.platform = `\${${data.coreVersion.platform}.platform}`;
     config.core_active.platform_packages = `\${${data.coreVersion.platform}.platform_packages}`;
     config.core_active.build_flags = `\${${data.coreVersion.platform}.build_flags}`;
