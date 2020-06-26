@@ -165,3 +165,7 @@ Everything you do, you do on your own responsibility. I do not take any responsi
 ##### Credits
 
 Thanks to [Theo Arends](https://github.com/arendst) and the entire Tasmota Dev Team for fantastic work!
+
+#### License
+
+TasmoCompiler is licensed under the [MIT license](LICENSE).
