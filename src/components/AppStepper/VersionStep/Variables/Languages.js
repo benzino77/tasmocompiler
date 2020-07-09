@@ -77,7 +77,7 @@ const languages = [
   },
   {
     name: 'Ukrainian',
-    value: 'uk-UK',
+    value: 'uk-UA',
   },
   {
     name: 'Chinese (Simplified)',
