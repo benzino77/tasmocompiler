@@ -1,6 +1,7 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/benzino77/tasmocompiler)
 [![donate](https://img.shields.io/badge/donate-PayPal-brightgreen.svg)](https://www.paypal.me/tasmocompiler)
 [![donate](https://img.shields.io/badge/donate-KoFi-brightgreen.svg)](https://ko-fi.com/benzino77)
+![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fbenzino77%2Ftasmocompiler)
 
 <!-- ![Logo](./docs/logo/tasmocompiler-full.svg) -->
 
