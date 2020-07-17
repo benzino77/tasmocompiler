@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const _ = require('lodash');
 const debug = require('debug')('server');
+const package = require('../package.json');
 
 const app = express();
 
@@ -41,6 +42,10 @@ app.use((err, req, res, next) => {
   next();
 });
 app.use(express.static(staticPath));
+
+app.get('/api/v1/tcversion', (req, res) => {
+  res.send({ ok: true, version: package.version });
+});
 
 app.get('/api/v1/repoavailability', (req, res) => {
   isGitRepoAvailable()
