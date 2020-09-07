@@ -28,7 +28,7 @@ class VersionStep extends Component {
 
     this.state = {
       tasmotaVersion: 'development',
-      coreVersion: coreVersions[2].value,
+      coreVersion: coreVersions[3].value,
       MY_LANGUAGE: languages[languageIndex].value,
       boardVersion: boardVersions[0].value,
       boardSpeed: boardSpeeds[0].value,
