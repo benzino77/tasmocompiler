@@ -12,6 +12,8 @@ const {
   userPlatformioIni,
   tasmotaVersionFile,
   templatePlatformioIni,
+  tcSrcCoresIni,
+  tcDestCoresIni,
 } = require('../config/config');
 
 // Since 6.7.1.1 there is no sonoff src dir. New dir is tasmota
@@ -47,12 +49,17 @@ const prepareFiles = async (data) => {
     const versRegexp = /const uint32_t VERSION = (.*);/gm;
 
     if (fileExists) {
-      const file = fs.readFileSync(tasmotaVersionFile, {encoding:'utf8', flag:'r'});
+      const file = fs.readFileSync(tasmotaVersionFile, {
+        encoding: 'utf8',
+        flag: 'r',
+      });
       const match = [...file.matchAll(versRegexp)];
       if (match[0]) {
         return parseInt(match[0][1]);
       } else {
-        throw new Error(`Cannot find Tasmota version in ${tasmotaVersionFile}.`);
+        throw new Error(
+          `Cannot find Tasmota version in ${tasmotaVersionFile}.`
+        );
       }
     } else {
       throw new Error(`${tasmotaVersionFile} does not exists.`);
@@ -61,7 +68,6 @@ const prepareFiles = async (data) => {
 
   // user_config_override.g file
   const outputOverwrites = userDefines.map((e) => {
-    
     if (_.isBoolean(data[e])) {
       if (data[e]) {
         return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`;
@@ -70,7 +76,8 @@ const prepareFiles = async (data) => {
     }
     if (e === 'MY_LANGUAGE') {
       const tasmotaVersion = getTasmotaVersion();
-      if (tasmotaVersion > 0x08020005) { // with Tasmota version 8.2.6 language files ware renamed from pl-PL to pl_PL
+      if (tasmotaVersion > 0x08020005) {
+        // with Tasmota version 8.2.6 language files ware renamed from pl-PL to pl_PL
         data[e] = ('' + data[e]).replace('-', '_');
       }
       return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`;
@@ -103,11 +110,16 @@ const prepareFiles = async (data) => {
       templatePlatformioIni,
       'utf8'
     );
+    const buildFlags = Object.keys(data)
+      .filter((e) => e.startsWith('buildflag_'))
+      .reduce((accumulator, current) => `${accumulator} ${data[current]}`, '');
+
     config = ini.parse(platformioFileConetent);
     // config.user_defined.board_memory = `${data.coreVersion.mem_prefix}${data.boardVersion.mem_suffix}`;
     config.user_defined.board_memory = data.memoryBuildFlag;
     config.user_defined.board = data.boardVersion.board;
     config.user_defined.f_cpu = data.boardSpeed;
+    config.user_defined.build_flags = buildFlags.trim();
     config.core_active.platform = `\${${data.coreVersion.platform}.platform}`;
     config.core_active.platform_packages = `\${${data.coreVersion.platform}.platform_packages}`;
     config.core_active.build_flags = `\${${data.coreVersion.platform}.build_flags}`;
@@ -120,6 +132,7 @@ const prepareFiles = async (data) => {
 
   try {
     await fs.writeFileSync(userPlatformioIni, ini.stringify(config));
+    await fs.copyFileSync(tcSrcCoresIni, tcDestCoresIni);
   } catch (e) {
     throw new Error(`Cannot write new content to platformio.ini file\n${e}\n`);
   }
@@ -129,6 +142,8 @@ const compileCode = (socket, data) => {
   prepareFiles(data)
     .then((prepared) => {
       const cdRet = shell.cd(tasmotaRepo);
+      let outputMessages = [];
+      const MESSAGE_BUFFER_SIZE = 5;
 
       if (cdRet.code !== 0) {
         socket.emit('message', cdRet.stderr);
@@ -141,18 +156,27 @@ const compileCode = (socket, data) => {
 
       child.on('exit', (code, signal) => {
         const message = `Finished. Exit code: ${code}.\n`;
+        socket.emit('message', outputMessages.join(''));
         socket.emit('message', message);
         socket.emit('finished', { ok: code === 0 });
         debug(message);
       });
 
       child.stderr.on('data', (stderrData) => {
-        socket.emit('message', stderrData);
+        outputMessages.push(stderrData);
+        if (outputMessages.length > MESSAGE_BUFFER_SIZE) {
+          socket.emit('message', outputMessages.join(''));
+          outputMessages = [];
+        }
         debug(stderrData);
       });
 
       child.stdout.on('data', (stdoutData) => {
-        socket.emit('message', stdoutData);
+        outputMessages.push(stdoutData);
+        if (outputMessages.length > MESSAGE_BUFFER_SIZE) {
+          socket.emit('message', outputMessages.join(''));
+          outputMessages = [];
+        }
         debug(stdoutData);
       });
     })

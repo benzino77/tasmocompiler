@@ -70,10 +70,22 @@ const getCustomParametersForFeature = (name) => {
   return '';
 };
 
+const getBuildFlagForFeature = (name) => {
+  const filtered = availableFeatures.filter(
+    (e) => e.name === name && e.buildflag
+  );
+  if (filtered.length > 0) {
+    return filtered[0].buildflag;
+  }
+
+  return '';
+};
+
 const setFeature = (name, state) => {
   const newState = {};
   const group = getFeatureGroup(name);
   const custom = getCustomParametersForFeature(name);
+  const buildFlag = getBuildFlagForFeature(name);
 
   newState[name] = state;
   group.forEach((item) => {
@@ -81,11 +93,11 @@ const setFeature = (name, state) => {
   });
 
   if (custom) {
-    if (state) {
-      newState[`precustom_${name}`] = custom;
-    } else {
-      newState[`precustom_${name}`] = '';
-    }
+    newState[`precustom_${name}`] = state ? custom : '';
+  }
+
+  if (buildFlag) {
+    newState[`buildflag_${name}`] = state ? buildFlag : '';
   }
   return newState;
 };

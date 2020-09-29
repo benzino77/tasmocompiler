@@ -28,7 +28,7 @@ class VersionStep extends Component {
 
     this.state = {
       tasmotaVersion: 'development',
-      coreVersion: coreVersions[0].value,
+      coreVersion: coreVersions[3].value,
       MY_LANGUAGE: languages[languageIndex].value,
       boardVersion: boardVersions[0].value,
       boardSpeed: boardSpeeds[0].value,
@@ -53,7 +53,7 @@ class VersionStep extends Component {
         memoryBuildFlag = `${mbf}1m0.ld`;
         if (
           event.target.value.platform.startsWith('core_2_6_') ||
-          event.target.value.platform.startsWith('core_stage')
+          event.target.value.platform.startsWith('core_2_7_')
         ) {
           memoryBuildFlag = `${mbf}1m.ld`;
         }
@@ -68,7 +68,7 @@ class VersionStep extends Component {
         memoryBuildFlag = `${mbf}1m0.ld`;
         if (
           coreVersion.platform.startsWith('core_2_6_') ||
-          event.target.value.platform.startsWith('core_stage')
+          coreVersion.platform.startsWith('core_2_7_')
         ) {
           memoryBuildFlag = `${mbf}1m.ld`;
         }
