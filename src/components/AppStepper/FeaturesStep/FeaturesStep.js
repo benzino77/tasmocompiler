@@ -9,6 +9,7 @@ import availableFeatures from './AvailableFeatures';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
+import { FormattedMessage } from 'react-intl';
 
 const getFeaturesDefaultStates = () => {
   const defaults = {};
@@ -27,7 +28,7 @@ const getFeaturesDefaultStates = () => {
 };
 
 const getFeatureGroup = (name) => {
-  const filtered = availableFeatures.filter(e => e.name === name && e.group);
+  const filtered = availableFeatures.filter((e) => e.name === name && e.group);
 
   if (filtered.length > 0) {
     return filtered[0].group;
@@ -37,7 +38,9 @@ const getFeatureGroup = (name) => {
 };
 
 const getFeatureExclude = (name) => {
-  const filtered = availableFeatures.filter(e => e.name === name && e.exclude);
+  const filtered = availableFeatures.filter(
+    (e) => e.name === name && e.exclude
+  );
 
   if (filtered.length > 0) {
     return filtered[0].exclude;
@@ -46,14 +49,56 @@ const getFeatureExclude = (name) => {
   return [];
 };
 
+const getFeatureInclude = (name) => {
+  const filtered = availableFeatures.filter(
+    (e) => e.name === name && e.include
+  );
+
+  if (filtered.length > 0) {
+    return filtered[0].include;
+  }
+
+  return [];
+};
+
+const getCustomParametersForFeature = (name) => {
+  const filtered = availableFeatures.filter((e) => e.name === name && e.custom);
+  if (filtered.length > 0) {
+    return filtered[0].custom;
+  }
+
+  return '';
+};
+
+const getBuildFlagForFeature = (name) => {
+  const filtered = availableFeatures.filter(
+    (e) => e.name === name && e.buildflag
+  );
+  if (filtered.length > 0) {
+    return filtered[0].buildflag;
+  }
+
+  return '';
+};
+
 const setFeature = (name, state) => {
   const newState = {};
   const group = getFeatureGroup(name);
+  const custom = getCustomParametersForFeature(name);
+  const buildFlag = getBuildFlagForFeature(name);
 
   newState[name] = state;
   group.forEach((item) => {
     newState[item] = state;
   });
+
+  if (custom) {
+    newState[`precustom_${name}`] = state ? custom : '';
+  }
+
+  if (buildFlag) {
+    newState[`buildflag_${name}`] = state ? buildFlag : '';
+  }
   return newState;
 };
 
@@ -72,10 +117,20 @@ class FeaturesStep extends Component {
   handleChangeCheckBox(event) {
     let featureState = setFeature(event.target.name, event.target.checked);
     const excludeGroup = getFeatureExclude(event.target.name);
+    const includeGroup = getFeatureInclude(event.target.name);
 
     if (event.target.checked) {
       excludeGroup.forEach((item) => {
-        featureState = { ...featureState, ...setFeature(item, !event.target.checked) };
+        featureState = {
+          ...featureState,
+          ...setFeature(item, !event.target.checked),
+        };
+      });
+      includeGroup.forEach((item) => {
+        featureState = {
+          ...featureState,
+          ...setFeature(item, event.target.checked),
+        };
       });
     }
 
@@ -93,31 +148,32 @@ class FeaturesStep extends Component {
   }
 
   render() {
-    const stepName = 'Select features';
     const { ...tempState } = this.state;
-    const {
-      classes,
-      nextHandler,
-      backHandler,
-      ...other
-    } = this.props;
+    const { classes, nextHandler, backHandler, ...other } = this.props;
 
     return (
       <Step {...other}>
-        <StepLabel>{stepName}</StepLabel>
+        <StepLabel>
+          <FormattedMessage id="stepFeaturesTitle" />
+        </StepLabel>
         <StepContent>
-          <Typography>Which features should be included in final binary firmware?</Typography>
+          <Typography>
+            <FormattedMessage id="stepFeaturesDesc" />
+          </Typography>
           <div className={classes.actionsContainer}>
-            {availableFeatures.map(item => (
-              <FeaturesSelector
-                classes={classes}
-                // value={this.state[item.name]}
-                value={tempState[item.name]}
-                item={item}
-                onChange={this.handleChangeCheckBox}
-                key={item.name}
-              />
-            ))}
+            {availableFeatures.map(
+              (item) =>
+                item.show && (
+                  <FeaturesSelector
+                    classes={classes}
+                    // value={this.state[item.name]}
+                    value={tempState[item.name]}
+                    item={item}
+                    onChange={this.handleChangeCheckBox}
+                    key={item.name}
+                  />
+                )
+            )}
           </div>
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>

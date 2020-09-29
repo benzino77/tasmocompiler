@@ -4,9 +4,21 @@ const WORKDIR = process.env.WORKDIR || '/tmp';
 const tasmotaRepo = path.resolve(WORKDIR, 'Tasmota');
 const githubRepo = 'https://github.com/arendst/Tasmota.git';
 const edgeBranch = 'development';
-const userConfigOvewrite = path.resolve(tasmotaRepo, 'tasmota/user_config_override.h');
+const userConfigOvewrite = path.resolve(
+  tasmotaRepo,
+  'tasmota/user_config_override.h'
+);
 const userPlatformioIni = path.resolve(tasmotaRepo, 'platformio.ini');
-const templatePlatformioIni = path.resolve(__dirname, '../compile/platformio.ini');
+const tcSrcCoresIni = path.resolve(__dirname, '../compile/tc_cores.ini');
+const tcDestCoresIni = path.resolve(tasmotaRepo, 'tc_cores.ini');
+const tasmotaVersionFile = path.resolve(
+  tasmotaRepo,
+  'tasmota/tasmota_version.h'
+);
+const templatePlatformioIni = path.resolve(
+  __dirname,
+  '../compile/platformio.ini'
+);
 const listenPort = process.env.PORT || 3000;
 
 module.exports = {
@@ -15,6 +27,9 @@ module.exports = {
   edgeBranch,
   userConfigOvewrite,
   userPlatformioIni,
+  tcSrcCoresIni,
+  tcDestCoresIni,
+  tasmotaVersionFile,
   templatePlatformioIni,
   listenPort,
 };

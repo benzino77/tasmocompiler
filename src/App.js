@@ -25,6 +25,7 @@ class App extends Component {
       showMessageBox: false,
       showDownloadLinks: false,
       compileMessages: '',
+      customParams: '',
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -113,6 +114,7 @@ class App extends Component {
       showMessageBox,
       showDownloadLinks,
       compileMessages,
+      ...other
     } = this.state;
 
     const bnHandlersProps = {
@@ -122,12 +124,12 @@ class App extends Component {
 
     return (
       <div className={classes.root}>
-        <TopAppBar />
+        <TopAppBar {...this.props}/>
         <Stepper activeStep={activeStep} orientation="vertical">
           <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
           <WifiStep {...this.props} {...bnHandlersProps} key={2} />
           <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
-          <CustomParametersStep {...this.props} {...bnHandlersProps} key={4} />
+          <CustomParametersStep {...this.props} {...bnHandlersProps} pstate={other} key={4} />
           <VersionStep
             {...this.props}
             repoTags={tags}

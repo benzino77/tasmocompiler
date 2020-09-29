@@ -1,6 +1,6 @@
 {
   "name": "tasmocompiler",
-  "version": "2.0.0",
+  "version": "2.4.5",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -15,12 +15,12 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-intl": "^4.5.1",
     "react-scripts": "2.1.8",
     "shelljs": "^0.8.3",
     "simple-git": "^1.110.0",
     "socket.io": "^2.2.0",
-    "socket.io-client": "^2.2.0",
-    "typeface-roboto": "^0.0.54"
+    "socket.io-client": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +41,7 @@
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.12.4"
+    "eslint-plugin-react": "7.12.4",
+    "nodemon": "^2.0.2"
   }
 }

@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 import NextButton from './NextButton';
 import BackButton from './BackButton';
+import { FormattedMessage } from 'react-intl';
 
 class CustomParametersStep extends Component {
   constructor(props) {
@@ -18,6 +19,21 @@ class CustomParametersStep extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { pstate } = this.props;
+
+    const ncp = Object.keys(pstate)
+      .filter((name) => name.startsWith('precustom_'))
+      .reduce((acc, cval) => `${acc}\n${pstate[cval]}`, '');
+    const pcp = Object.keys(prevProps.pstate)
+      .filter((name) => name.startsWith('precustom_'))
+      .reduce((acc, cval) => `${acc}\n${prevProps.pstate[cval]}`, '');
+
+    if (ncp !== pcp) {
+      this.setState({ customParams: ncp });
+    }
   }
 
   handleChange(event) {
@@ -35,25 +51,23 @@ class CustomParametersStep extends Component {
   }
 
   render() {
-    const stepName = 'Custom parameters';
-    const {
-      classes,
-      nextHandler,
-      backHandler,
-      ...other
-    } = this.props;
+    const { classes, nextHandler, backHandler, ...other } = this.props;
     const { customParams } = this.state;
-    const placeholder = '#ifdef USE_MCP230xx\n #undef USE_MCP230xx\n#endif\n#define USE_MCP230xx\n\n'
-                        + '#ifdef USE_MCP230xx_ADDR\n #undef USE_MCP230xx_ADDR\n#endif\n#define USE_MCP230xx_ADDR 0x20\n';
+    const placeholder =
+      '#ifdef USE_MCP230xx\n #undef USE_MCP230xx\n#endif\n#define USE_MCP230xx\n\n' +
+      '#ifdef USE_MCP230xx_ADDR\n #undef USE_MCP230xx_ADDR\n#endif\n#define USE_MCP230xx_ADDR 0x20\n';
 
     return (
       <Step {...other}>
-        <StepLabel>{stepName}</StepLabel>
+        <StepLabel>
+          <FormattedMessage id="stepCustomParamsTitle" />
+        </StepLabel>
         <StepContent>
           <Typography>
-            Below you can enter custom parameters, which will be included at the end of
-            <em> user_config_override.h </em>
-            file. If you don&apos;t know what it is, just click Next.
+            <FormattedMessage
+              values={{ filename: <em>user_config_override.h</em> }}
+              id="stepCustomParamsDesc"
+            />
           </Typography>
           <form noValidate autoComplete="off">
             <div className={classes.actionsContainer}>
@@ -61,7 +75,7 @@ class CustomParametersStep extends Component {
                 // id='reg_customParams'
                 placeholder={placeholder}
                 name="customParams"
-                label="Custom parameters"
+                label={<FormattedMessage id="stepCustomParamsTitle" />}
                 fullWidth
                 multiline
                 rows={9}
@@ -94,6 +108,7 @@ class CustomParametersStep extends Component {
 
 CustomParametersStep.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  pstate: PropTypes.oneOfType([PropTypes.object]).isRequired,
   nextHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
 };
