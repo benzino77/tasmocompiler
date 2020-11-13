@@ -22,8 +22,8 @@ docker push benzino77/tasmocompiler
 # STEP 4 - create and push manifest
 docker manifest create benzino77/tasmocompiler:latest benzino77/tasmocompiler:x86-64 benzino77/tasmocompiler:arm32v7 benzino77/tasmocompiler:arm64v8
 docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:x86-64 --os linux --arch amd64
-docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm32v7 --os linux --arch arm
-docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm64v8 --os linux --arch arm64 --variant armv8
+docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm32v7 --os linux --arch arm --variant v7
+docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm64v8 --os linux --arch arm64 --variant v8
 docker manifest push --purge benzino77/tasmocompiler:latest
 rm -rf qemu-arm-static
 rm -rf qemu-aarch64-static
