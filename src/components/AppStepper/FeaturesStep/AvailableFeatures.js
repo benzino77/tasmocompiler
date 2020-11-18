@@ -155,12 +155,13 @@ const availableFeatures = [
     tooltip: 'stepFeaturesRFTransceiverTooltip',
   },
   {
-    name: 'USE_RULES',
+    name: 'rules',
     value: true,
     show: true,
     description: 'stepFeaturesRulesDesc',
     tooltip: 'stepFeaturesRulesTooltip',
     exclude: ['USE_SCRIPT'],
+    group: ['USE_RULES', 'USE_EXPRESSION', 'USE_IF_STATEMENT'],
   },
   {
     name: 'USE_SCRIPT',

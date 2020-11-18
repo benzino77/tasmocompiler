@@ -47,7 +47,7 @@
   "stepFeaturesRFTransceiverDesc": "RF transceiver",
   "stepFeaturesRFTransceiverTooltip": "Wsparcie dla RF transceiver z wykrzystaiem biblioteki RcSwitch",
   "stepFeaturesRulesDesc": "Rules",
-  "stepFeaturesRulesTooltip": "Reguły wyłączają użycie Script",
+  "stepFeaturesRulesTooltip": "Zawiera IF STATEMENTS oraz EXPRESSION. Reguły wyłączają użycie Script.",
   "stepFeaturesScriptDesc": "Script",
   "stepFeaturesScriptTooltip": "Script wyłącza użycie Rules",
   "stepFeaturesTimersDesc": "Timers",

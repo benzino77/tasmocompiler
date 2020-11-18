@@ -48,7 +48,7 @@
   "stepFeaturesRFTransceiverDesc": "RF vysílač",
   "stepFeaturesRFTransceiverTooltip": "Podpora pro RF vysílače pomocí knihovny RcSwitch",
   "stepFeaturesRulesDesc": "Pravidla",
-  "stepFeaturesRulesTooltip": "Pravidla vylučují použití skriptů",
+  "stepFeaturesRulesTooltip": "It includes IF STATEMENT and EXPRESSION. Rules exclude the use of scripts.",
   "stepFeaturesScriptDesc": "Skript",
   "stepFeaturesScriptTooltip": "Skript vylučuje použití pravidel",
   "stepFeaturesTimersDesc": "Časovače",

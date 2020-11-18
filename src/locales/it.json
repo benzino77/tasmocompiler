@@ -48,7 +48,7 @@
   "stepFeaturesRFTransceiverDesc": "Ricevitore RF",
   "stepFeaturesRFTransceiverTooltip": "Supporto per ricevitore RF tusando la libreria RcSwitch",
   "stepFeaturesRulesDesc": "Regole",
-  "stepFeaturesRulesTooltip": "L'inclusione del modulo regole escldue l'uso degli script",
+  "stepFeaturesRulesTooltip": "It includes IF STATEMENT and EXPRESSION. Rules exclude the use of scripts.",
   "stepFeaturesScriptDesc": "Script",
   "stepFeaturesScriptTooltip": "L'inclusione del modulo script esclude l'uso delle regole",
   "stepFeaturesTimersDesc": "Timer",
