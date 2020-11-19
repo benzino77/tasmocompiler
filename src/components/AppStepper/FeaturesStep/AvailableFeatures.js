@@ -161,7 +161,7 @@ const availableFeatures = [
     description: 'stepFeaturesRulesDesc',
     tooltip: 'stepFeaturesRulesTooltip',
     exclude: ['USE_SCRIPT'],
-    group: ['USE_RULES', 'USE_EXPRESSION', 'USE_IF_STATEMENT'],
+    group: ['USE_RULES', 'USE_EXPRESSION', 'SUPPORT_IF_STATEMENT'],
   },
   {
     name: 'USE_SCRIPT',
