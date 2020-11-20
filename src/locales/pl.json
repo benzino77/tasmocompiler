@@ -57,7 +57,7 @@
   "stepFeaturesWebInterfaceTooltip": "Dla większości uzytkowników opcja powinna pozostać włączona. Opcję można wyłączyć, jeśli potrzebny jest mniejszy obraz firmware lub mniejsze zużycie pamięci. Jeśli zostanie wyłączone, komunikacja z Tasmota bedzie możliwa tylko przez broker MQTT.",
   "stepFeaturesWS2812Desc": "Ledy WS2812",
   "stepFeaturesZigbeeDesc": "Zigbee",
-  "stepFeaturesZigbeeTooltip": "Szeregowa komunikacja z modułem Zigbee CC2530 z wgranym ZNP",
+  "stepFeaturesZigbeeTooltip": "Szeregowa komunikacja z modułem Zigbee CC2530 z wgranym ZNP lub modułem EFR32 EmberZNet (np. Sonoff Zigbee Bridge) z wgranym EZSP",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 
