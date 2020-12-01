@@ -16,11 +16,11 @@ if (!allMessages[currentLocale]){
     currentLocale = 'en';
 };
 
-languages.sort(function(a , b){
+languages.sort((a , b) => {
     return allMessages[currentLocale][a.name].localeCompare(allMessages[currentLocale][b.name]);
 });
 
-availableFeatures.sort(function(a , b){
+availableFeatures.sort((a , b) => {
     return allMessages[currentLocale][a.description].localeCompare(allMessages[currentLocale][b.description]);
 });
 
