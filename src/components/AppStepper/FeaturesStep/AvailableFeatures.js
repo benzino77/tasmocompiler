@@ -169,7 +169,7 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesScriptDesc',
     tooltip: 'stepFeaturesScriptTooltip',
-    exclude: ['USE_RULES'],
+    exclude: ['rules'],
   },
   {
     name: 'USE_TIMERS',
