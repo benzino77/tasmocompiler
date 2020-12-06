@@ -72,6 +72,8 @@
   "stepVersionBoard": "Versión de placa",
   "stepVersionBoardSpeed": "Velocidad de placa",
 
+  "stepDownload": "You can now download custom compiled binary and files used during compilation:",
+
   "English": "Inglés",
   "Bulgarian": "Bulgaro",
   "Czech": "Checo",
