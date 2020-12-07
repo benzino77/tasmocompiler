@@ -114,8 +114,18 @@ const prepareFiles = async (data) => {
       .filter((e) => e.startsWith('buildflag_'))
       .reduce((accumulator, current) => `${accumulator} ${data[current]}`, '');
 
+    const tasmotaVersion = getTasmotaVersion();
     config = ini.parse(platformioFileConetent);
-    // config.user_defined.board_memory = `${data.coreVersion.mem_prefix}${data.boardVersion.mem_suffix}`;
+
+    // there was a folder name change for extra_scripts from version above 9.1.0
+    // extra scripts are now lacated in 'pio-tools' instead of 'pio' folder
+    let fixedPathForExtraScript = config.common.extra_scripts;
+    fixedPathForExtraScript = fixedPathForExtraScript.replace(/__PIOTOOLSDIR__/g, 'pio-tools');
+    if (tasmotaVersion <= 0x09010000) {
+      fixedPathForExtraScript = fixedPathForExtraScript.replace(/pio-tools/g, 'pio');
+    }
+    config.common.extra_scripts = fixedPathForExtraScript;
+
     config.user_defined.board_memory = data.memoryBuildFlag;
     config.user_defined.board = data.boardVersion.board;
     config.user_defined.f_cpu = data.boardSpeed;
