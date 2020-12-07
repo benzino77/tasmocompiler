@@ -73,6 +73,8 @@
   "stepVersionBoard": "Board version",
   "stepVersionBoardSpeed": "Board speed",
 
+  "stepDownload": "You can now download custom compiled binary and files used during compilation:",
+
   "English": "English",
   "Bulgarian": "Bulgarian",
   "Czech": "Czech",

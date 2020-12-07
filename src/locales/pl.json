@@ -71,6 +71,8 @@
   "stepVersionLanguage": "Język",
   "stepVersionBoard": "Wersja płytki",
   "stepVersionBoardSpeed": "Taktowanie zegara",
+  
+  "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
   "English": "Angielski",
   "Bulgarian": "Bułgarski",

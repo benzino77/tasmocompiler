@@ -73,6 +73,8 @@
   "stepVersionBoard": "Verze desky",
   "stepVersionBoardSpeed": "Rychlost",
 
+  "stepDownload": "You can now download custom compiled binary and files used during compilation:",
+
   "English": "Angličtina",
   "Bulgarian": "Bulharština",
   "Czech": "Čeština",

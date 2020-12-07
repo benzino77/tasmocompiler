@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import { FormattedMessage } from 'react-intl';
 
 class DownloadLinks extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ class DownloadLinks extends Component {
     return (
       <div ref={this.downloadLinksElement}>
         <Typography variant="caption" className={classes.links}>
-          You can now download custom compiled binary and files used during compilation:
+          <FormattedMessage id="stepDownload" />
         </Typography>
         <div className={classes.links}>
           <Button variant="contained" color="primary" href="/download/firmware.bin" className={classes.downloadButtons}>
