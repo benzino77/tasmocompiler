@@ -114,6 +114,7 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesKNXDesc',
+    include: ['energysensors'],
   },
   {
     name: 'USE_IR_REMOTE',
