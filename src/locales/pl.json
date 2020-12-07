@@ -71,6 +71,8 @@
   "stepVersionLanguage": "Język",
   "stepVersionBoard": "Wersja płytki",
   "stepVersionBoardSpeed": "Taktowanie zegara",
+  
+  "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
   "English": "Angielski",
   "Bulgarian": "Bułgarski",
