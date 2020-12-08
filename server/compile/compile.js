@@ -120,11 +120,17 @@ const prepareFiles = async (data) => {
     // there was a folder name change for extra_scripts from version above 9.1.0
     // extra scripts are now lacated in 'pio-tools' instead of 'pio' folder
     let fixedPathForExtraScript = config.common.extra_scripts;
-    fixedPathForExtraScript = fixedPathForExtraScript.replace(/__PIOTOOLSDIR__/g, 'pio-tools');
+    fixedPathForExtraScript = fixedPathForExtraScript.replace(/replace/g, 'pio-tools');
     if (tasmotaVersion <= 0x09010000) {
       fixedPathForExtraScript = fixedPathForExtraScript.replace(/pio-tools/g, 'pio');
     }
     config.common.extra_scripts = fixedPathForExtraScript;
+    
+    // there is also lib folder structure change for version 9.1.0 and above
+    config.platformio.lib_dir = 'lib/default';
+    if (tasmotaVersion < 0x09010000) {
+      config.platformio.lib_dir = 'lib';
+    }
 
     config.user_defined.board_memory = data.memoryBuildFlag;
     config.user_defined.board = data.boardVersion.board;
