@@ -33,6 +33,10 @@ class DownloadLinks extends Component {
               firmware.bin
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
+          <Button variant="contained" color="primary" href="/download/firmware.bin.gz" className={classes.downloadButtons}>
+              firmware.bin.gz
+            <CloudDownloadIcon className={classes.rightIcon} />
+          </Button>
           <Button variant="contained" color="primary" href="/download/platformio.ini" className={classes.downloadButtons}>
               platformio.ini
             <CloudDownloadIcon className={classes.rightIcon} />
