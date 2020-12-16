@@ -102,9 +102,17 @@ app.post('/api/v1/compile', (req, res) => {
 app.get('/download/firmware.bin', (req, res) => {
   const firmwareFile = path.resolve(
     tasmotaRepo,
-    '.pioenvs/custom/firmware.bin'
+    'build_output/firmware/firmware.bin'
   );
   res.download(firmwareFile);
+});
+
+app.get('/download/firmware.bin.gz', (req, res) => {
+  const firmwareCompressed = path.resolve(
+    tasmotaRepo,
+    'build_output/firmware/firmware.bin.gz'
+  );
+  res.download(firmwareCompressed);
 });
 
 app.get('/download/platformio.ini', (req, res) => {
