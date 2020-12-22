@@ -175,24 +175,18 @@ class FeaturesStep extends Component {
       });
     });
 
-    // clear feature for non-selected buildVersion
-    const unSelectedBuild = buildVersions.filter(item => item.value !== event.target.value);
-    unSelectedBuild.forEach((flags) => {
-      flags.contains.forEach((flag) => {
+    // select feature for selected buildVersion
+    const selectedBuild = buildVersions.filter(item => item.value === event.target.value);
+    selectedBuild.forEach((flags) => {
+      flags.undef.forEach((flag) => {
         featureState = {
           ...featureState,
           ...setFeature(flag, false),
         };
       });
-    });
-
-    // select feature for selected buildVersion
-    const selectedBuild = buildVersions.filter(item => item.value === event.target.value);
-    selectedBuild.forEach((flags) => {
-      flags.contains.forEach((flag) => {
+      flags.define.forEach((flag) => {
         featureState = {
           ...featureState,
-          //...setFeature(flag, false), // set it to false for undef if select another version
           ...setFeature(flag, true),
         };
       });
