@@ -129,7 +129,7 @@ class FeaturesStep extends Component {
   }
 
   handleChangeCheckBox(event) {
-	const { buildVersions } = this.state;
+    const { buildVersions } = this.state;
     let featureState = setFeature(event.target.name, event.target.checked);
     const excludeGroup = getFeatureExclude(event.target.name);
     const includeGroup = getFeatureInclude(event.target.name);
@@ -150,7 +150,7 @@ class FeaturesStep extends Component {
     }
 
     this.setState(featureState);
-	this.setState({buildVersion: buildVersions[buildVersions.length -1].value});
+    this.setState({buildVersion: buildVersions[buildVersions.length -1].value});
   }
 
   handleChangeSelect(event) {
@@ -180,29 +180,29 @@ class FeaturesStep extends Component {
 
     // clear feature for non-selected buildVersion
     const unSelectedBuild = buildVersions.filter(item => item.value !== event.target.value);
-	unSelectedBuild.forEach((flags) => {
+    unSelectedBuild.forEach((flags) => {
       featureState = {};
-	  flags.contains.forEach((flag) => {
+      flags.contains.forEach((flag) => {
         featureState = {
           ...featureState,
           ...setFeature(flag, false),
         };
       });
       this.setState(featureState);
-	});
+    });
 
     // select feature for selected buildVersion
     const selectedBuild = buildVersions.filter(item => item.value === event.target.value);
-	selectedBuild.forEach((flags) => {
+    selectedBuild.forEach((flags) => {
       featureState = {};
-	  flags.contains.forEach((flag) => {
+      flags.contains.forEach((flag) => {
         featureState = {
           ...featureState,
           ...setFeature(flag, true),
         };
       });
       this.setState(featureState);
-	});
+    });
 
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -220,7 +220,6 @@ class FeaturesStep extends Component {
   render() {
     const { buildVersion, buildVersions, ...tempState } = this.state;
     const { classes, nextHandler, backHandler, ...other } = this.props;
-    //const { classes, nextHandler, backHandler, ...other } = this.props;
 
     return (
       <Step {...other}>
@@ -233,8 +232,8 @@ class FeaturesStep extends Component {
           </Typography>
           <div className={classes.actionsContainer}>
             <Typography>
-			  <FormattedMessage id="stepFeaturesBuildTitle" />
-			</Typography>
+              <FormattedMessage id="stepFeaturesBuildTitle" />
+            </Typography>
             <BuildSelector
               items={buildVersions}
               name="buildVersion"
@@ -243,9 +242,9 @@ class FeaturesStep extends Component {
               classes={classes}
               variant="contained"
             />
-			<Typography>
+            <Typography>
               <FormattedMessage id="stepFeaturesBuildDesc" />
-			</Typography>
+            </Typography>
           </div>
             <div className={classes.actionsContainer}>
             {availableFeatures.map(
