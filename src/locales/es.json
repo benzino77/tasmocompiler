@@ -1,6 +1,7 @@
 {
   "appBarLangFlag": "ES",
   "appBarLangTooltip": "Configura el idioma de la página en los ajustes del navegador",
+
   "stepSourceTitle": "Código fuente de Tasmota",
   "stepSourceDescRefresh": "Puedes actualizar el código fuente a la última versión o pulsar en SIGUIENTE para ir al siguiente paso",
   "stepSourceDescDownload": "Antes de ir al siguiente paso, tienes que descargar el código fuente de Tasmota",
@@ -23,6 +24,18 @@
 
   "stepFeaturesTitle": "Selecionar características",
   "stepFeaturesDesc": "¿Qué características quieres que se incluyan en el firmware personalizado?",
+  "stepFeaturesBuildTitle" : "Binary version",
+  "stepFeaturesBuildCustomName" : "Custom selection",
+  "stepFeaturesBuild-tasmocompiler" : "TasmoCompiler default version.",
+  "stepFeaturesBuild-tasmota-minimal" : "The Minimal version allows intermediate OTA uploads to support larger versions and does NOT change any persistent parameter. This version should NOT be used for initial installation.",
+  "stepFeaturesBuild-tasmota-lite" : "The Lite version without most drivers and sensors.",
+  "stepFeaturesBuild-tasmota" : "The Tasmota version with most drivers. RECOMMENDED RELEASE BINARY.",
+  "stepFeaturesBuild-tasmota-knx" : "The Knx version without some features but adds KNX support.",
+  "stepFeaturesBuild-tasmota-sensors" : "The Sensors version adds more useful sensors.",
+  "stepFeaturesBuild-tasmota-ir" : "The InfraRed Receiver and transmitter version allowing all available protocols provided by library IRremoteESP8266 but without most other features.",
+  "stepFeaturesBuild-tasmota-display" : "The Display version without Energy Monitoring but adds display support.",
+  "stepFeaturesBuild-tasmota-zbbridge" : "The dedicated Sonoff Zigbee Bridge version.",
+  "stepFeaturesBuild-custom" : "Custom selection.",
   "stepFeaturesAGDesc": "Sensores Aire/Gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Esclavo Arduino",

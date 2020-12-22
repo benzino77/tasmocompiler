@@ -1,7 +1,7 @@
 {
   "appBarLangFlag": "IT",
   "appBarLangTooltip": "Modifica la lingua nelle impostazioni del browser",
-  
+
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di andare allo step successivo devi scaricare il codice sorgente Tasmota",
@@ -24,6 +24,18 @@
 
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
+  "stepFeaturesBuildTitle" : "Binary version",
+  "stepFeaturesBuildCustomName" : "Custom selection",
+  "stepFeaturesBuild-tasmocompiler" : "TasmoCompiler default version.",
+  "stepFeaturesBuild-tasmota-minimal" : "The Minimal version allows intermediate OTA uploads to support larger versions and does NOT change any persistent parameter. This version should NOT be used for initial installation.",
+  "stepFeaturesBuild-tasmota-lite" : "The Lite version without most drivers and sensors.",
+  "stepFeaturesBuild-tasmota" : "The Tasmota version with most drivers. RECOMMENDED RELEASE BINARY.",
+  "stepFeaturesBuild-tasmota-knx" : "The Knx version without some features but adds KNX support.",
+  "stepFeaturesBuild-tasmota-sensors" : "The Sensors version adds more useful sensors.",
+  "stepFeaturesBuild-tasmota-ir" : "The InfraRed Receiver and transmitter version allowing all available protocols provided by library IRremoteESP8266 but without most other features.",
+  "stepFeaturesBuild-tasmota-display" : "The Display version without Energy Monitoring but adds display support.",
+  "stepFeaturesBuild-tasmota-zbbridge" : "The dedicated Sonoff Zigbee Bridge version.",
+  "stepFeaturesBuild-custom" : "Custom selection.",
   "stepFeaturesAGDesc": "Sensori aria/gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino (slave)",
@@ -64,7 +76,7 @@
 
   "stepCustomParamsTitle": "Parametri personalizzati",
   "stepCustomParamsDesc": "Qui sotto puoi inserire i parametri personalizzati che verranno inclusi alla fine del file. Se non li conosci o non devi inserirli seleziona 'Avanti'.",
-  
+
   "stepVersionTitle": "Selezione versione e compilazione",
   "stepVersionDesc": "Seleziona la versione Tasmota e core Arduino. Scegli la lingua che vuoi usare e il tipo di hardware.",
   "stepVersionTasmota": "Versione Tasmota",

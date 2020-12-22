@@ -150,17 +150,15 @@ class FeaturesStep extends Component {
     }
 
     this.setState(featureState);
-    this.setState({buildVersion: buildVersions[buildVersions.length -1].value});
+    this.setState({ buildVersion: buildVersions[buildVersions.length - 1].value });
   }
 
   handleChangeSelect(event) {
     const { buildVersions } = this.state;
 
-
     // clear all features with checkboxes
     let featureState = {};
     availableFeatures.forEach((item) => {
-      featureState = setFeature(item.name, false);
       const excludeGroup = getFeatureExclude(event.target.name);
       const includeGroup = getFeatureInclude(item.name);
       excludeGroup.forEach((item) => {
@@ -175,35 +173,32 @@ class FeaturesStep extends Component {
           ...setFeature(item, false),
         };
       });
-      this.setState(featureState);
     });
 
     // clear feature for non-selected buildVersion
     const unSelectedBuild = buildVersions.filter(item => item.value !== event.target.value);
     unSelectedBuild.forEach((flags) => {
-      featureState = {};
       flags.contains.forEach((flag) => {
         featureState = {
           ...featureState,
           ...setFeature(flag, false),
         };
       });
-      this.setState(featureState);
     });
 
     // select feature for selected buildVersion
     const selectedBuild = buildVersions.filter(item => item.value === event.target.value);
     selectedBuild.forEach((flags) => {
-      featureState = {};
       flags.contains.forEach((flag) => {
         featureState = {
           ...featureState,
+          //...setFeature(flag, false), // set it to false for undef if select another version
           ...setFeature(flag, true),
         };
       });
-      this.setState(featureState);
     });
 
+    this.setState(featureState);
     this.setState({ [event.target.name]: event.target.value });
   }
 
@@ -231,20 +226,16 @@ class FeaturesStep extends Component {
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
           <div className={classes.actionsContainer}>
-            <Typography>
-              <FormattedMessage id="stepFeaturesBuildTitle" />
-            </Typography>
             <BuildSelector
               items={buildVersions}
               name="buildVersion"
               value={buildVersion}
+              label={<FormattedMessage id="stepFeaturesBuildTitle" />}
+              desc={"stepFeaturesBuild-" + buildVersion}
               onChange={this.handleChangeSelect}
               classes={classes}
               variant="contained"
             />
-            <Typography>
-              <FormattedMessage id="stepFeaturesBuildDesc" />
-            </Typography>
           </div>
             <div className={classes.actionsContainer}>
             {availableFeatures.map(

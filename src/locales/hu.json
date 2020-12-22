@@ -1,7 +1,7 @@
 {
   "appBarLangFlag": "HU",
   "appBarLangTooltip": "Módosítsa a nyelvet a böngésző beállításainál",
-  
+
   "stepSourceTitle": "Tasmota forráskód",
   "stepSourceDescRefresh": "Frissítheti a forráskódot a legújabb állapotra, vagy a TOVÁBB gombra kattintva folytathatja a következő lépést",
   "stepSourceDescDownload": "Mielőtt folytatná a következő lépést, le kell töltenie a Tasmota forráskódot",
@@ -24,6 +24,18 @@
 
   "stepFeaturesTitle": "Jellemzők kiválasztás",
   "stepFeaturesDesc": "Mely tulajdonságokat kell tartalmaznia a végleges bináris firmware-nek?",
+  "stepFeaturesBuildTitle" : "Bináris változat",
+  "stepFeaturesBuildCustomName" : "Egyéni kiválasztás",
+  "stepFeaturesBuild-tasmocompiler" : "TasmoCompiler változat.",
+  "stepFeaturesBuild-tasmota-minimal" : "Minimal verzió lehetővé teszi a közbenső OTA feltöltéseket a nagyobb verziók támogatásához, és NEM változtat semmilyen állandó paramétert. Ez a verzió NEM használható az első telepítéshez.",
+  "stepFeaturesBuild-tasmota-lite" : "Egyszerű verzió a legtöbb meghajtó és érzékelő nélkül.",
+  "stepFeaturesBuild-tasmota" : "Tasmota változat a legtöbb meghajtóval. AJÁNLOTT BINÁRIS.",
+  "stepFeaturesBuild-tasmota-knx" : "Knx változat néhány funció nélkül de KNX támogatással.",
+  "stepFeaturesBuild-tasmota-sensors" : "Érzékelő változat még több hasznos érzékelővel.",
+  "stepFeaturesBuild-tasmota-ir" : "InfraRed adó-vevő verzió lehetővé teszi az IRremoteESP8266 könyvtár összes rendelkezésre álló protokollját, a legtöbb egyéb funkció nélkül.",
+  "stepFeaturesBuild-tasmota-display" : "Kijelző változat energiaérzékelők nélkül de kijelzők támogatásával.",
+  "stepFeaturesBuild-tasmota-zbbridge" : "Dedikált Sonoff Zigbee Bridge változat",
+  "stepFeaturesBuild-custom" : "Egyéni kiválasztás.",
   "stepFeaturesAGDesc": "Levegő / gáz érzékelők",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino kliens",
@@ -64,7 +76,7 @@
 
   "stepCustomParamsTitle": "Egyéni paraméterek",
   "stepCustomParamsDesc": "Az alábbiakban megadhat egyéni paramétereket, amelyek a {filename} fájl végén lesznek. Ha nem tudja, mi ez, kattintson a Tovább gombra.",
-  
+
   "stepVersionTitle": "Verzió kiválasztása és lefordítása",
   "stepVersionDesc": "Válassza ki a Tasmota és az Arduino Core verziót. Válassza ki a használni kívánt nyelvet és a hardvert.",
   "stepVersionTasmota": "Tasmota verzió",

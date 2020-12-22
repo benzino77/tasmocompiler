@@ -1,6 +1,7 @@
 {
   "appBarLangFlag": "PL",
   "appBarLangTooltip": "Zmień język interfejsu zmieniając ustawienia przeglądarki",
+
   "stepSourceTitle": "Kod źródłowy Tasmota'y",
   "stepSourceDescRefresh": "Możesz pobrać ostatnie zmiany w kodzie lub kliknąć NASTĘPNY, aby przejśc do następnego kroku",
   "stepSourceDescDownload": "Przed przejsciem do następnego kroku, muisz pobrać kod źródłowy Tasmota'y",
@@ -23,6 +24,18 @@
 
   "stepFeaturesTitle": "Wybór funkcjonalności",
   "stepFeaturesDesc": "Jakie funkcjonalności zostaną zawarte w wynikowym firmware?",
+  "stepFeaturesBuildTitle" : "Binary version",
+  "stepFeaturesBuildCustomName" : "Custom selection",
+  "stepFeaturesBuild-tasmocompiler" : "TasmoCompiler default version.",
+  "stepFeaturesBuild-tasmota-minimal" : "The Minimal version allows intermediate OTA uploads to support larger versions and does NOT change any persistent parameter. This version should NOT be used for initial installation.",
+  "stepFeaturesBuild-tasmota-lite" : "The Lite version without most drivers and sensors.",
+  "stepFeaturesBuild-tasmota" : "The Tasmota version with most drivers. RECOMMENDED RELEASE BINARY.",
+  "stepFeaturesBuild-tasmota-knx" : "The Knx version without some features but adds KNX support.",
+  "stepFeaturesBuild-tasmota-sensors" : "The Sensors version adds more useful sensors.",
+  "stepFeaturesBuild-tasmota-ir" : "The InfraRed Receiver and transmitter version allowing all available protocols provided by library IRremoteESP8266 but without most other features.",
+  "stepFeaturesBuild-tasmota-display" : "The Display version without Energy Monitoring but adds display support.",
+  "stepFeaturesBuild-tasmota-zbbridge" : "The dedicated Sonoff Zigbee Bridge version.",
+  "stepFeaturesBuild-custom" : "Custom selection.",
   "stepFeaturesAGDesc": "Czujniki powietrza/gazu",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",
@@ -71,7 +84,7 @@
   "stepVersionLanguage": "Język",
   "stepVersionBoard": "Wersja płytki",
   "stepVersionBoardSpeed": "Taktowanie zegara",
-  
+
   "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
   "English": "Angielski",
