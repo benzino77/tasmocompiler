@@ -20,7 +20,7 @@ const availableFeatures = [
     group: ['USE_EMULATION', 'USE_EMULATION_HUE', 'USE_EMULATION_WEMO'],
   },
   {
-    name: 'USE_TASMOTA_SLAVE',
+    name: 'USE_TASMOTA_CLIENT',
     value: false,
     show: true,
     description: 'stepFeaturesArduinoSlaveDesc',
