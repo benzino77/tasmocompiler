@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=node:12.16.2-stretch-slim
+ARG BASE_IMAGE=node:12.16.2-buster-slim
 FROM $BASE_IMAGE
 LABEL maintainer="Piotr Antczak <antczak.piotr@gmail.com>"
 
