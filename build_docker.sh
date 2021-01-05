@@ -13,8 +13,8 @@ chmod +x qemu-aarch64-static
 
 # STEP 2 - build images for three architectures
 docker build -t benzino77/tasmocompiler -t benzino77/tasmocompiler:x86-64 -t benzino77/tasmocompiler:"${VERSION}"-x86-64 .
-docker build --build-arg BASE_IMAGE=arm32v7/node:12.16.2-stretch-slim -t benzino77/tasmocompiler:arm32v7 -t benzino77/tasmocompiler:"${VERSION}"-arm32v7 .
-docker build --build-arg BASE_IMAGE=arm64v8/node:12.16.2-stretch-slim -t benzino77/tasmocompiler:arm64v8 -t benzino77/tasmocompiler:"${VERSION}"-arm64v8 .
+docker build --build-arg BASE_IMAGE=arm32v7/node:12.16.2-buster-slim -t benzino77/tasmocompiler:arm32v7 -t benzino77/tasmocompiler:"${VERSION}"-arm32v7 .
+docker build --build-arg BASE_IMAGE=arm64v8/node:12.16.2-buster-slim -t benzino77/tasmocompiler:arm64v8 -t benzino77/tasmocompiler:"${VERSION}"-arm64v8 .
 
 # STEP 3 push images to registry
 docker push benzino77/tasmocompiler
