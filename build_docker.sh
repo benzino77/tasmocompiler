@@ -18,6 +18,12 @@ docker build --build-arg BASE_IMAGE=arm64v8/node:12.16.2-buster-slim -t benzino7
 
 # STEP 3 push images to registry
 docker push benzino77/tasmocompiler
+docker push benzino77/tasmocompiler:x86-64
+docker push benzino77/tasmocompiler:"${VERSION}"-x86-64
+docker push benzino77/tasmocompiler:arm32v7
+docker push benzino77/tasmocompiler:"${VERSION}"-arm32v7
+docker push benzino77/tasmocompiler:arm64v8 
+docker push benzino77/tasmocompiler:"${VERSION}"-arm64v8
 
 # STEP 4 - create and push manifest
 docker manifest create benzino77/tasmocompiler:latest benzino77/tasmocompiler:x86-64 benzino77/tasmocompiler:arm32v7 benzino77/tasmocompiler:arm64v8
