@@ -77,17 +77,25 @@ const availableFeatures = [
     description: 'stepFeaturesEnergyDesc',
     group: [
       'USE_ENERGY_SENSOR',
+      'USE_HLW8012',
+      'USE_CSE7766',
       'USE_PZEM004T',
+      'USE_MCP39F501',
       'USE_PZEM_AC',
       'USE_PZEM_DC',
-      'USE_MCP39F501',
+      'USE_ADE7953',
       'USE_SDM120',
-      'USE_SDM630',
       'USE_DDS2382',
+      'USE_SDM630',
       'USE_DDSU666',
       'USE_SOLAX_X1',
       'USE_LE01MR',
+      'USE_BL0940',
+      'USE_TELEINFO',
+      'USE_IEM3000',
+      'USE_WE517',
     ],
+    include: ['USE_I2C'],
   },
   {
     name: 'USE_HOME_ASSISTANT',
@@ -209,21 +217,22 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesZigbeeDesc',
     tooltip: 'stepFeaturesZigbeeTooltip',
-    custom: '//Note: USE_ZIGBEE_ZNP and USE_ZIGBEE_EZSP are mutually incompatible, you must select exactly one\n\n' +
-            '// Enable ZNP protocol, needed for CC2530 based devices\n' +
-            '#define USE_ZIGBEE_ZNP\n' +
-            '// Enable EZSP protocol, needed for EFR32 EmberZNet based devices, like Sonoff Zigbee bridge\n' +
-            '//#define USE_ZIGBEE_EZSP\n' +
-            '//#ifdef USE_ZIGBEE_ZNP\n' +
-            '//  #undef USE_ZIGBEE_ZNP\n' +
-            '//#endif\n\n' +
-            '#define USE_ZIGBEE_CHANNEL  11  // Zigbee Channel (11-26)\n' +
-            '#define USE_ZIGBEE_TXRADIO_DBM  20  // Tx Radio power in dBm (only for EZSP, EFR32 can go up to 20 dBm)\n' +
-            '#define USE_ZIGBEE_COALESCE_ATTR_TIMER 350  // timer to coalesce attribute values (in ms)\n' +
-            '#define USE_ZIGBEE_MODELID      "Tasmota Z2T"// reported "ModelId"      (cluster 0000 / attribute 0005)\n' +
-            '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
-            '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
-            '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
+    custom:
+      '//Note: USE_ZIGBEE_ZNP and USE_ZIGBEE_EZSP are mutually incompatible, you must select exactly one\n\n' +
+      '// Enable ZNP protocol, needed for CC2530 based devices\n' +
+      '#define USE_ZIGBEE_ZNP\n' +
+      '// Enable EZSP protocol, needed for EFR32 EmberZNet based devices, like Sonoff Zigbee bridge\n' +
+      '//#define USE_ZIGBEE_EZSP\n' +
+      '//#ifdef USE_ZIGBEE_ZNP\n' +
+      '//  #undef USE_ZIGBEE_ZNP\n' +
+      '//#endif\n\n' +
+      '#define USE_ZIGBEE_CHANNEL  11  // Zigbee Channel (11-26)\n' +
+      '#define USE_ZIGBEE_TXRADIO_DBM  20  // Tx Radio power in dBm (only for EZSP, EFR32 can go up to 20 dBm)\n' +
+      '#define USE_ZIGBEE_COALESCE_ATTR_TIMER 350  // timer to coalesce attribute values (in ms)\n' +
+      '#define USE_ZIGBEE_MODELID      "Tasmota Z2T"// reported "ModelId"      (cluster 0000 / attribute 0005)\n' +
+      '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
+      '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
+      '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
   },
   {
     name: 'USE_I2C',
