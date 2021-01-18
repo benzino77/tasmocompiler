@@ -34,7 +34,7 @@
   "stepFeaturesDispVccTooltip": "Tiltsa le az analóg bemenet használatához.",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Energiaérzékelők",
-  "stepFeaturesTempHumDesc": "Temp/Hum sensors",
+  "stepFeaturesTempHumDesc": "Hőmérséklet / páratartalom érzékelők",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "IO port bővítő",
   "stepFeaturesIOExpMCPTooltip": "Támogatás hozzáadása az MCP230xx Input/Output bővítőhöz.",
