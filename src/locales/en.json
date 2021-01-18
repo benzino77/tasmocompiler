@@ -46,6 +46,7 @@
   "stepFeaturesDispVccTooltip": "Disable for use Analog input",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Energy sensors",
+  "stepFeaturesTempHumDesc": "Temp/Hum sensors",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "IO port expander",
   "stepFeaturesIOExpMCPTooltip": "Add support for Input/Output pin expander: MCP230xx",

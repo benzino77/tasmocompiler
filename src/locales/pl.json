@@ -46,6 +46,7 @@
   "stepFeaturesDispVccTooltip": "Wyłącz jeśli używasz wejscia analogowego",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Czujniki energii",
+  "stepFeaturesTempHumDesc": "Czujniki Temp/Hum",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Ekspander portów IO",
   "stepFeaturesIOExpMCPTooltip": "Wsparcie dla ekspandera MCP230xx",
