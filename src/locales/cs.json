@@ -34,6 +34,7 @@
   "stepFeaturesDispVccTooltip": "Zakázat použití Analogového vstupu",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Senzory energie",
+  "stepFeaturesTempHumDesc": "Temp/Hum sensors",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Expandér portů IO",
   "stepFeaturesIOExpMCPTooltip": "Přidat podporu pro Input/Output pin expander: MCP230xx",

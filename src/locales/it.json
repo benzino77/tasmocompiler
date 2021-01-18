@@ -1,7 +1,7 @@
 {
   "appBarLangFlag": "IT",
   "appBarLangTooltip": "Modifica la lingua nelle impostazioni del browser",
-  
+
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di andare allo step successivo devi scaricare il codice sorgente Tasmota",
@@ -34,6 +34,7 @@
   "stepFeaturesDispVccTooltip": "Disabilitalo per ingresso analogico",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Sensori energia",
+  "stepFeaturesTempHumDesc": "Temp/Hum sensors",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Espansione porte I/O",
   "stepFeaturesIOExpMCPTooltip": "Aggiunge supporto per espansione pin input/output: MCP230xx",
@@ -64,7 +65,7 @@
 
   "stepCustomParamsTitle": "Parametri personalizzati",
   "stepCustomParamsDesc": "Qui sotto puoi inserire i parametri personalizzati che verranno inclusi alla fine del file. Se non li conosci o non devi inserirli seleziona 'Avanti'.",
-  
+
   "stepVersionTitle": "Selezione versione e compilazione",
   "stepVersionDesc": "Seleziona la versione Tasmota e core Arduino. Scegli la lingua che vuoi usare e il tipo di hardware.",
   "stepVersionTasmota": "Versione Tasmota",

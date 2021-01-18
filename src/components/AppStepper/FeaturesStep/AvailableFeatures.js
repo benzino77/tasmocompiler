@@ -8,9 +8,16 @@ const availableFeatures = [
       'USE_MHZ19',
       'USE_SENSEAIR',
       'USE_PMS5003',
+      'USE_MGS',
       'USE_NOVA_SDS',
+      'USE_SGP30',
+      'USE_CCS811',
+      'USE_SCD30',
+      'USE_SPS30',
       'USE_HPMA',
+      'USE_IAQ',
     ],
+    include: ['USE_I2C'],
   },
   {
     name: 'alexa',
@@ -20,7 +27,7 @@ const availableFeatures = [
     group: ['USE_EMULATION', 'USE_EMULATION_HUE', 'USE_EMULATION_WEMO'],
   },
   {
-    name: 'USE_TASMOTA_SLAVE',
+    name: 'USE_TASMOTA_CLIENT',
     value: false,
     show: true,
     description: 'stepFeaturesArduinoSlaveDesc',
@@ -77,17 +84,55 @@ const availableFeatures = [
     description: 'stepFeaturesEnergyDesc',
     group: [
       'USE_ENERGY_SENSOR',
+      'USE_HLW8012',
+      'USE_CSE7766',
       'USE_PZEM004T',
+      'USE_MCP39F501',
       'USE_PZEM_AC',
       'USE_PZEM_DC',
-      'USE_MCP39F501',
+      'USE_ADE7953',
       'USE_SDM120',
-      'USE_SDM630',
       'USE_DDS2382',
+      'USE_SDM630',
       'USE_DDSU666',
       'USE_SOLAX_X1',
       'USE_LE01MR',
+      'USE_BL0940',
+      'USE_TELEINFO',
+      'USE_IEM3000',
+      'USE_WE517',
     ],
+    include: ['USE_I2C'],
+  },
+  {
+    name: 'temphumpressensors',
+    value: false,
+    show: true,
+    description: 'stepFeaturesTempHumDesc',
+    group: [
+      'USE_SONOFF_SC',
+      'USE_DS18x20',
+      'USE_DHT',
+      'USE_SHT',
+      'USE_HTU',
+      'USE_BMP',
+      'USE_SHT3X',
+      'USE_LM75AD',
+      'USE_APDS9960',
+      'USE_AZ7798',
+      'USE_MAX31855',
+      'USE_MLX90614',
+      'USE_MAX31865',
+      'USE_HIH6',
+      'USE_DHT12',
+      'USE_DS1624',
+      'USE_AHT1x',
+      'USE_HDC1080',
+      'USE_MCP9808',
+      'USE_HP303B',
+      'USE_LMT01',
+    ],
+    include: ['USE_I2C'],
   },
   {
     name: 'USE_HOME_ASSISTANT',
@@ -209,21 +254,22 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesZigbeeDesc',
     tooltip: 'stepFeaturesZigbeeTooltip',
-    custom: '//Note: USE_ZIGBEE_ZNP and USE_ZIGBEE_EZSP are mutually incompatible, you must select exactly one\n\n' +
-            '// Enable ZNP protocol, needed for CC2530 based devices\n' +
-            '#define USE_ZIGBEE_ZNP\n' +
-            '// Enable EZSP protocol, needed for EFR32 EmberZNet based devices, like Sonoff Zigbee bridge\n' +
-            '//#define USE_ZIGBEE_EZSP\n' +
-            '//#ifdef USE_ZIGBEE_ZNP\n' +
-            '//  #undef USE_ZIGBEE_ZNP\n' +
-            '//#endif\n\n' +
-            '#define USE_ZIGBEE_CHANNEL  11  // Zigbee Channel (11-26)\n' +
-            '#define USE_ZIGBEE_TXRADIO_DBM  20  // Tx Radio power in dBm (only for EZSP, EFR32 can go up to 20 dBm)\n' +
-            '#define USE_ZIGBEE_COALESCE_ATTR_TIMER 350  // timer to coalesce attribute values (in ms)\n' +
-            '#define USE_ZIGBEE_MODELID      "Tasmota Z2T"// reported "ModelId"      (cluster 0000 / attribute 0005)\n' +
-            '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
-            '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
-            '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
+    custom:
+      '//Note: USE_ZIGBEE_ZNP and USE_ZIGBEE_EZSP are mutually incompatible, you must select exactly one\n\n' +
+      '// Enable ZNP protocol, needed for CC2530 based devices\n' +
+      '#define USE_ZIGBEE_ZNP\n' +
+      '// Enable EZSP protocol, needed for EFR32 EmberZNet based devices, like Sonoff Zigbee bridge\n' +
+      '//#define USE_ZIGBEE_EZSP\n' +
+      '//#ifdef USE_ZIGBEE_ZNP\n' +
+      '//  #undef USE_ZIGBEE_ZNP\n' +
+      '//#endif\n\n' +
+      '#define USE_ZIGBEE_CHANNEL  11  // Zigbee Channel (11-26)\n' +
+      '#define USE_ZIGBEE_TXRADIO_DBM  20  // Tx Radio power in dBm (only for EZSP, EFR32 can go up to 20 dBm)\n' +
+      '#define USE_ZIGBEE_COALESCE_ATTR_TIMER 350  // timer to coalesce attribute values (in ms)\n' +
+      '#define USE_ZIGBEE_MODELID      "Tasmota Z2T"// reported "ModelId"      (cluster 0000 / attribute 0005)\n' +
+      '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
+      '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
+      '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
   },
   {
     name: 'USE_I2C',

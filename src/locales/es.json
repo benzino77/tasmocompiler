@@ -33,6 +33,7 @@
   "stepFeaturesDispVccTooltip": "Desactiva el uso de la entrada analógica",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Sensores Energía",
+  "stepFeaturesTempHumDesc": "Temp/Hum sensors",
   "stepFeaturesHomeAssistantDesc": "Home Assist.",
   "stepFeaturesIOExpMCPDesc": "Extensor de I/O",
   "stepFeaturesIOExpMCPTooltip": "Añade soporte para expansores Input/Output: MCP230xx",
