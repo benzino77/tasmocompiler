@@ -71,7 +71,7 @@
   "stepVersionTasmota": "Tasmota verzió",
   "stepVersionCore": "Core verzió",
   "stepVersionLanguage": "Nyelv",
-  "stepVersionBoard": "Board verzió",
+  "stepVersionBoard": "Board változat",
   "stepVersionBoardSpeed": "Board sebesség",
 
   "stepDownload": "Most már letöltheti a bináris firmware fájlt és a fordítás során használt fájlokat:",
