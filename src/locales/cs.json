@@ -54,7 +54,7 @@
   "stepFeaturesScriptTooltip": "Skript vylučuje použití pravidel",
   "stepFeaturesTimersDesc": "Časovače",
   "stepFeaturesTuyaMCUDesc": "Tuya MCU",
-  "stepFeaturesUltrasonicDesc": "Ultrasonický senzor",
+  "stepFeaturesDistanceDesc": "Distance sensors",
   "stepFeaturesWebInterfaceDesc": "Webové rozhraní",
   "stepFeaturesWebInterfaceTooltip": "Pro většinu uživatelů by toto mělo být povoleno. Zakažte v případě, že potřebujete menší velikost binárního FW a paměťově méně náročné využití. Pokud je zakázáno, bude interakce s firmwarem Tasmota možná pouze prostřednictvím zprostředkovatele MQTT.",
   "stepFeaturesWS2812Desc": "WS2812 Ledky",

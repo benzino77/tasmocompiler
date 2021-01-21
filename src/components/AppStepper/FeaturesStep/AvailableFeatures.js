@@ -233,10 +233,12 @@ const availableFeatures = [
     description: 'stepFeaturesTuyaMCUDesc',
   },
   {
-    name: 'USE_SR04',
+    name: 'distance',
     value: false,
     show: true,
-    description: 'stepFeaturesUltrasonicDesc',
+    description: 'stepFeaturesDistanceDesc',
+    group: ['USE_SR04', 'USE_VL53L0X', 'USE_HRXL', 'USE_DYP', 'USE_VL53L1X'],
+    include: ['USE_I2C'],
   },
   {
     name: 'USE_WEBSERVER',
