@@ -72,6 +72,7 @@ const styles = (theme) => ({
     marginBottom: 0,
     marginLeft: theme.spacing.unit,
     minWidth: 200,
+    maxWidth: 200,
   },
   links: {
     marginLeft: theme.spacing.unit * 3,
