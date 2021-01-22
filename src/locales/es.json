@@ -53,7 +53,7 @@
   "stepFeaturesScriptTooltip": "Script excluye el uso de las Reglas",
   "stepFeaturesTimersDesc": "Temporizadores",
   "stepFeaturesTuyaMCUDesc": "Tuya MCU",
-  "stepFeaturesUltrasonicDesc": "Sensor Ultrasonidos",
+  "stepFeaturesDistanceDesc": "Distance sensors",
   "stepFeaturesWebInterfaceDesc": "Interfaz Web",
   "stepFeaturesWebInterfaceTooltip": "Para la mayoría de los usuarios esto debería estar habilitado. Deshabilitarlo en caso de que necesite binarios más pequeños y menos uso de memoria. Si está desactivado, la interacción con Tasmota sólo será posible a través de MQTT broker.",
   "stepFeaturesWS2812Desc": "Leds WS2812",

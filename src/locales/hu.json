@@ -54,7 +54,7 @@
   "stepFeaturesScriptTooltip": "Kizárja a szabályok használatát",
   "stepFeaturesTimersDesc": "Időzítők",
   "stepFeaturesTuyaMCUDesc": "Tuya MCU",
-  "stepFeaturesUltrasonicDesc": "Ultrahangos érzékelő",
+  "stepFeaturesDistanceDesc": "Distance sensors",
   "stepFeaturesWebInterfaceDesc": "Web felület",
   "stepFeaturesWebInterfaceTooltip": "A legtöbb felhasználónál ezt engedélyezni kell. Tiltsa le, ha kisebb bináris és kevesebb memória használatra van szüksége. Ha le van tiltva, akkor a Tasmota firmware-rel való interakció csak az MQTT szerveren keresztül lehetséges.",
   "stepFeaturesWS2812Desc": "WS2812 LEDek",
