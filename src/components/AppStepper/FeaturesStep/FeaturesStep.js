@@ -4,23 +4,37 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 import availableFeatures from './AvailableFeatures';
+import availableBoards from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
 
-const getFeaturesDefaultStates = () => {
+const getFeaturesDefaultStates = (board) => {
   const defaults = {};
+  availableFeatures.forEach((feature) => {
+    if (
+      feature.boards.includes(board.name) ||
+      feature.boards.includes('all') ||
+      board.include_features.includes(feature.name)
+    ) {
+      const value = board.include_features.includes(feature.name)
+        ? true
+        : feature.value;
 
-  availableFeatures.forEach((e) => {
-    defaults[e.name] = e.value;
-
-    if (e.group) {
-      e.group.forEach((g) => {
-        defaults[g] = e.value;
-      });
+      defaults[feature.name] = value;
+      if (feature.group) {
+        feature.group.forEach((g) => {
+          defaults[g] = value;
+        });
+      }
     }
   });
 
@@ -106,12 +120,14 @@ class FeaturesStep extends Component {
   constructor(props) {
     super(props);
 
-    const defaultStates = getFeaturesDefaultStates();
-    this.state = { ...defaultStates };
+    const defaultBoard = availableBoards.filter((b) => b.default === true);
+    const defaultStates = getFeaturesDefaultStates(defaultBoard[0]);
+    this.state = { options: { board: defaultBoard[0], ...defaultStates } };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
   }
 
   handleChangeCheckBox(event) {
@@ -147,9 +163,16 @@ class FeaturesStep extends Component {
     backHandler();
   }
 
+  handleRadioChange(event) {
+    const boards = availableBoards.filter((b) => b.name === event.target.value);
+    const defaultStates = getFeaturesDefaultStates(boards[0]);
+    this.setState({ options: { board: boards[0], ...defaultStates } });
+  }
+
   render() {
-    const { ...tempState } = this.state;
+    const { board, ...tempState } = this.state.options;
     const { classes, nextHandler, backHandler, ...other } = this.props;
+    const Wire = ({ children, ...props }) => children(props);
 
     return (
       <Step {...other}>
@@ -158,12 +181,61 @@ class FeaturesStep extends Component {
         </StepLabel>
         <StepContent>
           <Typography>
+            To jest opis tego punktu z wyborem płytki
+            {/* <FormattedMessage id="stepFeaturesBoard /> */}
+          </Typography>
+          <div className={classes.actionsContainer}>
+            <RadioGroup
+              row
+              aria-label="board"
+              name="board"
+              value={board.name}
+              onChange={this.handleRadioChange}
+            >
+              {availableBoards.map((item, index) => {
+                const { name, description, tooltip, show } = item;
+                return (
+                  show && (
+                    // tooltips workaround
+                    <Wire
+                      value={name}
+                      key={index}
+                      className={classes.radioContainer}
+                    >
+                      {(props) => (
+                        <Tooltip
+                          title={
+                            // tooltip ? <FormattedMessage id={tooltip} /> : ''
+                            tooltip
+                          }
+                        >
+                          <FormControlLabel
+                            control={<Radio />}
+                            label={description}
+                            labelPlacement="end"
+                            {...props}
+                          />
+                        </Tooltip>
+                      )}
+                    </Wire>
+                  )
+                );
+              })}
+            </RadioGroup>
+            <FormHelperText>
+              {/* <FormattedMessage id="stepFeaturesMicrocontrollerHelper" /> */}
+            </FormHelperText>
+          </div>
+
+          <Typography>
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
           <div className={classes.actionsContainer}>
             {availableFeatures.map(
               (item) =>
-                item.show && (
+                item.show &&
+                (item.boards.includes(board.name) ||
+                  item.boards.includes('all')) && (
                   <FeaturesSelector
                     classes={classes}
                     // value={this.state[item.name]}

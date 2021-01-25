@@ -95,7 +95,7 @@ app.post('/api/v1/compile', (req, res) => {
   } else {
     debug(JSON.stringify(req.body, undefined, 2));
     res.send({ ok: true });
-    compileCode(clientWSSocket, req.body);
+    // compileCode(clientWSSocket, req.body);
   }
 });
 

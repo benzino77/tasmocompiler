@@ -74,6 +74,12 @@ const styles = (theme) => ({
     minWidth: 200,
     maxWidth: 200,
   },
+  radioContainer: {
+    marginBottom: 0,
+    marginBottom: theme.spacing.unit,
+    minWidth: 200,
+    maxWidth: 200,
+  },
   links: {
     marginLeft: theme.spacing.unit * 3,
   },
