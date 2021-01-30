@@ -6,8 +6,8 @@
 
 VERSION=$(jq -r '.version' package.json)
 # STEP 1 - get QEMU for arm and arm64 architecture
-wget https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-arm-static -O qemu-arm-static
-wget https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-aarch64-static -O qemu-aarch64-static
+# wget https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-arm-static -O qemu-arm-static
+# wget https://github.com/multiarch/qemu-user-static/releases/download/v4.0.0-2/qemu-aarch64-static -O qemu-aarch64-static
 chmod +x qemu-arm-static
 chmod +x qemu-aarch64-static
 
@@ -31,5 +31,5 @@ docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:
 docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm32v7 --os linux --arch arm --variant v7
 docker manifest annotate benzino77/tasmocompiler:latest benzino77/tasmocompiler:arm64v8 --os linux --arch arm64 --variant v8
 docker manifest push --purge benzino77/tasmocompiler:latest
-rm -rf qemu-arm-static
-rm -rf qemu-aarch64-static
+# rm -rf qemu-arm-static
+# rm -rf qemu-aarch64-static
