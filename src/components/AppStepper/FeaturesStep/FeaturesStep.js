@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 
 import availableFeatures from './AvailableFeatures';
 import FeaturesSelector from './FeaturesSelector';
+import BuildSelector from './BuildSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
@@ -110,11 +111,25 @@ class FeaturesStep extends Component {
     this.state = { ...defaultStates };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
+    this.handleChangeSelect = this.handleChangeSelect.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
   }
 
+  componentDidMount() {
+    fetch('/api/v1/getbuildversions')
+      .then((res) => res.json())
+      .then((ret) => {
+        this.setState({ buildVersion: ret.result[0].value });
+        this.setState({ buildVersions: ret.result });
+      })
+      .catch((error) => {
+        this.setState({ buildVersions: [], message: error.message });
+      });
+  }
+
   handleChangeCheckBox(event) {
+    const { buildVersions } = this.state;
     let featureState = setFeature(event.target.name, event.target.checked);
     const excludeGroup = getFeatureExclude(event.target.name);
     const includeGroup = getFeatureInclude(event.target.name);
@@ -135,6 +150,50 @@ class FeaturesStep extends Component {
     }
 
     this.setState(featureState);
+    this.setState({ buildVersion: buildVersions[buildVersions.length - 1].value });
+  }
+
+  handleChangeSelect(event) {
+    const { buildVersions } = this.state;
+
+    // clear all features with checkboxes
+    let featureState = {};
+    availableFeatures.forEach((item) => {
+      const excludeGroup = getFeatureExclude(event.target.name);
+      const includeGroup = getFeatureInclude(item.name);
+      excludeGroup.forEach((item) => {
+        featureState = {
+          ...featureState,
+          ...setFeature(item, false),
+        };
+      });
+      includeGroup.forEach((item) => {
+        featureState = {
+          ...featureState,
+          ...setFeature(item, false),
+        };
+      });
+    });
+
+    // select feature for selected buildVersion
+    const selectedBuild = buildVersions.filter(item => item.value === event.target.value);
+    selectedBuild.forEach((flags) => {
+      flags.undef.forEach((flag) => {
+        featureState = {
+          ...featureState,
+          ...setFeature(flag, false),
+        };
+      });
+      flags.define.forEach((flag) => {
+        featureState = {
+          ...featureState,
+          ...setFeature(flag, true),
+        };
+      });
+    });
+
+    this.setState(featureState);
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleNext() {
@@ -148,7 +207,7 @@ class FeaturesStep extends Component {
   }
 
   render() {
-    const { ...tempState } = this.state;
+    const { buildVersion, buildVersions, ...tempState } = this.state;
     const { classes, nextHandler, backHandler, ...other } = this.props;
 
     return (
@@ -161,6 +220,18 @@ class FeaturesStep extends Component {
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
           <div className={classes.actionsContainer}>
+            <BuildSelector
+              items={buildVersions}
+              name="buildVersion"
+              value={buildVersion}
+              label={<FormattedMessage id="stepFeaturesBuildTitle" />}
+              desc={"stepFeaturesBuild-" + buildVersion}
+              onChange={this.handleChangeSelect}
+              classes={classes}
+              variant="contained"
+            />
+          </div>
+            <div className={classes.actionsContainer}>
             {availableFeatures.map(
               (item) =>
                 item.show && (

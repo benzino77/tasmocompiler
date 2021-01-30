@@ -32,7 +32,7 @@ class CustomParametersStep extends Component {
       .reduce((acc, cval) => `${acc}\n${prevProps.pstate[cval]}`, '');
 
     if (ncp !== pcp) {
-      this.setState({ customParams: ncp });
+      this.setState({ customParams: ncp.trim() });
     }
   }
 

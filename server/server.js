@@ -24,6 +24,8 @@ const {
   userConfigOvewrite,
 } = require('./config/config');
 
+const { getBuildVersions } = require('./buildversions/buildversions');
+
 const staticPath = path.join(__dirname, '../build');
 let clientWSSocket;
 let timerID;
@@ -97,6 +99,16 @@ app.post('/api/v1/compile', (req, res) => {
     res.send({ ok: true });
     compileCode(clientWSSocket, req.body);
   }
+});
+
+app.get('/api/v1/getbuildversions', (req, res) => {
+  getBuildVersions()
+    .then((result) => {
+      res.send({ ok: true, result });
+    })
+    .catch((e) => {
+      res.status(500).send({ ok: false, result: false, message: e.message });
+    });
 });
 
 app.get('/download/firmware.bin', (req, res) => {
