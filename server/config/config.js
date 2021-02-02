@@ -9,6 +9,10 @@ const userConfigOvewrite = path.resolve(
   'tasmota/user_config_override.h'
 );
 const userPlatformioIni = path.resolve(tasmotaRepo, 'platformio.ini');
+const userPlatformioOverrideIni = path.resolve(
+  tasmotaRepo,
+  'platformio_override.ini'
+);
 const tcSrcCoresIni = path.resolve(__dirname, '../compile/tc_cores.ini');
 const tcDestCoresIni = path.resolve(tasmotaRepo, 'tc_cores.ini');
 const tasmotaVersionFile = path.resolve(
@@ -27,6 +31,7 @@ module.exports = {
   edgeBranch,
   userConfigOvewrite,
   userPlatformioIni,
+  userPlatformioOverrideIni,
   tcSrcCoresIni,
   tcDestCoresIni,
   tasmotaVersionFile,

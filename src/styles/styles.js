@@ -76,7 +76,6 @@ const styles = (theme) => ({
   },
   radioContainer: {
     marginBottom: 0,
-    marginBottom: theme.spacing.unit,
     minWidth: 200,
     maxWidth: 200,
   },

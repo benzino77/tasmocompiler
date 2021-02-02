@@ -21,7 +21,7 @@ class DownloadLinks extends Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, isEsp8266 } = this.props;
 
     return (
       <div ref={this.downloadLinksElement}>
@@ -29,20 +29,42 @@ class DownloadLinks extends Component {
           <FormattedMessage id="stepDownload" />
         </Typography>
         <div className={classes.links}>
-          <Button variant="contained" color="primary" href="/download/firmware.bin" className={classes.downloadButtons}>
-              firmware.bin
+          <Button
+            variant="contained"
+            color="primary"
+            href="/download/firmware.bin"
+            className={classes.downloadButtons}
+          >
+            firmware.bin
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
-          <Button variant="contained" color="primary" href="/download/firmware.bin.gz" className={classes.downloadButtons}>
+          {isEsp8266 && (
+            <Button
+              variant="contained"
+              color="primary"
+              href="/download/firmware.bin.gz"
+              className={classes.downloadButtons}
+            >
               firmware.bin.gz
+              <CloudDownloadIcon className={classes.rightIcon} />
+            </Button>
+          )}
+          <Button
+            variant="contained"
+            color="primary"
+            href="/download/platformio_override.ini"
+            className={classes.downloadButtons}
+          >
+            platformio_override.ini
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
-          <Button variant="contained" color="primary" href="/download/platformio.ini" className={classes.downloadButtons}>
-              platformio.ini
-            <CloudDownloadIcon className={classes.rightIcon} />
-          </Button>
-          <Button variant="contained" color="primary" href="/download/user_config_override.h" className={classes.downloadButtons}>
-              user_config_override.h
+          <Button
+            variant="contained"
+            color="primary"
+            href="/download/user_config_override.h"
+            className={classes.downloadButtons}
+          >
+            user_config_override.h
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
         </div>

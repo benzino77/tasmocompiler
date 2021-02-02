@@ -72,7 +72,7 @@ const availableFeatures = [
       '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
       '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
-    boards: ['esp8266', 'esp32', 'esp32webcam'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
   },
   {
     name: 'USE_ADC_VCC',
@@ -153,6 +153,28 @@ const availableFeatures = [
     boards: ['all'],
   },
   {
+    name: 'lightsensors',
+    value: false,
+    show: true,
+    description: 'stepFeaturesLightDesc',
+    tooltip: 'stepFeaturesLightTooltip',
+    group: [
+      'USE_BH1750',
+      'USE_VEML6070',
+      'USE_TSL2561',
+      'USE_SI1145',
+      'USE_APDS9960',
+      'USE_VEML6075',
+      'USE_MAX44009',
+      'USE_TSL2591',
+      'USE_AS3935',
+      'USE_VEML7700',
+    ],
+    include: ['USE_I2C'],
+    custom: '',
+    boards: ['all'],
+  },
+  {
     name: 'USE_HOME_ASSISTANT',
     value: false,
     show: true,
@@ -184,14 +206,17 @@ const availableFeatures = [
     custom: '',
     boards: ['all'],
   },
+  // this IR support one is deprecated
   {
     name: 'USE_IR_REMOTE',
     value: false,
-    show: true,
+    show: false,
     description: 'stepFeaturesIRBasicDesc',
     tooltip: 'stepFeaturesIRBasicTooltip',
     exclude: ['USE_IR_REMOTE_FULL'],
-    buildflag: '-D_IR_ENABLE_DEFAULT_=false',
+    platformio_entries: {
+      build_flags: '-D_IR_ENABLE_DEFAULT_=false',
+    },
     custom: '',
     boards: ['all'],
   },
@@ -202,8 +227,10 @@ const availableFeatures = [
     description: 'stepFeaturesIRFullDesc',
     tooltip: 'stepFeaturesIRFullTooltip',
     exclude: ['USE_IR_REMOTE'],
-    buildflag:
-      '-U_IR_ENABLE_DEFAULT_ -DDECODE_PRONTO=false -DSEND_PRONTO=false',
+    platformio_entries: {
+      // eslint-disable-next-line
+      build_flags: '${irremoteesp_full.build_flags}',
+    },
     custom: '',
     boards: ['all'],
   },

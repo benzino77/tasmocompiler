@@ -18,7 +18,8 @@ import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
 
 const getFeaturesDefaultStates = (board) => {
-  const defaults = {};
+  let defaults = {};
+  let toIncludeExclude = {};
   availableFeatures.forEach((feature) => {
     if (
       feature.boards.includes(board.name) ||
@@ -30,13 +31,20 @@ const getFeaturesDefaultStates = (board) => {
         : feature.value;
 
       defaults[feature.name] = value;
-      if (feature.group) {
-        feature.group.forEach((g) => {
-          defaults[g] = value;
-        });
+      const group = getFeatureGroup(feature.name);
+      group.forEach((g) => {
+        defaults[g] = value;
+      });
+
+      if (value) {
+        toIncludeExclude = {
+          ...toIncludeExclude,
+          ...setIncludeExcludeFeature(feature.name),
+        };
       }
     }
   });
+  defaults = { ...defaults, ...toIncludeExclude };
 
   return defaults;
 };
@@ -84,22 +92,22 @@ const getCustomParametersForFeature = (name) => {
   return '';
 };
 
-const getBuildFlagForFeature = (name) => {
+const getPlatformioEntriesForFeature = (name) => {
   const filtered = availableFeatures.filter(
-    (e) => e.name === name && e.buildflag
+    (e) => e.name === name && e.platformio_entries
   );
   if (filtered.length > 0) {
-    return filtered[0].buildflag;
+    return filtered[0].platformio_entries;
   }
 
-  return '';
+  return null;
 };
 
 const setFeature = (name, state) => {
   const newState = {};
   const group = getFeatureGroup(name);
   const custom = getCustomParametersForFeature(name);
-  const buildFlag = getBuildFlagForFeature(name);
+  const entries = getPlatformioEntriesForFeature(name);
 
   newState[name] = state;
   group.forEach((item) => {
@@ -110,9 +118,29 @@ const setFeature = (name, state) => {
     newState[`precustom_${name}`] = state ? custom : '';
   }
 
-  if (buildFlag) {
-    newState[`buildflag_${name}`] = state ? buildFlag : '';
+  if (entries) {
+    newState[`platformio_entries#${name}`] = state ? entries : {};
   }
+  return newState;
+};
+
+const setIncludeExcludeFeature = (name) => {
+  let newState = {};
+  const excludeGroup = getFeatureExclude(name);
+  const includeGroup = getFeatureInclude(name);
+
+  excludeGroup.forEach((item) => {
+    newState = {
+      ...newState,
+      ...setFeature(item, false),
+    };
+  });
+  includeGroup.forEach((item) => {
+    newState = {
+      ...newState,
+      ...setFeature(item, true),
+    };
+  });
   return newState;
 };
 
@@ -122,7 +150,7 @@ class FeaturesStep extends Component {
 
     const defaultBoard = availableBoards.filter((b) => b.default === true);
     const defaultStates = getFeaturesDefaultStates(defaultBoard[0]);
-    this.state = { options: { board: defaultBoard[0], ...defaultStates } };
+    this.state = { features: { board: defaultBoard[0], ...defaultStates } };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -131,26 +159,22 @@ class FeaturesStep extends Component {
   }
 
   handleChangeCheckBox(event) {
-    let featureState = setFeature(event.target.name, event.target.checked);
-    const excludeGroup = getFeatureExclude(event.target.name);
-    const includeGroup = getFeatureInclude(event.target.name);
+    const { checked, name } = event.target;
+    let featureState = setFeature(name, checked);
 
-    if (event.target.checked) {
-      excludeGroup.forEach((item) => {
-        featureState = {
-          ...featureState,
-          ...setFeature(item, !event.target.checked),
-        };
-      });
-      includeGroup.forEach((item) => {
-        featureState = {
-          ...featureState,
-          ...setFeature(item, event.target.checked),
-        };
-      });
+    if (checked) {
+      featureState = { ...featureState, ...setIncludeExcludeFeature(name) };
     }
 
-    this.setState(featureState);
+    this.setState((state) => {
+      let newFeatures = { ...state.features, ...featureState };
+      // let newFeatures = Object.assign({}, state.features, featureState);
+
+      // Object.keys(featureState).forEach((f) => {
+      //   newFeatures[f] = featureState[f];
+      // });
+      return { features: { ...newFeatures } };
+    });
   }
 
   handleNext() {
@@ -166,11 +190,11 @@ class FeaturesStep extends Component {
   handleRadioChange(event) {
     const boards = availableBoards.filter((b) => b.name === event.target.value);
     const defaultStates = getFeaturesDefaultStates(boards[0]);
-    this.setState({ options: { board: boards[0], ...defaultStates } });
+    this.setState({ features: { board: boards[0], ...defaultStates } });
   }
 
   render() {
-    const { board, ...tempState } = this.state.options;
+    const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
     const Wire = ({ children, ...props }) => children(props);
 
@@ -181,8 +205,7 @@ class FeaturesStep extends Component {
         </StepLabel>
         <StepContent>
           <Typography>
-            To jest opis tego punktu z wyborem płytki
-            {/* <FormattedMessage id="stepFeaturesBoard /> */}
+            <FormattedMessage id="stepFeaturesBoardDesc" />
           </Typography>
           <div className={classes.actionsContainer}>
             <RadioGroup
@@ -205,8 +228,7 @@ class FeaturesStep extends Component {
                       {(props) => (
                         <Tooltip
                           title={
-                            // tooltip ? <FormattedMessage id={tooltip} /> : ''
-                            tooltip
+                            tooltip ? <FormattedMessage id={tooltip} /> : ''
                           }
                         >
                           <FormControlLabel
@@ -223,7 +245,7 @@ class FeaturesStep extends Component {
               })}
             </RadioGroup>
             <FormHelperText>
-              {/* <FormattedMessage id="stepFeaturesMicrocontrollerHelper" /> */}
+              {/* <FormattedMessage id="stepFeatures..." /> */}
             </FormHelperText>
           </div>
 

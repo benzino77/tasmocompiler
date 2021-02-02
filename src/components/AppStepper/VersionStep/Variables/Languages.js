@@ -1,91 +1,91 @@
 const languages = [
   {
     name: 'English',
-    value: 'en-GB',
+    value: 'en_GB',
   },
   {
     name: 'Bulgarian',
-    value: 'bg-BG',
+    value: 'bg_BG',
   },
   {
     name: 'Czech',
-    value: 'cs-CZ',
+    value: 'cs_CZ',
   },
   {
     name: 'German',
-    value: 'de-DE',
+    value: 'de_DE',
   },
   {
     name: 'Greek',
-    value: 'el-GR',
+    value: 'el_GR',
   },
   {
     name: 'Spanish',
-    value: 'es-ES',
+    value: 'es_ES',
   },
   {
     name: 'French',
-    value: 'fr-FR',
+    value: 'fr_FR',
   },
   {
     name: 'Hebrew',
-    value: 'he-HE',
+    value: 'he_HE',
   },
   {
     name: 'Hungarian',
-    value: 'hu-HU',
+    value: 'hu_HU',
   },
   {
     name: 'Italian',
-    value: 'it-IT',
+    value: 'it_IT',
   },
   {
     name: 'Korean',
-    value: 'ko-KO',
+    value: 'ko_KO',
   },
   {
     name: 'Dutch',
-    value: 'nl-NL',
+    value: 'nl_NL',
   },
   {
     name: 'Polish',
-    value: 'pl-PL',
+    value: 'pl_PL',
   },
   {
     name: 'Portuguese (Brazil)',
-    value: 'pt-BR',
+    value: 'pt_BR',
   },
   {
     name: 'Portuguese',
-    value: 'pt-PT',
+    value: 'pt_PT',
   },
   {
     name: 'Russian',
-    value: 'ru-RU',
+    value: 'ru_RU',
   },
   {
     name: 'Slovak',
-    value: 'sk-SK',
+    value: 'sk_SK',
   },
   {
     name: 'Swedish',
-    value: 'sv-SE',
+    value: 'sv_SE',
   },
   {
     name: 'Turkish',
-    value: 'tr-TR',
+    value: 'tr_TR',
   },
   {
     name: 'Ukrainian',
-    value: 'uk-UA',
+    value: 'uk_UA',
   },
   {
     name: 'Chinese (Simplified)',
-    value: 'zh-CN',
+    value: 'zh_CN',
   },
   {
     name: 'Chinese (Traditional)',
-    value: 'zh-TW',
+    value: 'zh_TW',
   },
 ];
 

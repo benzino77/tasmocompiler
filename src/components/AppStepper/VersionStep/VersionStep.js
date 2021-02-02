@@ -9,10 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import BackButton from '../BackButton';
 import CompileButton from '../CompileButton';
 import VersionSelector from './VersionSelector';
-import coreVersions from './Variables/CoreVersions';
 import languages from './Variables/Languages';
-import boardVersions from './Variables/BoardVersions';
-import boardSpeeds from './Variables/BoardSpeeds';
 import { FormattedMessage } from 'react-intl';
 
 class VersionStep extends Component {
@@ -28,11 +25,7 @@ class VersionStep extends Component {
 
     this.state = {
       tasmotaVersion: 'development',
-      coreVersion: coreVersions[1].value,
       MY_LANGUAGE: languages[languageIndex].value,
-      boardVersion: boardVersions[0].value,
-      boardSpeed: boardSpeeds[0].value,
-      memoryBuildFlag: 'eagle.flash.1m.ld',
       message: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -87,7 +80,7 @@ class VersionStep extends Component {
 
   handleCompile() {
     const { compileHandler } = this.props;
-    compileHandler({ ...this.state });
+    compileHandler({ version: this.state });
   }
 
   handleBack() {
@@ -96,14 +89,7 @@ class VersionStep extends Component {
   }
 
   render() {
-    const {
-      message,
-      tasmotaVersion,
-      coreVersion,
-      MY_LANGUAGE,
-      boardVersion,
-      boardSpeed,
-    } = this.state;
+    const { message, tasmotaVersion, MY_LANGUAGE } = this.state;
 
     const {
       classes,
@@ -133,34 +119,10 @@ class VersionStep extends Component {
               classes={classes}
             />
             <VersionSelector
-              items={coreVersions}
-              name="coreVersion"
-              value={coreVersion}
-              label={<FormattedMessage id="stepVersionCore" />}
-              onChange={this.handleChange}
-              classes={classes}
-            />
-            <VersionSelector
               items={languages}
               name="MY_LANGUAGE"
               value={MY_LANGUAGE}
               label={<FormattedMessage id="stepVersionLanguage" />}
-              onChange={this.handleChange}
-              classes={classes}
-            />
-            <VersionSelector
-              items={boardVersions}
-              name="boardVersion"
-              value={boardVersion}
-              label={<FormattedMessage id="stepVersionBoard" />}
-              onChange={this.handleChange}
-              classes={classes}
-            />
-            <VersionSelector
-              items={boardSpeeds}
-              name="boardSpeed"
-              value={boardSpeed}
-              label={<FormattedMessage id="stepVersionBoardSpeed" />}
               onChange={this.handleChange}
               classes={classes}
             />
