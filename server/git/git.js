@@ -13,7 +13,8 @@ const isGitRepoAvailable = async () => {
   }
 
   const isRepo = await git(tasmotaRepo).checkIsRepo();
-  if (!isRepo) { // directory is not git repo, lets try to delete it
+  if (!isRepo) {
+    // directory is not git repo, lets try to delete it
     debug(`${tasmotaRepo} is not git repo. Trying to delete it...`);
     try {
       await fs.remove(tasmotaRepo);
@@ -35,7 +36,7 @@ const getRepoTags = async () => {
   if (isRepo) {
     try {
       const allTags = await git(tasmotaRepo).tags();
-      const tags = allTags.all.filter(t => t.startsWith('v8.5') || t.startsWith('v9'));
+      const tags = allTags.all.filter((t) => t.startsWith('v9'));
       return [...tags, edgeBranch];
     } catch (e) {
       debug(message);

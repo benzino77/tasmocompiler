@@ -23,6 +23,8 @@
   "stepWifiConfDNS": "DNS server",
 
   "stepFeaturesTitle": "Select features",
+  "stepFeaturesBoardDesc": "Select board your project is based on",
+  "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
   "stepFeaturesDesc": "Which features should be included in final binary firmware?",
   "stepFeaturesAGDesc": "Air/gas sensors",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -35,14 +37,16 @@
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Energy sensors",
   "stepFeaturesTempHumDesc": "Temp/Hum sensors",
+  "stepFeaturesLightDesc": "Light sensors",
+  "stepFeaturesLightTooltip": "Light intensity, light level, UV Index, etc.",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "IO port expander",
   "stepFeaturesIOExpMCPTooltip": "Add support for Input/Output pin expander: MCP230xx",
   "stepFeaturesKNXDesc": "KNX",
   "stepFeaturesIRBasicDesc": "IR basic",
   "stepFeaturesIRBasicTooltip": "Basic infrared support (smaller binary and memmory usage). Exclude the use of full infrared support.",
-  "stepFeaturesIRFullDesc": "IR full",
-  "stepFeaturesIRFullTooltip": "Full infrared support (bigger binary and memmory usage). Exclude the use of basic infrared support.",
+  "stepFeaturesIRFullDesc": "IR support",
+  "stepFeaturesIRFullTooltip": "Full infrared support",
   "stepFeaturesMDNSDesc": "mDNS discovery",
   "stepFeaturesMQTTTLSDesc": "MQTT over TLS",
   "stepFeaturesMQTTTLSTooltip": "This feature will work with version 6.6.0.9 or later (latest development).",
@@ -76,6 +80,7 @@
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
+  "Afrikaans": "Afrikaans",
   "English": "English",
   "Bulgarian": "Bulgarian",
   "Czech": "Czech",
@@ -91,6 +96,7 @@
   "Polish": "Polish",
   "Portuguese (Brazil)": "Portuguese (Brazil)",
   "Portuguese": "Portuguese",
+  "Romanian": "Romanian",
   "Russian": "Russian",
   "Slovak": "Slovak",
   "Swedish": "Swedish",
@@ -98,6 +104,7 @@
   "Ukrainian": "Ukrainian",
   "Chinese (Simplified)": "Chinese (Simplified)",
   "Chinese (Traditional)": "Chinese (Traditional)",
+  "Vietnam": "Vietnam",
 
   "stepVersionCompProgress": "Compiling progress",
 

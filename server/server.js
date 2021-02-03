@@ -20,7 +20,7 @@ const { compileCode } = require('./compile/compile');
 const {
   listenPort,
   tasmotaRepo,
-  userPlatformioIni,
+  userPlatformioOverrideIni,
   userConfigOvewrite,
 } = require('./config/config');
 
@@ -89,7 +89,7 @@ app.get('/api/v1/pullrepo', (req, res) => {
 });
 
 app.post('/api/v1/compile', (req, res) => {
-  const requiredKeys = ['tasmotaVersion', 'coreVersion', 'boardVersion'];
+  const requiredKeys = ['version', 'features', 'network'];
   if (_.isEmpty(req.body) || !requiredKeys.every((e) => e in req.body)) {
     res.status(400).send({ ok: false, message: 'Wrong JSON data passed.' });
   } else {
@@ -115,8 +115,8 @@ app.get('/download/firmware.bin.gz', (req, res) => {
   res.download(firmwareCompressed);
 });
 
-app.get('/download/platformio.ini', (req, res) => {
-  res.download(userPlatformioIni);
+app.get('/download/platformio_override.ini', (req, res) => {
+  res.download(userPlatformioOverrideIni);
 });
 
 app.get('/download/user_config_override.h', (req, res) => {

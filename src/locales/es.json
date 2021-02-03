@@ -22,6 +22,8 @@
   "stepWifiConfDNS": "Servidor DNS",
 
   "stepFeaturesTitle": "Selecionar características",
+  "stepFeaturesBoardDesc": "Select board your project is based on",
+  "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
   "stepFeaturesDesc": "¿Qué características quieres que se incluyan en el firmware personalizado?",
   "stepFeaturesAGDesc": "Sensores Aire/Gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -34,14 +36,16 @@
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Sensores Energía",
   "stepFeaturesTempHumDesc": "Temp/Hum sensors",
+  "stepFeaturesLightDesc": "Light sensors",
+  "stepFeaturesLightTooltip": "Light intensity, light level, UV Index, etc.",
   "stepFeaturesHomeAssistantDesc": "Home Assist.",
   "stepFeaturesIOExpMCPDesc": "Extensor de I/O",
   "stepFeaturesIOExpMCPTooltip": "Añade soporte para expansores Input/Output: MCP230xx",
   "stepFeaturesKNXDesc": "KNX",
   "stepFeaturesIRBasicDesc": "IR básico",
   "stepFeaturesIRBasicTooltip": "Soporte infrarrojos básico (usa menos memoria y los binarios son más pequeños). Excluye el soporte de infrarojos al completo.",
-  "stepFeaturesIRFullDesc": "IR completo",
-  "stepFeaturesIRFullTooltip": "Soporte infrarrojos completo (usa más memoria y los binarios son más grandes). Excluye el soporte de infrarrojos básico.",
+  "stepFeaturesIRFullDesc": "IR support",
+  "stepFeaturesIRFullTooltip": "Full infrared support",
   "stepFeaturesMDNSDesc": "Descurbir mDNS",
   "stepFeaturesMQTTTLSDesc": "MQTT sobre TLS",
   "stepFeaturesMQTTTLSTooltip": "Esta característica funcionará con la versión 6.6.0.9 o posteriores.",
@@ -75,6 +79,7 @@
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
+  "Afrikaans": "Afrikaans",
   "English": "Inglés",
   "Bulgarian": "Bulgaro",
   "Czech": "Checo",
@@ -90,6 +95,7 @@
   "Polish": "Polaco",
   "Portuguese (Brazil)": "Portugués (Brasil)",
   "Portuguese": "Portugués",
+  "Romanian": "Romanian",
   "Russian": "Ruso",
   "Slovak": "Eslovaco",
   "Swedish": "Sueco",
@@ -97,6 +103,7 @@
   "Ukrainian": "Ucraniano",
   "Chinese (Simplified)": "Chino (Simplificado)",
   "Chinese (Traditional)": "Chino (Tradicional)",
+  "Vietnam": "Vietnam",
 
   "stepVersionCompProgress": "Progreso del compilado",
 
