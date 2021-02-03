@@ -71,12 +71,9 @@
   "stepCustomParamsDesc": "Az alábbiakban megadhat egyéni paramétereket, amelyek a {filename} fájl végén lesznek. Ha nem tudja, mi ez, kattintson a Tovább gombra.",
 
   "stepVersionTitle": "Verzió kiválasztása és lefordítása",
-  "stepVersionDesc": "Válassza ki a Tasmota és az Arduino Core verziót. Válassza ki a használni kívánt nyelvet és a hardvert.",
+  "stepVersionDesc": "Válassza ki a Tasmota verziót és nyelvet.",
   "stepVersionTasmota": "Tasmota verzió",
-  "stepVersionCore": "Core verzió",
   "stepVersionLanguage": "Nyelv",
-  "stepVersionBoard": "Board változat",
-  "stepVersionBoardSpeed": "Board sebesség",
 
   "stepDownload": "Most már letöltheti a bináris firmware fájlt és a fordítás során használt fájlokat:",
 

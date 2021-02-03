@@ -71,12 +71,9 @@
   "stepCustomParamsDesc": "Níže můžete zadat vlastní parametry, které budou zahrnuty na konec souboru {filename}. Pokud nevíte, o co se jedná, stačí kliknout na Další.",
 
   "stepVersionTitle": "Vyberte verzi a zkompilujte",
-  "stepVersionDesc": "Vyberte verzi Tasmota a Arduino Core. Vyberte jazyk, který chcete použít, a vámi používaný hardware.",
+  "stepVersionDesc": "Select Tasmota version and language.",
   "stepVersionTasmota": "Verze Tasmota",
-  "stepVersionCore": "Verze Core",
   "stepVersionLanguage": "Jazyk",
-  "stepVersionBoard": "Verze desky",
-  "stepVersionBoardSpeed": "Rychlost",
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
