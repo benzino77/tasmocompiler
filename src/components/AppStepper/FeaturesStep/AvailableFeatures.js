@@ -40,13 +40,19 @@ const availableFeatures = [
     boards: ['all'],
   },
   {
+    name: 'USE_DISPLAY',
+    value: false,
+    show: false,
+    description: '',
+    boards: ['all'],
+  },
+  {
     name: 'displays',
     value: false,
     show: true,
     description: 'stepFeaturesDisplaysDesc',
     tooltip: 'stepFeaturesDisplaysTooltip',
     group: [
-      'USE_DISPLAY',
       'USE_DISPLAY_MODES1TO5',
       'USE_DISPLAY_LCD',
       'USE_DISPLAY_SSD1306',
@@ -62,7 +68,7 @@ const availableFeatures = [
       'USE_DISPLAY_ST7789',
       'USE_DISPLAY_SSD1331',
     ],
-    include: ['USE_SPI', 'USE_I2C'],
+    include: ['USE_SPI', 'USE_I2C', 'USE_DISPLAY'],
     custom:
       '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
       '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
@@ -92,12 +98,18 @@ const availableFeatures = [
     boards: ['all'],
   },
   {
+    name: 'USE_ENERGY_SENSOR',
+    value: false,
+    show: false,
+    description: '',
+    boards: ['all'],
+  },
+  {
     name: 'energysensors',
     value: false,
     show: true,
     description: 'stepFeaturesEnergyDesc',
     group: [
-      'USE_ENERGY_SENSOR',
       'USE_HLW8012',
       'USE_CSE7766',
       'USE_PZEM004T',
@@ -116,7 +128,7 @@ const availableFeatures = [
       'USE_IEM3000',
       'USE_WE517',
     ],
-    include: ['USE_I2C'],
+    include: ['USE_I2C', 'USE_ENERGY_SENSOR'],
     custom: '',
     boards: ['all'],
   },
@@ -202,7 +214,8 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesKNXDesc',
-    include: ['energysensors'],
+    include: ['USE_ENERGY_SENSOR'],
+    group: [],
     custom: '',
     boards: ['all'],
   },
