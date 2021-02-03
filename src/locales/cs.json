@@ -38,7 +38,7 @@
   "stepFeaturesEnergyDesc": "Senzory energie",
   "stepFeaturesTempHumDesc": "Temp/Hum sensors",
   "stepFeaturesLightDesc": "Light sensors",
-  "stepFeaturesLightTooltip": "Lght intensity, light level, UV Index, etc.",
+  "stepFeaturesLightTooltip": "Light intensity, light level, UV Index, etc.",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Expandér portů IO",
   "stepFeaturesIOExpMCPTooltip": "Přidat podporu pro Input/Output pin expander: MCP230xx",
@@ -80,6 +80,7 @@
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
+  "Afrikaans": "Afrikaans",
   "English": "Angličtina",
   "Bulgarian": "Bulharština",
   "Czech": "Čeština",
@@ -95,6 +96,7 @@
   "Polish": "Polština",
   "Portuguese (Brazil)": "Portugalština (Brazílie)",
   "Portuguese": "Portugalština",
+  "Romanian": "Romanian",
   "Russian": "Ruština",
   "Slovak": "Slovenština",
   "Swedish": "Švédština",
@@ -102,6 +104,7 @@
   "Ukrainian": "Ukrajinština",
   "Chinese (Simplified)": "Čínština (Zjednodušená)",
   "Chinese (Traditional)": "Čínština (Tradiční)",
+  "Vietnam": "Vietnam",
 
   "stepVersionCompProgress": "Průběh kompilace",
 

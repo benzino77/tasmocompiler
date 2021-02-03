@@ -1,5 +1,9 @@
 const languages = [
   {
+    name: 'Afrikaans',
+    value: 'af_AF',
+  },
+  {
     name: 'English',
     value: 'en_GB',
   },
@@ -60,6 +64,10 @@ const languages = [
     value: 'pt_PT',
   },
   {
+    name: 'Romanian',
+    value: 'ro_RO',
+  },
+  {
     name: 'Russian',
     value: 'ru_RU',
   },
@@ -78,6 +86,10 @@ const languages = [
   {
     name: 'Ukrainian',
     value: 'uk_UA',
+  },
+  {
+    name: 'Vietnam',
+    value: 'vi_VN',
   },
   {
     name: 'Chinese (Simplified)',

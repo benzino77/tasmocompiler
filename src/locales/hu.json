@@ -38,7 +38,7 @@
   "stepFeaturesEnergyDesc": "Energiaérzékelők",
   "stepFeaturesTempHumDesc": "Hőmérséklet / páratartalom érzékelők",
   "stepFeaturesLightDesc": "Light sensors",
-  "stepFeaturesLightTooltip": "Lght intensity, light level, UV Index, etc.",
+  "stepFeaturesLightTooltip": "Light intensity, light level, UV Index, etc.",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "IO port bővítő",
   "stepFeaturesIOExpMCPTooltip": "Támogatás hozzáadása az MCP230xx Input/Output bővítőhöz.",
@@ -80,6 +80,7 @@
 
   "stepDownload": "Most már letöltheti a bináris firmware fájlt és a fordítás során használt fájlokat:",
 
+  "Afrikaans": "Afrikaans",
   "English": "Angol",
   "Bulgarian": "Bolgár",
   "Czech": "Cseh",
@@ -95,6 +96,7 @@
   "Polish": "Lengyel",
   "Portuguese (Brazil)": "Portugál (Brazil)",
   "Portuguese": "Portugál",
+  "Romanian": "Romanian",
   "Russian": "Orosz",
   "Slovak": "Szlovák",
   "Swedish": "Svéd",
@@ -102,6 +104,7 @@
   "Ukrainian": "Ukrán",
   "Chinese (Simplified)": "Kínai (Egyszerűsített)",
   "Chinese (Traditional)": "Kínai (Hagyományos)",
+  "Vietnam": "Vietnam",
 
   "stepVersionCompProgress": "Fordítás állapota",
 

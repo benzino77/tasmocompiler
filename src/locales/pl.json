@@ -79,6 +79,7 @@
 
   "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
+  "Afrikaans": "Afrykański",
   "English": "Angielski",
   "Bulgarian": "Bułgarski",
   "Czech": "Czeski",
@@ -94,6 +95,7 @@
   "Polish": "Polski",
   "Portuguese (Brazil)": "Portugalski (Brazylijski)",
   "Portuguese": "Portugalski",
+  "Romanian": "Rumuński",
   "Russian": "Rosyjski",
   "Slovak": "Słowacki",
   "Swedish": "Szwedzki",
@@ -101,6 +103,7 @@
   "Ukrainian": "Ukraiński",
   "Chinese (Simplified)": "Chiński (uproszczony)",
   "Chinese (Traditional)": "Chiński (tradycyjny)",
+  "Vietnam": "Wietnamski",
 
   "stepVersionCompProgress": "Postęp kompilacji",
 

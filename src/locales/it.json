@@ -38,7 +38,7 @@
   "stepFeaturesEnergyDesc": "Sensori energia",
   "stepFeaturesTempHumDesc": "Sensori temperatura/umidità",
   "stepFeaturesLightDesc": "Light sensors",
-  "stepFeaturesLightTooltip": "Lght intensity, light level, UV Index, etc.",
+  "stepFeaturesLightTooltip": "Light intensity, light level, UV Index, etc.",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Espansione porte I/O",
   "stepFeaturesIOExpMCPTooltip": "Supporto per espansione PIN input/output: MCP230xx",
@@ -80,6 +80,7 @@
 
   "stepDownload": "Ora puoi scaricare i file binari compilati e i file usati durante la compilazione:",
 
+  "Afrikaans": "Afrikaans",
   "English": "Inglese",
   "Bulgarian": "Bulgaro",
   "Czech": "Ceco",
@@ -95,6 +96,7 @@
   "Polish": "Polacco",
   "Portuguese (Brazil)": "Portoghese (Brasile)",
   "Portuguese": "Portoghese",
+  "Romanian": "Romanian",
   "Russian": "Russo",
   "Slovak": "Slovacco",
   "Swedish": "Svedese",
