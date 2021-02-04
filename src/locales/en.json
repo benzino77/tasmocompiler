@@ -71,12 +71,9 @@
   "stepCustomParamsDesc": "Below you can enter custom parameters, which will be included at the end of {filename} file. If you don't know what it is, just click Next.",
 
   "stepVersionTitle": "Select version and compile",
-  "stepVersionDesc": "Select Tasmota and Arduino Core version. Choose the language you want to use and your hardware.",
+  "stepVersionDesc": "Select Tasmota version and language.",
   "stepVersionTasmota": "Tasmota version",
-  "stepVersionCore": "Core version",
   "stepVersionLanguage": "Language",
-  "stepVersionBoard": "Board version",
-  "stepVersionBoardSpeed": "Board speed",
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 

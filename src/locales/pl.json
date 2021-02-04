@@ -70,12 +70,9 @@
   "stepCustomParamsDesc": "Poniżej możesz wpisać własne parametry, które zostaną dodane na koniec pliku {filename}. Jeśli nie wiesz co to jest, po prostu kliknij NASTĘPNY.",
 
   "stepVersionTitle": "Wybierz wersje i kompiluj",
-  "stepVersionDesc": "Wybierz wersję Tasmota oraz Arduino Core. Zaznacz język jaki ma być używany oraz wersję płytki.",
+  "stepVersionDesc": "Wybierz wersję Tasmoty oraz języka.",
   "stepVersionTasmota": "Wersja Tasmoty",
-  "stepVersionCore": "Wersja Core",
   "stepVersionLanguage": "Język",
-  "stepVersionBoard": "Wersja płytki",
-  "stepVersionBoardSpeed": "Taktowanie zegara",
 
   "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
