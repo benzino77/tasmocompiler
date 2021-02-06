@@ -66,9 +66,25 @@ const createUserDefines = (data) => {
         return;
       }
       if (data[e] !== '') {
-        userDefines.push(
-          `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`
-        );
+        console.log('TUTAJ', e, data[e]);
+        if (
+          [
+            'STA_PASS1',
+            'STA_SSID1',
+            'WIFI_DNS',
+            'WIFI_GATEWAY',
+            'WIFI_IP_ADDRESS',
+            'WIFI_SUBNETMASK',
+          ].includes(e)
+        ) {
+          userDefines.push(
+            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`
+          );
+        } else {
+          userDefines.push(
+            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`
+          );
+        }
       }
     }
   });

@@ -70,7 +70,7 @@
   "stepCustomParamsDesc": "Poniżej możesz wpisać własne parametry, które zostaną dodane na koniec pliku {filename}. Jeśli nie wiesz co to jest, po prostu kliknij NASTĘPNY.",
 
   "stepVersionTitle": "Wybierz wersje i kompiluj",
-  "stepVersionDesc": "Select Tasmota version and language.",
+  "stepVersionDesc": "Wybierz wersję Tasmoty oraz języka.",
   "stepVersionTasmota": "Wersja Tasmoty",
   "stepVersionLanguage": "Język",
 
