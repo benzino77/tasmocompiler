@@ -1,7 +1,7 @@
 const availableBoards = [
   {
     name: 'esp8266',
-    description: 'Generic ESP8266',
+    description: 'ESP8266',
     default: true,
     show: true,
     platformio_entries: {},

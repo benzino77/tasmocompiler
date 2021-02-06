@@ -1,0 +1,130 @@
+const displays = [
+  {
+    name: 'USE_DISPLAY_LCD',
+    value: false,
+    show: true,
+    description: 'stepFeaturesLCD',
+    include: ['USE_I2C', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_SSD1306',
+    value: false,
+    show: true,
+    description: 'stepFeaturesSSD1306',
+    include: ['USE_I2C', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_MATRIX',
+    value: false,
+    show: true,
+    description: 'stepFeaturesMATRIX',
+    include: ['USE_I2C', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    custom:
+      '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
+      '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
+      '#define MTX_ADDRESS3     0x75              // [DisplayAddress3] I2C address of third 8x8 matrix module\n' +
+      '#define MTX_ADDRESS4     0x72              // [DisplayAddress4] I2C address of fourth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS5     0x73              // [DisplayAddress5] I2C address of fifth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
+      '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
+      '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_ILI9341',
+    value: false,
+    show: true,
+    description: 'stepFeaturesILI9341',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_EPAPER_29',
+    value: false,
+    show: true,
+    description: 'stepFeaturesEPAPER_29',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_EPAPER_42',
+    value: false,
+    show: true,
+    description: 'stepFeaturesEPAPER_42',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_SH1106',
+    value: false,
+    show: true,
+    description: 'stepFeaturesSH1106',
+    include: ['USE_I2C', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_ILI9488',
+    value: false,
+    show: true,
+    description: 'stepFeaturesILI9488',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_SSD1351',
+    value: false,
+    show: true,
+    description: 'stepFeaturesSSD1351',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_RA8876',
+    value: false,
+    show: true,
+    description: 'stepFeaturesRA8876',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_SEVENSEG',
+    value: false,
+    show: true,
+    description: 'stepFeaturesSEVENSEG',
+    include: ['USE_I2C', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_ST7789',
+    value: false,
+    show: true,
+    description: 'stepFeaturesST7789',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_SSD1331',
+    value: false,
+    show: true,
+    description: 'stepFeaturesSSD1331',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    type: 'display',
+  },
+];
+
+export default displays;

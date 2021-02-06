@@ -9,8 +9,9 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Divider from '@material-ui/core/Divider';
 
-import availableFeatures from './AvailableFeatures';
+import availableFeatures, {featureTypes} from './AvailableFeatures';
 import availableBoards from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
@@ -252,23 +253,34 @@ class FeaturesStep extends Component {
           <Typography>
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
-          <div className={classes.actionsContainer}>
-            {availableFeatures.map(
-              (item) =>
-                item.show &&
-                (item.boards.includes(board.name) ||
-                  item.boards.includes('all')) && (
-                  <FeaturesSelector
-                    classes={classes}
-                    // value={this.state[item.name]}
-                    value={tempState[item.name]}
-                    item={item}
-                    onChange={this.handleChangeCheckBox}
-                    key={item.name}
-                  />
-                )
-            )}
-          </div>
+          {featureTypes.map(
+            (type) => (
+              <div>
+                <br />
+                <Typography>
+                  <FormattedMessage id={"stepFeatures" + type.charAt(0).toUpperCase() + type.slice(1) + "TypeDesc"} />
+                </Typography>
+                <Divider />
+                <div className={classes.actionsContainer}>
+                  {availableFeatures.map(
+                    (item) =>
+                      item.show &&
+                      item.type === type &&
+                      (item.boards.includes(board.name) ||
+                        item.boards.includes('all')) && (
+                        <FeaturesSelector
+                          classes={classes}
+                          // value={this.state[item.name]}
+                          value={tempState[item.name]}
+                          item={item}
+                          onChange={this.handleChangeCheckBox}
+                          key={item.name}
+                        />
+                      )
+                  )}
+                </div>
+              </div>
+            ))}
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <BackButton disabled={false} onClick={this.handleBack} />
