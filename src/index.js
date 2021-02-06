@@ -21,7 +21,13 @@ languages.sort((a , b) => {
 });
 
 availableFeatures.sort((a , b) => {
-    return allMessages[currentLocale][a.description].localeCompare(allMessages[currentLocale][b.description]);
+    if (!a.description || a.description === ''){
+        return -1;
+    } else if (!b.description || b.description === ''){
+        return 1;
+    } else {
+        return allMessages[currentLocale][a.description].localeCompare(allMessages[currentLocale][b.description], currentLocale, { sensitivity: 'base' });
+    }
 });
 
 ReactDOM.render(

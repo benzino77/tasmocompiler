@@ -43,7 +43,6 @@ const availableFeatures = [
     name: 'USE_DISPLAY',
     value: false,
     show: false,
-    description: '',
     boards: ['all'],
   },
   {
@@ -101,7 +100,6 @@ const availableFeatures = [
     name: 'USE_ENERGY_SENSOR',
     value: false,
     show: false,
-    description: '',
     boards: ['all'],
   },
   {
@@ -365,14 +363,12 @@ const availableFeatures = [
     name: 'USE_I2C',
     value: false,
     show: false,
-    description: 'stepFeaturesI2CDesc',
     boards: ['all'],
   },
   {
     name: 'USE_SPI',
     value: false,
     show: false,
-    description: 'stepFeaturesSPIDesc',
     boards: ['all'],
   },
 ];
