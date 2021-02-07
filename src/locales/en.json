@@ -82,6 +82,7 @@
   "stepFeaturesSSD1306": "SSD1306",
   "stepFeaturesMATRIX": "MATRIX",
   "stepFeaturesILI9341": "ILI9341",
+  "stepFeaturesILI9342": "ILI9342",
   "stepFeaturesEPAPER_29": "EPAPER 29",
   "stepFeaturesEPAPER_42": "EPAPER 42",
   "stepFeaturesSH1106": "SH1106",

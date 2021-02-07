@@ -255,7 +255,7 @@ class FeaturesStep extends Component {
           </Typography>
           {featureTypes.map(
             (type) => (
-              <div>
+              <>
                 <br />
                 <Typography>
                   <FormattedMessage id={"stepFeatures" + type.charAt(0).toUpperCase() + type.slice(1) + "TypeDesc"} />
@@ -279,7 +279,7 @@ class FeaturesStep extends Component {
                       )
                   )}
                 </div>
-              </div>
+              </>
             ))}
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>

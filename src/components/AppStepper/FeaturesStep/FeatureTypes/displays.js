@@ -41,7 +41,16 @@ const displays = [
     show: true,
     description: 'stepFeaturesILI9341',
     include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
-    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam', 'esp32odroid-go'],
+    type: 'display',
+  },
+  {
+    name: 'USE_DISPLAY_ILI9342',
+    value: false,
+    show: true,
+    description: 'stepFeaturesILI9342',
+    include: ['USE_SPI', 'USE_DISPLAY_MODES1TO5', 'USE_DISPLAY'],
+    boards: ['esp32', 'esp32webcam', 'esp32m5'],
     type: 'display',
   },
   {

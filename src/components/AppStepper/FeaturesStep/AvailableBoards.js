@@ -115,7 +115,7 @@ const availableBoards = [
         '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
     },
     tooltip: '',
-    include_features: ['USE_DISPLAY_ILI9342'],
+    include_features: ['USE_DISPLAY_ILI9342', 'USE_SPI', 'USE_I2C'],
     exclude_features: [],
     defines: {
       MODULE: 'M5STACK_CORE2',
