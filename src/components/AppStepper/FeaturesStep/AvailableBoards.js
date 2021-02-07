@@ -85,7 +85,7 @@ const availableBoards = [
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
     },
     tooltip: '',
-    include_features: ['USE_DISPLAY_ILI9342'],
+    include_features: ['USE_DISPLAY_ILI9341'],
     exclude_features: [],
     defines: {
       MODULE: 'ODROID_GO',
