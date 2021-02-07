@@ -11,7 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Divider from '@material-ui/core/Divider';
 
-import availableFeatures, {featureTypes} from './AvailableFeatures';
+import availableFeatures, { featureTypes } from './AvailableFeatures';
 import availableBoards from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';

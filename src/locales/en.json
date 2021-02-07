@@ -33,7 +33,7 @@
   "stepFeaturesDistanceTypeDesc": "Distance sensor",
   "stepFeaturesEnergyTypeDesc": "Energy sensors",
   "stepFeaturesLightTypeDesc": "Light sensors (Light intensity, light level, UV Index, etc.)",
-  "stepFeaturesTemphumpressTypeDesc": "Temperature / Humidity / pressure sensors",
+  "stepFeaturesTemphumpressTypeDesc": "Temperature / humidity / pressure sensors",
 
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",
