@@ -1,11 +1,11 @@
-import generic from './FeatureTypes/generic';
-import meta from './FeatureTypes/meta';
-import airSensors from './FeatureTypes/airSensors';
-import displays from './FeatureTypes/displays';
-import distanceSensors from './FeatureTypes/distanceSensors';
-import energySensors from './FeatureTypes/energySensors';
-import lightSensors from './FeatureTypes/lightSensors';
-import temphumpressSensors from './FeatureTypes/temphumpressSensors';
+import generic from './FeatureTypes/Generic';
+import meta from './FeatureTypes/Meta';
+import airSensors from './FeatureTypes/AirSensors';
+import displays from './FeatureTypes/Displays';
+import distanceSensors from './FeatureTypes/DistanceSensors';
+import energySensors from './FeatureTypes/EnergySensors';
+import lightSensors from './FeatureTypes/LightSensors';
+import temphumpressSensors from './FeatureTypes/TempHumPressSensors';
 
 export const featureTypes = ['generic', 'air', 'display', 'distance', 'energy', 'light', 'temphumpress'];
 

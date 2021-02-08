@@ -253,33 +253,38 @@ class FeaturesStep extends Component {
           <Typography>
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
-          {featureTypes.map(
-            (type) => (
-              <>
-                <br />
-                <Typography>
-                  <FormattedMessage id={"stepFeatures" + type.charAt(0).toUpperCase() + type.slice(1) + "TypeDesc"} />
-                </Typography>
-                <Divider />
-                <div className={classes.actionsContainer}>
-                  {availableFeatures.map(
-                    (item) =>
-                      item.show &&
-                      item.type === type &&
-                      (item.boards.includes(board.name) ||
-                        item.boards.includes('all')) && (
-                        <FeaturesSelector
-                          classes={classes}
-                          // value={this.state[item.name]}
-                          value={tempState[item.name]}
-                          item={item}
-                          onChange={this.handleChangeCheckBox}
-                          key={item.name}
-                        />
-                      )
-                  )}
-                </div>
-              </>
+          {featureTypes.map((type) => (
+            <div className={classes.featuresGroup} key={type}>
+              <Typography>
+                <FormattedMessage
+                  id={
+                    'stepFeatures' +
+                    type.charAt(0).toUpperCase() +
+                    type.slice(1) +
+                    'TypeDesc'
+                  }
+                />
+              </Typography>
+              <Divider />
+              <div className={classes.actionsContainer}>
+                {availableFeatures.map(
+                  (item) =>
+                    item.show &&
+                    item.type === type &&
+                    (item.boards.includes(board.name) ||
+                      item.boards.includes('all')) && (
+                      <FeaturesSelector
+                        classes={classes}
+                        // value={this.state[item.name]}
+                        value={tempState[item.name]}
+                        item={item}
+                        onChange={this.handleChangeCheckBox}
+                        key={item.name}
+                      />
+                    )
+                )}
+              </div>
+            </div>
             ))}
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
