@@ -18,10 +18,14 @@ class VersionStep extends Component {
 
     // Search the current locale of browser on languages
     var languageIndex = languages.findIndex((element) =>
-      element.value.includes(navigator.language)
+      element.value.includes(navigator.language.split(/[-_]/)[0])
     );
     // Set English if not found current locale of browser on languages
-    if (languageIndex === -1) languageIndex = 0;
+    if (languageIndex === -1) {
+      languageIndex = languages.findIndex((element) =>
+        element.value.includes('en')
+      );
+    }
 
     this.state = {
       tasmotaVersion: 'development',
