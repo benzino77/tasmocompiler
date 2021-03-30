@@ -104,12 +104,5 @@
 
   "stepVersionCompProgress": "Progresso compilazione",
 
-  "ESP32 (generic)": "ESP32 (generic)",
-  "ESP32 (M5Stack Core2)": "ESP32 (M5Stack Core2)",
-  "ESP32 (odroid-go)": "ESP32 (odroid-go)",
-  "ESP32 (webcam)": "ESP32 (webcam)",
-  "ESP8266 (generic)": "ESP8266 (generic)",
-  "SonOff Zigbee Bridge": "SonOff Zigbee Bridge",
-
   "": ""
 }
