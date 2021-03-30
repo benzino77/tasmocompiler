@@ -17,23 +17,23 @@ class VersionStep extends Component {
     super(props);
 
     // Search the current locale of browser on languages
-    let browserLocale = navigator.language;
+    let browserLocale = navigator.language.toLowerCase();
 
-    var languageIndex = languages.findIndex((element) =>
-      element.value.includes(browserLocale.replace('-', '_'))
+    let languageIndex = languages.findIndex((element) =>
+      element.value.toLowerCase().includes(browserLocale.replace('-', '_'))
     );
     // Search the language part only
     if (languageIndex === -1) {
       languageIndex = languages.findIndex((element) =>
-        element.value.includes(browserLocale.split(/[-_]/)[0])
-        );
-    }
+        element.value.toLowerCase().includes(browserLocale.split(/[-_]/)[0])
+      );
+    };
     // Set English if not found current locale of browser on languages
     if (languageIndex === -1) {
       languageIndex = languages.findIndex((element) =>
         element.value.includes('en_GB')
       );
-    }
+    };
 
     this.state = {
       tasmotaVersion: 'development',
