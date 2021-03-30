@@ -1,7 +1,6 @@
 {
   "appBarLangFlag": "IT",
   "appBarLangTooltip": "Modifica la lingua nelle impostazioni del browser",
-
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Scarica il codice sorgente Tasmota prima di andare allo step successivo",
@@ -23,6 +22,8 @@
   "stepWifiConfDNS": "Server DNS",
 
   "stepFeaturesTitle": "Selezione funzionalità",
+  "stepFeaturesBoardDesc": "Seleziona la scheda su cui è basato il progetto",
+  "stepFeaturesBoard8266Tooltip": "Questa è probabilmente la scheda che dovresti scegliere",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
   "stepFeaturesAGDesc": "Sensori aria/gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -35,14 +36,16 @@
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Sensori energia",
   "stepFeaturesTempHumDesc": "Sensori temperatura/umidità",
+  "stepFeaturesLightDesc": "Sensori luci",
+  "stepFeaturesLightTooltip": "Intensità luce, livello luce, indice UV, ecc.",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
   "stepFeaturesIOExpMCPDesc": "Espansione porte I/O",
   "stepFeaturesIOExpMCPTooltip": "Supporto per espansione PIN input/output: MCP230xx",
   "stepFeaturesKNXDesc": "KNX",
   "stepFeaturesIRBasicDesc": "IR (base)",
-  "stepFeaturesIRBasicTooltip": "Supporto infrarossi base (file binario e occupazione memoria più bassa). Non include il supporto infrarossi completo.",
+  "stepFeaturesIRBasicTooltip": "Supporto base infrarossi (file binario e occupazione memoria più bassa). Non include il supporto infrarossi completo.",
   "stepFeaturesIRFullDesc": "IR (completo)",
-  "stepFeaturesIRFullTooltip": "Supporto infrarossi completo (file binario e occupazione memroia maggiroe).",
+  "stepFeaturesIRFullTooltip": "Supporto completo infrarossi",
   "stepFeaturesMDNSDesc": "Discovery mDNS",
   "stepFeaturesMQTTTLSDesc": "MQTT su TLS",
   "stepFeaturesMQTTTLSTooltip": "Questa funzionè è disponibile con la versione Tasmota 6.6.0.9 o successive (ultimi sviluppi).",
@@ -67,15 +70,13 @@
   "stepCustomParamsDesc": "Qui sotto puoi inserire i parametri personalizzati che verranno inclusi alla fine del file. Se non li conosci o non devi inserirli seleziona 'Avanti'.",
 
   "stepVersionTitle": "Selezione versione e compilazione",
-  "stepVersionDesc": "Seleziona la versione Tasmota e core Arduino. Scegli la lingua che vuoi usare e il tipo di hardware.",
+  "stepVersionDesc": "Seleziona versione Tasmota e lingua.",
   "stepVersionTasmota": "Versione Tasmota",
-  "stepVersionCore": "Versione core",
   "stepVersionLanguage": "Lingua",
-  "stepVersionBoard": "Versione scheda",
-  "stepVersionBoardSpeed": "Clock scheda",
 
   "stepDownload": "Ora puoi scaricare i file binari compilati e i file usati durante la compilazione:",
 
+  "Afrikaans": "Afrikaans",
   "English": "Inglese",
   "Bulgarian": "Bulgaro",
   "Czech": "Ceco",
@@ -91,6 +92,7 @@
   "Polish": "Polacco",
   "Portuguese (Brazil)": "Portoghese (Brasile)",
   "Portuguese": "Portoghese",
+  "Romanian": "Rumeno",
   "Russian": "Russo",
   "Slovak": "Slovacco",
   "Swedish": "Svedese",
@@ -98,6 +100,7 @@
   "Ukrainian": "Ucraino",
   "Chinese (Simplified)": "Cinese (semplificato)",
   "Chinese (Traditional)": "Cinese (tradizionale)",
+  "Vietnam": "Vietnamita",
 
   "stepVersionCompProgress": "Progresso compilazione",
 

@@ -42,7 +42,14 @@ class WifiStep extends Component {
   }
 
   handleChangeCheckBox(event) {
-    this.setState({ [event.target.name]: event.target.checked });
+    // there is only one checkbox in this step
+    this.setState({
+      staticIPEnabled: event.target.checked,
+      WIFI_IP_ADDRESS: '',
+      WIFI_SUBNETMASK: '',
+      WIFI_GATEWAY: '',
+      WIFI_DNS: '',
+    });
   }
 
   handleClickShowPassword(event) {
@@ -55,7 +62,7 @@ class WifiStep extends Component {
 
   handleNext() {
     const { nextHandler } = this.props;
-    nextHandler({ ...this.state });
+    nextHandler({ network: this.state });
   }
 
   handleBack() {

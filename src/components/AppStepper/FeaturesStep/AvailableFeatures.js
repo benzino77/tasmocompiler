@@ -18,6 +18,8 @@ const availableFeatures = [
       'USE_IAQ',
     ],
     include: ['USE_I2C'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'alexa',
@@ -25,6 +27,8 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesAlexaDesc',
     group: ['USE_EMULATION', 'USE_EMULATION_HUE', 'USE_EMULATION_WEMO'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_TASMOTA_CLIENT',
@@ -32,6 +36,15 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesArduinoSlaveDesc',
     tooltip: 'stepFeaturesArduinoSlaveTooltip',
+    custom: '',
+    boards: ['all'],
+  },
+  {
+    name: 'USE_DISPLAY',
+    value: false,
+    show: false,
+    description: '',
+    boards: ['all'],
   },
   {
     name: 'displays',
@@ -40,7 +53,6 @@ const availableFeatures = [
     description: 'stepFeaturesDisplaysDesc',
     tooltip: 'stepFeaturesDisplaysTooltip',
     group: [
-      'USE_DISPLAY',
       'USE_DISPLAY_MODES1TO5',
       'USE_DISPLAY_LCD',
       'USE_DISPLAY_SSD1306',
@@ -56,7 +68,7 @@ const availableFeatures = [
       'USE_DISPLAY_ST7789',
       'USE_DISPLAY_SSD1331',
     ],
-    include: ['USE_SPI', 'USE_I2C'],
+    include: ['USE_SPI', 'USE_I2C', 'USE_DISPLAY'],
     custom:
       '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
       '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
@@ -66,6 +78,7 @@ const availableFeatures = [
       '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
       '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
+    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
   },
   {
     name: 'USE_ADC_VCC',
@@ -73,12 +86,23 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesDispVccDesc',
     tooltip: 'stepFeaturesDispVccTooltip',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_DOMOTICZ',
     value: false,
     show: true,
     description: 'stepFeaturesDomoticzDesc',
+    custom: '',
+    boards: ['all'],
+  },
+  {
+    name: 'USE_ENERGY_SENSOR',
+    value: false,
+    show: false,
+    description: '',
+    boards: ['all'],
   },
   {
     name: 'energysensors',
@@ -86,7 +110,6 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesEnergyDesc',
     group: [
-      'USE_ENERGY_SENSOR',
       'USE_HLW8012',
       'USE_CSE7766',
       'USE_PZEM004T',
@@ -105,7 +128,9 @@ const availableFeatures = [
       'USE_IEM3000',
       'USE_WE517',
     ],
-    include: ['USE_I2C'],
+    include: ['USE_I2C', 'USE_ENERGY_SENSOR'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'temphumpressensors',
@@ -136,12 +161,38 @@ const availableFeatures = [
       'USE_LMT01',
     ],
     include: ['USE_I2C'],
+    custom: '',
+    boards: ['all'],
+  },
+  {
+    name: 'lightsensors',
+    value: false,
+    show: true,
+    description: 'stepFeaturesLightDesc',
+    tooltip: 'stepFeaturesLightTooltip',
+    group: [
+      'USE_BH1750',
+      'USE_VEML6070',
+      'USE_TSL2561',
+      'USE_SI1145',
+      'USE_APDS9960',
+      'USE_VEML6075',
+      'USE_MAX44009',
+      'USE_TSL2591',
+      'USE_AS3935',
+      'USE_VEML7700',
+    ],
+    include: ['USE_I2C'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_HOME_ASSISTANT',
     value: false,
     show: true,
     description: 'stepFeaturesHomeAssistantDesc',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'gpioexpanders',
@@ -156,22 +207,31 @@ const availableFeatures = [
     ],
     include: ['USE_I2C'],
     custom: '#define USE_MCP230xx_ADDR 0x20\n',
+    boards: ['all'],
   },
   {
     name: 'USE_KNX',
     value: false,
     show: true,
     description: 'stepFeaturesKNXDesc',
-    include: ['energysensors'],
+    include: ['USE_ENERGY_SENSOR'],
+    group: [],
+    custom: '',
+    boards: ['all'],
   },
+  // this IR support one is deprecated
   {
     name: 'USE_IR_REMOTE',
     value: false,
-    show: true,
+    show: false,
     description: 'stepFeaturesIRBasicDesc',
     tooltip: 'stepFeaturesIRBasicTooltip',
     exclude: ['USE_IR_REMOTE_FULL'],
-    buildflag: '-D_IR_ENABLE_DEFAULT_=false',
+    platformio_entries: {
+      build_flags: '-D_IR_ENABLE_DEFAULT_=false',
+    },
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_IR_REMOTE_FULL',
@@ -180,14 +240,20 @@ const availableFeatures = [
     description: 'stepFeaturesIRFullDesc',
     tooltip: 'stepFeaturesIRFullTooltip',
     exclude: ['USE_IR_REMOTE'],
-    buildflag:
-      '-U_IR_ENABLE_DEFAULT_ -DDECODE_PRONTO=false -DSEND_PRONTO=false',
+    platformio_entries: {
+      // eslint-disable-next-line
+      build_flags: '${irremoteesp_full.build_flags}',
+    },
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_DISCOVERY',
     value: false,
     show: true,
     description: 'stepFeaturesMDNSDesc',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_MQTT_TLS',
@@ -195,6 +261,8 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesMQTTTLSDesc',
     tooltip: 'stepFeaturesMQTTTLSTooltip',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_RC_SWITCH',
@@ -202,6 +270,8 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesRFTransceiverDesc',
     tooltip: 'stepFeaturesRFTransceiverTooltip',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'rules',
@@ -211,6 +281,8 @@ const availableFeatures = [
     tooltip: 'stepFeaturesRulesTooltip',
     exclude: ['USE_SCRIPT'],
     group: ['USE_RULES', 'USE_EXPRESSION', 'SUPPORT_IF_STATEMENT'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_SCRIPT',
@@ -219,18 +291,24 @@ const availableFeatures = [
     description: 'stepFeaturesScriptDesc',
     tooltip: 'stepFeaturesScriptTooltip',
     exclude: ['rules'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_TIMERS',
     value: true,
     show: true,
     description: 'stepFeaturesTimersDesc',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_TUYA_MCU',
     value: false,
     show: true,
     description: 'stepFeaturesTuyaMCUDesc',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'distance',
@@ -239,6 +317,8 @@ const availableFeatures = [
     description: 'stepFeaturesDistanceDesc',
     group: ['USE_SR04', 'USE_VL53L0X', 'USE_HRXL', 'USE_DYP', 'USE_VL53L1X'],
     include: ['USE_I2C'],
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_WEBSERVER',
@@ -246,12 +326,16 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesWebInterfaceDesc',
     tooltip: 'stepFeaturesWebInterfaceTooltip',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_WS2812',
     value: false,
     show: true,
     description: 'stepFeaturesWS2812Desc',
+    custom: '',
+    boards: ['all'],
   },
   {
     name: 'USE_ZIGBEE',
@@ -275,18 +359,21 @@ const availableFeatures = [
       '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
       '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
       '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
+    boards: ['esp8266', 'esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5'],
   },
   {
     name: 'USE_I2C',
     value: false,
     show: false,
     description: 'stepFeaturesI2CDesc',
+    boards: ['all'],
   },
   {
     name: 'USE_SPI',
     value: false,
     show: false,
     description: 'stepFeaturesSPIDesc',
+    boards: ['all'],
   },
 ];
 

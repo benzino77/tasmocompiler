@@ -24,12 +24,13 @@ class CustomParametersStep extends Component {
   componentDidUpdate(prevProps) {
     const { pstate } = this.props;
 
-    const ncp = Object.keys(pstate)
+    const ncp = Object.keys(pstate.features)
       .filter((name) => name.startsWith('precustom_'))
-      .reduce((acc, cval) => `${acc}\n${pstate[cval]}`, '');
-    const pcp = Object.keys(prevProps.pstate)
+      .reduce((acc, cval) => `${acc}\n${pstate.features[cval]}`, '');
+
+    const pcp = Object.keys(prevProps.pstate.features)
       .filter((name) => name.startsWith('precustom_'))
-      .reduce((acc, cval) => `${acc}\n${prevProps.pstate[cval]}`, '');
+      .reduce((acc, cval) => `${acc}\n${prevProps.pstate.features[cval]}`, '');
 
     if (ncp !== pcp) {
       this.setState({ customParams: ncp });

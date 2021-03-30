@@ -4,25 +4,47 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 import availableFeatures from './AvailableFeatures';
+import availableBoards from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
 
-const getFeaturesDefaultStates = () => {
-  const defaults = {};
+const getFeaturesDefaultStates = (board) => {
+  let defaults = {};
+  let toIncludeExclude = {};
+  availableFeatures.forEach((feature) => {
+    if (
+      feature.boards.includes(board.name) ||
+      feature.boards.includes('all') ||
+      board.include_features.includes(feature.name)
+    ) {
+      const value = board.include_features.includes(feature.name)
+        ? true
+        : feature.value;
 
-  availableFeatures.forEach((e) => {
-    defaults[e.name] = e.value;
-
-    if (e.group) {
-      e.group.forEach((g) => {
-        defaults[g] = e.value;
+      defaults[feature.name] = value;
+      const group = getFeatureGroup(feature.name);
+      group.forEach((g) => {
+        defaults[g] = value;
       });
+
+      if (value) {
+        toIncludeExclude = {
+          ...toIncludeExclude,
+          ...setIncludeExcludeFeature(feature.name),
+        };
+      }
     }
   });
+  defaults = { ...defaults, ...toIncludeExclude };
 
   return defaults;
 };
@@ -70,22 +92,22 @@ const getCustomParametersForFeature = (name) => {
   return '';
 };
 
-const getBuildFlagForFeature = (name) => {
+const getPlatformioEntriesForFeature = (name) => {
   const filtered = availableFeatures.filter(
-    (e) => e.name === name && e.buildflag
+    (e) => e.name === name && e.platformio_entries
   );
   if (filtered.length > 0) {
-    return filtered[0].buildflag;
+    return filtered[0].platformio_entries;
   }
 
-  return '';
+  return null;
 };
 
 const setFeature = (name, state) => {
   const newState = {};
   const group = getFeatureGroup(name);
   const custom = getCustomParametersForFeature(name);
-  const buildFlag = getBuildFlagForFeature(name);
+  const entries = getPlatformioEntriesForFeature(name);
 
   newState[name] = state;
   group.forEach((item) => {
@@ -96,9 +118,29 @@ const setFeature = (name, state) => {
     newState[`precustom_${name}`] = state ? custom : '';
   }
 
-  if (buildFlag) {
-    newState[`buildflag_${name}`] = state ? buildFlag : '';
+  if (entries) {
+    newState[`platformio_entries#${name}`] = state ? entries : {};
   }
+  return newState;
+};
+
+const setIncludeExcludeFeature = (name) => {
+  let newState = {};
+  const excludeGroup = getFeatureExclude(name);
+  const includeGroup = getFeatureInclude(name);
+
+  excludeGroup.forEach((item) => {
+    newState = {
+      ...newState,
+      ...setFeature(item, false),
+    };
+  });
+  includeGroup.forEach((item) => {
+    newState = {
+      ...newState,
+      ...setFeature(item, true),
+    };
+  });
   return newState;
 };
 
@@ -106,35 +148,33 @@ class FeaturesStep extends Component {
   constructor(props) {
     super(props);
 
-    const defaultStates = getFeaturesDefaultStates();
-    this.state = { ...defaultStates };
+    const defaultBoard = availableBoards.filter((b) => b.default === true);
+    const defaultStates = getFeaturesDefaultStates(defaultBoard[0]);
+    this.state = { features: { board: defaultBoard[0], ...defaultStates } };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
+    this.handleRadioChange = this.handleRadioChange.bind(this);
   }
 
   handleChangeCheckBox(event) {
-    let featureState = setFeature(event.target.name, event.target.checked);
-    const excludeGroup = getFeatureExclude(event.target.name);
-    const includeGroup = getFeatureInclude(event.target.name);
+    const { checked, name } = event.target;
+    let featureState = setFeature(name, checked);
 
-    if (event.target.checked) {
-      excludeGroup.forEach((item) => {
-        featureState = {
-          ...featureState,
-          ...setFeature(item, !event.target.checked),
-        };
-      });
-      includeGroup.forEach((item) => {
-        featureState = {
-          ...featureState,
-          ...setFeature(item, event.target.checked),
-        };
-      });
+    if (checked) {
+      featureState = { ...featureState, ...setIncludeExcludeFeature(name) };
     }
 
-    this.setState(featureState);
+    this.setState((state) => {
+      let newFeatures = { ...state.features, ...featureState };
+      // let newFeatures = Object.assign({}, state.features, featureState);
+
+      // Object.keys(featureState).forEach((f) => {
+      //   newFeatures[f] = featureState[f];
+      // });
+      return { features: { ...newFeatures } };
+    });
   }
 
   handleNext() {
@@ -147,9 +187,16 @@ class FeaturesStep extends Component {
     backHandler();
   }
 
+  handleRadioChange(event) {
+    const boards = availableBoards.filter((b) => b.name === event.target.value);
+    const defaultStates = getFeaturesDefaultStates(boards[0]);
+    this.setState({ features: { board: boards[0], ...defaultStates } });
+  }
+
   render() {
-    const { ...tempState } = this.state;
+    const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
+    const Wire = ({ children, ...props }) => children(props);
 
     return (
       <Step {...other}>
@@ -158,12 +205,59 @@ class FeaturesStep extends Component {
         </StepLabel>
         <StepContent>
           <Typography>
+            <FormattedMessage id="stepFeaturesBoardDesc" />
+          </Typography>
+          <div className={classes.actionsContainer}>
+            <RadioGroup
+              row
+              aria-label="board"
+              name="board"
+              value={board.name}
+              onChange={this.handleRadioChange}
+            >
+              {availableBoards.map((item, index) => {
+                const { name, description, tooltip, show } = item;
+                return (
+                  show && (
+                    // tooltips workaround
+                    <Wire
+                      value={name}
+                      key={index}
+                      className={classes.radioContainer}
+                    >
+                      {(props) => (
+                        <Tooltip
+                          title={
+                            tooltip ? <FormattedMessage id={tooltip} /> : ''
+                          }
+                        >
+                          <FormControlLabel
+                            control={<Radio />}
+                            label={description}
+                            labelPlacement="end"
+                            {...props}
+                          />
+                        </Tooltip>
+                      )}
+                    </Wire>
+                  )
+                );
+              })}
+            </RadioGroup>
+            <FormHelperText>
+              {/* <FormattedMessage id="stepFeatures..." /> */}
+            </FormHelperText>
+          </div>
+
+          <Typography>
             <FormattedMessage id="stepFeaturesDesc" />
           </Typography>
           <div className={classes.actionsContainer}>
             {availableFeatures.map(
               (item) =>
-                item.show && (
+                item.show &&
+                (item.boards.includes(board.name) ||
+                  item.boards.includes('all')) && (
                   <FeaturesSelector
                     classes={classes}
                     // value={this.state[item.name]}

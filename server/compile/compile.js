@@ -2,18 +2,14 @@ const shell = require('shelljs');
 const fs = require('fs-extra');
 const path = require('path');
 const _ = require('lodash');
-const ini = require('ini');
 const debug = require('debug')('compile');
 
 const { switchToBranch } = require('../git/git');
 const {
   tasmotaRepo,
   userConfigOvewrite,
-  userPlatformioIni,
   tasmotaVersionFile,
-  templatePlatformioIni,
-  tcSrcCoresIni,
-  tcDestCoresIni,
+  userPlatformioOverrideIni,
 } = require('../config/config');
 
 // Since 6.7.1.1 there is no sonoff src dir. New dir is tasmota
@@ -32,125 +28,153 @@ const createNewTasmotaStructure = () => {
   }
 };
 
-const prepareFiles = async (data) => {
-  let config;
-  await switchToBranch(data.tasmotaVersion);
-  createNewTasmotaStructure();
+const getTasmotaVersion = () => {
+  const fileExists = fs.pathExistsSync(tasmotaVersionFile);
+  const versRegexp = /const uint32_t VERSION = (.*);/gm;
 
-  // only uppercase keys are those which are important to place in user_config_overwrite.h
-  // lowercase keys are 'helpers'
-  const userDefines = Object.keys(data).filter((e) => {
-    const f = e[0].toLowerCase();
-    return f !== e[0];
-  });
-
-  const getTasmotaVersion = () => {
-    const fileExists = fs.pathExistsSync(tasmotaVersionFile);
-    const versRegexp = /const uint32_t VERSION = (.*);/gm;
-
-    if (fileExists) {
-      const file = fs.readFileSync(tasmotaVersionFile, {
-        encoding: 'utf8',
-        flag: 'r',
-      });
-      const match = [...file.matchAll(versRegexp)];
-      if (match[0]) {
-        return parseInt(match[0][1]);
-      } else {
-        throw new Error(
-          `Cannot find Tasmota version in ${tasmotaVersionFile}.`
-        );
-      }
+  if (fileExists) {
+    const file = fs.readFileSync(tasmotaVersionFile, {
+      encoding: 'utf8',
+      flag: 'r',
+    });
+    const match = [...file.matchAll(versRegexp)];
+    if (match[0]) {
+      return parseInt(match[0][1]);
     } else {
-      throw new Error(`${tasmotaVersionFile} does not exists.`);
+      throw new Error(`Cannot find Tasmota version in ${tasmotaVersionFile}.`);
     }
-  };
+  } else {
+    throw new Error(`${tasmotaVersionFile} does not exists.`);
+  }
+};
 
-  // user_config_override.g file
-  const outputOverwrites = userDefines.map((e) => {
-    if (_.isBoolean(data[e])) {
-      if (data[e]) {
-        return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`;
+const createUserDefines = (data) => {
+  let userDefines = [];
+  Object.keys(data).forEach((e) => {
+    // only uppercase keys are those which are important to place in user_config_overwrite.h
+    // lowercase keys are 'helpers'
+    const f = e[0].toLowerCase();
+    if (f !== e[0]) {
+      if (data[e] === true) {
+        userDefines.push(
+          `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`
+        );
+        return;
       }
-      return `#ifdef ${e}\n  #undef ${e}\n#endif\n\n`;
-    }
-    if (e === 'MY_LANGUAGE') {
-      const tasmotaVersion = getTasmotaVersion();
-      if (tasmotaVersion > 0x08020005) {
-        // with Tasmota version 8.2.6 language files ware renamed from pl-PL to pl_PL
-        data[e] = ('' + data[e]).replace('-', '_');
+      if (data[e] === false) {
+        userDefines.push(`#ifdef ${e}\n  #undef ${e}\n#endif\n\n`);
+        return;
       }
-      return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`;
+      if (data[e] !== '') {
+        if (
+          [
+            'STA_PASS1',
+            'STA_SSID1',
+            'WIFI_DNS',
+            'WIFI_GATEWAY',
+            'WIFI_IP_ADDRESS',
+            'WIFI_SUBNETMASK',
+          ].includes(e)
+        ) {
+          userDefines.push(
+            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`
+          );
+        } else {
+          userDefines.push(
+            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`
+          );
+        }
+      }
     }
-    return `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`;
   });
 
-  if (data.customParams) {
-    outputOverwrites.push(`${data.customParams}\n\n`);
-  }
-  outputOverwrites.unshift(
-    '#warning **** user_config_override.h: Using Settings from this File ****\n\n'
-  );
-  outputOverwrites.unshift(
-    '#ifndef _USER_CONFIG_OVERRIDE_H_\n',
-    '#define _USER_CONFIG_OVERRIDE_H_\n\n'
-  );
-  outputOverwrites.push('#endif');
+  return userDefines;
+};
+
+const getFeaturePlatformioEntries = (data) => {
+  let platformioEntries = {};
+
+  Object.keys(data).forEach((e) => {
+    if (e.includes('platformio_entries#')) {
+      if (data[e].build_flags) {
+        platformioEntries.build_flags = platformioEntries.build_flags
+          ? `${platformioEntries.build_flags} ${data[e].build_flags}`
+          : `${data[e].build_flags}`;
+      }
+    }
+  });
+
+  return platformioEntries;
+};
+
+const prepareFiles = async (data) => {
+  const { network, features, version, customParams } = data;
+  await switchToBranch(data.version.tasmotaVersion);
+
+  // user_config_override.h file
+  const userDefinesNetwork = createUserDefines(network);
+  const userDefinesFeatures = createUserDefines(features);
+  const userDefinesBoard = createUserDefines(features.board.defines);
+  const userDefinesVersion = createUserDefines(version);
+  const outputOverwrites =
+    '#ifndef _USER_CONFIG_OVERRIDE_H_\n' +
+    '#define _USER_CONFIG_OVERRIDE_H_\n\n' +
+    '#warning **** user_config_override.h: Using Settings from this File ****\n\n' +
+    `${userDefinesNetwork.join('')}` +
+    `${userDefinesFeatures.join('')}` +
+    `${userDefinesBoard.join('')}` +
+    `${userDefinesVersion.join('')}` +
+    `${customParams}\n` +
+    '#endif\n';
 
   try {
-    await fs.writeFile(userConfigOvewrite, outputOverwrites.join(''));
+    await fs.writeFile(userConfigOvewrite, outputOverwrites);
     debug(`Successfully write ${userConfigOvewrite}`);
   } catch (e) {
     throw new Error(`Cannot write to ${userConfigOvewrite}: ${e}`);
   }
 
   // platformio.ini file
+  const featurePlatformioEntries = getFeaturePlatformioEntries(features);
+
+  const commonBuildFlags = features.board.name.includes('esp32')
+    ? '${common32.build_flags}'
+    : '${common.build_flags}';
+
+  const { platformio_entries } = features.board;
+
+  Object.keys(featurePlatformioEntries).forEach((e) => {
+    if (platformio_entries[e]) {
+      platformio_entries[
+        e
+      ] = `${platformio_entries[e]} ${featurePlatformioEntries[e]}`;
+    } else {
+      platformio_entries[e] = `${featurePlatformioEntries[e]}`;
+    }
+
+    if (
+      e === 'build_flags' &&
+      !platformio_entries[e].includes(commonBuildFlags)
+    ) {
+      platformio_entries[e] = `${commonBuildFlags} ${platformio_entries[e]}`;
+    }
+  });
+
+  const platformioEnvCustom = Object.keys(platformio_entries)
+    .map((e) => `${e} = ${platformio_entries[e]}`)
+    .join('\n');
+  const platformioContent =
+    '[platformio]\n' +
+    `default_envs = firmware\n\n` +
+    `[env:firmware]\n` +
+    `${platformioEnvCustom}\n`;
+
   try {
-    const platformioFileConetent = await fs.readFile(
-      templatePlatformioIni,
-      'utf8'
-    );
-    const buildFlags = Object.keys(data)
-      .filter((e) => e.startsWith('buildflag_'))
-      .reduce((accumulator, current) => `${accumulator} ${data[current]}`, '');
-
-    const tasmotaVersion = getTasmotaVersion();
-    config = ini.parse(platformioFileConetent);
-
-    // there was a folder name change for extra_scripts from version above 9.1.0
-    // extra scripts are now lacated in 'pio-tools' instead of 'pio' folder
-    let fixedPathForExtraScript = config.common.extra_scripts;
-    fixedPathForExtraScript = fixedPathForExtraScript.replace(/replace/g, 'pio-tools');
-    if (tasmotaVersion <= 0x09010000) {
-      fixedPathForExtraScript = fixedPathForExtraScript.replace(/pio-tools/g, 'pio');
-    }
-    config.common.extra_scripts = fixedPathForExtraScript;
-    
-    // there is also lib folder structure change for version 9.1.0 and above
-    config.platformio.lib_dir = 'lib/default';
-    if (tasmotaVersion < 0x09010000) {
-      config.platformio.lib_dir = 'lib';
-    }
-
-    config.user_defined.board_memory = data.memoryBuildFlag;
-    config.user_defined.board = data.boardVersion.board;
-    config.user_defined.f_cpu = data.boardSpeed;
-    config.user_defined.build_flags = buildFlags.trim();
-    config.core_active.platform = `\${${data.coreVersion.platform}.platform}`;
-    config.core_active.platform_packages = `\${${data.coreVersion.platform}.platform_packages}`;
-    config.core_active.build_flags = `\${${data.coreVersion.platform}.build_flags}`;
-    debug(ini.stringify(config));
+    await fs.writeFileSync(userPlatformioOverrideIni, platformioContent);
   } catch (e) {
     throw new Error(
-      `Cannot load content from platformio.ini template file\n${e}\n`
+      `Cannot write new content to ${userPlatformioOverrideIni} file\n${e}\n`
     );
-  }
-
-  try {
-    await fs.writeFileSync(userPlatformioIni, ini.stringify(config));
-    await fs.copyFileSync(tcSrcCoresIni, tcDestCoresIni);
-  } catch (e) {
-    throw new Error(`Cannot write new content to platformio.ini file\n${e}\n`);
   }
 };
 
