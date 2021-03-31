@@ -27,13 +27,13 @@ class VersionStep extends Component {
       languageIndex = languages.findIndex((element) =>
         element.value.toLowerCase().includes(browserLocale.split(/[-_]/)[0])
       );
-    };
+    }
     // Set English if not found current locale of browser on languages
     if (languageIndex === -1) {
       languageIndex = languages.findIndex((element) =>
         element.value.includes('en_GB')
       );
-    };
+    }
 
     this.state = {
       tasmotaVersion: 'development',

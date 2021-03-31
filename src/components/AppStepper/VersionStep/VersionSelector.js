@@ -24,7 +24,7 @@ function VersionSelector(props) {
               {name !== 'MY_LANGUAGE' && (item.name || item)}
               {name === 'MY_LANGUAGE' && <FormattedMessage id={item.name} />}
             </MenuItem>
-        ))} 
+        ))}
       </Select>
     </FormControl>
   );
