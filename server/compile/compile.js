@@ -66,7 +66,6 @@ const createUserDefines = (data) => {
         return;
       }
       if (data[e] !== '') {
-        console.log('TUTAJ', e, data[e]);
         if (
           [
             'STA_PASS1',
