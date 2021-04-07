@@ -25,6 +25,7 @@
   "stepFeaturesTitle": "Jellemzők kiválasztás",
   "stepFeaturesBoardDesc": "Válassza ki a boardot, amelyre a projekt épül",
   "stepFeaturesBoard8266Tooltip": "Ez valószínűleg az a board, amelyet választania kell",
+  "stepFeaturesBoard82664MTooltip": "4Mb ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "Mely tulajdonságokat kell tartalmaznia a végleges bináris firmware-nek?",
   "stepFeaturesAGDesc": "Levegő / gáz érzékelők",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -64,6 +65,8 @@
   "stepFeaturesWS2812Desc": "WS2812 LEDek",
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Soros kommunikáció engedélyezése Zigbee CC2530-al ZNP firmware-rel vagy EFR32 EmberZNet eszközök (például Sonoff Zigbee Bridge) EZSP firmware-rel",
+  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
 

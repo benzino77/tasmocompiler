@@ -362,6 +362,15 @@ const availableFeatures = [
     boards: ['esp8266', 'esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5'],
   },
   {
+    name: 'USE_UFILESYS',
+    value: false,
+    show: true,
+    description: 'stepFeaturesUFSDesc',
+    tooltip: 'stepFeaturesUFSTooltip',
+    custom: '',
+    boards: ['all'],
+  },
+  {
     name: 'USE_I2C',
     value: false,
     show: false,

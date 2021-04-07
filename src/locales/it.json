@@ -24,6 +24,7 @@
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesBoardDesc": "Seleziona la scheda su cui è basato il progetto",
   "stepFeaturesBoard8266Tooltip": "Questa è probabilmente la scheda che dovresti scegliere",
+  "stepFeaturesBoard82664MTooltip": "4Mb ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
   "stepFeaturesAGDesc": "Sensori aria/gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -63,6 +64,8 @@
   "stepFeaturesWS2812Desc": "Led WS2812",
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Abilita la comunicazione seriale con Zigbee CC2530 flashato con ZNP o dispositivi EFR32 EmberZNet (tipo Sonoff Zigbee Bridge) flashati con EZSP",
+  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
   "stepFeaturesI2CDesc": "Supporto I2C",
   "stepFeaturesSPIDesc": "Supporto SPI",
 
