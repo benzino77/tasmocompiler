@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/attraction-wars-server
     docker:
-      - image: circleci/node:10.0.0
+      - image: circleci/node:12.16.2-buster      
     steps:
       - checkout
       - run:
