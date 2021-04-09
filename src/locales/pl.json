@@ -64,7 +64,7 @@
   "stepFeaturesWS2812Desc": "Ledy WS2812",
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Szeregowa komunikacja z modułem Zigbee CC2530 z wgranym ZNP lub modułem EFR32 EmberZNet (np. Sonoff Zigbee Bridge) z wgranym EZSP",
-  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSDesc": "Karta SD/LittleFS",
   "stepFeaturesUFSTooltip": "Sterownik dla Universal File System",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
