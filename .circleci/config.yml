@@ -19,5 +19,5 @@ jobs:
           paths:
             - ~/.cache/yarn
       - run:
-          name: lint
-          command: yarn lint
+          name: eslint
+          command: yarn eslint 'server/**' 'src/**' --fix-dry-run
