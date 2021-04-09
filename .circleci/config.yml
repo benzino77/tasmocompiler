@@ -6,9 +6,11 @@ jobs:
       - image: circleci/node:12.16.2-buster      
     steps:
       - checkout
-      - run:
-          name: install-npm
-          command: 'sudo npm install -g npm@latest'
+      - node/install:
+          install-npm: false
+          node-version: 12.16.2
+      - node/install-yarn:
+          version: 1.22.4
       - restore_cache:
           name: Restore Yarn Package Cache
           keys:
