@@ -25,6 +25,7 @@
   "stepFeaturesTitle": "Wybór funkcjonalności",
   "stepFeaturesBoardDesc": "Wybierz płytkę na której bazuje Twój projekt",
   "stepFeaturesBoard8266Tooltip": "To jest płytka, którą najprawdopodobniej powinieneś wybrać",
+  "stepFeaturesBoard82664MTooltip": "Płytki ESP8266 4MB takie jak Wemos D1 Mini, NodeMCU, itd..",
   "stepFeaturesDesc": "Jakie funkcjonalności zostaną zawarte w wynikowym firmware?",
   "stepFeaturesAGDesc": "Czujniki powietrza/gazu",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -64,6 +65,8 @@
   "stepFeaturesWS2812Desc": "Ledy WS2812",
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Szeregowa komunikacja z modułem Zigbee CC2530 z wgranym ZNP lub modułem EFR32 EmberZNet (np. Sonoff Zigbee Bridge) z wgranym EZSP",
+  "stepFeaturesUFSDesc": "Karta SD/LittleFS",
+  "stepFeaturesUFSTooltip": "Sterownik dla Universal File System",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 

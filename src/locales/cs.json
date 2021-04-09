@@ -25,6 +25,7 @@
   "stepFeaturesTitle": "Výběr funkcí",
   "stepFeaturesBoardDesc": "Select board your project is based on",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
+  "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "Jaké funkce chcete zahrnout do výsledného binárního FW?",
   "stepFeaturesAGDesc": "Senzory Vzduch/plyn",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
@@ -64,6 +65,8 @@
   "stepFeaturesWS2812Desc": "WS2812 Ledky",
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Enable serial communication with Zigbee CC2530 flashed with ZNP or EFR32 EmberZNet devices (like Sonoff Zigbee Bridge) flashed with EZSP",
+  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
   "stepFeaturesI2CDesc": "Podpora I2C",
   "stepFeaturesSPIDesc": "Podpora SPI",
 
