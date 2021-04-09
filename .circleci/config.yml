@@ -1,7 +1,7 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/attraction-wars-server
+    working_directory: ~/tasmocompiler
     docker:
       - image: circleci/node:12.16.2-buster      
     steps:
