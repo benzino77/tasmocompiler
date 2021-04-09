@@ -24,7 +24,7 @@
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesBoardDesc": "Seleziona la scheda su cui è basato il progetto",
   "stepFeaturesBoard8266Tooltip": "Questa è probabilmente la scheda che dovresti scegliere",
-  "stepFeaturesBoard82664MTooltip": "4Mb ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
+  "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
   "stepFeaturesAGDesc": "Sensori aria/gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
