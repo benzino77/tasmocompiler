@@ -1,6 +1,7 @@
 {
   "appBarLangFlag": "IT",
   "appBarLangTooltip": "Modifica la lingua nelle impostazioni del browser",
+
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di passare allo step successivo scarica il codice sorgente Tasmota",
