@@ -27,13 +27,13 @@ class VersionStep extends Component {
       languageIndex = languages.findIndex((element) =>
         element.value.toLowerCase().includes(browserLocale.split(/[-_]/)[0])
       );
-    };
+    }
     // Set English if not found current locale of browser on languages
     if (languageIndex === -1) {
       languageIndex = languages.findIndex((element) =>
         element.value.includes('en_GB')
       );
-    };
+    }
 
     this.state = {
       tasmotaVersion: 'development',
@@ -46,48 +46,7 @@ class VersionStep extends Component {
   }
 
   handleChange(event) {
-    let memoryBuildFlag;
-    const { boardVersion, coreVersion } = this.state;
-
-    if (event.target.name === 'coreVersion') {
-      const mbf = event.target.value.mem_prefix;
-      if (boardVersion.mem === 4) {
-        memoryBuildFlag = `${mbf}4m1m.ld`;
-      } else {
-        // memory 1Mbit
-        memoryBuildFlag = `${mbf}1m0.ld`;
-        if (
-          event.target.value.platform.startsWith('core_2_6_') ||
-          event.target.value.platform.startsWith('core_2_7_')
-        ) {
-          memoryBuildFlag = `${mbf}1m.ld`;
-        }
-      }
-    }
-
-    if (event.target.name === 'boardVersion') {
-      const mbf = coreVersion.mem_prefix;
-      if (event.target.value.mem === 4) {
-        memoryBuildFlag = `${mbf}4m1m.ld`;
-      } else {
-        memoryBuildFlag = `${mbf}1m0.ld`;
-        if (
-          coreVersion.platform.startsWith('core_2_6_') ||
-          coreVersion.platform.startsWith('core_2_7_')
-        ) {
-          memoryBuildFlag = `${mbf}1m.ld`;
-        }
-      }
-    }
-
-    if (memoryBuildFlag) {
-      this.setState({
-        [event.target.name]: event.target.value,
-        memoryBuildFlag,
-      });
-    } else {
-      this.setState({ [event.target.name]: event.target.value });
-    }
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleCompile() {
