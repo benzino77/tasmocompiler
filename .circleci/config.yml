@@ -20,4 +20,7 @@ jobs:
             - ~/.cache/yarn
       - run:
           name: eslint
-          command: yarn eslint --ext .js --ext .json server/ src/
+          command: yarn eslint --ext .js server/ src/
+      - run:
+          name: build 
+          command: yarn build
