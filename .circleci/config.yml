@@ -18,9 +18,9 @@ jobs:
           key: yarn-packages-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
-      - run:
-          name: eslint
-          command: yarn eslint --ext .js server/ src/
+#      - run:
+#          name: eslint
+#          command: yarn eslint --ext .js server/ src/
       - run:
           name: build 
           command: yarn build
