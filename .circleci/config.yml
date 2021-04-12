@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/tasmocompiler
     docker:
-      - image: circleci/node:12.16.2-buster      
+      - image: circleci/node:12.16.2-buster
     steps:
       - checkout
       - restore_cache:
@@ -22,5 +22,8 @@ jobs:
 #          name: eslint
 #          command: yarn eslint --ext .js server/ src/
       - run:
-          name: build 
+          name: test
+          command: yarn test
+      - run:
+          name: build
           command: yarn build
