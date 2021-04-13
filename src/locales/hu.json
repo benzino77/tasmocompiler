@@ -39,8 +39,6 @@
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino kliens",
   "stepFeaturesArduinoSlaveTooltip": "Külső soros mikrokontroller támogatása.",
-  "stepFeaturesDisplaysDesc": "Kijelzők (I2C / SPI)",
-  "stepFeaturesDisplaysTooltip": "I2C és SPI kijelzők támogatása",
   "stepFeaturesDispVccDesc": "Vcc mód",
   "stepFeaturesDispVccTooltip": "Tiltsa le az analóg bemenet használatához.",
   "stepFeaturesDomoticzDesc": "Domoticz",
