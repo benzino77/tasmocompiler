@@ -121,6 +121,14 @@ const generic = [
     type: 'generic',
   },
   {
+    name: 'USE_UFILESYS',
+    value: false,
+    show: true,
+    description: 'stepFeaturesUFSDesc',
+    tooltip: 'stepFeaturesUFSTooltip',
+    boards: ['all'],
+  },
+  {
     name: 'USE_WEBSERVER',
     value: true,
     show: true,
