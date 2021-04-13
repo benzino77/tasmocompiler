@@ -25,6 +25,7 @@
   "stepFeaturesTitle": "Selecionar características",
   "stepFeaturesBoardDesc": "Select board your project is based on",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
+  "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "¿Qué características quieres que se incluyan en el firmware personalizado?",
 
   "stepFeaturesGenericTypeDesc": "General",
@@ -144,6 +145,10 @@
   "stepFeaturesHRXL": "HRXL",
   "stepFeaturesDYP": "DYP",
   "stepFeaturesVL53L1X": "VL53L1X",
+  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
+  "stepFeaturesI2CDesc": "Soporte a I2C",
+  "stepFeaturesSPIDesc": "Soporte a SPI",
 
   "stepCustomParamsTitle": "Parametros personalizados",
   "stepCustomParamsDesc": "A continuación puede introducir los parámetros personalizados, que se incluirán al final del archivo {filename}. Si no sabes lo que es, sólo tienes que hacer clic en Siguiente.",

@@ -25,6 +25,7 @@
   "stepFeaturesTitle": "Výběr funkcí",
   "stepFeaturesBoardDesc": "Select board your project is based on",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
+  "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, etc..",
   "stepFeaturesDesc": "Jaké funkce chcete zahrnout do výsledného binárního FW?",
 
   "stepFeaturesGenericTypeDesc": "General",
@@ -144,6 +145,10 @@
   "stepFeaturesHRXL": "HRXL",
   "stepFeaturesDYP": "DYP",
   "stepFeaturesVL53L1X": "VL53L1X",
+  "stepFeaturesUFSDesc": "SD card/LittleFS",
+  "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
+  "stepFeaturesI2CDesc": "Podpora I2C",
+  "stepFeaturesSPIDesc": "Podpora SPI",
 
   "stepCustomParamsTitle": "Vlastní parametry",
   "stepCustomParamsDesc": "Níže můžete zadat vlastní parametry, které budou zahrnuty na konec souboru {filename}. Pokud nevíte, o co se jedná, stačí kliknout na Další.",
