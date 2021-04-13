@@ -14,7 +14,7 @@ console.log('Detected browser language: ' + currentLocale);
 if (!allMessages[currentLocale]){
     console.log('Browser language (' + currentLocale + ') not supported changing to default (en)');
     currentLocale = 'en';
-};
+}
 
 languages.sort((a , b) => {
     return allMessages[currentLocale][a.name]

@@ -12,22 +12,6 @@ const {
   userPlatformioOverrideIni,
 } = require('../config/config');
 
-// Since 6.7.1.1 there is no sonoff src dir. New dir is tasmota
-// if we switch to "old" branch with sonoff dir rename that dir to new name
-const createNewTasmotaStructure = () => {
-  const oldPath = path.resolve(tasmotaRepo, 'sonoff');
-  const newPath = path.resolve(tasmotaRepo, 'tasmota');
-  const isOldStructure = fs.pathExistsSync(oldPath);
-
-  if (isOldStructure) {
-    try {
-      fs.moveSync(oldPath, newPath, { overwrite: true });
-    } catch (e) {
-      throw new Error(`Cannot create new Tasmota structure: ${e}`);
-    }
-  }
-};
-
 const getTasmotaVersion = () => {
   const fileExists = fs.pathExistsSync(tasmotaVersionFile);
   const versRegexp = /const uint32_t VERSION = (.*);/gm;

@@ -10,6 +10,19 @@ const availableBoards = [
     exclude_features: [],
     defines: {},
   },
+  {
+    name: 'esp82664M',
+    description: 'Wemos/NodeMCU',
+    default: true,
+    show: true,
+    platformio_entries: {
+      'board_build.ldscript': 'eagle.flash.4m2m.ld',
+    },
+    tooltip: 'stepFeaturesBoard82664MTooltip',
+    include_features: [],
+    exclude_features: [],
+    defines: {},
+  },
   // zbbridge
   {
     name: 'zbbridge',

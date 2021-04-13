@@ -39,6 +39,7 @@
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino kliens",
   "stepFeaturesArduinoSlaveTooltip": "Külső soros mikrokontroller támogatása.",
+
   "stepFeaturesDispVccDesc": "Vcc mód",
   "stepFeaturesDispVccTooltip": "Tiltsa le az analóg bemenet használatához.",
   "stepFeaturesDomoticzDesc": "Domoticz",
