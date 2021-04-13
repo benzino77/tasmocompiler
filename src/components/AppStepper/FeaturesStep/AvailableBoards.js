@@ -1,11 +1,24 @@
 const availableBoards = [
   {
     name: 'esp8266',
-    description: 'Generic ESP8266',
+    description: 'ESP8266',
     default: true,
     show: true,
     platformio_entries: {},
     tooltip: 'stepFeaturesBoard8266Tooltip',
+    include_features: [],
+    exclude_features: [],
+    defines: {},
+  },
+  {
+    name: 'esp82664M',
+    description: 'Wemos/NodeMCU',
+    default: true,
+    show: true,
+    platformio_entries: {
+      'board_build.ldscript': 'eagle.flash.4m2m.ld',
+    },
+    tooltip: 'stepFeaturesBoard82664MTooltip',
     include_features: [],
     exclude_features: [],
     defines: {},
@@ -85,7 +98,7 @@ const availableBoards = [
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
     },
     tooltip: '',
-    include_features: ['displays'],
+    include_features: ['USE_DISPLAY_ILI9341'],
     exclude_features: [],
     defines: {
       MODULE: 'ODROID_GO',
@@ -115,7 +128,7 @@ const availableBoards = [
         '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
     },
     tooltip: '',
-    include_features: ['displays'],
+    include_features: ['USE_DISPLAY_ILI9342', 'USE_SPI', 'USE_I2C'],
     exclude_features: [],
     defines: {
       MODULE: 'M5STACK_CORE2',

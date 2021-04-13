@@ -94,6 +94,9 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit,
     position: 'relative',
   },
+  featuresGroup: {
+    marginTop: theme.spacing.unit * 2,
+  },
 });
 
 export default styles;

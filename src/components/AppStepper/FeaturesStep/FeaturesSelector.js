@@ -25,7 +25,7 @@ function FeaturesSelector(props) {
               value={name}
             />
           )}
-          label={<FormattedMessage id={description}/>}
+          label={description ? (<FormattedMessage id={description}/>) : (name)}
         />
       </Tooltip>
     </div>

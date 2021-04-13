@@ -16,8 +16,8 @@ module.exports = {
       'no-param-reassign': [
         'error',
         {
-          props: false 
+          props: false
         },
       ],
     }
-  }       
+  }

@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/tasmocompiler
+    docker:
+      - image: circleci/node:12.16.2-buster      
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile --cache-folder ~/.cache/yarn
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+#      - run:
+#          name: eslint
+#          command: yarn eslint --ext .js server/ src/
+      - run:
+          name: build 
+          command: yarn build
