@@ -68,7 +68,7 @@
   "stepFeaturesUFSDesc": "SD kártya / LittleFS",
   "stepFeaturesUFSTooltip": "UFS támogatás engedélyezése",
   "stepFeaturesBerryDesc": "Berry szkriptek",
-  "stepFeaturesBerryTooltip": "Berry szkriptek támogatása",
+  "stepFeaturesBerryTooltip": "Berry szkriptnyelv támogatása",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "BLE és BLE átjáró támogatás",
   "stepFeaturesI2CDesc": "I2C támogatás",
