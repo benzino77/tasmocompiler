@@ -95,7 +95,7 @@ const availableBoards = [
       'board_build.partitions': 'esp32_partition_app1984k_spiffs12M.csv',
       build_flags:
         // eslint-disable-next-line
-        '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
+        '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
     include_features: ['displays', 'ufilesys', 'bluetooth', 'berry'],

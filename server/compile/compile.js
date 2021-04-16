@@ -88,7 +88,7 @@ const getFeaturePlatformioEntries = (data) => {
       if (data[e].lib_extra_dirs) {
         platformioEntries.lib_extra_dirs = platformioEntries.lib_extra_dirs
           ? `${platformioEntries.lib_extra_dirs} ${data[e].lib_extra_dirs}`
-          : `${data[e].lib_extra_dirs} \${common32.lib_extra_dirs}`;
+          : `${data[e].lib_extra_dirs}`;
       }
     }
   });
