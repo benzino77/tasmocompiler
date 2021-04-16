@@ -115,22 +115,24 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32',
-      board: 'm5stack-grey',
+      board: 'odroid_esp32',
       'board_build.f_cpu': '240000000L',
       'board_build.partitions': 'esp32_partition_app1984k_spiffs12M.csv',
       build_flags:
         // eslint-disable-next-line
-        '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
+        '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys'],
+    include_features: ['displays', 'ufilesys', 'berry'],
     exclude_features: [],
     defines: {
       MODULE: 'M5STACK_CORE2',
       FALLBACK_MODULE: 'M5STACK_CORE2',
       USE_M5STACK_CORE2: true,
-      SAY_TIME: true,
-      USE_WEBRADIO: true,
+      SAY_TIME: true, // this should be deleted in the future
+      USE_SAY_TIME: true, // new changed name
+      USE_WEBRADIO: true, // this should be deleted in the future
+      USE_I2S_WEBRADIO: true, // new changed name
       USE_MPU6886: true,
       USE_BMA423: true,
       JPEG_PICTS: true,
