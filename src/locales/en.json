@@ -69,6 +69,8 @@
   "stepFeaturesUFSTooltip": "Enable driver for Universal File System",
   "stepFeaturesBerryDesc": "Berry scripting",
   "stepFeaturesBerryTooltip": "Add support for Berry scripting language",
+  "stepFeaturesBluetoothDesc": "Bluetooth",
+  "stepFeaturesBluetoothTooltip": "Add ble and ble-bridge support",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 

@@ -85,6 +85,11 @@ const getFeaturePlatformioEntries = (data) => {
           ? `${platformioEntries.build_flags} ${data[e].build_flags}`
           : `${data[e].build_flags}`;
       }
+      if (data[e].lib_extra_dirs) {
+        platformioEntries.lib_extra_dirs = platformioEntries.lib_extra_dirs
+          ? `${platformioEntries.lib_extra_dirs} ${data[e].lib_extra_dirs}`
+          : `${data[e].lib_extra_dirs} \${common32.lib_extra_dirs}`;
+      }
     }
   });
 

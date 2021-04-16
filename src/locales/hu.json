@@ -69,6 +69,8 @@
   "stepFeaturesUFSTooltip": "UFS támogatás engedélyezése",
   "stepFeaturesBerryDesc": "Berry scripting",
   "stepFeaturesBerryTooltip": "Add support for Berry scripting language",
+  "stepFeaturesBluetoothDesc": "Bluetooth",
+  "stepFeaturesBluetoothTooltip": "Add ble and ble-bridge support",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
 

@@ -69,6 +69,8 @@
   "stepFeaturesUFSTooltip": "Sterownik dla Universal File System",
   "stepFeaturesBerryDesc": "Skrypty Berry",
   "stepFeaturesBerryTooltip": "Obsługa języka Berry Scripting",
+  "stepFeaturesBluetoothDesc": "Bluetooth",
+  "stepFeaturesBluetoothTooltip": "Obsługa ble oraz ble-bridge support",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 
