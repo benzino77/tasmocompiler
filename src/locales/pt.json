@@ -64,7 +64,7 @@
   "stepFeaturesWebInterfaceTooltip": "Para a maioria dos usuários, isso deve ser habilitado. Desative-o caso precise de um binário menor e menos uso de memória. Se desativado, a interação com Tasmota só será possível por meio do broker MQTT.",
   "stepFeaturesWS2812Desc": "LEDs WS2812",
   "stepFeaturesZigbeeDesc": "Zigbee",
-  "stepFeaturesZigbeeTooltip": "Habilite a comunicação serial com Zigbee CC2530 atualizado com ZNP ou dispositivos com EFR32 EmberZNet (como Sonoff Zigbee Bridge) atualizado com EZSP",
+  "stepFeaturesZigbeeTooltip": "Habilite a comunicação serial com o chip Zigbee CC2530. O CC2530 deve ter firmware ZNP ou EZSP.",
   "stepFeaturesUFSDesc": "SD card/LittleFS",
   "stepFeaturesUFSTooltip": "Habilitar driver para sistema de arquivos universal",
   "stepFeaturesBerryDesc": "Berry scripting",
