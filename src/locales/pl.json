@@ -67,6 +67,8 @@
   "stepFeaturesZigbeeTooltip": "Szeregowa komunikacja z modułem Zigbee CC2530 z wgranym ZNP lub modułem EFR32 EmberZNet (np. Sonoff Zigbee Bridge) z wgranym EZSP",
   "stepFeaturesUFSDesc": "Karta SD/LittleFS",
   "stepFeaturesUFSTooltip": "Sterownik dla Universal File System",
+  "stepFeaturesBerryDesc": "Skrypty Berry",
+  "stepFeaturesBerryTooltip": "Obsługa języka Berry Scripting",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 

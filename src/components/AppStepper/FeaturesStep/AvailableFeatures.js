@@ -78,7 +78,7 @@ const availableFeatures = [
       '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
       '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
-    boards: ['esp8266', 'zbbridge', 'esp32', 'esp32webcam'],
+    boards: ['esp8266', 'esp82664M', 'zbbridge', 'esp32', 'esp32webcam'],
   },
   {
     name: 'USE_ADC_VCC',
@@ -359,7 +359,14 @@ const availableFeatures = [
       '#define USE_ZIGBEE_MANUFACTURER "Tasmota"  // reported "Manufacturer" (cluster 0000 / attribute 0004)\n' +
       '#define USE_ZBBRIDGE_TLS // TLS support for zbbridge\n' +
       '#define USE_ZIGBEE_ZBBRIDGE_EEPROM 0x50  // I2C id for the ZBBridge EEPROM\n',
-    boards: ['esp8266', 'esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5'],
+    boards: [
+      'esp8266',
+      'esp82664M',
+      'esp32',
+      'esp32webcam',
+      'esp32odroid-go',
+      'esp32m5',
+    ],
   },
   {
     name: 'ufilesys',
@@ -371,6 +378,16 @@ const availableFeatures = [
     include: ['USE_SPI'],
     custom: '',
     boards: ['all'],
+  },
+  {
+    name: 'berry',
+    value: false,
+    show: true,
+    description: 'stepFeaturesBerryDesc',
+    tooltip: 'stepFeaturesBerryTooltip',
+    group: ['USE_BERRY'],
+    custom: '',
+    boards: ['esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5'],
   },
   {
     name: 'USE_I2C',

@@ -67,6 +67,8 @@
   "stepFeaturesZigbeeTooltip": "Abilita la comunicazione seriale con Zigbee CC2530 flashato con ZNP o dispositivi EFR32 EmberZNet (tipo Sonoff Zigbee Bridge) flashati con EZSP",
   "stepFeaturesUFSDesc": "Scheda SD/LittleFS",
   "stepFeaturesUFSTooltip": "Abilita driver per Universal File System",
+  "stepFeaturesBerryDesc": "Berry scripting",
+  "stepFeaturesBerryTooltip": "Add support for Berry scripting language",
   "stepFeaturesI2CDesc": "Supporto I2C",
   "stepFeaturesSPIDesc": "Supporto SPI",
 
