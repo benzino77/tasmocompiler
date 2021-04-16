@@ -29,12 +29,13 @@ const getFeaturesDefaultStates = (board) => {
       const value = board.include_features.includes(feature.name)
         ? true
         : feature.value;
-
-      defaults[feature.name] = value;
-      const group = getFeatureGroup(feature.name);
-      group.forEach((g) => {
-        defaults[g] = value;
-      });
+      const defaultFeatureState = setFeature(feature.name, value);
+      defaults = { ...defaults, ...defaultFeatureState };
+      // defaults[feature.name] = value;
+      // const group = getFeatureGroup(feature.name);
+      // group.forEach((g) => {
+      //   defaults[g] = value;
+      // });
 
       if (value) {
         toIncludeExclude = {
@@ -45,7 +46,7 @@ const getFeaturesDefaultStates = (board) => {
     }
   });
   defaults = { ...defaults, ...toIncludeExclude };
-
+  console.log(defaults);
   return defaults;
 };
 
@@ -115,7 +116,7 @@ const setFeature = (name, state) => {
   });
 
   if (custom) {
-    newState[`precustom_${name}`] = state ? custom : '';
+    newState[`precustom#${name}`] = state ? custom : '';
   }
 
   if (entries) {

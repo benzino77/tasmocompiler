@@ -80,7 +80,7 @@ const availableBoards = [
     tooltip: '',
     include_features: ['ufilesys'],
     exclude_features: [],
-    defines: { USE_WEBCAM: true, USE_MI_ESP32: false },
+    defines: { USE_WEBCAM: true },
   },
   // esp32odroid-go
   {
@@ -98,15 +98,13 @@ const availableBoards = [
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys'],
+    include_features: ['displays', 'ufilesys', 'bluetooth', 'berry'],
     exclude_features: [],
     defines: {
       MODULE: 'ODROID_GO',
       FALLBACK_MODULE: 'ODROID_GO',
       USE_ODROID_GO: true,
       USE_ADC: true,
-      USE_BLE_ESP32: true,
-      USE_MI_ESP32: true,
     },
   },
   // esp32m5

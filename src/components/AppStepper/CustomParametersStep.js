@@ -25,11 +25,11 @@ class CustomParametersStep extends Component {
     const { pstate } = this.props;
 
     const ncp = Object.keys(pstate.features)
-      .filter((name) => name.startsWith('precustom_'))
+      .filter((name) => name.startsWith('precustom#'))
       .reduce((acc, cval) => `${acc}\n${pstate.features[cval]}`, '');
 
     const pcp = Object.keys(prevProps.pstate.features)
-      .filter((name) => name.startsWith('precustom_'))
+      .filter((name) => name.startsWith('precustom#'))
       .reduce((acc, cval) => `${acc}\n${prevProps.pstate.features[cval]}`, '');
 
     if (ncp !== pcp) {
