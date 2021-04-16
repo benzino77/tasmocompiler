@@ -67,10 +67,10 @@
   "stepFeaturesZigbeeTooltip": "Soros kommunikáció engedélyezése Zigbee CC2530-al ZNP firmware-rel vagy EFR32 EmberZNet eszközök (például Sonoff Zigbee Bridge) EZSP firmware-rel",
   "stepFeaturesUFSDesc": "SD kártya / LittleFS",
   "stepFeaturesUFSTooltip": "UFS támogatás engedélyezése",
-  "stepFeaturesBerryDesc": "Berry scripting",
-  "stepFeaturesBerryTooltip": "Add support for Berry scripting language",
+  "stepFeaturesBerryDesc": "Berry szkriptek",
+  "stepFeaturesBerryTooltip": "Berry szkriptek támogatása",
   "stepFeaturesBluetoothDesc": "Bluetooth",
-  "stepFeaturesBluetoothTooltip": "Add ble and ble-bridge support",
+  "stepFeaturesBluetoothTooltip": "BLE és BLE átjáró támogatás",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
 
