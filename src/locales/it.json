@@ -24,7 +24,7 @@
 
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesBoardDesc": "Seleziona il tipo di scheda su cui è basato il progetto",
-  "stepFeaturesBoard8266Tooltip": "Questa è probabilmente la scheda che dovresti scegliere",
+  "stepFeaturesBoard8266Tooltip": "Questa è molto probabilmente la scheda che dovresti scegliere",
   "stepFeaturesBoard82664MTooltip": "Scheda ESP8266 4MB come Wemos D1 Mini, NodeMCU, ecc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
   "stepFeaturesAGDesc": "Sensori aria/gas",
@@ -54,7 +54,7 @@
   "stepFeaturesRFTransceiverDesc": "Ricevitore RF",
   "stepFeaturesRFTransceiverTooltip": "Supporto per ricevitore RF usando la libreria RcSwitch",
   "stepFeaturesRulesDesc": "Regole",
-  "stepFeaturesRulesTooltip": "Include IF STATEMENT e EXPRESSION. Le regole esclusdono l'uso degli script.",
+  "stepFeaturesRulesTooltip": "Include IF STATEMENT e EXPRESSION. Le regole escludono l'uso degli script.",
   "stepFeaturesScriptDesc": "Script",
   "stepFeaturesScriptTooltip": "L'inclusione del modulo script esclude l'uso delle regole",
   "stepFeaturesTimersDesc": "Timer",
