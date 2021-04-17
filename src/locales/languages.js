@@ -4,12 +4,14 @@ import localeIT from './it.json';
 import localePL from './pl.json';
 import localeCS from './cs.json';
 import localeHU from './hu.json';
+import localePT from './pt.json';
 
 const allMessages = {
   en: localeEN,
   es: localeES,
   it: localeIT,
   pl: localePL,
+  pt: localePT,
   cs: localeCS,
   hu: localeHU,
 };
