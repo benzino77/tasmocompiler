@@ -19,11 +19,11 @@ function VersionSelector(props) {
       <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={inProps}>
         {items.map((item) => (
-          <MenuItem key={item.name || item} value={item.value || item}>
-            {/* {name !== 'MY_LANGUAGE' ? (item.name || item) : (item.name ? <FormattedMessage id={item.name}/> : item)} */}
-            {name !== 'MY_LANGUAGE' && (item.name || item)}
-            {name === 'MY_LANGUAGE' && <FormattedMessage id={item.name} />}
-          </MenuItem>
+            <MenuItem key={item.name || item} value={item.value || item}>
+              {/* {name !== 'MY_LANGUAGE' ? (item.name || item) : (item.name ? <FormattedMessage id={item.name}/> : item)} */}
+              {name !== 'MY_LANGUAGE' && (item.name || item)}
+              {name === 'MY_LANGUAGE' && <FormattedMessage id={item.name} />}
+            </MenuItem>
         ))}
       </Select>
     </FormControl>
