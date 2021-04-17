@@ -46,7 +46,6 @@ const getFeaturesDefaultStates = (board) => {
     }
   });
   defaults = { ...defaults, ...toIncludeExclude };
-  console.log(defaults);
   return defaults;
 };
 

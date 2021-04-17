@@ -397,6 +397,7 @@ const availableFeatures = [
     tooltip: 'stepFeaturesBluetoothTooltip',
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
     platformio_entries: {
+      // eslint-disable-next-line
       lib_extra_dirs: 'lib/libesp32_div ${common32.lib_extra_dirs}',
     },
     custom: '',
