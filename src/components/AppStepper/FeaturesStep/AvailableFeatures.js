@@ -39,13 +39,13 @@ const availableFeatures = [
     custom: '',
     boards: ['all'],
   },
-  {
-    name: 'USE_DISPLAY',
-    value: false,
-    show: false,
-    description: '',
-    boards: ['all'],
-  },
+  // {
+  //   name: 'USE_DISPLAY',
+  //   value: false,
+  //   show: false,
+  //   description: '',
+  //   boards: ['all'],
+  // },
   {
     name: 'displays',
     value: false,
@@ -53,6 +53,7 @@ const availableFeatures = [
     description: 'stepFeaturesDisplaysDesc',
     tooltip: 'stepFeaturesDisplaysTooltip',
     group: [
+      'USE_DISPLAY',
       'USE_DISPLAY_MODES1TO5',
       'USE_DISPLAY_LCD',
       'USE_DISPLAY_SSD1306',
@@ -68,7 +69,7 @@ const availableFeatures = [
       'USE_DISPLAY_ST7789',
       'USE_DISPLAY_SSD1331',
     ],
-    include: ['USE_SPI', 'USE_I2C', 'USE_DISPLAY'],
+    include: ['USE_SPI', 'USE_I2C'],
     custom:
       '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
       '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
@@ -78,7 +79,7 @@ const availableFeatures = [
       '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
       '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
-    boards: ['esp8266', 'esp82664M', 'zbbridge', 'esp32', 'esp32webcam'],
+    boards: ['all'],
   },
   {
     name: 'USE_ADC_VCC',
