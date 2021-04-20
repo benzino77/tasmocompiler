@@ -1,3 +1,4 @@
+import localeDE from './de.json';
 import localeEN from './en.json';
 import localeES from './es.json';
 import localeIT from './it.json';
@@ -7,6 +8,7 @@ import localeHU from './hu.json';
 import localePT from './pt.json';
 
 const allMessages = {
+  de: localeDE,
   en: localeEN,
   es: localeES,
   it: localeIT,
