@@ -37,7 +37,7 @@
   "stepFeaturesDispVccTooltip": "Muss deaktiviert werden um den Analogen Eingang zu nutzen",
   "stepFeaturesDomoticzDesc": "Domoticz",
   "stepFeaturesEnergyDesc": "Stromsensoren",
-  "stepFeaturesTempHumDesc": "Temperatur/Luftfeuchtigkeitssensoren",
+  "stepFeaturesTempHumDesc": "Temperatur/ Luftfeuchtigkeitssensoren",
   "stepFeaturesLightDesc": "Lichtsensoren",
   "stepFeaturesLightTooltip": "Helligkeit, Intensität, UV werte etc",
   "stepFeaturesHomeAssistantDesc": "Home Assistant",
