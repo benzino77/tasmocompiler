@@ -108,7 +108,6 @@ const prepareFiles = async (data) => {
   const outputOverwrites =
     '#ifndef _USER_CONFIG_OVERRIDE_H_\n' +
     '#define _USER_CONFIG_OVERRIDE_H_\n\n' +
-    '#warning **** user_config_override.h: Using Settings from this File ****\n\n' +
     `${userDefinesNetwork.join('')}` +
     `${userDefinesFeatures.join('')}` +
     `${userDefinesBoard.join('')}` +
