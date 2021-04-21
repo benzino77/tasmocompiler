@@ -12,23 +12,23 @@ let currentLocale = navigator.language.split(/[-_]/)[0];
 console.log('Detected browser language: ' + currentLocale);
 // Set default to english if not defined on supported languages
 if (!allMessages[currentLocale]){
-    console.log('Browser language (' + currentLocale + ') not supported changing to default (en)');
-    currentLocale = 'en';
+  console.log('Browser language (' + currentLocale + ') not supported changing to default (en)');
+  currentLocale = 'en';
 }
 
-languages.sort((a , b) => {
-    return allMessages[currentLocale][a.name].localeCompare(allMessages[currentLocale][b.name]);
+languages.sort((a, b) => {
+  return allMessages[currentLocale][a.name].localeCompare(allMessages[currentLocale][b.name]);
 });
 
-availableFeatures.sort((a , b) => {
-    return allMessages[currentLocale][a.description].localeCompare(allMessages[currentLocale][b.description]);
+availableFeatures.sort((a, b) => {
+  return allMessages[currentLocale][a.description].localeCompare(allMessages[currentLocale][b.description]);
 });
 
 ReactDOM.render(
-    <IntlProvider locale={currentLocale} messages={allMessages[currentLocale]}>
-        <App />
-    </IntlProvider>,
-    document.getElementById('root')
+  <IntlProvider locale={currentLocale} messages={allMessages[currentLocale]}>
+    <App />
+  </IntlProvider>,
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change
