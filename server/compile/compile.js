@@ -155,8 +155,8 @@ const prepareFiles = async (data) => {
     .join('\n');
   const platformioContent =
     '[platformio]\n' +
-    `default_envs = firmware\n\n` +
-    `[env:firmware]\n` +
+    'default_envs = firmware\n\n' +
+    '[env:firmware]\n' +
     `${platformioEnvCustom}\n`;
 
   try {

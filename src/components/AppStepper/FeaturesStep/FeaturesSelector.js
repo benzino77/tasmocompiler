@@ -15,7 +15,7 @@ function FeaturesSelector(props) {
 
   return (
     <div className={classes.checkboxContainer}>
-      <Tooltip title={tooltip ? (<FormattedMessage id={tooltip}/>) : ('')}>
+      <Tooltip title={tooltip ? (<FormattedMessage id={tooltip} />) : ('')}>
         <FormControlLabel
           control={(
             <Checkbox
@@ -25,7 +25,7 @@ function FeaturesSelector(props) {
               value={name}
             />
           )}
-          label={<FormattedMessage id={description}/>}
+          label={<FormattedMessage id={description} />}
         />
       </Tooltip>
     </div>
