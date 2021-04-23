@@ -128,6 +128,7 @@ const availableFeatures = [
       'USE_TELEINFO',
       'USE_IEM3000',
       'USE_WE517',
+      'USE_ENERGY_DUMMY',
     ],
     include: ['USE_I2C', 'USE_ENERGY_SENSOR'],
     custom: '',
