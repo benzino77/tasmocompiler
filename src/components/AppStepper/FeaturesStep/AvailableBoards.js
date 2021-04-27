@@ -76,6 +76,9 @@ const availableBoards = [
       extends: 'env:tasmota32',
       board: 'esp32cam',
       'board_build.f_cpu': '240000000L',
+      build_flags:
+        // eslint-disable-next-line
+        '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
     include_features: ['ufilesys'],
@@ -92,7 +95,7 @@ const availableBoards = [
       extends: 'env:tasmota32',
       board: 'odroid_esp32',
       'board_build.f_cpu': '240000000L',
-      'board_build.partitions': 'esp32_partition_app1984k_spiffs12M.csv',
+      'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
       build_flags:
         // eslint-disable-next-line
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
@@ -117,7 +120,7 @@ const availableBoards = [
       extends: 'env:tasmota32',
       board: 'odroid_esp32',
       'board_build.f_cpu': '240000000L',
-      'board_build.partitions': 'esp32_partition_app1984k_spiffs12M.csv',
+      'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
       build_flags:
         // eslint-disable-next-line
         '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',

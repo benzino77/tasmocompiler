@@ -36,7 +36,7 @@ const getRepoTags = async () => {
   if (isRepo) {
     try {
       const allTags = await git(tasmotaRepo).tags();
-      const tags = allTags.all.filter((t) => t.startsWith('v9'));
+      const tags = allTags.all.filter((t) => t.startsWith('v9.4'));
       return [...tags, edgeBranch];
     } catch (e) {
       debug(message);
