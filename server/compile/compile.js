@@ -58,6 +58,7 @@ const getImageName = (name) => {
   } else {
     console.warn(`${tasmotaInoFile} does not exists.`);
   }
+
   return '';
 };
 
