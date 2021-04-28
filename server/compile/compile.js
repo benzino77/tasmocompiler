@@ -10,6 +10,7 @@ const {
   userConfigOvewrite,
   tasmotaVersionFile,
   userPlatformioOverrideIni,
+  tasmotaInoFile,
 } = require('../config/config');
 
 const getTasmotaVersion = () => {
@@ -30,6 +31,34 @@ const getTasmotaVersion = () => {
   } else {
     throw new Error(`${tasmotaVersionFile} does not exists.`);
   }
+};
+
+const getImageName = (name) => {
+  const fileExists = fs.pathExistsSync(tasmotaInoFile);
+  const imageNameRegexp = /char image_name\[(.*)\];/gm;
+  const codeImageStr = `TasmoCompiler-${name}`;
+
+  if (fileExists) {
+    const file = fs.readFileSync(tasmotaInoFile, {
+      encoding: 'utf8',
+      flag: 'r',
+    });
+    const match = [...file.matchAll(imageNameRegexp)];
+    if (match[0]) {
+      // take care of space for null termination
+      const maxLength = parseInt(match[0][1]) - 1;
+      if (codeImageStr.length > maxLength) {
+        console.warn(`codeImageStr(${codeImageStr}[${codeImageStr.length}]) length exceeded image_name[${maxLength}] limit.`);
+      } else {
+        return `#ifdef CODE_IMAGE_STR\n  #undef CODE_IMAGE_STR\n#endif\n#define CODE_IMAGE_STR "${codeImageStr}"\n\n`;
+      }
+    } else {
+      console.warn(`Cannot find image_name length in ${tasmotaInoFile}.`);
+    }
+  } else {
+    console.warn(`${tasmotaInoFile} does not exists.`);
+  }
+  return '';
 };
 
 const createUserDefines = (data) => {
@@ -108,7 +137,7 @@ const prepareFiles = async (data) => {
   const outputOverwrites =
     '#ifndef _USER_CONFIG_OVERRIDE_H_\n' +
     '#define _USER_CONFIG_OVERRIDE_H_\n\n' +
-    '#ifdef CODE_IMAGE_STR\n  #undef CODE_IMAGE_STR\n\#endif\n#define CODE_IMAGE_STR "TasmoCompiler-' + features.board.name + '"\n\n' +
+    `${getImageName(features.board.name)}` +
     `${userDefinesNetwork.join('')}` +
     `${userDefinesFeatures.join('')}` +
     `${userDefinesBoard.join('')}` +
