@@ -108,6 +108,7 @@ const prepareFiles = async (data) => {
   const outputOverwrites =
     '#ifndef _USER_CONFIG_OVERRIDE_H_\n' +
     '#define _USER_CONFIG_OVERRIDE_H_\n\n' +
+    '#ifdef CODE_IMAGE_STR\n  #undef CODE_IMAGE_STR\n\#endif\n#define CODE_IMAGE_STR "TasmoCompiler-' + features.board.name + '"\n\n' +
     `${userDefinesNetwork.join('')}` +
     `${userDefinesFeatures.join('')}` +
     `${userDefinesBoard.join('')}` +
