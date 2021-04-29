@@ -2,6 +2,7 @@ const git = require('simple-git/promise');
 const fs = require('fs-extra');
 const _ = require('lodash');
 const debug = require('debug')('git');
+const semver = require('semver');
 
 const { tasmotaRepo, githubRepo, edgeBranch } = require('../config/config');
 
@@ -36,7 +37,7 @@ const getRepoTags = async () => {
   if (isRepo) {
     try {
       const allTags = await git(tasmotaRepo).tags();
-      const tags = allTags.all.filter((t) => t.startsWith('v9.4'));
+      const tags = allTags.all.filter((t) => semver.gte(t, 'v9.4.0'));
       return [...tags, edgeBranch];
     } catch (e) {
       debug(message);
