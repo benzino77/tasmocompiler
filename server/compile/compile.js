@@ -10,6 +10,7 @@ const {
   userConfigOvewrite,
   tasmotaVersionFile,
   userPlatformioOverrideIni,
+  tasmotaInoFile,
 } = require('../config/config');
 
 const getTasmotaVersion = () => {
@@ -30,6 +31,38 @@ const getTasmotaVersion = () => {
   } else {
     throw new Error(`${tasmotaVersionFile} does not exists.`);
   }
+};
+
+const getImageName = (socket, name) => {
+  const fileExists = fs.pathExistsSync(tasmotaInoFile);
+  const imageNameRegexp = /char image_name\[(.*)\];/gm;
+  const codeImageStr = `TasmoCompiler-${name}`;
+  let retValue = '';
+  let messageToEmit = `${tasmotaInoFile} does not exists. The CODE_IMG_STR will not be set.\n`;
+
+  if (fileExists) {
+    const file = fs.readFileSync(tasmotaInoFile, {
+      encoding: 'utf8',
+      flag: 'r',
+    });
+
+    const match = [...file.matchAll(imageNameRegexp)];
+    messageToEmit = `Cannot find image_name length in ${tasmotaInoFile}.\n`;
+
+    if (match[0]) {
+      // take care of space for null termination
+      const maxLength = parseInt(match[0][1]) - 1;
+      messageToEmit = `codeImageStr(${codeImageStr}[${codeImageStr.length}]) length exceeded image_name[${maxLength}] limit.\n`;
+
+      if (codeImageStr.length <= maxLength) {
+        retValue = `#ifdef CODE_IMAGE_STR\n  #undef CODE_IMAGE_STR\n#endif\n#define CODE_IMAGE_STR "${codeImageStr}"\n\n`;
+        messageToEmit = '';
+      }
+    } // findImageName
+  } // fileExists
+
+  socket.emit('message', messageToEmit);
+  return retValue;
 };
 
 const createUserDefines = (data) => {
@@ -96,7 +129,7 @@ const getFeaturePlatformioEntries = (data) => {
   return platformioEntries;
 };
 
-const prepareFiles = async (data) => {
+const prepareFiles = async (socket, data) => {
   const { network, features, version, customParams } = data;
   await switchToBranch(data.version.tasmotaVersion);
 
@@ -108,6 +141,7 @@ const prepareFiles = async (data) => {
   const outputOverwrites =
     '#ifndef _USER_CONFIG_OVERRIDE_H_\n' +
     '#define _USER_CONFIG_OVERRIDE_H_\n\n' +
+    `${getImageName(socket, features.board.name)}` +
     `${userDefinesNetwork.join('')}` +
     `${userDefinesFeatures.join('')}` +
     `${userDefinesBoard.join('')}` +
@@ -169,7 +203,7 @@ const prepareFiles = async (data) => {
 };
 
 const compileCode = (socket, data) => {
-  prepareFiles(data)
+  prepareFiles(socket, data)
     .then((prepared) => {
       const cdRet = shell.cd(tasmotaRepo);
       let outputMessages = [];
