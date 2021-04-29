@@ -4,7 +4,7 @@ const _ = require('lodash');
 const debug = require('debug')('git');
 const semver = require('semver');
 
-const { tasmotaRepo, githubRepo, edgeBranch } = require('../config/config');
+const { tasmotaRepo, githubRepo, minVersion, edgeBranch } = require('../config/config');
 
 const isGitRepoAvailable = async () => {
   try {
@@ -37,7 +37,7 @@ const getRepoTags = async () => {
   if (isRepo) {
     try {
       const allTags = await git(tasmotaRepo).tags();
-      const tags = allTags.all.filter((t) => semver.gte(t, 'v9.4.0'));
+      const tags = allTags.all.filter((t) => semver.gte(t, minVersion));
       return [...tags, edgeBranch];
     } catch (e) {
       debug(message);
