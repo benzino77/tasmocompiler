@@ -24,10 +24,7 @@ const templatePlatformioIni = path.resolve(
   __dirname,
   '../compile/platformio.ini'
 );
-const tasmotaInoFile = path.resolve(
-  tasmotaRepo,
-  'tasmota/tasmota.ino'
-);
+const tasmotaInoFile = path.resolve(tasmotaRepo, 'tasmota/tasmota.ino');
 const listenPort = process.env.PORT || 3000;
 
 module.exports = {

@@ -4,7 +4,12 @@ const _ = require('lodash');
 const debug = require('debug')('git');
 const semver = require('semver');
 
-const { tasmotaRepo, githubRepo, minVersion, edgeBranch } = require('../config/config');
+const {
+  tasmotaRepo,
+  githubRepo,
+  minVersion,
+  edgeBranch,
+} = require('../config/config');
 
 const isGitRepoAvailable = async () => {
   try {
