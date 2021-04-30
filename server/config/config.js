@@ -3,6 +3,7 @@ const path = require('path');
 const WORKDIR = process.env.WORKDIR || '/tmp';
 const tasmotaRepo = path.resolve(WORKDIR, 'Tasmota');
 const githubRepo = 'https://github.com/arendst/Tasmota.git';
+const minVersion = 'v9.4.0';
 const edgeBranch = 'development';
 const userConfigOvewrite = path.resolve(
   tasmotaRepo,
@@ -23,15 +24,13 @@ const templatePlatformioIni = path.resolve(
   __dirname,
   '../compile/platformio.ini'
 );
-const tasmotaInoFile = path.resolve(
-  tasmotaRepo,
-  'tasmota/tasmota.ino'
-);
+const tasmotaInoFile = path.resolve(tasmotaRepo, 'tasmota/tasmota.ino');
 const listenPort = process.env.PORT || 3000;
 
 module.exports = {
   tasmotaRepo,
   githubRepo,
+  minVersion,
   edgeBranch,
   userConfigOvewrite,
   userPlatformioIni,
