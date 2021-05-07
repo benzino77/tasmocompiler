@@ -59,10 +59,10 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      extends: 'env:tasmota32',
+      extends: 'env:tasmota32_base',
     },
     tooltip: '',
-    include_features: [],
+    include_features: ['ufilesys'],
     exclude_features: [],
     defines: {},
   },
@@ -73,7 +73,7 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      extends: 'env:tasmota32',
+      extends: 'env:tasmota32_base',
       board: 'esp32cam',
       'board_build.f_cpu': '240000000L',
       build_flags:
@@ -92,7 +92,7 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      extends: 'env:tasmota32',
+      extends: 'env:tasmota32_base',
       board: 'odroid_esp32',
       'board_build.f_cpu': '240000000L',
       'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
@@ -117,7 +117,7 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      extends: 'env:tasmota32',
+      extends: 'env:tasmota32_base',
       board: 'odroid_esp32',
       'board_build.f_cpu': '240000000L',
       'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
@@ -145,6 +145,23 @@ const availableBoards = [
       USE_SENDMAIL: true,
       USE_ESP32MAIL: true,
     },
+  },
+  // solo1
+  {
+    name: 'esp32solo1',
+    description: 'ESP32 Solo1',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      platform_packages:
+        '\ttasmota/framework-arduinoespressif32 @ 3.10006.210420' +
+        '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
+    },
+    tooltip: '',
+    include_features: ['ufilesys'],
+    exclude_features: [],
+    defines: {},
   },
 ];
 
