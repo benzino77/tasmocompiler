@@ -6,7 +6,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {},
     tooltip: 'stepFeaturesBoard8266Tooltip',
-    include_features: [],
+    include_features: ['rules'],
     exclude_features: [],
     defines: {},
   },
@@ -19,7 +19,7 @@ const availableBoards = [
       'board_build.ldscript': 'eagle.flash.4m2m.ld',
     },
     tooltip: 'stepFeaturesBoard82664MTooltip',
-    include_features: ['ufilesys'],
+    include_features: ['ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
@@ -34,7 +34,7 @@ const availableBoards = [
       'board_build.f_cpu': '160000000L',
     },
     tooltip: '',
-    include_features: ['USE_ADC_VCC'],
+    include_features: ['USE_ADC_VCC', 'rules'],
     exclude_features: [],
     defines: {
       MODULE: 'SONOFF_ZB_BRIDGE',
@@ -62,7 +62,7 @@ const availableBoards = [
       extends: 'env:tasmota32_base',
     },
     tooltip: '',
-    include_features: ['ufilesys'],
+    include_features: ['ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
@@ -81,7 +81,7 @@ const availableBoards = [
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
-    include_features: ['ufilesys'],
+    include_features: ['ufilesys', 'rules'],
     exclude_features: [],
     defines: { USE_WEBCAM: true },
   },
@@ -101,7 +101,7 @@ const availableBoards = [
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys', 'bluetooth', 'berry'],
+    include_features: ['displays', 'ufilesys', 'rules'],
     exclude_features: [],
     defines: {
       MODULE: 'ODROID_GO',
@@ -126,7 +126,7 @@ const availableBoards = [
         '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys', 'berry'],
+    include_features: ['displays', 'ufilesys', 'USE_SCRIPT'],
     exclude_features: [],
     defines: {
       MODULE: 'M5STACK_CORE2',
@@ -134,6 +134,7 @@ const availableBoards = [
       USE_M5STACK_CORE2: true,
       SAY_TIME: true, // this should be deleted in the future
       USE_SAY_TIME: true, // new changed name
+      USE_I2S_SAY_TIME: true, // another new name for this feature
       USE_WEBRADIO: true, // this should be deleted in the future
       USE_I2S_WEBRADIO: true, // new changed name
       USE_MPU6886: true,
@@ -159,7 +160,7 @@ const availableBoards = [
         '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
     },
     tooltip: '',
-    include_features: ['ufilesys'],
+    include_features: ['ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },

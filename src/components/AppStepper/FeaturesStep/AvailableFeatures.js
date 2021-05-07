@@ -277,7 +277,7 @@ const availableFeatures = [
   },
   {
     name: 'rules',
-    value: true,
+    value: false,
     show: true,
     description: 'stepFeaturesRulesDesc',
     tooltip: 'stepFeaturesRulesTooltip',
