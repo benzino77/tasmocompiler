@@ -1,7 +1,7 @@
 const availableBoards = [
   {
     name: 'esp8266',
-    description: 'Generic ESP8266',
+    description: 'ESP8266 Generic',
     default: true,
     show: true,
     platformio_entries: {},
@@ -12,7 +12,7 @@ const availableBoards = [
   },
   {
     name: 'esp82664M',
-    description: 'Wemos/NodeMCU',
+    description: ' ESP8266 Wemos/NodeMCU',
     default: true,
     show: true,
     platformio_entries: {
@@ -55,7 +55,7 @@ const availableBoards = [
   // esp32
   {
     name: 'esp32',
-    description: 'Generic ESP32',
+    description: 'ESP32 Generic',
     default: false,
     show: true,
     platformio_entries: {
