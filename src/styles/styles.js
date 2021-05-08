@@ -94,6 +94,10 @@ const styles = (theme) => ({
     marginBottom: theme.spacing.unit,
     position: 'relative',
   },
+  boardsDivider: {
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
+  },
 });
 
 export default styles;
