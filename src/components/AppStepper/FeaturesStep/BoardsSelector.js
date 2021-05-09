@@ -7,7 +7,6 @@ import { FormattedMessage } from 'react-intl';
 
 function BoardsSelector(props) {
   const {
-    onChange,
     classes,
     item: { name, description, tooltip },
     index,
@@ -31,7 +30,6 @@ function BoardsSelector(props) {
             control={<Radio />}
             label={description}
             labelPlacement="end"
-            onChange={onChange}
             {...props}
           />
         </Tooltip>
@@ -41,7 +39,6 @@ function BoardsSelector(props) {
 }
 
 BoardsSelector.propTypes = {
-  onChange: PropTypes.func.isRequired,
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
   item: PropTypes.shape({
     name: PropTypes.string,

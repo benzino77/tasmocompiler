@@ -1,7 +1,7 @@
 const availableBoards = [
   {
     name: 'esp8266',
-    description: 'ESP8266 Generic',
+    description: 'Generic',
     default: true,
     show: true,
     platformio_entries: {},
@@ -12,7 +12,7 @@ const availableBoards = [
   },
   {
     name: 'esp82664M',
-    description: ' ESP8266 Wemos/NodeMCU',
+    description: 'Wemos/NodeMCU',
     default: true,
     show: true,
     platformio_entries: {
@@ -25,7 +25,7 @@ const availableBoards = [
   },
   // zbbridge
   {
-    name: 'zbbridge',
+    name: 'esp8266zbbridge',
     description: 'SonOff Zigbee Bridge',
     default: false,
     show: true,
@@ -55,7 +55,7 @@ const availableBoards = [
   // esp32
   {
     name: 'esp32',
-    description: 'ESP32 Generic',
+    description: 'Generic',
     default: false,
     show: true,
     platformio_entries: {
@@ -69,7 +69,7 @@ const availableBoards = [
   // esp32webcam
   {
     name: 'esp32webcam',
-    description: 'ESP32 webcam',
+    description: 'Webcam',
     default: false,
     show: true,
     platformio_entries: {
@@ -88,7 +88,7 @@ const availableBoards = [
   // esp32odroid-go
   {
     name: 'esp32odroid-go',
-    description: 'ESP32 odroid-go',
+    description: 'Odroid-Go',
     default: false,
     show: true,
     platformio_entries: {
@@ -113,7 +113,7 @@ const availableBoards = [
   // esp32m5
   {
     name: 'esp32m5',
-    description: 'ESP32 M5Stack Core2',
+    description: 'M5Stack Core2',
     default: false,
     show: true,
     platformio_entries: {
@@ -150,7 +150,7 @@ const availableBoards = [
   // solo1
   {
     name: 'esp32solo1',
-    description: 'ESP32 Solo1',
+    description: 'Solo1',
     default: false,
     show: true,
     platformio_entries: {
