@@ -196,6 +196,7 @@ class FeaturesStep extends Component {
   render() {
     const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
+    const chips = ['esp8266', 'esp32'];
 
     return (
       <Step {...other}>
@@ -206,57 +207,41 @@ class FeaturesStep extends Component {
           <Typography>
             <FormattedMessage id="stepFeaturesBoardDesc" />
           </Typography>
+
           <div className={classes.actionsContainer}>
             <FormControl>
-              <FormLabel>ESP8266</FormLabel>
-              <RadioGroup
-                row
-                aria-label="board"
-                name="board"
-                value={board.name}
-                onChange={this.handleRadioChange}
-              >
-                {availableBoards.map((item, index) => {
-                  const { name, show } = item;
-                  return (
-                    !name.includes('esp32') &&
-                    show && (
-                      <BoardsSelector
-                        classes={classes}
-                        value={name}
-                        item={item}
-                        onChange={this.handleRadioChange}
-                        index={index}
-                      />
-                    )
-                  );
-                })}
-              </RadioGroup>
-              <Divider className={classes.boardsDivider} />
-              <FormLabel>ESP32</FormLabel>
-              <RadioGroup
-                row
-                aria-label="board"
-                name="board"
-                value={board.name}
-                onChange={this.handleRadioChange}
-              >
-                {availableBoards.map((item, index) => {
-                  const { name, show } = item;
-                  return (
-                    name.includes('esp32') &&
-                    show && (
-                      <BoardsSelector
-                        classes={classes}
-                        value={name}
-                        item={item}
-                        onChange={this.handleRadioChange}
-                        index={index}
-                      />
-                    )
-                  );
-                })}
-              </RadioGroup>
+              {chips.map((chip, idx) => {
+                return (
+                  <React.Fragment>
+                    <FormLabel>{chip.toUpperCase()}</FormLabel>
+                    <RadioGroup
+                      row
+                      aria-label="board"
+                      name="board"
+                      value={board.name}
+                      onChange={this.handleRadioChange}
+                    >
+                      {availableBoards.map((item, index) => {
+                        const { name, show } = item;
+                        return (
+                          name.includes(chip) &&
+                          show && (
+                            <BoardsSelector
+                              classes={classes}
+                              value={name}
+                              item={item}
+                              index={index}
+                            />
+                          )
+                        );
+                      })}
+                    </RadioGroup>
+                    {idx < chips.length - 1 &&
+                      (<Divider className={classes.boardsDivider} />)
+                    }
+                  </React.Fragment>
+                );
+              })}
             </FormControl>
           </div>
 

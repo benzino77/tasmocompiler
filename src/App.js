@@ -155,9 +155,7 @@ class App extends Component {
         {showDownloadLinks && (
           <DownloadLinks
             {...this.props}
-            isEsp8266={
-              other.features.board.name.includes('esp32') ? false : true
-            }
+            isEsp8266={other.features.board.name.startsWith('esp8266')}
           />
         )}
       </div>
