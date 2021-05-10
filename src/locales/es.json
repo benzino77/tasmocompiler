@@ -1,6 +1,7 @@
 {
   "appBarLangFlag": "ES",
   "appBarLangTooltip": "Configurar el idioma en los ajustes del navegador",
+
   "stepSourceTitle": "Código fuente de Tasmota",
   "stepSourceDescRefresh": "Actualizar el código fuente a la última versión o pulsar en SIGUIENTE para ir al siguiente paso",
   "stepSourceDescDownload": "Antes de ir al siguiente paso, se debe que descargar el código fuente de Tasmota",
@@ -23,6 +24,7 @@
 
   "stepFeaturesTitle": "Selecionar Características",
   "stepFeaturesBoardDesc": "Seleccionar el tipo de hardware a usar",
+  "stepFeaturesBoardGeneric": "Generic",
   "stepFeaturesBoard8266Tooltip": "Recomendado para todos los dispositivos con ESP8266.",
   "stepFeaturesBoard82664MTooltip": "Solo para uso avanzado y solo para dispositivos con ESP8266 y 4MB como Wemos D1 Mini, NodeMCU, etc.",
   "stepFeaturesDesc": "¿Qué características desea que se incluyan en el firmware personalizado?",

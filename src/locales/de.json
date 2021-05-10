@@ -24,6 +24,7 @@
 
   "stepFeaturesTitle": "Wähle die Features",
   "stepFeaturesBoardDesc": "Wähle die Hardware auf dem dein Projekt basiert",
+  "stepFeaturesBoardGeneric": "Generic",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 Board z.B. Wemos D1 Mini, NodeMCU, etc.",
   "stepFeaturesDesc": "Welche Features sollen in der endgültigen Firmenware enthalten sein?",

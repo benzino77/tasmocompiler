@@ -4,15 +4,16 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
+import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 
 import availableFeatures from './AvailableFeatures';
 import availableBoards from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
-import BoardsSelector from './BoardsSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
@@ -196,7 +197,8 @@ class FeaturesStep extends Component {
   render() {
     const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
-    const chips = ['esp8266', 'esp32'];
+    const Wire = ({ children, ...props }) => children(props);
+    const chipTypes = ['esp8266', 'esp32'];
 
     return (
       <Step {...other}>
@@ -210,10 +212,10 @@ class FeaturesStep extends Component {
 
           <div className={classes.actionsContainer}>
             <FormControl>
-              {chips.map((chip, idx) => {
+              {chipTypes.map((chipType, idx) => {
                 return (
-                  <React.Fragment>
-                    <FormLabel>{chip.toUpperCase()}</FormLabel>
+                  <div className={classes.chipTypesContainer} key={chipType}>
+                    <Typography>{chipType.toUpperCase()}</Typography>
                     <RadioGroup
                       row
                       aria-label="board"
@@ -221,25 +223,44 @@ class FeaturesStep extends Component {
                       value={board.name}
                       onChange={this.handleRadioChange}
                     >
-                      {availableBoards.map((item, index) => {
-                        const { name, show } = item;
+                      {availableBoards.map((item) => {
+                        const { name, description, tooltip, show } = item;
                         return (
-                          name.includes(chip) &&
+                          name.startsWith(chipType) &&
                           show && (
-                            <BoardsSelector
-                              classes={classes}
+                            // tooltips workaround
+                            <Wire
                               value={name}
-                              item={item}
-                              index={index}
-                            />
+                              key={item.name}
+                              className={classes.radioContainer}
+                            >
+                              {(props) => (
+                                <Tooltip
+                                  title={
+                                    tooltip ? <FormattedMessage id={tooltip} /> : ''
+                                  }
+                                >
+                                  <FormControlLabel
+                                    control={<Radio />}
+                                    label={
+                                      item.name === chipType
+                                        ? (<FormattedMessage id="stepFeaturesBoardGeneric">{(txt) => txt}</FormattedMessage>)
+                                        : (description)
+                                    }
+                                    labelPlacement="end"
+                                    {...props}
+                                  />
+                                </Tooltip>
+                              )}
+                            </Wire>
                           )
                         );
                       })}
                     </RadioGroup>
-                    {idx < chips.length - 1 &&
+                    {idx < chipTypes.length - 1 &&
                       (<Divider className={classes.boardsDivider} />)
                     }
-                  </React.Fragment>
+                  </div>
                 );
               })}
             </FormControl>

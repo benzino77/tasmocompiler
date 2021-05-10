@@ -24,6 +24,7 @@
 
   "stepFeaturesTitle": "Select features",
   "stepFeaturesBoardDesc": "Select board your project is based on",
+  "stepFeaturesBoardGeneric": "Generic",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, etc.",
   "stepFeaturesDesc": "Which features should be included in final binary firmware?",
