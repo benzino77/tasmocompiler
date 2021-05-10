@@ -76,8 +76,12 @@ const styles = (theme) => ({
   },
   radioContainer: {
     marginBottom: 0,
-    minWidth: 230,
-    maxWidth: 230,
+    marginRight: theme.spacing.unit * 2,
+    marginLeft: theme.spacing.unit * -1,
+    minWidth: 200,
+    maxWidth: 200,
+  },
+  chipTypesContainer: {
   },
   links: {
     marginLeft: theme.spacing.unit * 3,
