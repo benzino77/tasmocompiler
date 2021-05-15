@@ -99,6 +99,10 @@ const languages = [
     name: 'Chinese (Traditional)',
     value: 'zh_TW',
   },
+  {
+    name: 'Frisian',
+    value: 'fy_NL',
+  },
 ];
 
 export default languages;
