@@ -6,6 +6,24 @@ import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FormattedMessage } from 'react-intl';
 
+// https://gist.github.com/geberl/5d0eb57cc1b39ec26d93468e98f7d338
+function getFlagCharacter(countryCode) {
+  let code = countryCode.split(/_/)[1].toUpperCase();
+  // eslint-disable-next-line
+  switch (code) {
+    // he_HE hebrew to Israel
+    case 'HE':
+      code = 'IL';
+      break;
+    // ko_KO korean to South Korea
+    case 'KO':
+      code = 'KR';
+      break;
+    // skip default
+  }
+  return String.fromCodePoint(...[...code].map((c) => c.charCodeAt() + 127397));
+}
+
 function VersionSelector(props) {
   const { name, classes, label, value, onChange, items } = props;
 
@@ -21,7 +39,12 @@ function VersionSelector(props) {
         {items.map((item) => (
           <MenuItem key={item.name || item} value={item.value || item}>
             {name !== 'MY_LANGUAGE' && (item.name || item)}
-            {name === 'MY_LANGUAGE' && <FormattedMessage id={item.name} />}
+            {name === 'MY_LANGUAGE' && (
+              <FormattedMessage
+                id={item.name}
+                values={{ flag: getFlagCharacter(item.value) }}
+              />
+            )}
           </MenuItem>
         ))}
       </Select>
