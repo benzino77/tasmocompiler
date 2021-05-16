@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FormattedMessage } from 'react-intl';
 
 function VersionSelector(props) {
-  const { name, classes, label, value, onChange, items } = props;
+  const { name, classes, label, value, onChange, items, locale, getFlagChar } = props;
 
   const inProps = {
     name,
@@ -21,7 +21,17 @@ function VersionSelector(props) {
         {items.map((item) => (
           <MenuItem key={item.name || item} value={item.value || item}>
             {name !== 'MY_LANGUAGE' && (item.name || item)}
-            {name === 'MY_LANGUAGE' && <FormattedMessage id={item.name} />}
+            {name === 'MY_LANGUAGE' && (
+              <FormattedMessage
+                id={item.name}
+                values={{
+                  flag: getFlagChar(item.value),
+                  nativeName: (
+                    locale !== item.value.split(/[-_]/)[0] ? ` / ${item.nativeName}` : ''
+                  ),
+                }}
+              />
+            )}
           </MenuItem>
         ))}
       </Select>
@@ -36,6 +46,8 @@ VersionSelector.propTypes = {
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   items: PropTypes.oneOfType([PropTypes.array]).isRequired,
   onChange: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
+  getFlagChar: PropTypes.func.isRequired,
 };
 
 export default VersionSelector;

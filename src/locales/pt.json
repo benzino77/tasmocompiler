@@ -1,6 +1,5 @@
 {
-  "appBarLangFlag": "PT",
-  "appBarLangTooltip": "Mudar Idioma",
+  "appBarLang": "Português",
 
   "stepSourceTitle": "Código-fonte Tasmota",
   "stepSourceDescRefresh": "Você pode atualizar o código-fonte para o estado mais recente ou clicar em PRÓXIMO para ir para a próxima etapa",
@@ -109,6 +108,7 @@
   "Chinese (Simplified)": "Chinês (Simplificado)",
   "Chinese (Traditional)": "Chinês (Tradicional)",
   "Vietnam": "Vietnã",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Progresso da Compilação",
 

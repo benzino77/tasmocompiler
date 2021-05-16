@@ -1,6 +1,5 @@
 {
-  "appBarLangFlag": "EN",
-  "appBarLangTooltip": "Change web language on browser settings",
+  "appBarLang": "English",
 
   "stepSourceTitle": "Tasmota source code",
   "stepSourceDescRefresh": "You can refresh source code to the latest state or click NEXT to go to the next step",
@@ -109,6 +108,7 @@
   "Chinese (Simplified)": "Chinese (Simplified)",
   "Chinese (Traditional)": "Chinese (Traditional)",
   "Vietnam": "Vietnam",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Compiling progress",
 

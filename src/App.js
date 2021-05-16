@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import io from 'socket.io-client';
+import { IntlProvider } from 'react-intl';
 
 import styles from './styles/styles';
 import TopAppBar from './components/TopAppBar/TopAppBar';
@@ -13,6 +14,25 @@ import FeaturesStep from './components/AppStepper/FeaturesStep/FeaturesStep';
 import CustomParametersStep from './components/AppStepper/CustomParametersStep';
 import MessageBox from './components/MessageBox/MessageBox';
 import DownloadLinks from './components/DownloadLinks/DownloadLinks';
+import { allMessages } from './locales/languages';
+import languages from './components/AppStepper/VersionStep/Variables/Languages';
+import availableFeatures from './components/AppStepper/FeaturesStep/AvailableFeatures';
+
+let currentLocale = navigator.language.split(/[-_]/)[0];
+console.log(`Detected browser language: ${currentLocale}`);
+// Set default to english if not defined on supported languages
+if (!allMessages[currentLocale]) {
+  console.log(`Browser language (${currentLocale}) not supported changing to default (en)`);
+  currentLocale = 'en';
+}
+
+// add {flag} and {nativeName} to all supported Tasmota language
+languages.forEach((lang) => {
+  Object.keys(allMessages)
+    .map((key) => {
+      allMessages[key][lang.name] = `{flag} ${allMessages[key][lang.name]}{nativeName}`;
+    });
+});
 
 class App extends Component {
   constructor(props) {
@@ -28,10 +48,13 @@ class App extends Component {
       network: {},
       version: {},
       customParams: '',
+      locale: currentLocale,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.handleCompile = this.handleCompile.bind(this);
+    this.changeLanguage = this.changeLanguage.bind(this);
+    this.getFlagChar = this.getFlagChar.bind(this);
   }
 
   componentDidMount() {
@@ -47,6 +70,8 @@ class App extends Component {
     socket.on('finished', (data) => {
       this.setState({ compiling: false, showDownloadLinks: data.ok });
     });
+
+    this.changeLanguage(this.state.locale);
   }
 
   handleNext = (data) => {
@@ -109,6 +134,52 @@ class App extends Component {
     );
   };
 
+  changeLanguage = (lang) => {
+    languages.sort((a, b) => {
+      return (
+        allMessages[lang][a.name]
+          .localeCompare(allMessages[lang][b.name])
+      );
+    });
+    availableFeatures.sort((a, b) => {
+      return (
+        allMessages[lang][a.description]
+          .localeCompare(allMessages[lang][b.description])
+      );
+    });
+    this.setState({ locale: lang });
+  };
+
+  // https://gist.github.com/geberl/5d0eb57cc1b39ec26d93468e98f7d338
+  getFlagChar(country) {
+    let code = country.split(/_/)[1];
+    if (!code) {
+      code = country;
+    }
+    code = code.toUpperCase();
+    // eslint-disable-next-line
+    switch (code) {
+      // he_HE hebrew to Israel
+      case 'HE':
+        code = 'IL';
+        break;
+      // ko_KO korean to South Korea
+      case 'KO':
+        code = 'KR';
+        break;
+      // EN to GB
+      case 'EN':
+        code = 'GB';
+        break;
+      // CS to CZ
+      case 'CS':
+        code = 'CZ';
+        break;
+      // skip default
+    }
+    return String.fromCodePoint(...[...code].map((c) => c.charCodeAt() + 127397));
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -119,6 +190,7 @@ class App extends Component {
       showMessageBox,
       showDownloadLinks,
       compileMessages,
+      locale,
       ...other
     } = this.state;
 
@@ -128,39 +200,43 @@ class App extends Component {
     };
 
     return (
-      <div className={classes.root}>
-        <TopAppBar {...this.props} />
-        <Stepper activeStep={activeStep} orientation="vertical">
-          <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
-          <WifiStep {...this.props} {...bnHandlersProps} key={2} />
-          <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
-          <CustomParametersStep
-            {...this.props}
-            {...bnHandlersProps}
-            pstate={other}
-            key={4}
-          />
-          <VersionStep
-            {...this.props}
-            repoTags={tags}
-            backHandler={this.handleBack}
-            compileHandler={this.handleCompile}
-            compiling={compiling}
-            key={5}
-          />
-        </Stepper>
-        {showMessageBox && (
-          <MessageBox {...this.props} compileMessages={compileMessages} />
-        )}
-        {showDownloadLinks && (
-          <DownloadLinks
-            {...this.props}
-            isEsp8266={
-              other.features.board.name.includes('esp32') ? false : true
-            }
-          />
-        )}
-      </div>
+      <IntlProvider locale={locale} messages={allMessages[locale]}>
+        <div className={classes.root}>
+          <TopAppBar {...this.props} locale={locale} changeLanguage={this.changeLanguage} getFlagChar={this.getFlagChar} />
+          <Stepper activeStep={activeStep} orientation="vertical">
+            <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
+            <WifiStep {...this.props} {...bnHandlersProps} key={2} />
+            <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
+            <CustomParametersStep
+              {...this.props}
+              {...bnHandlersProps}
+              pstate={other}
+              key={4}
+            />
+            <VersionStep
+              {...this.props}
+              repoTags={tags}
+              backHandler={this.handleBack}
+              compileHandler={this.handleCompile}
+              compiling={compiling}
+              locale={locale}
+              getFlagChar={this.getFlagChar}
+              key={5}
+            />
+          </Stepper>
+          {showMessageBox && (
+            <MessageBox {...this.props} compileMessages={compileMessages} />
+          )}
+          {showDownloadLinks && (
+            <DownloadLinks
+              {...this.props}
+              isEsp8266={
+                other.features.board.name.includes('esp32') ? false : true
+              }
+            />
+          )}
+        </div>
+      </IntlProvider>
     );
   }
 }

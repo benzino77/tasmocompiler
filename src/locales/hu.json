@@ -1,6 +1,5 @@
 {
-  "appBarLangFlag": "HU",
-  "appBarLangTooltip": "Módosítsa a nyelvet a böngésző beállításainál",
+  "appBarLang": "Magyar",
 
   "stepSourceTitle": "Tasmota forráskód",
   "stepSourceDescRefresh": "Frissítheti a forráskódot a legújabb állapotra, vagy a TOVÁBB gombra kattintva folytathatja a következő lépést",
@@ -109,6 +108,7 @@
   "Chinese (Simplified)": "Kínai (Egyszerűsített)",
   "Chinese (Traditional)": "Kínai (Hagyományos)",
   "Vietnam": "Vietnámi",
+  "Frisian": "Fríz",
 
   "stepVersionCompProgress": "Fordítás állapota",
 

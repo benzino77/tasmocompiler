@@ -75,6 +75,7 @@ class DownloadLinks extends Component {
 
 DownloadLinks.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
+  isEsp8266: PropTypes.bool.isRequired,
 };
 
 export default DownloadLinks;

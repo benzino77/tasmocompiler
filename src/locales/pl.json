@@ -1,6 +1,5 @@
 {
-  "appBarLangFlag": "PL",
-  "appBarLangTooltip": "Zmień język interfejsu zmieniając ustawienia przeglądarki",
+  "appBarLang": "Polski",
 
   "stepSourceTitle": "Kod źródłowy Tasmota'y",
   "stepSourceDescRefresh": "Możesz pobrać ostatnie zmiany w kodzie lub kliknąć NASTĘPNY, aby przejśc do następnego kroku",
@@ -109,6 +108,7 @@
   "Chinese (Simplified)": "Chiński (uproszczony)",
   "Chinese (Traditional)": "Chiński (tradycyjny)",
   "Vietnam": "Wietnamski",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Postęp kompilacji",
 

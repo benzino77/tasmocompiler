@@ -1,6 +1,5 @@
 {
-  "appBarLangFlag": "DE",
-  "appBarLangTooltip": "Ändere die Sprache in den Browsereinstellungen",
+  "appBarLang": "Deutsch",
 
   "stepSourceTitle": "Tasmota Quellcode",
   "stepSourceDescRefresh": "Du kannst den Quellcode auf die neuste Version aktualisieren oder klick auf Weiter für den nächsten schritt",
@@ -109,6 +108,7 @@
   "Chinese (Simplified)": "Chinesisch (Einfach)",
   "Chinese (Traditional)": "Chinesische (Traditional)",
   "Vietnam": "Vietnamesisch",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Fortschritt der Kompilierung",
 
