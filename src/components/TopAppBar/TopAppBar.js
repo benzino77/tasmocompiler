@@ -29,10 +29,10 @@ class TopAppBar extends Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (event) => {
-    if (event.currentTarget.id) {
+  handleClose = (lang) => {
+    if (lang) {
       const { changeLanguage } = this.props;
-      changeLanguage(event.currentTarget.id);
+      changeLanguage(lang);
     }
     this.setState({ anchorEl: null });
   };
@@ -63,13 +63,17 @@ class TopAppBar extends Component {
               id="langs-menu"
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
-              onClose={this.handleClose}
+              onClose={() => this.handleClose()}
             >
               {Object.keys(allMessages)
                 .sort()
                 .map((lang) => {
                   return (
-                    <MenuItem onClick={this.handleClose} id={lang} key={lang} selected={locale === lang}>
+                    <MenuItem
+                      onClick={() => this.handleClose(lang)}
+                      key={lang}
+                      selected={locale === lang}
+                    >
                       {`${getFlagChar(lang)} ${allMessages[lang].appBarLang}`}
                     </MenuItem>
                   );
