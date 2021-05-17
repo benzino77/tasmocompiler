@@ -69,7 +69,7 @@ class TopAppBar extends Component {
                 .sort()
                 .map((lang) => {
                   return (
-                    <MenuItem onClick={this.handleClose} id={lang} selected={locale === lang}>
+                    <MenuItem onClick={this.handleClose} id={lang} key={lang} selected={locale === lang}>
                       {`${getFlagChar(lang)} ${allMessages[lang].appBarLang}`}
                     </MenuItem>
                   );
