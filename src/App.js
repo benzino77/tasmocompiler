@@ -54,7 +54,6 @@ class App extends Component {
     this.handleBack = this.handleBack.bind(this);
     this.handleCompile = this.handleCompile.bind(this);
     this.changeLanguage = this.changeLanguage.bind(this);
-    this.getFlagChar = this.getFlagChar.bind(this);
   }
 
   componentDidMount() {
@@ -150,36 +149,6 @@ class App extends Component {
     this.setState({ locale: lang });
   };
 
-  // https://gist.github.com/geberl/5d0eb57cc1b39ec26d93468e98f7d338
-  getFlagChar(country) {
-    let code = country.split(/_/)[1];
-    if (!code) {
-      code = country;
-    }
-    code = code.toUpperCase();
-    // eslint-disable-next-line
-    switch (code) {
-      // he_HE hebrew to Israel
-      case 'HE':
-        code = 'IL';
-        break;
-      // ko_KO korean to South Korea
-      case 'KO':
-        code = 'KR';
-        break;
-      // EN to GB
-      case 'EN':
-        code = 'GB';
-        break;
-      // CS to CZ
-      case 'CS':
-        code = 'CZ';
-        break;
-      // skip default
-    }
-    return String.fromCodePoint(...[...code].map((c) => c.charCodeAt() + 127397));
-  }
-
   render() {
     const { classes } = this.props;
 
@@ -202,7 +171,7 @@ class App extends Component {
     return (
       <IntlProvider locale={locale} messages={allMessages[locale]}>
         <div className={classes.root}>
-          <TopAppBar {...this.props} locale={locale} changeLanguage={this.changeLanguage} getFlagChar={this.getFlagChar} />
+          <TopAppBar {...this.props} locale={locale} changeLanguage={this.changeLanguage} />
           <Stepper activeStep={activeStep} orientation="vertical">
             <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
             <WifiStep {...this.props} {...bnHandlersProps} key={2} />
@@ -220,7 +189,6 @@ class App extends Component {
               compileHandler={this.handleCompile}
               compiling={compiling}
               locale={locale}
-              getFlagChar={this.getFlagChar}
               key={5}
             />
           </Stepper>

@@ -38,7 +38,7 @@ class TopAppBar extends Component {
   };
 
   render() {
-    const { classes, locale, changeLanguage, getFlagChar, ...other } = this.props;
+    const { classes, locale, changeLanguage, ...other } = this.props;
     const { version, anchorEl } = this.state;
 
     return (
@@ -74,7 +74,7 @@ class TopAppBar extends Component {
                       key={lang}
                       selected={locale === lang}
                     >
-                      {`${getFlagChar(lang)} ${allMessages[lang].appBarLang}`}
+                      {`${allMessages[lang].appBarLangFlag} ${allMessages[lang].appBarLang}`}
                     </MenuItem>
                   );
                 })
@@ -91,7 +91,6 @@ TopAppBar.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
   locale: PropTypes.string.isRequired,
   changeLanguage: PropTypes.func.isRequired,
-  getFlagChar: PropTypes.func.isRequired,
 };
 
 export default TopAppBar;

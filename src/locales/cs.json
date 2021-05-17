@@ -1,5 +1,9 @@
 {
+  "__appBarLang__": "https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
+  "__appBarLangFlag__": "https://emojipedia.org/flags/",
+
   "appBarLang": "Čeština",
+  "appBarLangFlag": "🇨🇿",
 
   "stepSourceTitle": "Zdrojový kód Tasmota",
   "stepSourceDescRefresh": "Zdrojový kód můžete aktualizovat na nejnovějšíh verzi nebo přejít na další krok kliknutím na tlačítko DALŠÍ",

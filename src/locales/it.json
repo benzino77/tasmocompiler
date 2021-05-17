@@ -1,5 +1,9 @@
 {
+  "__appBarLang__": "https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
+  "__appBarLangFlag__": "https://emojipedia.org/flags/",
+
   "appBarLang": "Italiano",
+  "appBarLangFlag": "🇮🇹",
 
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",

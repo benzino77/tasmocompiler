@@ -1,5 +1,9 @@
 {
+  "__appBarLang__": "https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
+  "__appBarLangFlag__": "https://emojipedia.org/flags/",
+
   "appBarLang": "Deutsch",
+  "appBarLangFlag": "🇩🇪",
 
   "stepSourceTitle": "Tasmota Quellcode",
   "stepSourceDescRefresh": "Du kannst den Quellcode auf die neuste Version aktualisieren oder klick auf Weiter für den nächsten schritt",
