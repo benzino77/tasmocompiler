@@ -29,7 +29,7 @@ if (!allMessages[currentLocale]) {
 // add {flag} and {nativeName} to all supported Tasmota language
 languages.forEach((lang) => {
   Object.keys(allMessages)
-    .map((key) => {
+    .forEach((key) => {
       allMessages[key][lang.name] = `{flag} ${allMessages[key][lang.name]}{nativeName}`;
     });
 });
