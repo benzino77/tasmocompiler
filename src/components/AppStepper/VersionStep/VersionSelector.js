@@ -39,6 +39,11 @@ function VersionSelector(props) {
   );
 }
 
+VersionSelector.defaultProps = {
+  locale: '',
+  getFlagChar: () => {},
+};
+
 VersionSelector.propTypes = {
   name: PropTypes.string.isRequired,
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
@@ -46,8 +51,8 @@ VersionSelector.propTypes = {
   value: PropTypes.oneOfType([PropTypes.object, PropTypes.string]).isRequired,
   items: PropTypes.oneOfType([PropTypes.array]).isRequired,
   onChange: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
-  getFlagChar: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequiredIf(props => props.name === 'MY_LANGUAGE'),
+  getFlagChar: PropTypes.func.isRequiredIf(props => props.name === 'MY_LANGUAGE'),
 };
 
 export default VersionSelector;
