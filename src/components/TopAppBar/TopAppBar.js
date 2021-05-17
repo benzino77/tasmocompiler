@@ -64,6 +64,9 @@ class TopAppBar extends Component {
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={() => this.handleClose()}
+              getContentAnchorEl={null}
+              anchorOrigin={{vertical: "bottom", horizontal: "center"}}
+              transformOrigin={{vertical: "top", horizontal: "center"}}
             >
               {Object.keys(allMessages)
                 .sort()
