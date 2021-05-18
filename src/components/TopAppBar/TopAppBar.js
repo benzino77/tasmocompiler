@@ -29,8 +29,8 @@ class TopAppBar extends Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (lang) => {
-    if (lang) {
+  handleClose = (lang, locale) => {
+    if (lang && lang !== locale) {
       const { changeLanguage } = this.props;
       changeLanguage(lang);
     }
@@ -74,7 +74,7 @@ class TopAppBar extends Component {
                 .map((lang) => {
                   return (
                     <MenuItem
-                      onClick={() => this.handleClose(lang)}
+                      onClick={() => this.handleClose(lang, locale)}
                       key={lang}
                       selected={locale === lang}
                     >
