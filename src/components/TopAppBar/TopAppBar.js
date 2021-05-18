@@ -55,18 +55,19 @@ class TopAppBar extends Component {
                 color="inherit"
                 className={classes.language}
               >
-                <LanguageIcon className={classes.leftIcon} />
                 <FormattedMessage id="appBarLang" />
+                <LanguageIcon className={classes.rightIcon} />
               </Typography>
             </div>
             <Menu
+              className={classes.languageList}
               id="langs-menu"
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={() => this.handleClose()}
               getContentAnchorEl={null}
-              anchorOrigin={{vertical: "bottom", horizontal: "center"}}
-              transformOrigin={{vertical: "top", horizontal: "center"}}
+              anchorOrigin={{vertical: "bottom", horizontal: "right"}}
+              transformOrigin={{vertical: "top", horizontal: "right"}}
             >
               {Object.keys(allMessages)
                 .sort()

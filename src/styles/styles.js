@@ -10,6 +10,9 @@ const styles = (theme) => ({
     alignItems: 'center',
     cursor: 'pointer',
   },
+  languageList: {
+    marginTop: theme.spacing.unit,
+  },
   root: {
     width: '100%',
   },
