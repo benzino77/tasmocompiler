@@ -49,6 +49,10 @@ const styles = (theme) => ({
     margin: theme.spacing.unit * 2,
     minWidth: 140,
   },
+  languageContainer: {
+    margin: theme.spacing.unit * 2,
+    minWidth: 400,
+  },
   textField: {
     // marginLeft: theme.spacing.unit,
     // marginRight: theme.spacing.unit,

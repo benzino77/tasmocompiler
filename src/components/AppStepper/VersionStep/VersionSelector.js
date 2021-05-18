@@ -15,7 +15,7 @@ function VersionSelector(props) {
   };
 
   return (
-    <FormControl className={classes.versionContainer}>
+    <FormControl className={name==='MY_LANGUAGE' ? classes.languageContainer : classes.versionContainer}>
       <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={inProps}>
         {items.map((item) => (
