@@ -66,8 +66,8 @@ class TopAppBar extends Component {
               open={Boolean(anchorEl)}
               onClose={() => this.handleClose()}
               getContentAnchorEl={null}
-              anchorOrigin={{vertical: "bottom", horizontal: "right"}}
-              transformOrigin={{vertical: "top", horizontal: "right"}}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
               {Object.keys(allMessages)
                 .sort()
@@ -78,7 +78,10 @@ class TopAppBar extends Component {
                       key={lang}
                       selected={locale === lang}
                     >
-                      {`${allMessages[lang].appBarLangFlag} ${allMessages[lang].appBarLang}`}
+                      <img src={`flags/${allMessages[lang].appBarLangFlag}.svg`} alt="" className={classes.flagIcon} />
+                      <div className={classes.languageName}>
+                        {allMessages[lang].appBarLang}
+                      </div>
                     </MenuItem>
                   );
                 })

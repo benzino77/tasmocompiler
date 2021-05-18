@@ -13,6 +13,15 @@ const styles = (theme) => ({
   languageList: {
     marginTop: theme.spacing.unit,
   },
+  flagIcon: {
+    width: 24,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.dark,
+  },
+  languageName: {
+    marginLeft: theme.spacing.unit,
+  },
   root: {
     width: '100%',
   },

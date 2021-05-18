@@ -15,22 +15,30 @@ function VersionSelector(props) {
   };
 
   return (
-    <FormControl className={name==='MY_LANGUAGE' ? classes.languageContainer : classes.versionContainer}>
+    <FormControl className={name === 'MY_LANGUAGE' ? classes.languageContainer : classes.versionContainer}>
       <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
       <Select value={value} onChange={onChange} inputProps={inProps}>
         {items.map((item) => (
           <MenuItem key={item.name || item} value={item.value || item}>
             {name !== 'MY_LANGUAGE' && (item.name || item)}
             {name === 'MY_LANGUAGE' && (
-              <FormattedMessage
-                id={item.name}
-                values={{
-                  flag: item.flag,
-                  nativeName: (
-                    locale !== item.value.split(/[-_]/)[0] ? ` / ${item.nativeName}` : ''
-                  ),
-                }}
-              />
+              <div>
+                <img
+                  className={classes.flagIcon}
+                  src={`flags/${item.value.split(/[-_]/)[1].toLowerCase()}.svg`}
+                  alt=""
+                />
+                <span className={classes.languageName}>
+                  <FormattedMessage
+                    id={item.name}
+                    values={{
+                      nativeName: (
+                        locale !== item.value.split(/[-_]/)[0] ? ` / ${item.nativeName}` : ''
+                      ),
+                    }}
+                  />
+                </span>
+              </div>
             )}
           </MenuItem>
         ))}

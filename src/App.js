@@ -30,7 +30,7 @@ if (!allMessages[currentLocale]) {
 languages.forEach((lang) => {
   Object.keys(allMessages)
     .forEach((key) => {
-      allMessages[key][lang.name] = `{flag} ${allMessages[key][lang.name]}{nativeName}`;
+      allMessages[key][lang.name] = `${allMessages[key][lang.name]}{nativeName}`;
     });
 });
 
