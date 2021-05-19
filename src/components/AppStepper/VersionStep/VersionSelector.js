@@ -25,7 +25,7 @@ function VersionSelector(props) {
               <div>
                 <img
                   className={classes.flagIcon}
-                  src={`flags/${item.value.split(/_/)[1].toLowerCase()}.svg`}
+                  src={`flags/${item.value.split('_')[1].toLowerCase()}.svg`}
                   alt=""
                 />
                 <span className={classes.languageName}>
@@ -33,7 +33,7 @@ function VersionSelector(props) {
                     id={item.name}
                     values={{
                       nativeName: (
-                        locale !== item.value.split(/_/)[0] ? ` / ${item.nativeName}` : ''
+                        locale !== item.value.split('_')[0] ? ` / ${item.nativeName}` : ''
                       ),
                     }}
                   />
