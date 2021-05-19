@@ -82,6 +82,7 @@
 
   "stepVersionTitle": "Vyberte verzi a zkompilujte",
   "stepVersionDesc": "Select Tasmota version and language.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Verze Tasmota",
   "stepVersionLanguage": "Jazyk",
 

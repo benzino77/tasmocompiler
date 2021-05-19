@@ -82,6 +82,7 @@
 
   "stepVersionTitle": "Verzió kiválasztása és lefordítása",
   "stepVersionDesc": "Válassza ki a Tasmota verziót és nyelvet.",
+  "stepVersionDevelopment": "Fejlesztői",
   "stepVersionTasmota": "Tasmota verzió",
   "stepVersionLanguage": "Nyelv",
 

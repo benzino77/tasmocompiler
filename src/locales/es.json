@@ -82,6 +82,7 @@
 
   "stepVersionTitle": "Selección de versión",
   "stepVersionDesc": "Selecionar la versión de Tasmota y el idioma que se quiere usar.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Versión Tasmota",
   "stepVersionLanguage": "Idioma",
 

@@ -20,7 +20,11 @@ function VersionSelector(props) {
       <Select value={value} onChange={onChange} inputProps={inProps}>
         {items.map((item) => (
           <MenuItem key={item.name || item} value={item.value || item}>
-            {name !== 'MY_LANGUAGE' && (item.name || item)}
+            {name !== 'MY_LANGUAGE' && (
+              item === 'development'
+                ? <FormattedMessage id="stepVersionDevelopment" />
+                : item
+            )}
             {name === 'MY_LANGUAGE' && (
               <div>
                 <img
