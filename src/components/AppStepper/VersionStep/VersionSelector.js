@@ -29,7 +29,7 @@ function VersionSelector(props) {
               <div>
                 <img
                   className={classes.flagIcon}
-                  src={`flags/${item.value.split('_')[1].toLowerCase()}.svg`}
+                  src={`flags/${item.value.split('_')[1].toLowerCase()}.png`}
                   alt=""
                 />
                 <span className={classes.languageName}>

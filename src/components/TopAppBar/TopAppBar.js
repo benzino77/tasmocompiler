@@ -78,7 +78,7 @@ class TopAppBar extends Component {
                       key={lang}
                       selected={locale === lang}
                     >
-                      <img src={`flags/${allMessages[lang].appBarLangFlag}.svg`} alt="" className={classes.flagIcon} />
+                      <img src={`flags/${allMessages[lang].appBarLangFlag}.png`} alt="" className={classes.flagIcon} />
                       <div className={classes.languageName}>
                         {allMessages[lang].appBarLang}
                       </div>
