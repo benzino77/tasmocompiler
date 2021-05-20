@@ -26,7 +26,7 @@ if (!allMessages[currentLocale]) {
   currentLocale = 'en';
 }
 
-// add {flag} and {nativeName} to all supported Tasmota language
+// add {nativeName} to all supported Tasmota language
 languages.forEach((lang) => {
   Object.keys(allMessages)
     .forEach((key) => {
