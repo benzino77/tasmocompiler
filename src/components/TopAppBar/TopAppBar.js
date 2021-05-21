@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { FormattedMessage } from 'react-intl';
 import LanguageIcon from '@material-ui/icons/Language';
 import { Menu, MenuItem } from '@material-ui/core';
 import { allMessages } from '../../locales/languages';
@@ -49,13 +48,22 @@ class TopAppBar extends Component {
             <Typography variant="h6" color="inherit">
               TasmoCompiler {version}
             </Typography>
-            <div className={classes.language} role="button" tabIndex={0} aria-controls="langs-menu" aria-haspopup="true" onClick={this.handleOpen} onKeyPress={this.handleOpen}>
+            <div
+              className={classes.language}
+              role="button"
+              tabIndex={0}
+              aria-controls="langs-menu"
+              aria-haspopup="true"
+              onClick={this.handleOpen}
+              onKeyPress={this.handleOpen}
+            >
               <Typography
-                variant="caption"
                 color="inherit"
+                variant="body2"
                 className={classes.language}
               >
-                <FormattedMessage id="appBarLang" />
+                {/* <FormattedMessage id="appBarLang" /> */}
+                {allMessages[locale].nativeName}
                 <LanguageIcon className={classes.rightIcon} />
               </Typography>
             </div>
@@ -78,14 +86,17 @@ class TopAppBar extends Component {
                       key={lang}
                       selected={locale === lang}
                     >
-                      <img src={`flags/${allMessages[lang].appBarLangFlag}.png`} alt="" className={classes.flagIcon} />
+                      <img
+                        src={allMessages[lang].flag}
+                        alt=""
+                        className={classes.flagIcon}
+                      />
                       <div className={classes.languageName}>
-                        {allMessages[lang].appBarLang}
+                        {allMessages[lang].nativeName}
                       </div>
                     </MenuItem>
                   );
-                })
-              }
+                })}
             </Menu>
           </Toolbar>
         </AppBar>

@@ -84,7 +84,7 @@
   "stepVersionDesc": "Wybierz wersję Tasmoty oraz języka.",
   "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Wersja Tasmoty",
-  "stepVersionLanguage": "Język",
+  "stepVersionLanguage": "Język UI Tasmoty",
 
   "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
@@ -113,7 +113,7 @@
   "Chinese (Simplified)": "Chiński (uproszczony)",
   "Chinese (Traditional)": "Chiński (tradycyjny)",
   "Vietnam": "Wietnamski",
-  "Frisian": "Frisian",
+  "Frisian": "Fryzyjski",
 
   "stepVersionCompProgress": "Postęp kompilacji",
 

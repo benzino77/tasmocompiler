@@ -22,17 +22,11 @@ let currentLocale = navigator.language.split(/[-_]/)[0];
 console.log(`Detected browser language: ${currentLocale}`);
 // Set default to english if not defined on supported languages
 if (!allMessages[currentLocale]) {
-  console.log(`Browser language (${currentLocale}) not supported changing to default (en)`);
+  console.log(
+    `Browser language (${currentLocale}) not supported changing to default (en)`
+  );
   currentLocale = 'en';
 }
-
-// add {nativeName} to all supported Tasmota language
-languages.forEach((lang) => {
-  Object.keys(allMessages)
-    .forEach((key) => {
-      allMessages[key][lang.name] = `${allMessages[key][lang.name]}{nativeName}`;
-    });
-});
 
 class App extends Component {
   constructor(props) {
@@ -135,15 +129,13 @@ class App extends Component {
 
   changeLanguage = (lang) => {
     languages.sort((a, b) => {
-      return (
-        allMessages[lang][a.name]
-          .localeCompare(allMessages[lang][b.name])
+      return allMessages[lang]['source'][a.name].localeCompare(
+        allMessages[lang]['source'][b.name]
       );
     });
     availableFeatures.sort((a, b) => {
-      return (
-        allMessages[lang][a.description]
-          .localeCompare(allMessages[lang][b.description])
+      return allMessages[lang]['source'][a.description].localeCompare(
+        allMessages[lang]['source'][b.description]
       );
     });
     this.setState({ locale: lang });
@@ -169,9 +161,13 @@ class App extends Component {
     };
 
     return (
-      <IntlProvider locale={locale} messages={allMessages[locale]}>
+      <IntlProvider locale={locale} messages={allMessages[locale]['source']}>
         <div className={classes.root}>
-          <TopAppBar {...this.props} locale={locale} changeLanguage={this.changeLanguage} />
+          <TopAppBar
+            {...this.props}
+            locale={locale}
+            changeLanguage={this.changeLanguage}
+          />
           <Stepper activeStep={activeStep} orientation="vertical">
             <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
             <WifiStep {...this.props} {...bnHandlersProps} key={2} />

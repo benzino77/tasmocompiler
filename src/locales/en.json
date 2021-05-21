@@ -84,7 +84,7 @@
   "stepVersionDesc": "Select Tasmota version and language.",
   "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Tasmota version",
-  "stepVersionLanguage": "Language",
+  "stepVersionLanguage": "Tasmota UI language",
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 

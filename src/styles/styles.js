@@ -59,11 +59,16 @@ const styles = (theme) => ({
   },
   versionContainer: {
     margin: theme.spacing.unit * 2,
-    minWidth: 140,
+    minWidth: 160,
   },
   languageContainer: {
     margin: theme.spacing.unit * 2,
-    minWidth: 400,
+    maxWidth: 400,
+    minWidth: 160,
+  },
+  tasmotaLangSelector: {
+    display: 'flex',
+    alignItems: 'center',
   },
   textField: {
     // marginLeft: theme.spacing.unit,
