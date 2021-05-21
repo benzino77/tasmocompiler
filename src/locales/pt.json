@@ -1,9 +1,5 @@
 {
-  "__appBarLang__": "Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
-  "__appBarLangFlag__": "SVG icon name from public/flags folder for most typical country of this language",
-
-  "appBarLang": "Português",
-  "appBarLangFlag": "pt",
+  "__translation__": "Portuguese / Português",
 
   "stepSourceTitle": "Código-fonte Tasmota",
   "stepSourceDescRefresh": "Você pode atualizar o código-fonte para o estado mais recente ou clicar em PRÓXIMO para ir para a próxima etapa",
