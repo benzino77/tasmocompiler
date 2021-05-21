@@ -165,20 +165,6 @@ class App extends Component {
         <div className={classes.root}>
           <TopAppBar
             {...this.props}
-            repoTags={tags}
-            backHandler={this.handleBack}
-            compileHandler={this.handleCompile}
-            compiling={compiling}
-            key={5}
-          />
-        </Stepper>
-        {showMessageBox && (
-          <MessageBox {...this.props} compileMessages={compileMessages} />
-        )}
-        {showDownloadLinks && (
-          <DownloadLinks
-            {...this.props}
-            isEsp8266={other.features.board.name.startsWith('esp8266')}
             locale={locale}
             changeLanguage={this.changeLanguage}
           />
@@ -208,9 +194,7 @@ class App extends Component {
           {showDownloadLinks && (
             <DownloadLinks
               {...this.props}
-              isEsp8266={
-                other.features.board.name.includes('esp32') ? false : true
-              }
+              isEsp8266={other.features.board.name.startsWith('esp8266')}
             />
           )}
         </div>
