@@ -1,7 +1,4 @@
 {
-  "appBarLangFlag": "PL",
-  "appBarLangTooltip": "Zmień język interfejsu zmieniając ustawienia przeglądarki",
-
   "stepSourceTitle": "Kod źródłowy Tasmota'y",
   "stepSourceDescRefresh": "Możesz pobrać ostatnie zmiany w kodzie lub kliknąć NASTĘPNY, aby przejśc do następnego kroku",
   "stepSourceDescDownload": "Przed przejsciem do następnego kroku, muisz pobrać kod źródłowy Tasmota'y",
@@ -80,8 +77,9 @@
 
   "stepVersionTitle": "Wybierz wersje i kompiluj",
   "stepVersionDesc": "Wybierz wersję Tasmoty oraz języka.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Wersja Tasmoty",
-  "stepVersionLanguage": "Język",
+  "stepVersionLanguage": "Język UI Tasmoty",
 
   "stepDownload": "Poniżej możesz pobrać nowy firmware oraz pliki użyte do jego zbudowania:",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Chiński (uproszczony)",
   "Chinese (Traditional)": "Chiński (tradycyjny)",
   "Vietnam": "Wietnamski",
+  "Frisian": "Fryzyjski",
 
   "stepVersionCompProgress": "Postęp kompilacji",
 

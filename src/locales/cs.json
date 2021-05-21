@@ -1,7 +1,4 @@
 {
-  "appBarLangFlag": "CZ",
-  "appBarLangTooltip": "Změna jazyka rozhraní",
-
   "stepSourceTitle": "Zdrojový kód Tasmota",
   "stepSourceDescRefresh": "Zdrojový kód můžete aktualizovat na nejnovějšíh verzi nebo přejít na další krok kliknutím na tlačítko DALŠÍ",
   "stepSourceDescDownload": "Než přejdete na další krok, musíte stáhnout zdrojový kód Tasmota",
@@ -80,6 +77,7 @@
 
   "stepVersionTitle": "Vyberte verzi a zkompilujte",
   "stepVersionDesc": "Select Tasmota version and language.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Verze Tasmota",
   "stepVersionLanguage": "Jazyk",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Čínština (Zjednodušená)",
   "Chinese (Traditional)": "Čínština (Tradiční)",
   "Vietnam": "Vietnam",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Průběh kompilace",
 

@@ -1,7 +1,4 @@
 {
-  "appBarLangFlag": "HU",
-  "appBarLangTooltip": "Módosítsa a nyelvet a böngésző beállításainál",
-
   "stepSourceTitle": "Tasmota forráskód",
   "stepSourceDescRefresh": "Frissítheti a forráskódot a legújabb állapotra, vagy a TOVÁBB gombra kattintva folytathatja a következő lépést",
   "stepSourceDescDownload": "Mielőtt folytatná a következő lépést, le kell töltenie a Tasmota forráskódot",
@@ -80,6 +77,7 @@
 
   "stepVersionTitle": "Verzió kiválasztása és lefordítása",
   "stepVersionDesc": "Válassza ki a Tasmota verziót és nyelvet.",
+  "stepVersionDevelopment": "Fejlesztői",
   "stepVersionTasmota": "Tasmota verzió",
   "stepVersionLanguage": "Nyelv",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Kínai (Egyszerűsített)",
   "Chinese (Traditional)": "Kínai (Hagyományos)",
   "Vietnam": "Vietnámi",
+  "Frisian": "Fríz",
 
   "stepVersionCompProgress": "Fordítás állapota",
 

@@ -10,6 +10,18 @@ const styles = (theme) => ({
     alignItems: 'center',
     cursor: 'pointer',
   },
+  languageList: {
+    marginTop: theme.spacing.unit,
+  },
+  flagIcon: {
+    width: 24,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.dark,
+  },
+  languageName: {
+    marginLeft: theme.spacing.unit,
+  },
   root: {
     width: '100%',
   },
@@ -47,7 +59,16 @@ const styles = (theme) => ({
   },
   versionContainer: {
     margin: theme.spacing.unit * 2,
-    minWidth: 140,
+    minWidth: 160,
+  },
+  languageContainer: {
+    margin: theme.spacing.unit * 2,
+    maxWidth: 400,
+    minWidth: 160,
+  },
+  tasmotaLangSelector: {
+    display: 'flex',
+    alignItems: 'center',
   },
   textField: {
     // marginLeft: theme.spacing.unit,

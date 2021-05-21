@@ -5,19 +5,19 @@ import StepLabel from '@material-ui/core/StepLabel';
 import StepContent from '@material-ui/core/StepContent';
 import Typography from '@material-ui/core/Typography';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import { FormattedMessage } from 'react-intl';
 
 import BackButton from '../BackButton';
 import CompileButton from '../CompileButton';
 import VersionSelector from './VersionSelector';
 import languages from './Variables/Languages';
-import { FormattedMessage } from 'react-intl';
 
 class VersionStep extends Component {
   constructor(props) {
     super(props);
 
     // Search the current locale of browser on languages
-    let browserLocale = navigator.language.toLowerCase();
+    const browserLocale = navigator.language.toLowerCase();
 
     let languageIndex = languages.findIndex((element) =>
       element.value.toLowerCase().includes(browserLocale.replace('-', '_'))
@@ -68,6 +68,7 @@ class VersionStep extends Component {
       repoTags,
       compiling,
       compileHandler,
+      locale,
       ...other
     } = this.props;
 
@@ -96,6 +97,7 @@ class VersionStep extends Component {
               label={<FormattedMessage id="stepVersionLanguage" />}
               onChange={this.handleChange}
               classes={classes}
+              locale={locale}
             />
           </form>
           <div className={classes.actionsContainer}>
@@ -133,6 +135,7 @@ VersionStep.propTypes = {
   compiling: PropTypes.bool.isRequired,
   compileHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
+  locale: PropTypes.string.isRequired,
 };
 
 export default VersionStep;

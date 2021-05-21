@@ -1,13 +1,10 @@
 {
-  "appBarLangFlag": "IT",
-  "appBarLangTooltip": "Modifica la lingua nelle impostazioni del browser",
-
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di passare allo step successivo scarica il codice sorgente Tasmota",
 
   "btnDownloadSrc": "Download codice sorgente",
-  "btnRefreshSrc": "Aggiorna codice  sorgente",
+  "btnRefreshSrc": "Aggiorna codice sorgente",
   "btnNext": "Avanti",
   "btnBack": "Indietro",
   "btnCompile": "Compila",
@@ -80,6 +77,7 @@
 
   "stepVersionTitle": "Selezione versione e compilazione",
   "stepVersionDesc": "Seleziona versione Tasmota e lingua.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Versione Tasmota",
   "stepVersionLanguage": "Lingua",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Cinese (semplificato)",
   "Chinese (Traditional)": "Cinese (tradizionale)",
   "Vietnam": "Vietnamita",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Progresso compilazione",
 

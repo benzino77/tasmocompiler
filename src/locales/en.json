@@ -1,7 +1,4 @@
 {
-  "appBarLangFlag": "EN",
-  "appBarLangTooltip": "Change web language on browser settings",
-
   "stepSourceTitle": "Tasmota source code",
   "stepSourceDescRefresh": "You can refresh source code to the latest state or click NEXT to go to the next step",
   "stepSourceDescDownload": "Before you go to the next step, you have to download Tasmota source code",
@@ -80,8 +77,9 @@
 
   "stepVersionTitle": "Select version and compile",
   "stepVersionDesc": "Select Tasmota version and language.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Tasmota version",
-  "stepVersionLanguage": "Language",
+  "stepVersionLanguage": "Tasmota UI language",
 
   "stepDownload": "You can now download custom compiled binary and files used during compilation:",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Chinese (Simplified)",
   "Chinese (Traditional)": "Chinese (Traditional)",
   "Vietnam": "Vietnam",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Compiling progress",
 

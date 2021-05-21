@@ -1,7 +1,4 @@
 {
-  "appBarLangFlag": "ES",
-  "appBarLangTooltip": "Configurar el idioma en los ajustes del navegador",
-
   "stepSourceTitle": "Código fuente de Tasmota",
   "stepSourceDescRefresh": "Actualizar el código fuente a la última versión o pulsar en SIGUIENTE para ir al siguiente paso",
   "stepSourceDescDownload": "Antes de ir al siguiente paso, se debe que descargar el código fuente de Tasmota",
@@ -80,6 +77,7 @@
 
   "stepVersionTitle": "Selección de versión",
   "stepVersionDesc": "Selecionar la versión de Tasmota y el idioma que se quiere usar.",
+  "stepVersionDevelopment": "Development",
   "stepVersionTasmota": "Versión Tasmota",
   "stepVersionLanguage": "Idioma",
 
@@ -110,6 +108,7 @@
   "Chinese (Simplified)": "Chino (Simplificado)",
   "Chinese (Traditional)": "Chino (Tradicional)",
   "Vietnam": "Vietnamita",
+  "Frisian": "Frisian",
 
   "stepVersionCompProgress": "Progreso de la compilación",
 
