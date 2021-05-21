@@ -92,15 +92,15 @@ const styles = (theme) => ({
   checkboxContainer: {
     marginBottom: 0,
     marginLeft: theme.spacing.unit,
-    minWidth: 200,
-    maxWidth: 200,
+    minWidth: 230,
+    maxWidth: 230,
   },
   radioContainer: {
     marginBottom: 0,
     marginRight: theme.spacing.unit * 2,
     marginLeft: theme.spacing.unit * -1,
-    minWidth: 200,
-    maxWidth: 200,
+    minWidth: 230,
+    maxWidth: 230,
   },
   chipTypesContainer: {
   },
