@@ -1,10 +1,4 @@
 {
-  "__appBarLang__": "Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
-  "__appBarLangFlag__": "SVG icon name from public/flags folder for most typical country of this language",
-
-  "appBarLang": "Español",
-  "appBarLangFlag": "es",
-
   "stepSourceTitle": "Código fuente de Tasmota",
   "stepSourceDescRefresh": "Actualizar el código fuente a la última versión o pulsar en SIGUIENTE para ir al siguiente paso",
   "stepSourceDescDownload": "Antes de ir al siguiente paso, se debe que descargar el código fuente de Tasmota",

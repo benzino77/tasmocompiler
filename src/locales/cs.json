@@ -1,10 +1,4 @@
 {
-  "__appBarLang__": "Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
-  "__appBarLangFlag__": "SVG icon name from public/flags folder for most typical country of this language",
-
-  "appBarLang": "Čeština",
-  "appBarLangFlag": "cz",
-
   "stepSourceTitle": "Zdrojový kód Tasmota",
   "stepSourceDescRefresh": "Zdrojový kód můžete aktualizovat na nejnovějšíh verzi nebo přejít na další krok kliknutím na tlačítko DALŠÍ",
   "stepSourceDescDownload": "Než přejdete na další krok, musíte stáhnout zdrojový kód Tasmota",

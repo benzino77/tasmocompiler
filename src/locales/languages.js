@@ -7,6 +7,8 @@ import localeCS from './cs.json';
 import localeHU from './hu.json';
 import localePT from './pt.json';
 
+// nativeName: Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/
+// flag: PNG 24px width proportional icon name from public/flags folder for most typical country of this language
 const allMessages = {
   de: { source: localeDE, nativeName: 'Deutsch', flag: 'flags/de.png' },
   en: { source: localeEN, nativeName: 'English', flag: 'flags/gb.png' },

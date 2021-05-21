@@ -1,16 +1,10 @@
 {
-  "__appBarLang__": "Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
-  "__appBarLangFlag__": "SVG icon name from public/flags folder for most typical country of this language",
-
-  "appBarLang": "Italiano",
-  "appBarLangFlag": "it",
-
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di passare allo step successivo scarica il codice sorgente Tasmota",
 
   "btnDownloadSrc": "Download codice sorgente",
-  "btnRefreshSrc": "Aggiorna codice  sorgente",
+  "btnRefreshSrc": "Aggiorna codice sorgente",
   "btnNext": "Avanti",
   "btnBack": "Indietro",
   "btnCompile": "Compila",

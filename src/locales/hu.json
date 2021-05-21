@@ -1,10 +1,4 @@
 {
-  "__appBarLang__": "Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/",
-  "__appBarLangFlag__": "SVG icon name from public/flags folder for most typical country of this language",
-
-  "appBarLang": "Magyar",
-  "appBarLangFlag": "hu",
-
   "stepSourceTitle": "Tasmota forráskód",
   "stepSourceDescRefresh": "Frissítheti a forráskódot a legújabb állapotra, vagy a TOVÁBB gombra kattintva folytathatja a következő lépést",
   "stepSourceDescDownload": "Mielőtt folytatná a következő lépést, le kell töltenie a Tasmota forráskódot",

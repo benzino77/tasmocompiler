@@ -62,7 +62,6 @@ class TopAppBar extends Component {
                 variant="body2"
                 className={classes.language}
               >
-                {/* <FormattedMessage id="appBarLang" /> */}
                 {allMessages[locale].nativeName}
                 <LanguageIcon className={classes.rightIcon} />
               </Typography>
