@@ -1,6 +1,4 @@
 {
-  "__translation__": "Spanish / Español",
-
   "stepSourceTitle": "Código fuente de Tasmota",
   "stepSourceDescRefresh": "Actualizar el código fuente a la última versión o pulsar en SIGUIENTE para ir al siguiente paso",
   "stepSourceDescDownload": "Antes de ir al siguiente paso, se debe que descargar el código fuente de Tasmota",
