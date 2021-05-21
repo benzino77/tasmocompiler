@@ -232,7 +232,6 @@ class FeaturesStep extends Component {
                             <Wire
                               value={name}
                               key={item.name}
-                              className={classes.radioContainer}
                             >
                               {(props) => (
                                 <Tooltip
@@ -240,16 +239,18 @@ class FeaturesStep extends Component {
                                     tooltip ? <FormattedMessage id={tooltip} /> : ''
                                   }
                                 >
-                                  <FormControlLabel
-                                    control={<Radio />}
-                                    label={
-                                      item.name === chipType
-                                        ? (<FormattedMessage id="stepFeaturesBoardGeneric">{(txt) => txt}</FormattedMessage>)
-                                        : (description)
-                                    }
-                                    labelPlacement="end"
-                                    {...props}
-                                  />
+                                  <div className={classes.radioContainer}>
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      label={
+                                        item.name === chipType
+                                          ? (<FormattedMessage id="stepFeaturesBoardGeneric">{(txt) => txt}</FormattedMessage>)
+                                          : (description)
+                                      }
+                                      labelPlacement="end"
+                                      {...props}
+                                    />
+                                  </div>
                                 </Tooltip>
                               )}
                             </Wire>

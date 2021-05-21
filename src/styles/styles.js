@@ -97,8 +97,7 @@ const styles = (theme) => ({
   },
   radioContainer: {
     marginBottom: 0,
-    marginRight: theme.spacing.unit * 2,
-    marginLeft: theme.spacing.unit * -1,
+    marginLeft: theme.spacing.unit,
     minWidth: 230,
     maxWidth: 230,
   },
