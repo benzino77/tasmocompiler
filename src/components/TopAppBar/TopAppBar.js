@@ -28,8 +28,8 @@ class TopAppBar extends Component {
     this.setState({ anchorEl: event.currentTarget });
   };
 
-  handleClose = (lang, locale) => {
-    if (lang && lang !== locale) {
+  handleClose = (lang, guiLanguage) => {
+    if (lang && lang !== guiLanguage) {
       const { changeLanguage } = this.props;
       changeLanguage(lang);
     }
@@ -37,7 +37,7 @@ class TopAppBar extends Component {
   };
 
   render() {
-    const { classes, locale, changeLanguage, ...other } = this.props;
+    const { classes, guiLanguage, changeLanguage, ...other } = this.props;
     const { version, anchorEl } = this.state;
 
     return (
@@ -62,7 +62,7 @@ class TopAppBar extends Component {
                 variant="body2"
                 className={classes.language}
               >
-                {allMessages[locale].nativeName}
+                {allMessages[guiLanguage].nativeName}
                 <LanguageIcon className={classes.rightIcon} />
               </Typography>
             </div>
@@ -81,9 +81,9 @@ class TopAppBar extends Component {
                 .map((lang) => {
                   return (
                     <MenuItem
-                      onClick={() => this.handleClose(lang, locale)}
+                      onClick={() => this.handleClose(lang, guiLanguage)}
                       key={lang}
-                      selected={locale === lang}
+                      selected={guiLanguage === lang}
                     >
                       <img
                         src={allMessages[lang].flag}
@@ -106,7 +106,7 @@ class TopAppBar extends Component {
 
 TopAppBar.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  locale: PropTypes.string.isRequired,
+  guiLanguage: PropTypes.string.isRequired,
   changeLanguage: PropTypes.func.isRequired,
 };
 

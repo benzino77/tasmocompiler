@@ -18,14 +18,62 @@ import { allMessages } from './locales/languages';
 import languages from './components/AppStepper/VersionStep/Variables/Languages';
 import availableFeatures from './components/AppStepper/FeaturesStep/AvailableFeatures';
 
-let currentLocale = navigator.language.split(/[-_]/)[0];
-console.log(`Detected browser language: ${currentLocale}`);
+const browserLanguages = navigator.languages ||
+  navigator.language ||
+  navigator.browserLanguage ||
+  navigator.userLanguage;
+console.log(`Detected browser languages: [${browserLanguages.join(', ')}]`);
+
+let tcLanguage = '';
+browserLanguages.forEach((language) => {
+  if (tcLanguage === '') {
+    const lang = language.split(/[-_]/)[0];
+    if (allMessages[lang]) {
+      tcLanguage = lang;
+      console.log(`Browser language (${tcLanguage}) supported`);
+    }
+  }
+});
 // Set default to english if not defined on supported languages
-if (!allMessages[currentLocale]) {
+if (tcLanguage === '') {
+  tcLanguage = 'en';
   console.log(
-    `Browser language (${currentLocale}) not supported changing to default (en)`
+    `Browser languages [${browserLanguages.join(', ')}] not supported. Use default (${tcLanguage})`
   );
-  currentLocale = 'en';
+}
+
+let tasmoLanguage = '';
+browserLanguages.forEach((language) => {
+  if (tasmoLanguage === '') {
+    // Help prefer pt_PT from [pt_BR, pt_PT] with pt locale
+    // Will search invalid values, without match
+    let languageIndex = languages.findIndex((element) =>
+      element.value.toLowerCase().includes(`${language.toLowerCase()}_${language.toLowerCase()}`)
+    );
+    // Search with replaced minus to underscore
+    if (languageIndex === -1) {
+      languageIndex = languages.findIndex((element) =>
+        element.value.toLowerCase().includes(language.toLowerCase().replace('-', '_'))
+      );
+    }
+    // Search the language part only
+    if (languageIndex === -1) {
+      languageIndex = languages.findIndex((element) =>
+        element.value.toLowerCase().includes(language.toLowerCase().split(/[-_]/)[0])
+      );
+    }
+    if (languageIndex !== -1) {
+      tasmoLanguage = languages[languageIndex].value;
+      console.log(`Tasmota language (${tasmoLanguage}) supported`);
+    }
+  }
+});
+// Set English if not found current locale of browser on languages
+if (tasmoLanguage === '') {
+  tasmoLanguage = 'en_GB';
+  console.log(
+    `Tasmota languages [${browserLanguages.join(', ')}] not supported. Use default (${tasmoLanguage})`
+  );
 }
 
 class App extends Component {
@@ -42,7 +90,8 @@ class App extends Component {
       network: {},
       version: {},
       customParams: '',
-      locale: currentLocale,
+      guiLanguage: tcLanguage,
+      tasmotaLanguage: tasmoLanguage,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -64,7 +113,7 @@ class App extends Component {
       this.setState({ compiling: false, showDownloadLinks: data.ok });
     });
 
-    this.changeLanguage(this.state.locale);
+    this.changeLanguage(this.state.guiLanguage);
   }
 
   handleNext = (data) => {
@@ -138,7 +187,7 @@ class App extends Component {
         allMessages[lang]['source'][b.description]
       );
     });
-    this.setState({ locale: lang });
+    this.setState({ guiLanguage: lang });
   };
 
   render() {
@@ -151,7 +200,8 @@ class App extends Component {
       showMessageBox,
       showDownloadLinks,
       compileMessages,
-      locale,
+      guiLanguage,
+      tasmotaLanguage,
       ...other
     } = this.state;
 
@@ -161,11 +211,11 @@ class App extends Component {
     };
 
     return (
-      <IntlProvider locale={locale} messages={allMessages[locale]['source']}>
+      <IntlProvider locale={guiLanguage} messages={allMessages[guiLanguage]['source']}>
         <div className={classes.root}>
           <TopAppBar
             {...this.props}
-            locale={locale}
+            guiLanguage={guiLanguage}
             changeLanguage={this.changeLanguage}
           />
           <Stepper activeStep={activeStep} orientation="vertical">
@@ -184,7 +234,8 @@ class App extends Component {
               backHandler={this.handleBack}
               compileHandler={this.handleCompile}
               compiling={compiling}
-              locale={locale}
+              guiLanguage={guiLanguage}
+              tasmotaLanguage={tasmotaLanguage}
               key={5}
             />
           </Stepper>

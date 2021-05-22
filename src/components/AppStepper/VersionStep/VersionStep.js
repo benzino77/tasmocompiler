@@ -16,28 +16,11 @@ class VersionStep extends Component {
   constructor(props) {
     super(props);
 
-    // Search the current locale of browser on languages
-    const browserLocale = navigator.language.toLowerCase();
-
-    let languageIndex = languages.findIndex((element) =>
-      element.value.toLowerCase().includes(browserLocale.replace('-', '_'))
-    );
-    // Search the language part only
-    if (languageIndex === -1) {
-      languageIndex = languages.findIndex((element) =>
-        element.value.toLowerCase().includes(browserLocale.split(/[-_]/)[0])
-      );
-    }
-    // Set English if not found current locale of browser on languages
-    if (languageIndex === -1) {
-      languageIndex = languages.findIndex((element) =>
-        element.value.includes('en_GB')
-      );
-    }
+    const { tasmotaLanguage } = this.props;
 
     this.state = {
       tasmotaVersion: 'development',
-      MY_LANGUAGE: languages[languageIndex].value,
+      MY_LANGUAGE: tasmotaLanguage,
       message: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -68,7 +51,7 @@ class VersionStep extends Component {
       repoTags,
       compiling,
       compileHandler,
-      locale,
+      guiLanguage,
       ...other
     } = this.props;
 
@@ -97,7 +80,7 @@ class VersionStep extends Component {
               label={<FormattedMessage id="stepVersionLanguage" />}
               onChange={this.handleChange}
               classes={classes}
-              locale={locale}
+              guiLanguage={guiLanguage}
             />
           </form>
           <div className={classes.actionsContainer}>
@@ -135,7 +118,8 @@ VersionStep.propTypes = {
   compiling: PropTypes.bool.isRequired,
   compileHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
+  guiLanguage: PropTypes.string.isRequired,
+  tasmotaLanguage: PropTypes.string.isRequired,
 };
 
 export default VersionStep;
