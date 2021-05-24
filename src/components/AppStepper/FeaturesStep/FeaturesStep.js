@@ -17,6 +17,8 @@ import NextButton from '../NextButton';
 import BackButton from '../BackButton';
 import { FormattedMessage } from 'react-intl';
 
+let dependencies = {};
+
 const getFeaturesDefaultStates = (board) => {
   let defaults = {};
   let toIncludeExclude = {};
@@ -40,7 +42,7 @@ const getFeaturesDefaultStates = (board) => {
       if (value) {
         toIncludeExclude = {
           ...toIncludeExclude,
-          ...setIncludeExcludeFeature(feature.name),
+          ...setIncludeExcludeFeature(feature.name, value),
         };
       }
     }
@@ -124,7 +126,31 @@ const setFeature = (name, state) => {
   return newState;
 };
 
-const setIncludeExcludeFeature = (name) => {
+const setDependencies = (item, name, state) => {
+  let newFeatures = {};
+
+  if (state) {
+    if (!dependencies[item]) {
+      dependencies = Object.assign(dependencies, { [item]: [] });
+    }
+    dependencies[item].push(name);
+  }
+
+  if (!state && dependencies[item]) {
+    const idx = dependencies[item].indexOf(name);
+    if (idx !== -1) {
+      dependencies[item].splice(idx, 1);
+    }
+    if (dependencies[item].length === 0) {
+      newFeatures = { ...setFeature(item, state) };
+      delete dependencies[item];
+    }
+  }
+
+  return newFeatures;
+};
+
+const setIncludeExcludeFeature = (name, checked) => {
   let newState = {};
   const excludeGroup = getFeatureExclude(name);
   const includeGroup = getFeatureInclude(name);
@@ -139,6 +165,7 @@ const setIncludeExcludeFeature = (name) => {
     newState = {
       ...newState,
       ...setFeature(item, true),
+      ...setDependencies(item, name, checked),
     };
   });
   return newState;
@@ -150,7 +177,7 @@ class FeaturesStep extends Component {
 
     const defaultBoard = availableBoards.filter((b) => b.default === true);
     const defaultStates = getFeaturesDefaultStates(defaultBoard[0]);
-    this.state = { features: { board: defaultBoard[0], ...defaultStates } };
+    this.state = { features: { board: defaultBoard[0], ...defaultStates }, dependencies };
 
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -162,9 +189,7 @@ class FeaturesStep extends Component {
     const { checked, name } = event.target;
     let featureState = setFeature(name, checked);
 
-    if (checked) {
-      featureState = { ...featureState, ...setIncludeExcludeFeature(name) };
-    }
+    featureState = { ...featureState, ...setIncludeExcludeFeature(name, checked) };
 
     this.setState((state) => {
       let newFeatures = { ...state.features, ...featureState };
