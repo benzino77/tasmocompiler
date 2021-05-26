@@ -192,12 +192,7 @@ class App extends Component {
             <MessageBox {...this.props} compileMessages={compileMessages} />
           )}
           {showDownloadLinks && (
-            <DownloadLinks
-              {...this.props}
-              isEsp8266={
-                other.features.board.name.includes('esp32') ? false : true
-              }
-            />
+            <DownloadLinks {...this.props} features={other.features} />
           )}
         </div>
       </IntlProvider>

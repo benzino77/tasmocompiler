@@ -21,7 +21,8 @@ class DownloadLinks extends Component {
   }
 
   render() {
-    const { classes, isEsp8266 } = this.props;
+    const { classes, features } = this.props;
+    const isEsp8266 = features.board.chip_type === 'esp8266';
 
     return (
       <div ref={this.downloadLinksElement}>
@@ -75,7 +76,7 @@ class DownloadLinks extends Component {
 
 DownloadLinks.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
-  isEsp8266: PropTypes.bool.isRequired,
+  features: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
 export default DownloadLinks;

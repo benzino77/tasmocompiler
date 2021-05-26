@@ -7,11 +7,12 @@ import Typography from '@material-ui/core/Typography';
 import Tooltip from '@material-ui/core/Tooltip';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+import Divider from '@material-ui/core/Divider';
 
 import availableFeatures from './AvailableFeatures';
-import availableBoards from './AvailableBoards';
+import { availableBoards, availableBoardChipTypes } from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
@@ -207,46 +208,63 @@ class FeaturesStep extends Component {
           <Typography>
             <FormattedMessage id="stepFeaturesBoardDesc" />
           </Typography>
+
           <div className={classes.actionsContainer}>
-            <RadioGroup
-              row
-              aria-label="board"
-              name="board"
-              value={board.name}
-              onChange={this.handleRadioChange}
-            >
-              {availableBoards.map((item, index) => {
-                const { name, description, tooltip, show } = item;
+            <FormControl>
+              {availableBoardChipTypes.map((chipType, idx) => {
                 return (
-                  show && (
-                    // tooltips workaround
-                    <Wire
-                      value={name}
-                      key={index}
-                      className={classes.radioContainer}
+                  <div
+                    className={classes.chipTypesContainer}
+                    key={chipType.name}
+                  >
+                    <Typography>{chipType.name.toUpperCase()}</Typography>
+                    <RadioGroup
+                      row
+                      aria-label="board"
+                      name="board"
+                      value={board.name}
+                      onChange={this.handleRadioChange}
                     >
-                      {(props) => (
-                        <Tooltip
-                          title={
-                            tooltip ? <FormattedMessage id={tooltip} /> : ''
-                          }
-                        >
-                          <FormControlLabel
-                            control={<Radio />}
-                            label={description}
-                            labelPlacement="end"
-                            {...props}
-                          />
-                        </Tooltip>
-                      )}
-                    </Wire>
-                  )
+                      {availableBoards.map((item) => {
+                        const { name, description, tooltip, show, chip_type } =
+                          item;
+                        return (
+                          chip_type === chipType.name &&
+                          show && (
+                            // tooltips workaround
+                            <Wire value={name} key={item.name}>
+                              {(props) => (
+                                <Tooltip
+                                  title={
+                                    tooltip ? (
+                                      <FormattedMessage id={tooltip} />
+                                    ) : (
+                                      ''
+                                    )
+                                  }
+                                >
+                                  <div className={classes.radioContainer}>
+                                    <FormControlLabel
+                                      control={<Radio />}
+                                      label={description}
+                                      labelPlacement="end"
+                                      {...props}
+                                    />
+                                  </div>
+                                </Tooltip>
+                              )}
+                            </Wire>
+                          )
+                        );
+                      })}
+                    </RadioGroup>
+                    {idx < availableBoardChipTypes.length - 1 && (
+                      <Divider className={classes.boardsDivider} />
+                    )}
+                  </div>
                 );
               })}
-            </RadioGroup>
-            <FormHelperText>
-              {/* <FormattedMessage id="stepFeatures..." /> */}
-            </FormHelperText>
+            </FormControl>
           </div>
 
           <Typography>

@@ -1,7 +1,13 @@
+const availableBoardChipTypes = [
+  { name: 'esp8266', description: '', tooltip: '' },
+  { name: 'esp32', description: '', tooltip: '' },
+];
+
 const availableBoards = [
   {
-    name: 'esp8266',
-    description: 'ESP8266 Generic',
+    name: 'esp8266generic',
+    chip_type: 'esp8266',
+    description: 'Generic',
     default: true,
     show: true,
     platformio_entries: {},
@@ -12,7 +18,8 @@ const availableBoards = [
   },
   {
     name: 'esp82664M',
-    description: ' ESP8266 Wemos/NodeMCU',
+    chip_type: 'esp8266',
+    description: 'Wemos/NodeMCU',
     default: true,
     show: true,
     platformio_entries: {
@@ -26,6 +33,7 @@ const availableBoards = [
   // zbbridge
   {
     name: 'zbbridge',
+    chip_type: 'esp8266',
     description: 'SonOff Zigbee Bridge',
     default: false,
     show: true,
@@ -54,8 +62,9 @@ const availableBoards = [
   },
   // esp32
   {
-    name: 'esp32',
-    description: 'ESP32 Generic',
+    name: 'esp32generic',
+    chip_type: 'esp32',
+    description: 'Generic',
     default: false,
     show: true,
     platformio_entries: {
@@ -69,7 +78,8 @@ const availableBoards = [
   // esp32webcam
   {
     name: 'esp32webcam',
-    description: 'ESP32 webcam',
+    chip_type: 'esp32',
+    description: 'Webcam',
     default: false,
     show: true,
     platformio_entries: {
@@ -88,7 +98,8 @@ const availableBoards = [
   // esp32odroid-go
   {
     name: 'esp32odroid-go',
-    description: 'ESP32 odroid-go',
+    chip_type: 'esp32',
+    description: 'Odroid-Go',
     default: false,
     show: true,
     platformio_entries: {
@@ -113,7 +124,8 @@ const availableBoards = [
   // esp32m5
   {
     name: 'esp32m5',
-    description: 'ESP32 M5Stack Core2',
+    chip_type: 'esp32',
+    description: 'M5Stack Core2',
     default: false,
     show: true,
     platformio_entries: {
@@ -150,7 +162,8 @@ const availableBoards = [
   // solo1
   {
     name: 'esp32solo1',
-    description: 'ESP32 Solo1',
+    chip_type: 'esp32',
+    description: 'Solo1',
     default: false,
     show: true,
     platformio_entries: {
@@ -166,4 +179,4 @@ const availableBoards = [
   },
 ];
 
-export default availableBoards;
+export { availableBoardChipTypes, availableBoards };

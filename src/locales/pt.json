@@ -21,6 +21,7 @@
 
   "stepFeaturesTitle": "selecione Características",
   "stepFeaturesBoardDesc": "Selecione o tipo de hardware a ser usado",
+  "stepFeaturesBoardGeneric": "Generic",
   "stepFeaturesBoard8266Tooltip": "Recomendado para todos os dispositivos com ESP8266.",
   "stepFeaturesBoard82664MTooltip": "Apenas para uso avançado e apenas para dispositivos com ESP8266 e 4 MB como Wemos D1 Mini, NodeMCU, etc.",
   "stepFeaturesDesc": "Quais recursos devem ser incluídos no firmware final?",

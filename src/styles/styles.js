@@ -92,13 +92,16 @@ const styles = (theme) => ({
   checkboxContainer: {
     marginBottom: 0,
     marginLeft: theme.spacing.unit,
-    minWidth: 200,
-    maxWidth: 200,
+    minWidth: 230,
+    maxWidth: 230,
   },
   radioContainer: {
     marginBottom: 0,
+    marginLeft: theme.spacing.unit,
     minWidth: 230,
     maxWidth: 230,
+  },
+  chipTypesContainer: {
   },
   links: {
     marginLeft: theme.spacing.unit * 3,
@@ -114,6 +117,10 @@ const styles = (theme) => ({
     marginTop: theme.spacing.unit,
     marginBottom: theme.spacing.unit,
     position: 'relative',
+  },
+  boardsDivider: {
+    marginTop: theme.spacing.unit,
+    marginBottom: theme.spacing.unit,
   },
 });
 
