@@ -37,7 +37,7 @@ class TopAppBar extends Component {
   };
 
   render() {
-    const { classes, locale, changeLanguage, ...other } = this.props;
+    const { classes, locale, changeLanguage, addMissingFlag, ...other } = this.props;
     const { version, anchorEl } = this.state;
 
     return (
@@ -89,6 +89,7 @@ class TopAppBar extends Component {
                         src={allMessages[lang].flag}
                         alt=""
                         className={classes.flagIcon}
+                        onError={addMissingFlag}
                       />
                       <div className={classes.languageName}>
                         {allMessages[lang].nativeName}
@@ -108,6 +109,7 @@ TopAppBar.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
   locale: PropTypes.string.isRequired,
   changeLanguage: PropTypes.func.isRequired,
+  addMissingFlag: PropTypes.func.isRequired,
 };
 
 export default TopAppBar;

@@ -48,6 +48,7 @@ class App extends Component {
     this.handleBack = this.handleBack.bind(this);
     this.handleCompile = this.handleCompile.bind(this);
     this.changeLanguage = this.changeLanguage.bind(this);
+    this.addMissingFlag = this.addMissingFlag.bind(this);
   }
 
   componentDidMount() {
@@ -141,6 +142,11 @@ class App extends Component {
     this.setState({ locale: lang });
   };
 
+  addMissingFlag = (event) => {
+    event.target.onerror = null;
+    event.target.src = 'flags/unknown.png';
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -167,6 +173,7 @@ class App extends Component {
             {...this.props}
             locale={locale}
             changeLanguage={this.changeLanguage}
+            addMissingFlag={this.addMissingFlag}
           />
           <Stepper activeStep={activeStep} orientation="vertical">
             <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
@@ -185,6 +192,7 @@ class App extends Component {
               compileHandler={this.handleCompile}
               compiling={compiling}
               locale={locale}
+              addMissingFlag={this.addMissingFlag}
               key={5}
             />
           </Stepper>

@@ -7,7 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { FormattedMessage } from 'react-intl';
 
 function VersionSelector(props) {
-  const { name, classes, label, value, onChange, items, locale } = props;
+  const { name, classes, label, value, onChange, items, locale, addMissingFlag } = props;
 
   const inProps = {
     name,
@@ -34,7 +34,12 @@ function VersionSelector(props) {
               ))}
             {name === 'MY_LANGUAGE' && (
               <div className={classes.tasmotaLangSelector}>
-                <img className={classes.flagIcon} src={item.flag} alt="" />
+                <img
+                  className={classes.flagIcon}
+                  src={item.flag}
+                  alt=""
+                  onError={addMissingFlag}
+                />
                 <div className={classes.languageName}>
                   <FormattedMessage id={item.name}>
                     {(text) => {
@@ -57,6 +62,7 @@ function VersionSelector(props) {
 
 VersionSelector.defaultProps = {
   locale: '',
+  addMissingFlag: null,
 };
 
 VersionSelector.propTypes = {
@@ -67,6 +73,7 @@ VersionSelector.propTypes = {
   items: PropTypes.oneOfType([PropTypes.array]).isRequired,
   onChange: PropTypes.func.isRequired,
   locale: PropTypes.string,
+  addMissingFlag: PropTypes.func,
 };
 
 export default VersionSelector;

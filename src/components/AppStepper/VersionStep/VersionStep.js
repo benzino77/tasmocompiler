@@ -69,6 +69,7 @@ class VersionStep extends Component {
       compiling,
       compileHandler,
       locale,
+      addMissingFlag,
       ...other
     } = this.props;
 
@@ -98,6 +99,7 @@ class VersionStep extends Component {
               onChange={this.handleChange}
               classes={classes}
               locale={locale}
+              addMissingFlag={addMissingFlag}
             />
           </form>
           <div className={classes.actionsContainer}>
@@ -136,6 +138,7 @@ VersionStep.propTypes = {
   compileHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
   locale: PropTypes.string.isRequired,
+  addMissingFlag: PropTypes.func.isRequired,
 };
 
 export default VersionStep;

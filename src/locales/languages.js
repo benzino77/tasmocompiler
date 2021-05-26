@@ -29,10 +29,31 @@ const translations = Object.keys(allMessages).filter(
 );
 
 // if particular translation does not have some translation, add the translation from baseTranslation
-Object.keys(allMessages[baseTranslation]).forEach((e) => {
+Object.keys(allMessages[baseTranslation]).forEach(() => {
   translations.forEach((t) => {
-    if (!allMessages[t].hasOwnProperty(e)) {
-      allMessages[t][e] = allMessages[baseTranslation][e];
+    // source missing
+    if (!allMessages[t].source) {
+      allMessages[t].source = allMessages[baseTranslation].source;
+    }
+    // source partial
+    if (allMessages[t].source) {
+      Object.keys(allMessages[baseTranslation].source).forEach((m) => {
+        if (!allMessages[t].source[m]) {
+          allMessages[t].source[m] = allMessages[baseTranslation].source[m];
+        }
+      });
+    }
+    // nativeName
+    if (!allMessages[t].nativeName) {
+      allMessages[t].nativeName = '???';
+    }
+    // flag
+    if (!allMessages[t].flag) {
+      allMessages[t].flag = allMessages[baseTranslation].flag
+        .split('/')
+        .slice(0, -1)
+        .join('/')
+        .concat('/unknown.png');
     }
   });
 });
