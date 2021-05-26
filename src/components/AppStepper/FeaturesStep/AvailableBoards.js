@@ -1,6 +1,12 @@
+const availableBoardChipTypes = [
+  { name: 'esp8266', description: '', tooltip: '' },
+  { name: 'esp32', description: '', tooltip: '' },
+];
+
 const availableBoards = [
   {
-    name: 'esp8266',
+    name: 'esp8266generic',
+    chip_type: 'esp8266',
     description: 'Generic',
     default: true,
     show: true,
@@ -12,6 +18,7 @@ const availableBoards = [
   },
   {
     name: 'esp82664M',
+    chip_type: 'esp8266',
     description: 'Wemos/NodeMCU',
     default: true,
     show: true,
@@ -25,7 +32,8 @@ const availableBoards = [
   },
   // zbbridge
   {
-    name: 'esp8266zbbridge',
+    name: 'zbbridge',
+    chip_type: 'esp8266',
     description: 'SonOff Zigbee Bridge',
     default: false,
     show: true,
@@ -54,7 +62,8 @@ const availableBoards = [
   },
   // esp32
   {
-    name: 'esp32',
+    name: 'esp32generic',
+    chip_type: 'esp32',
     description: 'Generic',
     default: false,
     show: true,
@@ -69,6 +78,7 @@ const availableBoards = [
   // esp32webcam
   {
     name: 'esp32webcam',
+    chip_type: 'esp32',
     description: 'Webcam',
     default: false,
     show: true,
@@ -88,6 +98,7 @@ const availableBoards = [
   // esp32odroid-go
   {
     name: 'esp32odroid-go',
+    chip_type: 'esp32',
     description: 'Odroid-Go',
     default: false,
     show: true,
@@ -113,6 +124,7 @@ const availableBoards = [
   // esp32m5
   {
     name: 'esp32m5',
+    chip_type: 'esp32',
     description: 'M5Stack Core2',
     default: false,
     show: true,
@@ -150,6 +162,7 @@ const availableBoards = [
   // solo1
   {
     name: 'esp32solo1',
+    chip_type: 'esp32',
     description: 'Solo1',
     default: false,
     show: true,
@@ -166,4 +179,4 @@ const availableBoards = [
   },
 ];
 
-export default availableBoards;
+export { availableBoardChipTypes, availableBoards };

@@ -12,7 +12,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
 
 import availableFeatures from './AvailableFeatures';
-import availableBoards from './AvailableBoards';
+import { availableBoards, availableBoardChipTypes } from './AvailableBoards';
 import FeaturesSelector from './FeaturesSelector';
 import NextButton from '../NextButton';
 import BackButton from '../BackButton';
@@ -198,7 +198,6 @@ class FeaturesStep extends Component {
     const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
     const Wire = ({ children, ...props }) => children(props);
-    const chipTypes = ['esp8266', 'esp32'];
 
     return (
       <Step {...other}>
@@ -212,10 +211,13 @@ class FeaturesStep extends Component {
 
           <div className={classes.actionsContainer}>
             <FormControl>
-              {chipTypes.map((chipType, idx) => {
+              {availableBoardChipTypes.map((chipType, idx) => {
                 return (
-                  <div className={classes.chipTypesContainer} key={chipType}>
-                    <Typography>{chipType.toUpperCase()}</Typography>
+                  <div
+                    className={classes.chipTypesContainer}
+                    key={chipType.name}
+                  >
+                    <Typography>{chipType.name.toUpperCase()}</Typography>
                     <RadioGroup
                       row
                       aria-label="board"
@@ -224,29 +226,27 @@ class FeaturesStep extends Component {
                       onChange={this.handleRadioChange}
                     >
                       {availableBoards.map((item) => {
-                        const { name, description, tooltip, show } = item;
+                        const { name, description, tooltip, show, chip_type } =
+                          item;
                         return (
-                          name.startsWith(chipType) &&
+                          chip_type === chipType.name &&
                           show && (
                             // tooltips workaround
-                            <Wire
-                              value={name}
-                              key={item.name}
-                            >
+                            <Wire value={name} key={item.name}>
                               {(props) => (
                                 <Tooltip
                                   title={
-                                    tooltip ? <FormattedMessage id={tooltip} /> : ''
+                                    tooltip ? (
+                                      <FormattedMessage id={tooltip} />
+                                    ) : (
+                                      ''
+                                    )
                                   }
                                 >
                                   <div className={classes.radioContainer}>
                                     <FormControlLabel
                                       control={<Radio />}
-                                      label={
-                                        item.name === chipType
-                                          ? (<FormattedMessage id="stepFeaturesBoardGeneric">{(txt) => txt}</FormattedMessage>)
-                                          : (description)
-                                      }
+                                      label={description}
                                       labelPlacement="end"
                                       {...props}
                                     />
@@ -258,9 +258,9 @@ class FeaturesStep extends Component {
                         );
                       })}
                     </RadioGroup>
-                    {idx < chipTypes.length - 1 &&
-                      (<Divider className={classes.boardsDivider} />)
-                    }
+                    {idx < availableBoardChipTypes.length - 1 && (
+                      <Divider className={classes.boardsDivider} />
+                    )}
                   </div>
                 );
               })}
