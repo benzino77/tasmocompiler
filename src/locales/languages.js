@@ -37,4 +37,5 @@ Object.keys(allMessages[baseTranslation]).forEach((e) => {
   });
 });
 
-export { allMessages };
+const defaultLanguage = baseTranslation;
+export { allMessages, defaultLanguage };
