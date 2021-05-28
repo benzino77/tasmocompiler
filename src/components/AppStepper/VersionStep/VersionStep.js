@@ -10,36 +10,21 @@ import { FormattedMessage } from 'react-intl';
 import BackButton from '../BackButton';
 import CompileButton from '../CompileButton';
 import VersionSelector from './VersionSelector';
-import languages from './Variables/Languages';
+import {
+  tasmotaGUILanguages,
+  preselectedTasmotaGUILanguage,
+} from './Variables/Languages';
 
 class VersionStep extends Component {
   constructor(props) {
     super(props);
 
-    // Search the current locale of browser on languages
-    const browserLocale = navigator.language.toLowerCase();
-
-    let languageIndex = languages.findIndex((element) =>
-      element.value.toLowerCase().includes(browserLocale.replace('-', '_'))
-    );
-    // Search the language part only
-    if (languageIndex === -1) {
-      languageIndex = languages.findIndex((element) =>
-        element.value.toLowerCase().includes(browserLocale.split(/[-_]/)[0])
-      );
-    }
-    // Set English if not found current locale of browser on languages
-    if (languageIndex === -1) {
-      languageIndex = languages.findIndex((element) =>
-        element.value.includes('en_GB')
-      );
-    }
-
     this.state = {
       tasmotaVersion: 'development',
-      MY_LANGUAGE: languages[languageIndex].value,
+      MY_LANGUAGE: preselectedTasmotaGUILanguage,
       message: '',
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleCompile = this.handleCompile.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -68,7 +53,6 @@ class VersionStep extends Component {
       repoTags,
       compiling,
       compileHandler,
-      locale,
       ...other
     } = this.props;
 
@@ -91,13 +75,13 @@ class VersionStep extends Component {
               classes={classes}
             />
             <VersionSelector
-              items={languages}
+              items={tasmotaGUILanguages}
               name="MY_LANGUAGE"
               value={MY_LANGUAGE}
               label={<FormattedMessage id="stepVersionLanguage" />}
               onChange={this.handleChange}
               classes={classes}
-              locale={locale}
+              preselectedTasmotaGUILanguage={preselectedTasmotaGUILanguage}
             />
           </form>
           <div className={classes.actionsContainer}>
@@ -135,7 +119,6 @@ VersionStep.propTypes = {
   compiling: PropTypes.bool.isRequired,
   compileHandler: PropTypes.func.isRequired,
   backHandler: PropTypes.func.isRequired,
-  locale: PropTypes.string.isRequired,
 };
 
 export default VersionStep;

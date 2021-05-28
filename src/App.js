@@ -14,18 +14,23 @@ import FeaturesStep from './components/AppStepper/FeaturesStep/FeaturesStep';
 import CustomParametersStep from './components/AppStepper/CustomParametersStep';
 import MessageBox from './components/MessageBox/MessageBox';
 import DownloadLinks from './components/DownloadLinks/DownloadLinks';
-import { allMessages } from './locales/languages';
-import languages from './components/AppStepper/VersionStep/Variables/Languages';
+import { allMessages, defaultLanguage } from './locales/languages';
+import { tasmotaGUILanguages } from './components/AppStepper/VersionStep/Variables/Languages';
 import availableFeatures from './components/AppStepper/FeaturesStep/AvailableFeatures';
 
-let currentLocale = navigator.language.split(/[-_]/)[0];
-console.log(`Detected browser language: ${currentLocale}`);
-// Set default to english if not defined on supported languages
-if (!allMessages[currentLocale]) {
+const browserLanguage = navigator.language
+  .toLocaleLowerCase()
+  .replace('-', '_');
+
+let tcGUILanguage = browserLanguage;
+
+console.log(`Detected browser language: ${browserLanguage}`);
+// Set default TasmoCompiler GUI language to english if not found on supported languages list
+if (!allMessages[browserLanguage]) {
   console.log(
-    `Browser language (${currentLocale}) not supported changing to default (en)`
+    `Browser language (${browserLanguage}) not supported. Changing TasmoCompiler GUI language to default (${defaultLanguage})`
   );
-  currentLocale = 'en';
+  tcGUILanguage = defaultLanguage;
 }
 
 class App extends Component {
@@ -42,7 +47,7 @@ class App extends Component {
       network: {},
       version: {},
       customParams: '',
-      locale: currentLocale,
+      tcGUILanguage,
     };
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -64,7 +69,7 @@ class App extends Component {
       this.setState({ compiling: false, showDownloadLinks: data.ok });
     });
 
-    this.changeLanguage(this.state.locale);
+    this.changeLanguage(this.state.tcGUILanguage);
   }
 
   handleNext = (data) => {
@@ -128,7 +133,7 @@ class App extends Component {
   };
 
   changeLanguage = (lang) => {
-    languages.sort((a, b) => {
+    tasmotaGUILanguages.sort((a, b) => {
       return allMessages[lang]['source'][a.name].localeCompare(
         allMessages[lang]['source'][b.name]
       );
@@ -138,7 +143,7 @@ class App extends Component {
         allMessages[lang]['source'][b.description]
       );
     });
-    this.setState({ locale: lang });
+    this.setState({ tcGUILanguage: lang });
   };
 
   render() {
@@ -151,7 +156,7 @@ class App extends Component {
       showMessageBox,
       showDownloadLinks,
       compileMessages,
-      locale,
+      tcGUILanguage,
       ...other
     } = this.state;
 
@@ -161,11 +166,14 @@ class App extends Component {
     };
 
     return (
-      <IntlProvider locale={locale} messages={allMessages[locale]['source']}>
+      <IntlProvider
+        locale={tcGUILanguage}
+        messages={allMessages[tcGUILanguage]['source']}
+      >
         <div className={classes.root}>
           <TopAppBar
             {...this.props}
-            locale={locale}
+            locale={tcGUILanguage}
             changeLanguage={this.changeLanguage}
           />
           <Stepper activeStep={activeStep} orientation="vertical">
@@ -184,7 +192,6 @@ class App extends Component {
               backHandler={this.handleBack}
               compileHandler={this.handleCompile}
               compiling={compiling}
-              locale={locale}
               key={5}
             />
           </Stepper>
