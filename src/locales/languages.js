@@ -10,14 +10,54 @@ import localePT from './pt.json';
 // nativeName: Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/
 // flag: PNG 24px width proportional icon name from public/flags folder for most typical country of this language
 const allMessages = {
-  de: { source: localeDE, nativeName: 'Deutsch', flag: 'flags/de.png' },
-  en: { source: localeEN, nativeName: 'English', flag: 'flags/gb.png' },
-  es: { source: localeES, nativeName: 'Español', flag: 'flags/es.png' },
-  it: { source: localeIT, nativeName: 'Italiano', flag: 'flags/it.png' },
-  pl: { source: localePL, nativeName: 'Polski', flag: 'flags/pl.png' },
-  pt: { source: localePT, nativeName: 'Português', flag: 'flags/pt.png' },
-  cs: { source: localeCS, nativeName: 'Čeština', flag: 'flags/cz.png' },
-  hu: { source: localeHU, nativeName: 'Magyar', flag: 'flags/hu.png' },
+  de: {
+    source: localeDE,
+    nativeName: 'Deutsch',
+    flag: 'flags/de.png',
+    browserLang: ['de', 'de-de'],
+  },
+  en: {
+    source: localeEN,
+    nativeName: 'English',
+    flag: 'flags/gb.png',
+    browserLang: ['en', 'en-gb', 'en-us'],
+  },
+  es: {
+    source: localeES,
+    nativeName: 'Español',
+    flag: 'flags/es.png',
+    browserLang: ['es', 'es-es'],
+  },
+  it: {
+    source: localeIT,
+    nativeName: 'Italiano',
+    flag: 'flags/it.png',
+    browserLang: ['it'],
+  },
+  pl: {
+    source: localePL,
+    nativeName: 'Polski',
+    flag: 'flags/pl.png',
+    browserLang: ['pl', 'pl-pl'],
+  },
+  pt: {
+    source: localePT,
+    nativeName: 'Português',
+    flag: 'flags/pt.png',
+    browserLang: ['pt', 'pt-pt'],
+  },
+  cs: {
+    source: localeCS,
+    nativeName: 'Čeština',
+    flag: 'flags/cz.png',
+    browserLang: ['cs', 'cs-cz'],
+  },
+  hu: {
+    source: localeHU,
+    nativeName: 'Magyar',
+    flag: 'flags/hu.png',
+    browserLang: ['hu'],
+  },
 };
 
 // source of truth

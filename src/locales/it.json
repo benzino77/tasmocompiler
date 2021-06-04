@@ -21,7 +21,6 @@
 
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesBoardDesc": "Seleziona il tipo di scheda su cui è basato il progetto",
-  "stepFeaturesBoardGeneric": "Generica",
   "stepFeaturesBoard8266Tooltip": "Questa è molto probabilmente la scheda che dovresti scegliere",
   "stepFeaturesBoard82664MTooltip": "Scheda ESP8266 4MB come Wemos D1 Mini, NodeMCU, ecc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
@@ -64,7 +63,7 @@
   "stepFeaturesZigbeeDesc": "Zigbee",
   "stepFeaturesZigbeeTooltip": "Abilita la comunicazione seriale con Zigbee CC2530 flashato con ZNP o dispositivi EFR32 EmberZNet (tipo Sonoff Zigbee Bridge) flashati con EZSP",
   "stepFeaturesUFSDesc": "Scheda SD/LittleFS",
-  "stepFeaturesUFSTooltip": "Abilita driver per Universal File System",
+  "stepFeaturesUFSTooltip": "Abilita driver Universal File System",
   "stepFeaturesBerryDesc": "Script Berry",
   "stepFeaturesBerryTooltip": "Aggiunge supporto per linguaggio script Berry",
   "stepFeaturesBluetoothDesc": "Bluetooth",
@@ -77,13 +76,13 @@
 
   "stepVersionTitle": "Selezione versione e compilazione",
   "stepVersionDesc": "Seleziona versione Tasmota e lingua.",
-  "stepVersionDevelopment": "Development",
+  "stepVersionDevelopment": "Sviluppatore",
   "stepVersionTasmota": "Versione Tasmota",
   "stepVersionLanguage": "Lingua",
 
   "stepDownload": "Ora puoi scaricare i file binari compilati e i file usati durante la compilazione:",
 
-  "Afrikaans": "Afrikaans",
+  "Afrikaans": "Afrikaan",
   "English": "Inglese",
   "Bulgarian": "Bulgaro",
   "Czech": "Ceco",

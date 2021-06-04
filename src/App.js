@@ -18,20 +18,21 @@ import { allMessages, defaultLanguage } from './locales/languages';
 import { tasmotaGUILanguages } from './components/AppStepper/VersionStep/Variables/Languages';
 import availableFeatures from './components/AppStepper/FeaturesStep/AvailableFeatures';
 
-const browserLanguage = navigator.language
-  .toLocaleLowerCase()
-  .replace('-', '_');
-
-let tcGUILanguage = browserLanguage;
+const browserLanguage = navigator.language.toLocaleLowerCase();
 
 console.log(`Detected browser language: ${browserLanguage}`);
-// Set default TasmoCompiler GUI language to english if not found on supported languages list
-if (!allMessages[browserLanguage]) {
-  console.log(
-    `Browser language (${browserLanguage}) not supported. Changing TasmoCompiler GUI language to default (${defaultLanguage})`
-  );
-  tcGUILanguage = defaultLanguage;
-}
+
+let tcGUILanguage = defaultLanguage;
+
+Object.keys(allMessages).some((l) => {
+  const found = allMessages[l].browserLang.includes(browserLanguage);
+  if (found) {
+    tcGUILanguage = l;
+  }
+  return found;
+});
+
+console.log(`TasmoCompiler GUI language set to ${tcGUILanguage}`);
 
 class App extends Component {
   constructor(props) {
