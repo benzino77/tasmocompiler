@@ -6,63 +6,63 @@ const tasmotaGUILanguages = [
     value: 'af_AF',
     nativeName: 'Afrikaans',
     flag: 'flags/af.png',
-    browserLang: ['af'],
+    browserLang: ['af', 'af-af'],
   },
   {
     name: 'English',
     value: 'en_GB',
     nativeName: 'English',
     flag: 'flags/gb.png',
-    browserLang: ['en', 'en_us', 'en_gb'],
+    browserLang: ['en', 'en-us', 'en-gb'],
   },
   {
     name: 'Bulgarian',
     value: 'bg_BG',
     nativeName: 'Български',
     flag: 'flags/bg.png',
-    browserLang: ['bg'],
+    browserLang: ['bg', 'bg-bg'],
   },
   {
     name: 'Czech',
     value: 'cs_CZ',
     nativeName: 'Čeština',
     flag: 'flags/cz.png',
-    browserLang: ['cs'],
+    browserLang: ['cs', 'cs-cz'],
   },
   {
     name: 'German',
     value: 'de_DE',
     nativeName: 'Deutsch',
     flag: 'flags/de.png',
-    browserLang: ['de'],
+    browserLang: ['de', 'de-de'],
   },
   {
     name: 'Greek',
     value: 'el_GR',
     nativeName: 'Ελληνικά',
     flag: 'flags/gr.png',
-    browserLang: ['el'],
+    browserLang: ['el', 'el-gr'],
   },
   {
     name: 'Spanish',
     value: 'es_ES',
     nativeName: 'Español',
     flag: 'flags/es.png',
-    browserLang: ['es'],
+    browserLang: ['es', 'es-es'],
   },
   {
     name: 'French',
     value: 'fr_FR',
     nativeName: 'Français',
     flag: 'flags/fr.png',
-    browserLang: ['fr', 'fr_fr'],
+    browserLang: ['fr', 'fr-fr'],
   },
   {
     name: 'Hebrew',
     value: 'he_HE',
     nativeName: 'עִבְרִית',
     flag: 'flags/he.png',
-    browserLang: ['he'],
+    browserLang: ['he', 'he-he'],
   },
   {
     name: 'Hungarian',
@@ -83,7 +83,7 @@ const tasmotaGUILanguages = [
     value: 'ko_KO',
     nativeName: '한국어',
     flag: 'flags/ko.png',
-    browserLang: ['ko', 'ko_kr'],
+    browserLang: ['ko', 'ko-kr'],
   },
   {
     name: 'Dutch',
@@ -97,49 +97,49 @@ const tasmotaGUILanguages = [
     value: 'pl_PL',
     nativeName: 'Polski',
     flag: 'flags/pl.png',
-    browserLang: ['pl'],
+    browserLang: ['pl', 'pl-pl'],
   },
   {
     name: 'Portuguese (Brazil)',
     value: 'pt_BR',
     nativeName: 'Português (Brasileiro)',
     flag: 'flags/br.png',
-    browserLang: [],
+    browserLang: ['pt-br'],
   },
   {
     name: 'Portuguese',
     value: 'pt_PT',
     nativeName: 'Português',
     flag: 'flags/pt.png',
-    browserLang: ['pt'],
+    browserLang: ['pt', 'pt-pt'],
   },
   {
     name: 'Romanian',
     value: 'ro_RO',
     nativeName: 'Română',
     flag: 'flags/ro.png',
-    browserLang: ['ro', 'ro_ro'],
+    browserLang: ['ro', 'ro-ro'],
   },
   {
     name: 'Russian',
     value: 'ru_RU',
     nativeName: 'Русский',
     flag: 'flags/ru.png',
-    browserLang: ['ru'],
+    browserLang: ['ru', 'ru-ru'],
   },
   {
     name: 'Slovak',
     value: 'sk_SK',
     nativeName: 'Slovenčina',
     flag: 'flags/sk.png',
-    browserLang: ['sk'],
+    browserLang: ['sk', 'sk-sk'],
   },
   {
     name: 'Swedish',
     value: 'sv_SE',
     nativeName: 'Svenska',
     flag: 'flags/se.png',
-    browserLang: ['se', 'sv_se'],
+    browserLang: ['se', 'sv-se'],
   },
   {
     name: 'Turkish',
@@ -153,53 +153,45 @@ const tasmotaGUILanguages = [
     value: 'uk_UA',
     nativeName: 'Українська',
     flag: 'flags/ua.png',
-    browserLang: ['uk'],
+    browserLang: ['uk', 'uk-ua'],
   },
   {
     name: 'Vietnam',
     value: 'vi_VN',
     nativeName: 'Tiếng việt',
     flag: 'flags/vn.png',
-    browserLang: ['vi'],
+    browserLang: ['vi', 'vi-vn'],
   },
   {
     name: 'Chinese (Simplified)',
     value: 'zh_CN',
     nativeName: '汉语',
     flag: 'flags/cn.png',
-    browserLang: [],
+    browserLang: ['zh-cn'],
   },
   {
     name: 'Chinese (Traditional)',
     value: 'zh_TW',
     nativeName: '漢語',
     flag: 'flags/tw.png',
-    browserLang: [],
+    browserLang: ['zh-tw'],
   },
   {
     name: 'Frisian',
     value: 'fy_NL',
     nativeName: 'Frysk',
     flag: 'flags/nl.png',
-    browserLang: ['fy'],
+    browserLang: ['fy', 'fy-nl'],
   },
 ];
 
 // What default language should be selected for Tasmota GUI
 // it is based on user browser language setting
-const browserLanguage = navigator.language
-  .toLocaleLowerCase()
-  .replace('-', '_');
+const browserLanguage = navigator.language.toLocaleLowerCase();
 
 let languageIndex = tasmotaGUILanguages.findIndex((element) =>
   element.browserLang.includes(browserLanguage)
 );
-
-if (languageIndex === -1) {
-  languageIndex = tasmotaGUILanguages.findIndex((element) =>
-    element.value.toLowerCase().includes(browserLanguage)
-  );
-}
 
 // Set English as default
 if (languageIndex === -1) {
