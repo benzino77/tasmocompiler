@@ -69,14 +69,14 @@ const tasmotaGUILanguages = [
     value: 'hu_HU',
     nativeName: 'Magyar',
     flag: 'flags/hu.png',
-    browserLang: ['hu'],
+    browserLang: ['hu', 'hu-hu'],
   },
   {
     name: 'Italian',
     value: 'it_IT',
     nativeName: 'Italiano',
     flag: 'flags/it.png',
-    browserLang: ['it'],
+    browserLang: ['it', 'it-it'],
   },
   {
     name: 'Korean',

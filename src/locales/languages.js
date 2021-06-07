@@ -32,7 +32,7 @@ const allMessages = {
     source: localeIT,
     nativeName: 'Italiano',
     flag: 'flags/it.png',
-    browserLang: ['it'],
+    browserLang: ['it', 'it-it'],
   },
   pl: {
     source: localePL,
@@ -56,7 +56,7 @@ const allMessages = {
     source: localeHU,
     nativeName: 'Magyar',
     flag: 'flags/hu.png',
-    browserLang: ['hu'],
+    browserLang: ['hu', 'hu-hu'],
   },
 };
 
@@ -69,10 +69,10 @@ const translations = Object.keys(allMessages).filter(
 );
 
 // if particular translation does not have some translation, add the translation from baseTranslation
-Object.keys(allMessages[baseTranslation]).forEach((e) => {
+Object.keys(allMessages[baseTranslation].source).forEach((e) => {
   translations.forEach((t) => {
-    if (!allMessages[t].hasOwnProperty(e)) {
-      allMessages[t][e] = allMessages[baseTranslation][e];
+    if (!allMessages[t].source.hasOwnProperty(e)) {
+      allMessages[t].source[e] = allMessages[baseTranslation].source[e];
     }
   });
 });
