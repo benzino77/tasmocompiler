@@ -1,6 +1,6 @@
 {
   "name": "tasmocompiler",
-  "version": "5.3.3",
+  "version": "5.3.4",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
