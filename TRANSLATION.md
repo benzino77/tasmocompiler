@@ -89,7 +89,7 @@ const allMessages = {
 
 #### How to find values to be added to `browserLang` list?
 
-Open Firefex, Chrome, Edge, Brave, Opera, any other browser you have installed and press `F12` key. It will open `developmer tools`. Choose `console` and type: `navigator.language`. You should type this in the console of as many browsers as you can - some browsers have different language code than others.
+Open Firefex, Chrome, Edge, Brave, Opera, any other browser you have installed and press `F12` key. It will open `developmer tools`. Choose `console` and type: `navigator.language`. You should type this in the console of as many browsers as you can - some browsers have different language code than others. Remeber to add a value to `browserLang` list in lowercase.
 
 ##### Firefox
 
