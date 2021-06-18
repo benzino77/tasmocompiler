@@ -23,7 +23,7 @@ const availableBoards = [
     default: true,
     show: true,
     platformio_entries: {
-      'board_build.ldscript': 'eagle.flash.4m2m.ld',
+      board: 'esp8266_4M2M',
     },
     tooltip: 'stepFeaturesBoard82664MTooltip',
     include_features: ['ufilesys', 'rules'],
@@ -38,7 +38,7 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      'board_build.ldscript': 'eagle.flash.2m256.ld',
+      board: 'esp8266_2M256',
       'board_build.f_cpu': '160000000L',
     },
     tooltip: '',
@@ -84,8 +84,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32cam',
-      'board_build.f_cpu': '240000000L',
+      board: 'esp32-cam',
       build_flags:
         // eslint-disable-next-line
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
@@ -104,9 +103,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'odroid_esp32',
-      'board_build.f_cpu': '240000000L',
-      'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
+      board: 'esp32-odroid',
       build_flags:
         // eslint-disable-next-line
         '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
@@ -130,9 +127,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'odroid_esp32',
-      'board_build.f_cpu': '240000000L',
-      'board_build.partitions': 'esp32_partition_app2944k_spiffs10M.csv',
+      board: 'esp32-m5core2',
       build_flags:
         // eslint-disable-next-line
         '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
@@ -169,7 +164,8 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       platform_packages:
-        '\ttasmota/framework-arduinoespressif32 @ 3.10006.210420' +
+        '\tframework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz' +
+        '\n\t\t\tplatformio/tool-esptoolpy @ ~1.30100' +
         '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
     },
     tooltip: '',
