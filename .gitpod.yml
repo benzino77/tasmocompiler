@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - init: yarn install
-    command: yarn build && pip3 install platformio && node server/server.js
+    command: yarn build && pip3 install platformio && node server/app.js
 ports:
   - port: 3000
     onOpen: open-browser
