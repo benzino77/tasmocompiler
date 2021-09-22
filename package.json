@@ -1,6 +1,6 @@
 {
   "name": "tasmocompiler",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -26,9 +26,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=jsdom-fourteen",
+    "testbackend": "jest server/ ",
     "eject": "react-scripts eject",
-    "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/server.js\" \"yarn start\""
+    "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/app.js\" \"yarn start\""
   },
   "browserslist": [
     ">0.2%",
@@ -37,12 +38,17 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
     "concurrently": "^4.1.0",
     "eslint": "5.12.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
     "eslint-plugin-react": "7.12.4",
-    "nodemon": "^2.0.2"
+    "jest-environment-jsdom-fourteen": "^1.0.1",
+    "msw": "^0.32.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^6.1.3"
   }
 }

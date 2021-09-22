@@ -19,4 +19,4 @@ RUN cd /tasmocompiler && yarn install && \
   yarn cache clean
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 WORKDIR /tasmocompiler
-ENTRYPOINT ["nodemon", "server/server.js"]
+ENTRYPOINT ["nodemon", "server/app.js"]

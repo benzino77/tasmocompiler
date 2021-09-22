@@ -123,6 +123,8 @@ app.get('/download/user_config_override.h', (req, res) => {
   res.download(userConfigOvewrite);
 });
 
-server.listen(listenPort, () => {
-  console.log(`Server started on port ${listenPort}`);
-});
+// server.listen(listenPort, () => {
+//   console.log(`Server started on port ${listenPort}`);
+// });
+
+module.exports = { server };
