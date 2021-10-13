@@ -27,6 +27,7 @@ const getFeaturesDefaultStates = (board) => {
       feature.boards.includes('all') ||
       board.include_features.includes(feature.name)
     ) {
+      console.log(feature.name);
       const value = board.include_features.includes(feature.name)
         ? true
         : feature.value;
@@ -152,7 +153,6 @@ class FeaturesStep extends Component {
     const defaultBoard = availableBoards.filter((b) => b.default === true);
     const defaultStates = getFeaturesDefaultStates(defaultBoard[0]);
     this.state = { features: { board: defaultBoard[0], ...defaultStates } };
-
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.handleBack = this.handleBack.bind(this);
@@ -189,7 +189,9 @@ class FeaturesStep extends Component {
   }
 
   handleRadioChange(event) {
+    console.log(`Radio change: ${event.target.value}`);
     const boards = availableBoards.filter((b) => b.name === event.target.value);
+    console.log(boards);
     const defaultStates = getFeaturesDefaultStates(boards[0]);
     this.setState({ features: { board: boards[0], ...defaultStates } });
   }
@@ -198,7 +200,6 @@ class FeaturesStep extends Component {
     const { board, ...tempState } = this.state.features;
     const { classes, nextHandler, backHandler, ...other } = this.props;
     const Wire = ({ children, ...props }) => children(props);
-
     return (
       <Step {...other}>
         <StepLabel>

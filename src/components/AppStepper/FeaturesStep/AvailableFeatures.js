@@ -364,7 +364,7 @@ const availableFeatures = [
     boards: [
       'esp8266',
       'esp82664M',
-      'esp32',
+      'esp32generic',
       'esp32webcam',
       'esp32odroid-go',
       'esp32m5',
@@ -390,7 +390,13 @@ const availableFeatures = [
     tooltip: 'stepFeaturesBerryTooltip',
     group: ['USE_BERRY', 'USE_BERRY_PSRAM'],
     custom: '',
-    boards: ['esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1'],
+    boards: [
+      'esp32generic',
+      'esp32webcam',
+      'esp32odroid-go',
+      'esp32m5',
+      'esp32solo1',
+    ],
   },
   {
     name: 'bluetooth',
@@ -404,7 +410,13 @@ const availableFeatures = [
       lib_extra_dirs: 'lib/libesp32_div ${common32.lib_extra_dirs}',
     },
     custom: '',
-    boards: ['esp32', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1'],
+    boards: [
+      'esp32generic',
+      'esp32webcam',
+      'esp32odroid-go',
+      'esp32m5',
+      'esp32solo1',
+    ],
   },
   {
     name: 'USE_I2C',
