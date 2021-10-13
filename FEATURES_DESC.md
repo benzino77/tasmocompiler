@@ -22,3 +22,10 @@
 | `USE_ENERGY_DUMMY` |                | `USE_HDC1080`                         |                         |                  |                |
 |                    |                | `USE_MCP9808`                         |                         |                  |                |
 |                    |                | `USE_LMT01`                           |                         |                  |                |
+
+| Alexa                | Rules                  | Bluetooth       | IO port expander             | SD card/LittleFS |
+| -------------------- | ---------------------- | --------------- | ---------------------------- | ---------------- |
+| `USE_EMULATION`      | `USE_RULES`            | `USE_BLE_ESP32` | `USE_MCP230xx`               | `USE_UFILESYS`   |
+| `USE_EMULATION_HUE`  | `USE_EXPRESSION`       | `USE_MI_ESP32`  | `USE_MCP230xx_OUTPUT`        | `USE_SDCARD`     |
+| `USE_EMULATION_WEMO` | `SUPPORT_IF_STATEMENT` |                 | `USE_MCP230xx_DISPLAYOUTPUT` | `GUI_TRASH_FILE` |
+|                      |                        |                 |                              | `GUI_EDIT_FILE`  |
