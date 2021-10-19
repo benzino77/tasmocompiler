@@ -42,7 +42,8 @@ const getRepoTags = async () => {
   if (isRepo) {
     try {
       const allTags = await git(tasmotaRepo).tags();
-      const tags = allTags.all.filter((t) => semver.gte(t, minVersion));
+      let tags = allTags.all.filter((t) => t.startsWith('v'));
+      tags = tags.filter((t) => semver.gte(t, minVersion));
       return [...tags, edgeBranch];
     } catch (e) {
       debug(message);
