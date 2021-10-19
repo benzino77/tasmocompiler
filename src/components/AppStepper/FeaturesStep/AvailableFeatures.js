@@ -368,7 +368,8 @@ const availableFeatures = [
       'esp32webcam',
       'esp32odroid-go',
       'esp32m5',
-      'esp32solo1,',
+      'esp32solo1',
+      'esp32c3',
     ],
   },
   {
@@ -396,6 +397,7 @@ const availableFeatures = [
       'esp32odroid-go',
       'esp32m5',
       'esp32solo1',
+      'esp32c3',
     ],
   },
   {
@@ -407,7 +409,7 @@ const availableFeatures = [
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
     platformio_entries: {
       // eslint-disable-next-line
-      lib_extra_dirs: 'lib/libesp32_div ${common32.lib_extra_dirs}',
+      lib_extra_dirs: 'lib/libesp32_div ${env:tasmota32_base.lib_extra_dirs}',
     },
     custom: '',
     boards: [
@@ -416,6 +418,7 @@ const availableFeatures = [
       'esp32odroid-go',
       'esp32m5',
       'esp32solo1',
+      'esp32c3',
     ],
   },
   {

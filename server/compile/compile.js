@@ -160,10 +160,10 @@ const prepareFiles = async (socket, data) => {
   const featurePlatformioEntries = getFeaturePlatformioEntries(features);
 
   const commonBuildFlags = features.board.name.includes('esp32')
-    // eslint-disable-next-line
-    ? '${common32.build_flags}'
-    // eslint-disable-next-line
-    : '${common.build_flags}';
+    ? // eslint-disable-next-line
+      '${env:tasmota32_base.build_flags}'
+    : // eslint-disable-next-line
+      '${common.build_flags}';
 
   const { platformio_entries } = features.board;
 

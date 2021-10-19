@@ -38,8 +38,7 @@ const availableBoards = [
     default: false,
     show: true,
     platformio_entries: {
-      board: 'esp8266_2M256',
-      'board_build.f_cpu': '160000000L',
+      board: 'esp8266_zbbridge',
     },
     tooltip: '',
     include_features: ['USE_ADC_VCC', 'rules'],
@@ -85,14 +84,11 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32-cam',
-      build_flags:
-        // eslint-disable-next-line
-        '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
     include_features: ['ufilesys', 'rules'],
     exclude_features: [],
-    defines: { USE_WEBCAM: true },
+    defines: { USE_WEBCAM: true, ENABLE_RTSPSERVER: true },
   },
   // esp32odroid-go
   {
@@ -104,9 +100,6 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32-odroid',
-      build_flags:
-        // eslint-disable-next-line
-        '${common32.build_flags} -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
     include_features: ['displays', 'ufilesys', 'rules'],
@@ -128,9 +121,6 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32-m5core2',
-      build_flags:
-        // eslint-disable-next-line
-        '${common32.build_flags} -DDBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue -lc-psram-workaround -lm-psram-workaround',
     },
     tooltip: '',
     include_features: ['displays', 'ufilesys', 'USE_SCRIPT'],
@@ -139,17 +129,17 @@ const availableBoards = [
       MODULE: 'M5STACK_CORE2',
       FALLBACK_MODULE: 'M5STACK_CORE2',
       USE_M5STACK_CORE2: true,
-      SAY_TIME: true, // this should be deleted in the future
-      USE_SAY_TIME: true, // new changed name
       USE_I2S_SAY_TIME: true, // another new name for this feature
-      USE_WEBRADIO: true, // this should be deleted in the future
       USE_I2S_WEBRADIO: true, // new changed name
       USE_MPU6886: true,
       USE_BMA423: true,
+      USE_MPU_ACCEL: true,
+      SHOW_SPLASH: true,
       JPEG_PICTS: true,
       USE_FT5206: true,
+      USE_LVGL: true,
+      USE_LVGL_FREETYPE: true,
       USE_TOUCH_BUTTONS: true,
-      MAX_TOUCH_BUTTONS: 16,
       USE_SENDMAIL: true,
       USE_ESP32MAIL: true,
     },
@@ -164,9 +154,55 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       platform_packages:
-        '\tframework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz' +
+        '\tframework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7.4/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz' +
         '\n\t\t\tplatformio/tool-esptoolpy @ ~1.30100' +
         '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
+    },
+    tooltip: '',
+    include_features: ['ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  // C3
+  {
+    name: 'esp32c3',
+    chip_type: 'esp32',
+    description: 'ESP32 C3',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32c3',
+      platform:
+        'https://github.com/platformio/platform-espressif32.git#feature/arduino-idf-master',
+      platform_packages:
+        '\tframework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz' +
+        '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
+      build_unflags:
+        // eslint-disable-next-line
+        '\t${env:tasmota32_base.build_unflags}' +
+        '\n\t-Wswitch-unreachable' +
+        '\n\t-Wstringop-overflow' +
+        '\n\t-Wincompatible-pointer-types' +
+        '\n\t-mtarget-align' +
+        '\n\t-DNDEBUG',
+      build_flags:
+        // eslint-disable-next-line
+        '\t${env:tasmota32_base.build_flags}' +
+        '\n\t-Wno-switch-unreachable' +
+        '\n\t-Wno-stringop-overflow',
+      lib_extra_dirs:
+        // eslint-disable-next-line
+        '\tlib/libesp32' +
+        '\n\tlib/libesp32_div' +
+        '\n\tlib/libesp32_lvgl' +
+        '\n\tlib/lib_basic' +
+        '\n\tlib/lib_i2c' +
+        '\n\tlib/lib_ssl' +
+        '\n\tlib/lib_display',
+      lib_ignore:
+        // eslint-disable-next-line
+        '\tTTGO TWatch Library' + '\n\tESP32-HomeKit' + '\n\tMicro-RTSP',
     },
     tooltip: '',
     include_features: ['ufilesys', 'rules'],
