@@ -27,7 +27,6 @@ const getFeaturesDefaultStates = (board) => {
       feature.boards.includes('all') ||
       board.include_features.includes(feature.name)
     ) {
-      console.log(feature.name);
       const value = board.include_features.includes(feature.name)
         ? true
         : feature.value;
@@ -189,9 +188,7 @@ class FeaturesStep extends Component {
   }
 
   handleRadioChange(event) {
-    console.log(`Radio change: ${event.target.value}`);
     const boards = availableBoards.filter((b) => b.name === event.target.value);
-    console.log(boards);
     const defaultStates = getFeaturesDefaultStates(boards[0]);
     this.setState({ features: { board: boards[0], ...defaultStates } });
   }
