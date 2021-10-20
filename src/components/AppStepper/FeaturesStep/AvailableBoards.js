@@ -153,10 +153,11 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      platform_packages:
-        '\tframework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7.4/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz' +
-        '\n\t\t\tplatformio/tool-esptoolpy @ ~1.30100' +
-        '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
+      platform_packages: [
+        'framework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7.4/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz',
+        'platformio/tool-esptoolpy @ ~1.30100',
+        'platformio/tool-mklittlefs @ ~1.203.200522',
+      ],
     },
     tooltip: '',
     include_features: ['ufilesys', 'rules'],
@@ -175,34 +176,68 @@ const availableBoards = [
       board: 'esp32c3',
       platform:
         'https://github.com/platformio/platform-espressif32.git#feature/arduino-idf-master',
-      platform_packages:
-        '\tframework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz' +
-        '\n\t\t\tplatformio/tool-mklittlefs @ ~1.203.200522',
+      platform_packages: [
+        'framework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz',
+        'platformio/tool-mklittlefs @ ~1.203.200522',
+      ],
       build_unflags:
         // eslint-disable-next-line
-        '\t${env:tasmota32_base.build_unflags}' +
-        '\n\t-Wswitch-unreachable' +
-        '\n\t-Wstringop-overflow' +
-        '\n\t-Wincompatible-pointer-types' +
-        '\n\t-mtarget-align' +
-        '\n\t-DNDEBUG',
+        '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types -mtarget-align -DNDEBUG',
       build_flags:
         // eslint-disable-next-line
-        '\t${env:tasmota32_base.build_flags}' +
-        '\n\t-Wno-switch-unreachable' +
-        '\n\t-Wno-stringop-overflow',
-      lib_extra_dirs:
+        '${env:tasmota32_base.build_flags} -Wno-switch-unreachable -Wno-stringop-overflow',
+      lib_extra_dirs: [
+        'lib/libesp32',
+        'lib/libesp32_div',
+        'lib/libesp32_lvgl',
+        'lib/lib_basic',
+        'lib/lib_i2c',
+        'lib/lib_ssl',
+        'lib/lib_display',
+      ],
+      lib_ignore: ['TTGO TWatch Library', 'ESP32-HomeKit', 'Micro-RTSP'],
+    },
+    tooltip: '',
+    include_features: ['ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  // ESP32 S2
+  {
+    name: 'esp32s2',
+    chip_type: 'esp32',
+    description: 'ESP32 S2',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32s2',
+      platform:
+        'https://github.com/platformio/platform-espressif32.git#feature/arduino-idf-master',
+      platform_packages: [
+        'framework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz',
+        'platformio/tool-mklittlefs @ ~1.203.200522',
+      ],
+      build_unflags:
         // eslint-disable-next-line
-        '\tlib/libesp32' +
-        '\n\tlib/libesp32_div' +
-        '\n\tlib/libesp32_lvgl' +
-        '\n\tlib/lib_basic' +
-        '\n\tlib/lib_i2c' +
-        '\n\tlib/lib_ssl' +
-        '\n\tlib/lib_display',
-      lib_ignore:
+        '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types',
+      build_flags:
         // eslint-disable-next-line
-        '\tTTGO TWatch Library' + '\n\tESP32-HomeKit' + '\n\tMicro-RTSP',
+        '${env:tasmota32_base.build_flags} -Wno-switch-unreachable -Wno-stringop-overflow',
+      lib_extra_dirs: [
+        'lib/libesp32',
+        'lib/libesp32_lvgl',
+        'lib/lib_basic',
+        'lib/lib_i2c',
+        'lib/lib_ssl',
+        'lib/lib_display',
+      ],
+      lib_ignore: [
+        'NimBLE-Arduino',
+        'TTGO TWatch Library',
+        'ESP32-HomeKit',
+        'Micro-RTSP',
+      ],
     },
     tooltip: '',
     include_features: ['ufilesys', 'rules'],

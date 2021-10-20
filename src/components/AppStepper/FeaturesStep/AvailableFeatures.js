@@ -370,6 +370,7 @@ const availableFeatures = [
       'esp32m5',
       'esp32solo1',
       'esp32c3',
+      'esp32s2',
     ],
   },
   {
@@ -398,6 +399,7 @@ const availableFeatures = [
       'esp32m5',
       'esp32solo1',
       'esp32c3',
+      'esp32s2',
     ],
   },
   {
@@ -407,10 +409,6 @@ const availableFeatures = [
     description: 'stepFeaturesBluetoothDesc',
     tooltip: 'stepFeaturesBluetoothTooltip',
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
-    platformio_entries: {
-      // eslint-disable-next-line
-      lib_extra_dirs: 'lib/libesp32_div ${env:tasmota32_base.lib_extra_dirs}',
-    },
     custom: '',
     boards: [
       'esp32generic',

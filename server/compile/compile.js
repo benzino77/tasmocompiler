@@ -119,9 +119,10 @@ const getFeaturePlatformioEntries = (data) => {
           : `${data[e].build_flags}`;
       }
       if (data[e].lib_extra_dirs) {
+        // lib_extra_dirs is an array
         platformioEntries.lib_extra_dirs = platformioEntries.lib_extra_dirs
-          ? `${platformioEntries.lib_extra_dirs} ${data[e].lib_extra_dirs}`
-          : `${data[e].lib_extra_dirs}`;
+          ? platformioEntries.lib_extra_dirs.concat(data[e].lib_extra_dirs)
+          : data[e].lib_extra_dirs;
       }
     }
   });
@@ -169,11 +170,18 @@ const prepareFiles = async (socket, data) => {
 
   Object.keys(featurePlatformioEntries).forEach((e) => {
     if (platformio_entries[e]) {
-      platformio_entries[
-        e
-      ] = `${platformio_entries[e]} ${featurePlatformioEntries[e]}`;
+      if (Array.isArray(platformio_entries[e])) {
+        // remove duplicates with Set
+        platformio_entries[e] = [
+          ...new Set(platformio_entries[e].concat(featurePlatformioEntries[e])),
+        ];
+      } else {
+        platformio_entries[
+          e
+        ] = `${platformio_entries[e]} ${featurePlatformioEntries[e]}`;
+      }
     } else {
-      platformio_entries[e] = `${featurePlatformioEntries[e]}`;
+      platformio_entries[e] = featurePlatformioEntries[e];
     }
 
     if (
@@ -185,7 +193,14 @@ const prepareFiles = async (socket, data) => {
   });
 
   const platformioEnvCustom = Object.keys(platformio_entries)
-    .map((e) => `${e} = ${platformio_entries[e]}`)
+    .map(
+      (e) =>
+        `${e} = ${
+          Array.isArray(platformio_entries[e])
+            ? platformio_entries[e].join(', ')
+            : platformio_entries[e]
+        }`
+    )
     .join('\n');
   const platformioContent =
     '[platformio]\n' +
