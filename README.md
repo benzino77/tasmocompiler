@@ -13,12 +13,11 @@
 
 TasmoCompiler is a simple web GUI which allows you to compile fantastic [Tasmota](https://github.com/arendst/Sonoff-Tasmota) firmware with your own settings:
 
-- You can select which features/sensors of Tasmota firmware you want to use
+- You can select which board you are building firmware for
+- You can select which features/sensors of Tasmota firmware you want to use (description of available features can be found in [FEATURES DESCRIPTION](https://github.com/benzino77/tasmocompiler/blob/master/FEATURES_DESC.md) file)
 - Credentials for your IOT WiFi network, so even after unexpected problems with the device (complete lost of configuration), credentials for your network will still be there, but mainly you don't have to connect to AP, served by Tasmota to configure your Home WiFi
-- You can select Tasmota version you want to compile. You can select `development` bleading edge version, or ie. previous stable release `6.4.1` or `6.2.1` if this is the one you like
-- You can also select with what Core version you want to compile your custom firmware: 2.3.0, 2.4.2 or maybe 2.5.0
-- Hardware version (Sonoffs, Wemos, NodeMCU).
-- Language version
+- You can select Tasmota version you want to compile. You can select `development` bleading edge version, or latest stable release if this is the one you like
+- Language of Tasmota GUI interface
 - You can also provide custom `#defines` if you want to build even more suitable firmaware for your needs
 
 #### Why?
@@ -29,15 +28,16 @@ That's why I decided to prepare a solution which is easier to use (just a few cl
 
 #### How it works?
 
-The easiest way is to look at the screenshots (the whole process is five steps only). After compilation you will be able to download three files:
+The easiest way is to look at the screenshots (the whole process is five steps only). After compilation you will be able to download four (or three for ESP32 boards) files:
 
 1. Your new `firmware.bin` file, which can be uploaded to your device via Tasmota WebGUI, espotool, ESPEasy flasher or any other tool you used to use to flash your device
-2. `platformio.ini` file, to check what options for platformio were used to compile the custom firmware file
-3. `user_config_override.h` file to check what features are included/excluded from resulting firmware
+2. Compressed file `firmware.bin.gz` (not available for ESP32 boards)
+3. `platformio_override.ini` file, to check what options for platformio were used to compile the custom firmware file
+4. `user_config_override.h` file to check what features are included/excluded from resulting firmware
 
 The links to download these files will show up under _Compiling progress_ field (look at the bottom of the last screenshot). **These links will show up only when compilation is successful**.
 
-You have to upload only the first `firmware.bin` file to your device. How to do that is perfeclty described on [Tasmota wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing).
+You have to upload only `firmware.bin` or `firmawre.bin.gz` file to your device. How to do that is perfeclty described on [Tasmota wiki](https://github.com/arendst/Sonoff-Tasmota/wiki/Flashing).
 
 ![Step01](./docs/images/step01.png)
 ![Step02](./docs/images/step02.png)
@@ -50,7 +50,7 @@ You have to upload only the first `firmware.bin` file to your device. How to do 
 
 ##### Super easy way (Thanks to @meingraham and @Jason2866)
 
-Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open. If the new tab does not open or you cannot see the pop-up notification, click on the _Open Browser_ link:
+Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open (1 and 2). If the new tab does not open or you cannot see the pop-up notification, click on the _Ports view_ link (3) and then on _Open browser_ (4):
 
 ![Open Browser](./docs/images/gitpod_newtab.png)
 
@@ -84,7 +84,7 @@ Then point your browser to http://localhost:8080
 
 ##### Less easy way
 
-1. Install `NodeJS` and `Python 2.7.x`
+1. Install `NodeJS` and `Python 3.6.x` or later
 2. Install [`yarn`](https://yarnpkg.com/en/docs/install)
 3. Install [`platformio`](https://docs.platformio.org/en/latest/installation.html)
 4. Clone/download the repository from github and change directory to the cloned repo
