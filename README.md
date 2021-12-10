@@ -90,7 +90,7 @@ Then point your browser to http://localhost:8080
 4. Clone/download the repository from github and change directory to the cloned repo
 5. run `yarn install`
 6. run `yarn build`
-7. run `node server/server.js`
+7. run `node server/app.js`
 8. point your browser to http://localhost:3000
 
 #### How to use "Custom parameters"?
