@@ -135,13 +135,13 @@ class App extends Component {
 
   changeLanguage = (lang) => {
     tasmotaGUILanguages.sort((a, b) => {
-      return allMessages[lang]['source'][a.name].localeCompare(
-        allMessages[lang]['source'][b.name]
+      return (allMessages[lang]['source'][a.name] || a.name).localeCompare(
+          (allMessages[lang]['source'][b.name] || b.name)
       );
     });
     availableFeatures.sort((a, b) => {
-      return allMessages[lang]['source'][a.description].localeCompare(
-        allMessages[lang]['source'][b.description]
+      return (allMessages[lang]['source'][a.description] || a.description).localeCompare(
+          (allMessages[lang]['source'][b.description] || b.description)
       );
     });
     this.setState({ tcGUILanguage: lang });
