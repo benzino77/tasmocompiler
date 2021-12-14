@@ -227,31 +227,13 @@ const availableFeatures = [
     custom: '',
     boards: ['all'],
   },
-  // this IR support one is deprecated
   {
-    name: 'USE_IR_REMOTE',
-    value: false,
-    show: false,
-    description: 'stepFeaturesIRBasicDesc',
-    tooltip: 'stepFeaturesIRBasicTooltip',
-    exclude: ['USE_IR_REMOTE_FULL'],
-    platformio_entries: {
-      build_flags: '-D_IR_ENABLE_DEFAULT_=false',
-    },
-    custom: '',
-    boards: ['all'],
-  },
-  {
-    name: 'USE_IR_REMOTE_FULL',
+    name: 'infrared',
     value: false,
     show: true,
     description: 'stepFeaturesIRFullDesc',
     tooltip: 'stepFeaturesIRFullTooltip',
-    exclude: ['USE_IR_REMOTE'],
-    platformio_entries: {
-      // eslint-disable-next-line
-      build_flags: '${irremoteesp_full.build_flags}',
-    },
+    group: ['USE_IR_REMOTE', 'USE_IR_REMOTE_FULL'],
     custom: '',
     boards: ['all'],
   },
