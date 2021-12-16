@@ -86,7 +86,7 @@ class WifiStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>
+        <StepLabel classes={{label: classes.stepLabel}}>
           <FormattedMessage id="stepWifiConfTitle" />
         </StepLabel>
         <StepContent>

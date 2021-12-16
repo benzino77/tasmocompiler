@@ -60,7 +60,7 @@ class CustomParametersStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>
+        <StepLabel classes={{label: classes.stepLabel}}>
           <FormattedMessage id="stepCustomParamsTitle" />
         </StepLabel>
         <StepContent>

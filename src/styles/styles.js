@@ -25,6 +25,9 @@ const styles = (theme) => ({
   root: {
     width: '100%',
   },
+  stepLabel: {
+    fontSize: theme.typography.body1.fontSize,
+  },
   button: {
     marginTop: theme.spacing(),
     marginRight: theme.spacing(),
