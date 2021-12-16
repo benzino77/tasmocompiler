@@ -199,7 +199,7 @@ class FeaturesStep extends Component {
     const Wire = ({ children, ...props }) => children(props);
     return (
       <Step {...other}>
-        <StepLabel>
+        <StepLabel classes={{label: classes.stepLabel}}>
           <FormattedMessage id="stepFeaturesTitle" />
         </StepLabel>
         <StepContent>

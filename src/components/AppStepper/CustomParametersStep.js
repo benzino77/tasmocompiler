@@ -60,7 +60,7 @@ class CustomParametersStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel>
+        <StepLabel classes={{label: classes.stepLabel}}>
           <FormattedMessage id="stepCustomParamsTitle" />
         </StepLabel>
         <StepContent>
@@ -79,8 +79,8 @@ class CustomParametersStep extends Component {
                 label={<FormattedMessage id="stepCustomParamsTitle" />}
                 fullWidth
                 multiline
-                rows={9}
-                rowsMax={9}
+                minRows={9}
+                maxRows={9}
                 className={classes.multiTextField}
                 value={customParams}
                 onChange={this.handleChange}

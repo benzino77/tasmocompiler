@@ -81,7 +81,7 @@ class SourceStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active}>
+        <StepLabel error={message.length > 0 && other.active} classes={{label: classes.stepLabel}}>
           <FormattedMessage id="stepSourceTitle" />
         </StepLabel>
         <StepContent>

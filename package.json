@@ -1,11 +1,11 @@
 {
   "name": "tasmocompiler",
-  "version": "7.0.7",
+  "version": "7.1.0",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "@material-ui/core": "^3.9.3",
-    "@material-ui/icons": "^3.0.2",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "body-parser": "^1.18.3",
     "debug": "^4.1.1",
     "express": "^4.16.4",

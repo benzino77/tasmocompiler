@@ -22,8 +22,8 @@ class MessageBox extends Component {
         label={<FormattedMessage id="stepVersionCompProgress" />}
         fullWidth
         multiline
-        rows={9}
-        rowsMax={9}
+        minRows={9}
+        maxRows={9}
         className={classes.compileMessagesBox}
         value={compileMessages}
         variant="outlined"

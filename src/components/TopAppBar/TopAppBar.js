@@ -59,7 +59,6 @@ class TopAppBar extends Component {
             >
               <Typography
                 color="inherit"
-                variant="body2"
                 className={classes.language}
               >
                 {allMessages[locale].nativeName}
