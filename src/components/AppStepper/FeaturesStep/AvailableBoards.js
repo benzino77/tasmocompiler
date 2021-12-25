@@ -153,11 +153,8 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      platform_packages: [
-        'framework-arduinoespressif32 @ https://github.com/tasmota/arduino-esp32/releases/download/1.0.7.4/tasmota-arduinoespressif32-solo1-release_v3.3.5.tar.gz',
-        'platformio/tool-esptoolpy @ ~1.30100',
-        'platformio/tool-mklittlefs @ ~1.203.200522',
-      ],
+      platform:
+        'https://github.com/tasmota/platform-espressif32/releases/download/v2.0.2solo1/platform-tasmota-espressif32-2.0.2-solo1.zip'
     },
     tooltip: '',
     include_features: ['ufilesys', 'rules'],
@@ -173,13 +170,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32c3',
-      platform:
-        'https://github.com/platformio/platform-espressif32.git#feature/arduino-idf-master',
-      platform_packages: [
-        'framework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz',
-        'platformio/tool-mklittlefs @ ~1.203.200522',
-      ],
+      board: 'esp32c3'
       build_unflags:
         // eslint-disable-next-line
         '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types -mtarget-align -DNDEBUG',
@@ -211,13 +202,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32s2',
-      platform:
-        'https://github.com/platformio/platform-espressif32.git#feature/arduino-idf-master',
-      platform_packages: [
-        'framework-arduinoespressif32 @ https://github.com/Jason2866/esp32-arduino-lib-builder/releases/download/464/framework-arduinoespressif32-master-3dde75d58.tar.gz',
-        'platformio/tool-mklittlefs @ ~1.203.200522',
-      ],
+      board: 'esp32s2'
       build_unflags:
         // eslint-disable-next-line
         '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types',
