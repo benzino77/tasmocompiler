@@ -64,18 +64,18 @@ const allMessages = {
 const baseTranslation = 'en';
 
 // get all defined translations other then source of truth
-const translations = Object.keys(allMessages).filter(
-  (l) => l !== baseTranslation
-);
+// const translations = Object.keys(allMessages).filter(
+//   (l) => l !== baseTranslation
+// );
 
 // if particular translation does not have some translation, add the translation from baseTranslation
-Object.keys(allMessages[baseTranslation].source).forEach((e) => {
-  translations.forEach((t) => {
-    if (!allMessages[t].source.hasOwnProperty(e)) {
-      allMessages[t].source[e] = allMessages[baseTranslation].source[e];
-    }
-  });
-});
+// Object.keys(allMessages[baseTranslation].source).forEach((e) => {
+//   translations.forEach((t) => {
+//     if (!allMessages[t].source.hasOwnProperty(e)) {
+//       allMessages[t].source[e] = allMessages[baseTranslation].source[e];
+//     }
+//   });
+// });
 
 const defaultLanguage = baseTranslation;
 export { allMessages, defaultLanguage };
