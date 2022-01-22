@@ -23,6 +23,7 @@ class DownloadLinks extends Component {
   render() {
     const { classes, features } = this.props;
     const isEsp8266 = features.board.chip_type === 'esp8266';
+    const isEsp32 = features.board.chip_type === 'esp32';
 
     return (
       <div ref={this.downloadLinksElement}>
@@ -47,6 +48,17 @@ class DownloadLinks extends Component {
               className={classes.downloadButtons}
             >
               firmware.bin.gz
+              <CloudDownloadIcon className={classes.rightIcon} />
+            </Button>
+          )}
+          {isEsp32 && (
+            <Button
+              variant="contained"
+              color="primary"
+              href="/download/firmware.factory.bin"
+              className={classes.downloadButtons}
+            >
+              firmware.factory.bin
               <CloudDownloadIcon className={classes.rightIcon} />
             </Button>
           )}

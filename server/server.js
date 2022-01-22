@@ -115,6 +115,14 @@ app.get('/download/firmware.bin.gz', (req, res) => {
   res.download(firmwareCompressed);
 });
 
+app.get('/download/firmware.factory.bin', (req, res) => {
+  const firmwareCompressed = path.resolve(
+    tasmotaRepo,
+    'build_output/firmware/firmware.factory.bin'
+  );
+  res.download(firmwareCompressed);
+});
+
 app.get('/download/platformio_override.ini', (req, res) => {
   res.download(userPlatformioOverrideIni);
 });

@@ -70,7 +70,7 @@ const availableBoards = [
       extends: 'env:tasmota32_base',
     },
     tooltip: '',
-    include_features: ['ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
@@ -86,9 +86,13 @@ const availableBoards = [
       board: 'esp32-cam',
     },
     tooltip: '',
-    include_features: ['ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
-    defines: { USE_WEBCAM: true, ENABLE_RTSPSERVER: true },
+    defines: {
+      USE_WEBCAM: true,
+      ENABLE_RTSPSERVER: true,
+      USE_TASMOTA_DISCOVERY: true,
+    },
   },
   // esp32odroid-go
   {
@@ -102,13 +106,18 @@ const availableBoards = [
       board: 'esp32-odroid',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C', 'USE_SPI'],
     exclude_features: [],
     defines: {
+      USE_DISPLAY: true,
+      USE_UNIVERSAL_DISPLAY: true,
+      USE_LVGL: true,
+      USE_LVGL_FREETYPE: true,
       MODULE: 'ODROID_GO',
       FALLBACK_MODULE: 'ODROID_GO',
       USE_ODROID_GO: true,
-      USE_ADC: true,
+      c: true,
+      SHOW_SPLASH: true,
     },
   },
   // esp32m5
@@ -123,22 +132,24 @@ const availableBoards = [
       board: 'esp32-m5core2',
     },
     tooltip: '',
-    include_features: ['displays', 'ufilesys', 'USE_SCRIPT'],
+    include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C', 'USE_SPI'],
     exclude_features: [],
     defines: {
+      USE_DISPLAY: true,
+      USE_UNIVERSAL_DISPLAY: true,
+      USE_LVGL: true,
+      USE_LVGL_FREETYPE: true,
       MODULE: 'M5STACK_CORE2',
       FALLBACK_MODULE: 'M5STACK_CORE2',
       USE_M5STACK_CORE2: true,
       USE_I2S_SAY_TIME: true, // another new name for this feature
       USE_I2S_WEBRADIO: true, // new changed name
-      USE_MPU6886: true,
+      USE_WEBCLIENT_HTTPS: true,
       USE_BMA423: true,
       USE_MPU_ACCEL: true,
       SHOW_SPLASH: true,
       JPEG_PICTS: true,
       USE_FT5206: true,
-      USE_LVGL: true,
-      USE_LVGL_FREETYPE: true,
       USE_TOUCH_BUTTONS: true,
       USE_SENDMAIL: true,
       USE_ESP32MAIL: true,
@@ -153,11 +164,14 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      platform:
-        'https://github.com/tasmota/platform-espressif32/releases/download/v2.0.2solo1/platform-tasmota-espressif32-2.0.2-solo1.zip'
+      board: 'esp32_solo1_4M',
+      // eslint-disable-next-line
+      platform: '${core32solo1.platform}',
+      // eslint-disable-next-line
+      platform_packages: '${core32solo1.platform_packages}',
     },
     tooltip: '',
-    include_features: ['ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
@@ -170,26 +184,17 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32c3'
+      board: 'esp32c3',
       build_unflags:
         // eslint-disable-next-line
-        '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types -mtarget-align -DNDEBUG',
+        '{env:tasmota32_base.build_unflags} -flto -mtarget-align',
       build_flags:
         // eslint-disable-next-line
-        '${env:tasmota32_base.build_flags} -Wno-switch-unreachable -Wno-stringop-overflow',
-      lib_extra_dirs: [
-        'lib/libesp32',
-        'lib/libesp32_div',
-        'lib/libesp32_lvgl',
-        'lib/lib_basic',
-        'lib/lib_i2c',
-        'lib/lib_ssl',
-        'lib/lib_display',
-      ],
-      lib_ignore: ['TTGO TWatch Library', 'ESP32-HomeKit', 'Micro-RTSP'],
+        '${env:tasmota32_base.build_flags} -fno-lto',
+      lib_ignore: ['TTGO TWatch Library', 'epdiy', 'Micro-RTSP'],
     },
     tooltip: '',
-    include_features: ['ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
@@ -202,30 +207,16 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32s2'
-      build_unflags:
-        // eslint-disable-next-line
-        '${env:tasmota32_base.build_unflags} -Wswitch-unreachable -Wstringop-overflow -Wincompatible-pointer-types',
-      build_flags:
-        // eslint-disable-next-line
-        '${env:tasmota32_base.build_flags} -Wno-switch-unreachable -Wno-stringop-overflow',
-      lib_extra_dirs: [
-        'lib/libesp32',
-        'lib/libesp32_lvgl',
-        'lib/lib_basic',
-        'lib/lib_i2c',
-        'lib/lib_ssl',
-        'lib/lib_display',
-      ],
+      board: 'esp32s2',
       lib_ignore: [
         'NimBLE-Arduino',
         'TTGO TWatch Library',
-        'ESP32-HomeKit',
+        'epdiy',
         'Micro-RTSP',
       ],
     },
     tooltip: '',
-    include_features: ['ufilesys', 'rules'],
+    include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
   },
