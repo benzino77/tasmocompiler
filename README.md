@@ -159,6 +159,12 @@ You can find additional inforamtion what can be set by _Custom parameters_ field
 
 If you have problems with the compiler or you are interested in more advance usage, please refer to the [ADVANCED](https://github.com/benzino77/tasmocompiler/blob/master/ADVANCED.md) tips for more information.
 
+#### Development version
+
+There is a TasmoCompiler branch which tries to follow as much as possible changes made to `development` branch of Tasmota. It is bleeding edge version so you can expect unexpected. To use `development` version of TasmoCompiler go to gitpod using this [link](https://gitpod.io/#https://github.com/benzino77/tasmocompiler/tree/development) or pull and run appriopriate docker image:
+
+`docker run --rm --name tasmocompiler -p 3000:3000 benzino77/tasmocompiler:development`
+
 #### Disclaimer
 
 Everything you do, you do on your own responsibility. I do not take any responsibility for damages or problems, that may arise as a result of using this solution or its products.
