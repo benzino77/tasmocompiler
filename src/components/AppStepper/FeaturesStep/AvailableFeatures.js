@@ -83,7 +83,15 @@ const availableFeatures = [
       '#define MTX_ADDRESS6     0x76              // [DisplayAddress6] I2C address of sixth 8x8 matrix module\n' +
       '#define MTX_ADDRESS7     0x00              // [DisplayAddress7] I2C address of seventh 8x8 matrix module\n' +
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
-    boards: ['all'],
+    boards: [
+      'esp8266generic',
+      'esp82664M',
+      'esp32generic',
+      'esp32webcam',
+      'esp32solo1',
+      'esp32c3',
+      'esp32s2',
+    ],
   },
   {
     name: 'USE_ADC_VCC',
