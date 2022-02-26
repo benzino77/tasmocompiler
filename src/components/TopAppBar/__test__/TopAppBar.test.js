@@ -24,9 +24,31 @@ for (const l in allMessages) {
   supportedLocales.push(...allMessages[l].browserLang);
 }
 
-beforeAll(() => server.listen());
+// hack until we can upgrade to react@16.9.0
+// https://github.com/testing-library/react-testing-library/issues/459
+const originalError = console.error;
+
+beforeAll(() => {
+  // this is here to silence a warning temporarily
+  // we'll fix it in the next exercise
+  jest.spyOn(console, 'error').mockImplementation((...args) => {
+    if (
+      typeof args[0] === 'string' &&
+      args[0].includes('Please upgrade to at least react-dom@16.9.0')
+    ) {
+      return;
+    }
+    return originalError.call(console, args);
+  });
+
+  server.listen();
+});
+
 afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+afterAll(() => {
+  console.error.mockRestore();
+  server.close();
+});
 
 it('should render TasmoCompiler version for language', async () => {
   const ret = render(
