@@ -68,6 +68,7 @@
   "stepFeaturesBerryTooltip": "Unterstützung für Berry-Skriptsprache",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Add ble and ble-bridge support",
+  "stepFeaturesEthernetDesc": "Ethernet",
   "stepFeaturesI2CDesc": "I2C Unterstützung",
   "stepFeaturesSPIDesc": "SPI Unterstützung",
 

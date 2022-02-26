@@ -68,6 +68,7 @@
   "stepFeaturesBerryTooltip": "Berry szkriptnyelv támogatása",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "BLE és BLE átjáró támogatás",
+  "stepFeaturesEthernetDesc": "Ethernet",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
 
