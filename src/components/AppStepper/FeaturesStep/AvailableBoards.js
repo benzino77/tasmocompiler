@@ -17,6 +17,20 @@ const availableBoards = [
     defines: {},
   },
   {
+    name: 'esp82662M',
+    chip_type: 'esp8266',
+    description: 'Shelly-type',
+    default: true,
+    show: true,
+    platformio_entries: {
+      board: 'esp8266_2M1M',
+    },
+    tooltip: 'stepFeaturesBoard82662MTooltip',
+    include_features: ['ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  {
     name: 'esp82664M',
     chip_type: 'esp8266',
     description: 'Wemos/NodeMCU',
