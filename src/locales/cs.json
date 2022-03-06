@@ -21,7 +21,8 @@
 
   "stepFeaturesTitle": "Výběr funkcí",
   "stepFeaturesBoardDesc": "Select board your project is based on",
-  "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
+  "stepFeaturesBoard8266Tooltip": "Toto je pravděpodobně deska, kterou byste si měli vybrat. ESP8266 s 1M Flash pamětí",
+  "stepFeaturesBoard82662MTooltip": "Zařízení založená na Shelly s 2M Flash pamětí",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, ESP12F, etc..",
   "stepFeaturesDesc": "Jaké funkce chcete zahrnout do výsledného binárního FW?",
   "stepFeaturesAGDesc": "Senzory Vzduch/plyn",

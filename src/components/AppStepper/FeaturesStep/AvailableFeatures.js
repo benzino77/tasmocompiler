@@ -85,6 +85,7 @@ const availableFeatures = [
       '#define MTX_ADDRESS8     0x00              // [DisplayAddress8] I2C address of eigth 8x8 matrix module\n',
     boards: [
       'esp8266generic',
+      'esp82662M',
       'esp82664M',
       'esp32generic',
       'esp32webcam',
