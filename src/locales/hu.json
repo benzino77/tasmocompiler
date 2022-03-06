@@ -22,6 +22,7 @@
   "stepFeaturesTitle": "Jellemzők kiválasztás",
   "stepFeaturesBoardDesc": "Válassza ki a alaplapot, amelyre a projekt épül",
   "stepFeaturesBoard8266Tooltip": "Ez valószínűleg az az alaplap, amelyet választania kell",
+  "stepFeaturesBoard82662MTooltip": "Shelly alapú eszközök 2MB flash memóriával",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 alaplapok, például Wemos D1 Mini, NodeMCU, ESP12F, stb.",
   "stepFeaturesDesc": "Mely tulajdonságokat kell tartalmaznia a végleges bináris firmware-nek?",
   "stepFeaturesAGDesc": "Levegő / gáz érzékelők",

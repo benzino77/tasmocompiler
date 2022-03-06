@@ -22,6 +22,7 @@
   "stepFeaturesTitle": "Select features",
   "stepFeaturesBoardDesc": "Select board your project is based on",
   "stepFeaturesBoard8266Tooltip": "This is probably board you should choose",
+  "stepFeaturesBoard82662MTooltip": "Shelly-based devices with 2MB Flash memory",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Which features should be included in final binary firmware?",
   "stepFeaturesAGDesc": "Air/gas sensors",

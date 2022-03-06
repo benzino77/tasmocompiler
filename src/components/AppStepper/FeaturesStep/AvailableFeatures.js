@@ -86,6 +86,7 @@ const availableFeatures = [
     boards: [
       'esp8266generic',
       'esp82664M',
+      'esp82662M',
       'esp32generic',
       'esp32webcam',
       'esp32solo1',
@@ -360,6 +361,7 @@ const availableFeatures = [
     boards: [
       'esp8266',
       'esp82664M',
+      'esp82662M',
       'esp32generic',
       'esp32webcam',
       'esp32odroid-go',

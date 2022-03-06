@@ -22,6 +22,7 @@
   "stepFeaturesTitle": "Selezione funzionalità",
   "stepFeaturesBoardDesc": "Seleziona il tipo di scheda su cui è basato il progetto",
   "stepFeaturesBoard8266Tooltip": "Questa è molto probabilmente la scheda che dovresti scegliere",
+  "stepFeaturesBoard82662MTooltip": "Dispositivi basati su Shelly con 2MB di memoria flash",
   "stepFeaturesBoard82664MTooltip": "Scheda ESP8266 4MB come Wemos D1 Mini, NodeMCU, ESP12F, ecc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
   "stepFeaturesAGDesc": "Sensori aria/gas",
