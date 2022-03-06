@@ -21,7 +21,8 @@
 
   "stepFeaturesTitle": "Wähle die Features",
   "stepFeaturesBoardDesc": "Wähle die Hardware, auf dem dein Projekt basiert",
-  "stepFeaturesBoard8266Tooltip": "Das ist vermutlich das Board, welches Du verwenden solltest. ESP8266 mit 1M Flash Speicher",
+
+  "stepFeaturesBoard8266Tooltip": "Das ist vermutlich das Board, welches Du verwenden solltest",
   "stepFeaturesBoard82662MTooltip": "Shelly Geräte mit 2M Flash Speicher",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 Board z.B. Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Welche Features sollen in der endgültigen Firmenware enthalten sein?",
@@ -82,7 +83,7 @@
   "stepVersionTasmota": "Tasmota Version",
   "stepVersionLanguage": "Sprache",
 
-  "stepDownload": "Du kannst nun die Dateien welche zum erstellen der Firmware benutzt wurden und die Binary herunterladen:",
+  "stepDownload": "Du kannst nun die Dateien welche zum Erstellen der Firmware benutzt wurden und die Binary herunterladen:",
 
   "Afrikaans": "Afrikanisch",
   "English": "Englisch",
