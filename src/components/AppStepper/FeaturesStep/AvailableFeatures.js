@@ -417,6 +417,14 @@ const availableFeatures = [
     ],
   },
   {
+    name: 'USE_ETHERNET',
+    value: false,
+    show: true,
+    description: 'stepFeaturesEthernetDesc',
+    include: ['USE_SPI'],
+    boards: ['esp32generic', 'esp32webcam'],
+  },
+  {
     name: 'USE_I2C',
     value: false,
     show: false,
