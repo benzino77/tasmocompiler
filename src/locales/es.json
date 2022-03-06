@@ -21,7 +21,7 @@
 
   "stepFeaturesTitle": "Selecionar Características",
   "stepFeaturesBoardDesc": "Seleccionar el tipo de hardware a usar",
-  "stepFeaturesBoard8266Tooltip": "Recomendado para todos los dispositivos con ESP8266. ESP8266 con memoria flash de 1M",
+  "stepFeaturesBoard8266Tooltip": "Recomendado para todos los dispositivos con ESP8266",
   "stepFeaturesBoard82662MTooltip": "Dispositivos basados ​​en Shelly con memoria flash de 2M",
   "stepFeaturesBoard82664MTooltip": "Solo para uso avanzado y solo para dispositivos con ESP8266 y 4MB como Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "¿Qué características desea que se incluyan en el firmware personalizado?",

@@ -21,7 +21,7 @@
 
   "stepFeaturesTitle": "Wybór funkcjonalności",
   "stepFeaturesBoardDesc": "Wybierz płytkę na której bazuje Twój projekt",
-  "stepFeaturesBoard8266Tooltip": "To jest płytka, którą najprawdopodobniej powinieneś wybrać. ESP8266 z pamięcią Flash 1M",
+  "stepFeaturesBoard8266Tooltip": "To jest płytka, którą najprawdopodobniej powinieneś wybrać",
   "stepFeaturesBoard82662MTooltip": "Urządzenia oparte na Shelly z pamięcią flash 2M",
   "stepFeaturesBoard82664MTooltip": "Płytki ESP8266 4MB takie jak Wemos D1 Mini, NodeMCU, ESP12F, itd..",
   "stepFeaturesDesc": "Jakie funkcjonalności zostaną zawarte w wynikowym firmware?",
