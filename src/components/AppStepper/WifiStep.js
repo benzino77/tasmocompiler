@@ -8,6 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 
 import NextButton from './NextButton';
+import ClearButton from './ClearButton';
 import BackButton from './BackButton';
 import TextFieldComponent from './TextFieldComponent';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -29,9 +30,17 @@ class WifiStep extends Component {
       showPassword: false,
       staticIPEnabled: false,
     };
+ 
+    if (localStorage.getItem("network") !== null) {
+      this.state = JSON.parse(window.localStorage.getItem("network"));
+      // do not show password per default, ever
+      this.state.showPassword = false;
+    }
+  
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.handleBack = this.handleBack.bind(this);
     this.handleClickShowPassword = this.handleClickShowPassword.bind(this);
     this.handleMouseDownPassword = this.handleMouseDownPassword.bind(this);
@@ -62,9 +71,23 @@ class WifiStep extends Component {
 
   handleNext() {
     const { nextHandler } = this.props;
+    window.localStorage.setItem("network", JSON.stringify(this.state))
+
     nextHandler({ network: this.state });
   }
-
+  handleClear() {
+    this.setState({
+      STA_SSID1: '',
+      STA_PASS1: '',
+      WIFI_IP_ADDRESS: '',
+      WIFI_SUBNETMASK: '',
+      WIFI_GATEWAY: '',
+      WIFI_DNS: '',
+      showPassword: false,
+      staticIPEnabled: false,
+    });
+    window.localStorage.removeItem("network");
+  }
   handleBack() {
     const { backHandler } = this.props;
     backHandler();
@@ -174,6 +197,9 @@ class WifiStep extends Component {
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <BackButton disabled={false} onClick={this.handleBack} />
+            </div>
+            <div className={classes.wrapper}>
+              <ClearButton disabled={false} onClick={this.handleClear} />
             </div>
             <div className={classes.wrapper}>
               <NextButton disabled={false} onClick={this.handleNext} />
