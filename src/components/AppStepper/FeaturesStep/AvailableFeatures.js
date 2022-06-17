@@ -92,6 +92,7 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {
@@ -369,6 +370,7 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {
@@ -398,6 +400,7 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {

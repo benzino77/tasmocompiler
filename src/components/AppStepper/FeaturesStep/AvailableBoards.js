@@ -313,6 +313,23 @@ const availableBoards = [
     exclude_features: [],
     defines: {},
   },
+  // ESP32 S3
+  {
+    name: 'esp32s3',
+    chip_type: 'esp32',
+    description: 'ESP32 S3',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32s3',
+      lib_ignore: ['TTGO TWatch Library', 'Micro-RTSP', 'epdiy'],
+    },
+    tooltip: '',
+    include_features: ['berry', 'ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
 ];
 
 export { availableBoardChipTypes, availableBoards };
