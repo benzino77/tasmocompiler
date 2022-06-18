@@ -11,6 +11,7 @@ const availableBoards = [
     default: true,
     show: true,
     platformio_entries: {},
+    platformio_env_name: 'tasmota',
     tooltip: 'stepFeaturesBoard8266Tooltip',
     include_features: ['rules'],
     exclude_features: [],
@@ -25,7 +26,23 @@ const availableBoards = [
     platformio_entries: {
       board: 'esp8266_4M2M',
     },
+    platformio_env_name: 'tasmota4M',
     tooltip: 'stepFeaturesBoard82664MTooltip',
+    include_features: ['ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  {
+    name: 'esp82662M',
+    chip_type: 'esp8266',
+    description: 'Shelly-type',
+    default: true,
+    show: true,
+    platformio_entries: {
+      board: 'esp8266_2M1M',
+    },
+    platformio_env_name: 'tasmota2M',
+    tooltip: 'stepFeaturesBoard82662MTooltip',
     include_features: ['ufilesys', 'rules'],
     exclude_features: [],
     defines: {},
@@ -39,7 +56,10 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       board: 'esp8266_zbbridge',
+      // eslint-disable-next-line
+      build_flags: '${env.build_flags}',
     },
+    platformio_env_name: 'tasmota-zbbridge',
     tooltip: '',
     include_features: ['USE_ADC_VCC', 'rules'],
     exclude_features: [],
@@ -167,7 +187,10 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
     },
+    platformio_env_name: 'tasmota32',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
@@ -182,8 +205,11 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
       board: 'esp32-cam',
     },
+    platformio_env_name: 'tasmota32-webcam',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
@@ -205,6 +231,7 @@ const availableBoards = [
       extends: 'env:tasmota32-lvgl',
       board: 'esp32-odroid',
     },
+    platformio_env_name: 'tasmota32-odroidgo',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C'],
     exclude_features: [],
@@ -222,7 +249,10 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32-lvgl',
       board: 'esp32-m5core2',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32-lvgl.build_flags}',
     },
+    platformio_env_name: 'tasmota32-core2',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C'],
     exclude_features: [],
@@ -248,7 +278,10 @@ const availableBoards = [
       platform: '${core32solo1.platform}',
       // eslint-disable-next-line
       platform_packages: '${core32solo1.platform_packages}',
+      // eslint-disable-next-line
+      build_flags: '${core32solo1.build_flags}',
     },
+    platformio_env_name: 'tasmota32solo1',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
@@ -272,6 +305,7 @@ const availableBoards = [
         '${env:tasmota32_base.build_flags} -fno-lto',
       lib_ignore: ['TTGO TWatch Library', 'epdiy', 'Micro-RTSP'],
     },
+    platformio_env_name: 'tasmota32c3',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],
@@ -287,6 +321,8 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32s2',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
       lib_ignore: [
         'NimBLE-Arduino',
         'TTGO TWatch Library',
@@ -294,6 +330,27 @@ const availableBoards = [
         'Micro-RTSP',
       ],
     },
+    platformio_env_name: 'tasmota32s2',
+    tooltip: '',
+    include_features: ['berry', 'ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  // ESP32 S3
+  {
+    name: 'esp32s3',
+    chip_type: 'esp32',
+    description: 'ESP32 S3',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32s3',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
+      lib_ignore: ['TTGO TWatch Library', 'Micro-RTSP', 'epdiy'],
+    },
+    platformio_env_name: 'tasmota32s3',
     tooltip: '',
     include_features: ['berry', 'ufilesys', 'rules'],
     exclude_features: [],

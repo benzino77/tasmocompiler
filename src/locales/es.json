@@ -6,6 +6,7 @@
   "btnDownloadSrc": "Descargar código",
   "btnRefreshSrc": "Actualizar código",
   "btnNext": "Siguiente",
+  "btnClear": "Clear",
   "btnBack": "Atrás",
   "btnCompile": "Compilar",
 
@@ -22,6 +23,7 @@
   "stepFeaturesTitle": "Selecionar Características",
   "stepFeaturesBoardDesc": "Seleccionar el tipo de hardware a usar",
   "stepFeaturesBoard8266Tooltip": "Recomendado para todos los dispositivos con ESP8266.",
+  "stepFeaturesBoard82662MTooltip": "Dispositivos basados ​​en Shelly con memoria flash de 2MB",
   "stepFeaturesBoard82664MTooltip": "Solo para uso avanzado y solo para dispositivos con ESP8266 y 4MB como Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "¿Qué características desea que se incluyan en el firmware personalizado?",
   "stepFeaturesAGDesc": "Sensores Aire/Gas",
@@ -68,6 +70,7 @@
   "stepFeaturesBerryTooltip": "Agregar soporte a lenguaje Berry",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Agregar soporte a Ble y Ble-Bridge",
+  "stepFeaturesEthernetDesc": "Ethernet",
   "stepFeaturesI2CDesc": "Soporte a I2C",
   "stepFeaturesSPIDesc": "Soporte a SPI",
 

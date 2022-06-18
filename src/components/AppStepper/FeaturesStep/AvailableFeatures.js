@@ -86,11 +86,13 @@ const availableFeatures = [
     boards: [
       'esp8266generic',
       'esp82664M',
+      'esp82662M',
       'esp32generic',
       'esp32webcam',
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {
@@ -360,6 +362,7 @@ const availableFeatures = [
     boards: [
       'esp8266',
       'esp82664M',
+      'esp82662M',
       'esp32generic',
       'esp32webcam',
       'esp32odroid-go',
@@ -367,6 +370,7 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {
@@ -396,6 +400,7 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
       'esp32s2',
+      'esp32s3',
     ],
   },
   {
@@ -414,6 +419,14 @@ const availableFeatures = [
       'esp32solo1',
       'esp32c3',
     ],
+  },
+  {
+    name: 'USE_ETHERNET',
+    value: false,
+    show: true,
+    description: 'stepFeaturesEthernetDesc',
+    include: ['USE_SPI'],
+    boards: ['esp32generic', 'esp32webcam'],
   },
   {
     name: 'USE_I2C',

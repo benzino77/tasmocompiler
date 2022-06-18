@@ -6,6 +6,7 @@
   "btnDownloadSrc": "Quellcode herunterladen",
   "btnRefreshSrc": "Quellcode aktualisieren",
   "btnNext": "Weiter",
+  "btnClear": "Löschen",
   "btnBack": "Zurück",
   "btnCompile": "Kompilieren",
 
@@ -22,6 +23,7 @@
   "stepFeaturesTitle": "Wähle die Features",
   "stepFeaturesBoardDesc": "Wähle die Hardware, auf dem dein Projekt basiert",
   "stepFeaturesBoard8266Tooltip": "Das ist vermutlich das Board, welches Du verwenden solltest",
+  "stepFeaturesBoard82662MTooltip": "Shelly Geräte mit 2MB Flash Speicher",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 Board z.B. Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Welche Features sollen in der endgültigen Firmenware enthalten sein?",
   "stepFeaturesAGDesc": "Luft/ Gas Sensoren",
@@ -68,6 +70,7 @@
   "stepFeaturesBerryTooltip": "Unterstützung für Berry-Skriptsprache",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Fügt Bluetooth Low Energy und BLE-Bridge Support hinzu",
+  "stepFeaturesEthernetDesc": "Ethernet",
   "stepFeaturesI2CDesc": "I2C Unterstützung",
   "stepFeaturesSPIDesc": "SPI Unterstützung",
 

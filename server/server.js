@@ -99,40 +99,22 @@ app.post('/api/v1/compile', (req, res) => {
   }
 });
 
-app.get('/download/firmware.bin', (req, res) => {
+app.get('/download/:fileName', (req, res) => {
+  if (req.params.fileName === 'platformio_override.ini') {
+    res.download(userPlatformioOverrideIni);
+    return;
+  }
+
+  if (req.params.fileName === 'user_config_override.h') {
+    res.download(userConfigOvewrite);
+    return;
+  }
+
   const firmwareFile = path.resolve(
     tasmotaRepo,
-    'build_output/firmware/firmware.bin'
+    `build_output/firmware/${req.params.fileName}`
   );
   res.download(firmwareFile);
 });
-
-app.get('/download/firmware.bin.gz', (req, res) => {
-  const firmwareCompressed = path.resolve(
-    tasmotaRepo,
-    'build_output/firmware/firmware.bin.gz'
-  );
-  res.download(firmwareCompressed);
-});
-
-app.get('/download/firmware.factory.bin', (req, res) => {
-  const firmwareCompressed = path.resolve(
-    tasmotaRepo,
-    'build_output/firmware/firmware.factory.bin'
-  );
-  res.download(firmwareCompressed);
-});
-
-app.get('/download/platformio_override.ini', (req, res) => {
-  res.download(userPlatformioOverrideIni);
-});
-
-app.get('/download/user_config_override.h', (req, res) => {
-  res.download(userConfigOvewrite);
-});
-
-// server.listen(listenPort, () => {
-//   console.log(`Server started on port ${listenPort}`);
-// });
 
 module.exports = { server };

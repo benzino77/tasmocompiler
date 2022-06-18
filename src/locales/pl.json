@@ -6,6 +6,7 @@
   "btnDownloadSrc": "Pobierz żródła",
   "btnRefreshSrc": "Odśwież źródła",
   "btnNext": "Następny",
+  "btnClear": "Wyczyść",
   "btnBack": "Poprzedni",
   "btnCompile": "Kompiluj",
 
@@ -21,6 +22,7 @@
 
   "stepFeaturesTitle": "Wybór funkcjonalności",
   "stepFeaturesBoardDesc": "Wybierz płytkę na której bazuje Twój projekt",
+  "stepFeaturesBoard82662MTooltip": "Urządzenia oparte na Shelly z pamięcią flash 2MB",
   "stepFeaturesBoard8266Tooltip": "To jest płytka, którą najprawdopodobniej powinieneś wybrać",
   "stepFeaturesBoard82664MTooltip": "Płytki ESP8266 4MB takie jak Wemos D1 Mini, NodeMCU, ESP12F, itd..",
   "stepFeaturesDesc": "Jakie funkcjonalności zostaną zawarte w wynikowym firmware?",
@@ -68,6 +70,7 @@
   "stepFeaturesBerryTooltip": "Obsługa języka Berry Scripting",
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Obsługa ble oraz ble-bridge support",
+  "stepFeaturesEthernetDesc": "Ethernet",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 
