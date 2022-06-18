@@ -202,10 +202,11 @@ const prepareFiles = async (socket, data) => {
         }`
     )
     .join('\n');
+
   const platformioContent =
     '[platformio]\n' +
-    'default_envs = firmware\n\n' +
-    '[env:firmware]\n' +
+    `default_envs = ${features.board.platformio_env_name}\n\n` +
+    `[env:${features.board.platformio_env_name}]\n` +
     `${platformioEnvCustom}\n`;
 
   try {
