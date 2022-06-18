@@ -24,6 +24,7 @@ class DownloadLinks extends Component {
     const { classes, features } = this.props;
     const isEsp8266 = features.board.chip_type === 'esp8266';
     const isEsp32 = features.board.chip_type === 'esp32';
+    const envPath = features.board.platformio_env_name;
 
     return (
       <div ref={this.downloadLinksElement}>
@@ -34,7 +35,7 @@ class DownloadLinks extends Component {
           <Button
             variant="contained"
             color="primary"
-            href="/download/firmware.bin"
+            href={`/download/${envPath}.bin`}
             className={classes.downloadButtons}
           >
             firmware.bin
@@ -44,7 +45,7 @@ class DownloadLinks extends Component {
             <Button
               variant="contained"
               color="primary"
-              href="/download/firmware.bin.gz"
+              href={`/download/${envPath}.bin.gz`}
               className={classes.downloadButtons}
             >
               firmware.bin.gz
@@ -55,7 +56,7 @@ class DownloadLinks extends Component {
             <Button
               variant="contained"
               color="primary"
-              href="/download/firmware.factory.bin"
+              href={`/download/${envPath}.factory.bin`}
               className={classes.downloadButtons}
             >
               firmware.factory.bin
