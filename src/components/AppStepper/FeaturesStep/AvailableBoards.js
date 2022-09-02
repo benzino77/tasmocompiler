@@ -303,7 +303,7 @@ const availableBoards = [
       build_flags:
         // eslint-disable-next-line
         '${env:tasmota32_base.build_flags} -fno-lto',
-      lib_ignore: ['TTGO TWatch Library', 'epdiy', 'Micro-RTSP'],
+      lib_ignore: ['TTGO TWatch Library', 'epdiy', 'Micro-RTSP', 'mp3_shine_esp32'],
     },
     platformio_env_name: 'tasmota32c3',
     tooltip: '',
@@ -323,12 +323,7 @@ const availableBoards = [
       board: 'esp32s2',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
-      lib_ignore: [
-        'NimBLE-Arduino',
-        'TTGO TWatch Library',
-        'epdiy',
-        'Micro-RTSP',
-      ],
+      lib_ignore: ['NimBLE-Arduino', 'TTGO TWatch Library', 'epdiy', 'Micro-RTSP'],
     },
     platformio_env_name: 'tasmota32s2',
     tooltip: '',
