@@ -10,10 +10,7 @@ import { FormattedMessage } from 'react-intl';
 import BackButton from '../BackButton';
 import CompileButton from '../CompileButton';
 import VersionSelector from './VersionSelector';
-import {
-  tasmotaGUILanguages,
-  preselectedTasmotaGUILanguage,
-} from './Variables/Languages';
+import { tasmotaGUILanguages, preselectedTasmotaGUILanguage } from './Variables/Languages';
 
 class VersionStep extends Component {
   constructor(props) {
@@ -44,21 +41,23 @@ class VersionStep extends Component {
     backHandler();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { repoTags } = this.props;
+    if (repoTags.length !== prevProps.repoTags.length) {
+      this.setState({
+        tasmotaVersion: repoTags.length >= 2 ? repoTags[repoTags.length - 2] : prevState.tasmotaVersion,
+      });
+    }
+  }
+
   render() {
     const { message, tasmotaVersion, MY_LANGUAGE } = this.state;
 
-    const {
-      classes,
-      backHandler,
-      repoTags,
-      compiling,
-      compileHandler,
-      ...other
-    } = this.props;
+    const { classes, backHandler, repoTags, compiling, compileHandler, ...other } = this.props;
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active} classes={{label: classes.stepLabel}}>
+        <StepLabel error={message.length > 0 && other.active} classes={{ label: classes.stepLabel }}>
           <FormattedMessage id="stepVersionTitle" />
         </StepLabel>
         <StepContent>
@@ -89,16 +88,8 @@ class VersionStep extends Component {
               <BackButton disabled={compiling} onClick={this.handleBack} />
             </div>
             <div className={classes.wrapper}>
-              <CompileButton
-                disabled={compiling}
-                onClick={this.handleCompile}
-              />
-              {compiling && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
+              <CompileButton disabled={compiling} onClick={this.handleCompile} />
+              {compiling && <CircularProgress size={24} className={classes.buttonProgress} />}
             </div>
           </div>
           {message && (
