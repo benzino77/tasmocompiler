@@ -274,12 +274,6 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32_solo1_4M',
-      // eslint-disable-next-line
-      platform: '${core32solo1.platform}',
-      // eslint-disable-next-line
-      platform_packages: '${core32solo1.platform_packages}',
-      // eslint-disable-next-line
-      build_flags: '${core32solo1.build_flags}',
     },
     platformio_env_name: 'tasmota32solo1',
     tooltip: '',
