@@ -71,6 +71,7 @@
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Obsługa ble oraz ble-bridge support",
   "stepFeaturesEthernetDesc": "Ethernet",
+  "stepFeaturesShutterDesc": "Rolety i zasłony",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
 

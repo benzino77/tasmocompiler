@@ -218,11 +218,7 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesIOExpMCPDesc',
     tooltip: 'stepFeaturesIOExpMCPTooltip',
-    group: [
-      'USE_MCP230xx',
-      'USE_MCP230xx_OUTPUT',
-      'USE_MCP230xx_DISPLAYOUTPUT',
-    ],
+    group: ['USE_MCP230xx', 'USE_MCP230xx_OUTPUT', 'USE_MCP230xx_DISPLAYOUTPUT'],
     include: ['USE_I2C'],
     custom: '#define USE_MCP230xx_ADDR 0x20\n',
     boards: ['all'],
@@ -392,16 +388,7 @@ const availableFeatures = [
     tooltip: 'stepFeaturesBerryTooltip',
     group: ['USE_BERRY', 'USE_BERRY_PSRAM'],
     custom: '',
-    boards: [
-      'esp32generic',
-      'esp32webcam',
-      'esp32odroid-go',
-      'esp32m5',
-      'esp32solo1',
-      'esp32c3',
-      'esp32s2',
-      'esp32s3',
-    ],
+    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3', 'esp32s2', 'esp32s3'],
   },
   {
     name: 'bluetooth',
@@ -411,14 +398,7 @@ const availableFeatures = [
     tooltip: 'stepFeaturesBluetoothTooltip',
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
     custom: '',
-    boards: [
-      'esp32generic',
-      'esp32webcam',
-      'esp32odroid-go',
-      'esp32m5',
-      'esp32solo1',
-      'esp32c3',
-    ],
+    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3'],
   },
   {
     name: 'USE_ETHERNET',
@@ -428,6 +408,24 @@ const availableFeatures = [
     include: ['USE_SPI'],
     boards: ['esp32generic', 'esp32webcam'],
   },
+  {
+    name: 'USE_SHUTTER',
+    value: false,
+    show: true,
+    description: 'stepFeaturesShutterDesc',
+    custom:
+      "//Below you will find additional shutter options with theirs default values, which you can modify by removing '//' before it\n" +
+      '\n' +
+      '//#define SHUTTER_RELAY_OPERATION_TIME 100 // wait for direction relay 0.1sec before power up main relay\n' +
+      '\n' +
+      '//#define MOTOR_STOP_TIME 500 // wait 0.5 second after stop to do any other action. e.g. move in the opposite direction\n' +
+      '\n' +
+      '//!!! Please read https://tasmota.github.io/docs/Blinds-and-Shutters/#specific-configuration to understand what this option is for !!!\n' +
+      '\n' +
+      '//#define SHUTTER_CLEAR_PWM_ONSTOP\n',
+    boards: ['all'],
+  },
+
   {
     name: 'USE_I2C',
     value: false,

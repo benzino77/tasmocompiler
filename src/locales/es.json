@@ -71,6 +71,7 @@
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Agregar soporte a Ble y Ble-Bridge",
   "stepFeaturesEthernetDesc": "Ethernet",
+  "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "Soporte a I2C",
   "stepFeaturesSPIDesc": "Soporte a SPI",
 
