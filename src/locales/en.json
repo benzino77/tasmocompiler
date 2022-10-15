@@ -74,6 +74,8 @@
   "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
+  "stepFeaturesModbusBridgeDesc": "ModbusBridge",
+  "stepFeaturesModbusBridgeTCPDesc": "ModbusBridgeTCP",
 
   "stepCustomParamsTitle": "Custom parameters",
   "stepCustomParamsDesc": "Below you can enter custom parameters, which will be included at the end of {filename} file. If you don't know what it is, just click Next.",

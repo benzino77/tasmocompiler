@@ -6,6 +6,7 @@ import localePL from './pl.json';
 import localeCS from './cs.json';
 import localeHU from './hu.json';
 import localePT from './pt.json';
+import localeNL from './nl.json';
 
 // nativeName: Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/
 // flag: PNG 24px width proportional icon name from public/flags folder for most typical country of this language
@@ -57,6 +58,12 @@ const allMessages = {
     nativeName: 'Magyar',
     flag: 'flags/hu.png',
     browserLang: ['hu', 'hu-hu'],
+  },
+  nl: {
+    source: localeNL,
+    nativeName: 'Nederlands',
+    flag: 'flags/nl.png',
+    browserLang: ['nl', 'nl-nl', 'nl-be'],
   },
 };
 

@@ -74,7 +74,10 @@
   "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
-
+  "stepFeaturesModbusBridgeDesc": "ModbusBridge",
+  "stepFeaturesModbusBridgeDesc": "ModbusBridge",
+  "stepFeaturesModbusBridgeTCPDesc": "ModbusBridgeTCP",
+  
   "stepCustomParamsTitle": "Egyéni paraméterek",
   "stepCustomParamsDesc": "Az alábbiakban megadhat egyéni paramétereket, amelyek a {filename} fájl végén lesznek. Ha nem tudja, mi ez, kattintson a Tovább gombra.",
 

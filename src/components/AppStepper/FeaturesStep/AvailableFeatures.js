@@ -425,7 +425,6 @@ const availableFeatures = [
       '//#define SHUTTER_CLEAR_PWM_ONSTOP\n',
     boards: ['all'],
   },
-
   {
     name: 'USE_I2C',
     value: false,
@@ -438,6 +437,21 @@ const availableFeatures = [
     value: false,
     show: false,
     description: 'stepFeaturesSPIDesc',
+    boards: ['all'],
+  },
+  {
+    name: 'USE_MODBUSBRIDGE',
+    value: false,
+    show: true,
+    description: 'stepFeaturesModbusBridgeDesc',
+    boards: ['all'],
+  },
+  {
+    name: 'USE_MODBUSBRIDGE_TCP',
+    value: false,
+    show: true,
+    description: 'stepFeaturesModbusBridgeTCPDesc',
+    include: ['USE_MODBUSBRIDGE'],
     boards: ['all'],
   },
 ];
