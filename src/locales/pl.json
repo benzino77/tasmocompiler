@@ -74,7 +74,8 @@
   "stepFeaturesShutterDesc": "Rolety i zasłony",
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
-
+  "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
+  
   "stepCustomParamsTitle": "Parametry użytkownika",
   "stepCustomParamsDesc": "Poniżej możesz wpisać własne parametry, które zostaną dodane na koniec pliku {filename}. Jeśli nie wiesz co to jest, po prostu kliknij NASTĘPNY.",
 
@@ -98,7 +99,7 @@
   "Hungarian": "Węgierski",
   "Italian": "Włoski",
   "Korean": "Koreański",
-  "Dutch": "Duński",
+  "Dutch": "Holenderski",
   "Polish": "Polski",
   "Portuguese (Brazil)": "Portugalski (Brazylijski)",
   "Portuguese": "Portugalski",

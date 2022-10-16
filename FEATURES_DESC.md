@@ -24,9 +24,9 @@
 |                    |                    | `USE_LMT01`                           |                         |                  |                |
 |                    |                    | `USE_AM2320`                          |                         |                  |                |
 
-| Alexa                | Rules                  | Bluetooth       | IO port expander             | SD card/LittleFS |
-| -------------------- | ---------------------- | --------------- | ---------------------------- | ---------------- |
-| `USE_EMULATION`      | `USE_RULES`            | `USE_BLE_ESP32` | `USE_MCP230xx`               | `USE_UFILESYS`   |
-| `USE_EMULATION_HUE`  | `USE_EXPRESSION`       | `USE_MI_ESP32`  | `USE_MCP230xx_OUTPUT`        | `USE_SDCARD`     |
-| `USE_EMULATION_WEMO` | `SUPPORT_IF_STATEMENT` |                 | `USE_MCP230xx_DISPLAYOUTPUT` | `GUI_TRASH_FILE` |
-|                      |                        |                 |                              | `GUI_EDIT_FILE`  |
+| Alexa                | Rules                  | Bluetooth       | IO port expander             | SD card/LittleFS | ModBus Bridge          | Shutters and Blinds                       |
+| -------------------- | ---------------------- | --------------- | ---------------------------- | ---------------- | ---------------------- | ----------------------------------------- |
+| `USE_EMULATION`      | `USE_RULES`            | `USE_BLE_ESP32` | `USE_MCP230xx`               | `USE_UFILESYS`   | `USE_MODBUSBRIDGE`     | `USE_SHUTTER`                             |
+| `USE_EMULATION_HUE`  | `USE_EXPRESSION`       | `USE_MI_ESP32`  | `USE_MCP230xx_OUTPUT`        | `USE_SDCARD`     | `USE_MODBUSBRIDGE_TCP` | `SHUTTER_RELAY_OPERATION_TIME` - editable |
+| `USE_EMULATION_WEMO` | `SUPPORT_IF_STATEMENT` |                 | `USE_MCP230xx_DISPLAYOUTPUT` | `GUI_TRASH_FILE` |                        | `MOTOR_STOP_TIME` - editable              |
+|                      |                        |                 |                              | `GUI_EDIT_FILE`  |                        | `SHUTTER_CLEAR_PWM_ONSTOP` - editable     |

@@ -74,6 +74,7 @@
   "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "Podpora I2C",
   "stepFeaturesSPIDesc": "Podpora SPI",
+  "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
 
   "stepCustomParamsTitle": "Vlastní parametry",
   "stepCustomParamsDesc": "Níže můžete zadat vlastní parametry, které budou zahrnuty na konec souboru {filename}. Pokud nevíte, o co se jedná, stačí kliknout na Další.",
