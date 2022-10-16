@@ -426,6 +426,14 @@ const availableFeatures = [
     boards: ['all'],
   },
   {
+    name: 'modbusbridge',
+    value: false,
+    show: true,
+    description: 'stepFeaturesModbusBridgeDesc',
+    group: ['USE_MODBUSBRIDGE', 'USE_MODBUSBRIDGE_TCP'],
+    boards: ['all'],
+  },
+  {
     name: 'USE_I2C',
     value: false,
     show: false,
@@ -439,21 +447,7 @@ const availableFeatures = [
     description: 'stepFeaturesSPIDesc',
     boards: ['all'],
   },
-  {
-    name: 'USE_MODBUSBRIDGE',
-    value: false,
-    show: true,
-    description: 'stepFeaturesModbusBridgeDesc',
-    boards: ['all'],
-  },
-  {
-    name: 'USE_MODBUSBRIDGE_TCP',
-    value: false,
-    show: true,
-    description: 'stepFeaturesModbusBridgeTCPDesc',
-    include: ['USE_MODBUSBRIDGE'],
-    boards: ['all'],
-  },
+  
 ];
 
 export default availableFeatures;
