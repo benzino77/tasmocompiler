@@ -3,13 +3,10 @@ const fs = require('fs-extra');
 const _ = require('lodash');
 const debug = require('debug')('git');
 const semver = require('semver');
+const package = require('../../package.json');
+const tcVersion = package.version.toLowerCase();
 
-const {
-  tasmotaRepo,
-  githubRepo,
-  minVersion,
-  edgeBranch,
-} = require('../config/config');
+const { tasmotaRepo, githubRepo, minVersion, maxVersion, edgeBranch } = require('../config/config');
 
 const isGitRepoAvailable = async () => {
   try {
@@ -41,10 +38,13 @@ const getRepoTags = async () => {
 
   if (isRepo) {
     try {
+      if (tcVersion.includes('dev')) {
+        return [edgeBranch];
+      }
       const allTags = await git(tasmotaRepo).tags();
       let tags = allTags.all.filter((t) => t.startsWith('v'));
-      tags = tags.filter((t) => semver.gte(t, minVersion));
-      return [...tags, edgeBranch];
+      tags = tags.filter((t) => semver.gte(t, minVersion) && semver.lte(t, maxVersion));
+      return [...tags];
     } catch (e) {
       debug(message);
       throw new Error(message);
