@@ -45,7 +45,7 @@ class VersionStep extends Component {
     const { repoTags } = this.props;
     if (repoTags.length !== prevProps.repoTags.length) {
       this.setState({
-        tasmotaVersion: repoTags.length >= 2 ? repoTags[repoTags.length - 2] : prevState.tasmotaVersion,
+        tasmotaVersion: repoTags[repoTags.length - 1],
       });
     }
   }
@@ -58,26 +58,26 @@ class VersionStep extends Component {
     return (
       <Step {...other}>
         <StepLabel error={message.length > 0 && other.active} classes={{ label: classes.stepLabel }}>
-          <FormattedMessage id="stepVersionTitle" />
+          <FormattedMessage id='stepVersionTitle' />
         </StepLabel>
         <StepContent>
           <Typography>
-            <FormattedMessage id="stepVersionDesc" />
+            <FormattedMessage id='stepVersionDesc' />
           </Typography>
-          <form className={classes.actionsContainer} autoComplete="off">
+          <form className={classes.actionsContainer} autoComplete='off'>
             <VersionSelector
               items={repoTags}
-              name="tasmotaVersion"
+              name='tasmotaVersion'
               value={tasmotaVersion}
-              label={<FormattedMessage id="stepVersionTasmota" />}
+              label={<FormattedMessage id='stepVersionTasmota' />}
               onChange={this.handleChange}
               classes={classes}
             />
             <VersionSelector
               items={tasmotaGUILanguages}
-              name="MY_LANGUAGE"
+              name='MY_LANGUAGE'
               value={MY_LANGUAGE}
-              label={<FormattedMessage id="stepVersionLanguage" />}
+              label={<FormattedMessage id='stepVersionLanguage' />}
               onChange={this.handleChange}
               classes={classes}
               preselectedTasmotaGUILanguage={preselectedTasmotaGUILanguage}
@@ -93,7 +93,7 @@ class VersionStep extends Component {
             </div>
           </div>
           {message && (
-            <Typography color="error" variant="subtitle1">
+            <Typography color='error' variant='subtitle1'>
               Error:
               {message}
             </Typography>
