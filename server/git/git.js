@@ -43,9 +43,10 @@ const getRepoTags = async () => {
       }
       const allTags = await git(tasmotaRepo).tags();
       let tags = allTags.all.filter((t) => t.startsWith('v'));
-      tags = tags.filter((t) => semver.gte(t, minVersion) && semver.lte(t, maxVersion));
+      tags = tags.filter((t) => semver.valid(t) && semver.gte(t, minVersion) && semver.lte(t, maxVersion));
       return [...tags];
     } catch (e) {
+      debug(e.message);
       debug(message);
       throw new Error(message);
     }
