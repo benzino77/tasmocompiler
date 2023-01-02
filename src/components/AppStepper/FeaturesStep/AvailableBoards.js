@@ -207,7 +207,7 @@ const availableBoards = [
       extends: 'env:tasmota32_base',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
-      board: 'esp32-cam',
+      board: 'esp32-fix',
     },
     platformio_env_name: 'tasmota32-webcam',
     tooltip: '',
@@ -218,6 +218,7 @@ const availableBoards = [
       USE_TASMOTA_DISCOVERY: true,
       ENABLE_RTSPSERVER: true,
       USE_MI_ESP32: false,
+      CAMERA_MODEL_AI_THINKER: true,
     },
   },
   // esp32odroid-go
@@ -229,7 +230,8 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32-lvgl',
-      board: 'esp32-odroid',
+      'board_build.f_cpu': '240000000L',
+      board: 'esp32-fix',
     },
     platformio_env_name: 'tasmota32-odroidgo',
     tooltip: '',
@@ -237,6 +239,7 @@ const availableBoards = [
     exclude_features: [],
     defines: {
       USE_DISPLAY: true,
+      ARDUINO_ODROID_ESP32: true,
     },
   },
   // esp32m5
@@ -248,7 +251,9 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32-lvgl',
-      board: 'esp32-m5core2',
+      'board_build.flash_mode': 'qio',
+      'board_build.f_cpu': '240000000L',
+      'board_build.f_flash': '80000000L',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32-lvgl.build_flags}',
     },
@@ -273,13 +278,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32_solo1_4M',
-      // eslint-disable-next-line
-      platform: '${core32solo1.platform}',
-      // eslint-disable-next-line
-      platform_packages: '${core32solo1.platform_packages}',
-      // eslint-disable-next-line
-      build_flags: '${core32solo1.build_flags}',
+      board: 'esp32_solo1',
     },
     platformio_env_name: 'tasmota32solo1',
     tooltip: '',
@@ -340,7 +339,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32s3',
+      board: 'esp32s3-qio_qspi',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
       lib_ignore: ['TTGO TWatch Library', 'Micro-RTSP', 'epdiy'],

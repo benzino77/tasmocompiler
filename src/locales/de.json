@@ -71,8 +71,10 @@
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Fügt Bluetooth Low Energy und BLE-Bridge Support hinzu",
   "stepFeaturesEthernetDesc": "Ethernet",
+  "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "I2C Unterstützung",
   "stepFeaturesSPIDesc": "SPI Unterstützung",
+  "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
 
   "stepCustomParamsTitle": "Zusätzliche Parameter",
   "stepCustomParamsDesc": "Unterhalb kannst du individuelle Parameter eintragen, die am Ende der {filename} eingefügt werden. Wenn du nicht weisst, was das ist, klicke einfach Weiter.",

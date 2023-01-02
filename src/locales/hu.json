@@ -71,9 +71,11 @@
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "BLE és BLE átjáró támogatás",
   "stepFeaturesEthernetDesc": "Ethernet",
+  "stepFeaturesShutterDesc": "Shutters and Blinds",
   "stepFeaturesI2CDesc": "I2C támogatás",
   "stepFeaturesSPIDesc": "SPI támogatás",
-
+  "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
+  
   "stepCustomParamsTitle": "Egyéni paraméterek",
   "stepCustomParamsDesc": "Az alábbiakban megadhat egyéni paramétereket, amelyek a {filename} fájl végén lesznek. Ha nem tudja, mi ez, kattintson a Tovább gombra.",
 
