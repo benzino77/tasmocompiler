@@ -28,13 +28,26 @@ class DownloadLinks extends Component {
 
     return (
       <div ref={this.downloadLinksElement}>
-        <Typography variant="caption" className={classes.links}>
-          <FormattedMessage id="stepDownload" />
+        <div className={classes.donationLinks}>
+          <Typography>If TasmoCompiler is useful to You, please consider supporting the project:</Typography>
+          <a href='https://ko-fi.com/benzino77' target='_blank' rel='noopener noreferrer'>
+            <img src='img/kofi.svg' alt='ko-fi' className={classes.donationImage} />
+          </a>
+          <a href='https://github.com/sponsors/benzino77' target='_blank' rel='noopener noreferrer'>
+            <img src='img/github.svg' alt='github sponsor' className={classes.donationImage} />
+          </a>
+          <a href='https://paypal.me/tasmocompiler' target='_blank' rel='noopener noreferrer'>
+            <img src='img/paypal.svg' alt='paypal' className={classes.donationImage} />
+          </a>
+        </div>
+
+        <Typography variant='caption' className={classes.links}>
+          <FormattedMessage id='stepDownload' />
         </Typography>
         <div className={classes.links}>
           <Button
-            variant="contained"
-            color="primary"
+            variant='contained'
+            color='primary'
             href={`/download/${envPath}.bin`}
             className={classes.downloadButtons}
           >
@@ -43,8 +56,8 @@ class DownloadLinks extends Component {
           </Button>
           {isEsp8266 && (
             <Button
-              variant="contained"
-              color="primary"
+              variant='contained'
+              color='primary'
               href={`/download/${envPath}.bin.gz`}
               className={classes.downloadButtons}
             >
@@ -54,8 +67,8 @@ class DownloadLinks extends Component {
           )}
           {isEsp32 && (
             <Button
-              variant="contained"
-              color="primary"
+              variant='contained'
+              color='primary'
               href={`/download/${envPath}.factory.bin`}
               className={classes.downloadButtons}
             >
@@ -64,18 +77,18 @@ class DownloadLinks extends Component {
             </Button>
           )}
           <Button
-            variant="contained"
-            color="primary"
-            href="/download/platformio_override.ini"
+            variant='contained'
+            color='primary'
+            href='/download/platformio_override.ini'
             className={classes.downloadButtons}
           >
             platformio_override.ini
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
           <Button
-            variant="contained"
-            color="primary"
-            href="/download/user_config_override.h"
+            variant='contained'
+            color='primary'
+            href='/download/user_config_override.h'
             className={classes.downloadButtons}
           >
             user_config_override.h

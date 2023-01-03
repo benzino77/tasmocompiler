@@ -84,7 +84,7 @@ const styles = (theme) => ({
     // width: 300,
   },
   compileMessagesBox: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(3),
     marginTop: 0,
     maxWidth: '80%',
   },
@@ -108,6 +108,28 @@ const styles = (theme) => ({
   },
   links: {
     marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+  donationLinks: {
+    marginLeft: theme.spacing(3),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(1),
+    boxSizing: 'border-box',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxWidth: '80%',
+    position: 'relative',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.dark,
+    borderRadius: theme.shape.borderRadius,
+  },
+  donationImage: {
+    width: 36,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   rightIcon: {
     marginLeft: theme.spacing(),
