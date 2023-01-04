@@ -10,23 +10,12 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-const {
-  isGitRepoAvailable,
-  getRepoTags,
-  cloneRepo,
-  pullRepo,
-} = require('./git/git');
+const { isGitRepoAvailable, getRepoTags, cloneRepo, pullRepo } = require('./git/git');
 const { compileCode } = require('./compile/compile');
-const {
-  listenPort,
-  tasmotaRepo,
-  userPlatformioOverrideIni,
-  userConfigOvewrite,
-} = require('./config/config');
+const { tasmotaRepo, userPlatformioOverrideIni, userConfigOvewrite, tasmotaMinimalBinary } = require('./config/config');
 
 const staticPath = path.join(__dirname, '../build');
 let clientWSSocket;
-let timerID;
 
 io.on('connection', (socket) => {
   clientWSSocket = socket;
@@ -110,10 +99,12 @@ app.get('/download/:fileName', (req, res) => {
     return;
   }
 
-  const firmwareFile = path.resolve(
-    tasmotaRepo,
-    `build_output/firmware/${req.params.fileName}`
-  );
+  if (req.params.fileName === tasmotaMinimalBinary.split('/').pop()) {
+    res.download(tasmotaMinimalBinary);
+    return;
+  }
+
+  const firmwareFile = path.resolve(tasmotaRepo, `build_output/firmware/${req.params.fileName}`);
   res.download(firmwareFile);
 });
 
