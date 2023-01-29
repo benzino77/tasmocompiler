@@ -73,9 +73,7 @@ const createUserDefines = (data) => {
     const f = e[0].toLowerCase();
     if (f !== e[0]) {
       if (data[e] === true) {
-        userDefines.push(
-          `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`
-        );
+        userDefines.push(`#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\n\n`);
         return;
       }
       if (data[e] === false) {
@@ -83,23 +81,10 @@ const createUserDefines = (data) => {
         return;
       }
       if (data[e] !== '') {
-        if (
-          [
-            'STA_PASS1',
-            'STA_SSID1',
-            'WIFI_DNS',
-            'WIFI_GATEWAY',
-            'WIFI_IP_ADDRESS',
-            'WIFI_SUBNETMASK',
-          ].includes(e)
-        ) {
-          userDefines.push(
-            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`
-          );
+        if (['STA_PASS1', 'STA_SSID1', 'WIFI_DNS', 'WIFI_GATEWAY', 'WIFI_IP_ADDRESS', 'WIFI_SUBNETMASK'].includes(e)) {
+          userDefines.push(`#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t"${data[e]}"\n\n`);
         } else {
-          userDefines.push(
-            `#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`
-          );
+          userDefines.push(`#ifdef ${e}\n  #undef ${e}\n#endif\n#define ${e}\t${data[e]}\n\n`);
         }
       }
     }
@@ -172,34 +157,22 @@ const prepareFiles = async (socket, data) => {
     if (platformio_entries[e]) {
       if (Array.isArray(platformio_entries[e])) {
         // remove duplicates with Set
-        platformio_entries[e] = [
-          ...new Set(platformio_entries[e].concat(featurePlatformioEntries[e])),
-        ];
+        platformio_entries[e] = [...new Set(platformio_entries[e].concat(featurePlatformioEntries[e]))];
       } else {
-        platformio_entries[
-          e
-        ] = `${platformio_entries[e]} ${featurePlatformioEntries[e]}`;
+        platformio_entries[e] = `${platformio_entries[e]} ${featurePlatformioEntries[e]}`;
       }
     } else {
       platformio_entries[e] = featurePlatformioEntries[e];
     }
 
-    if (
-      e === 'build_flags' &&
-      !platformio_entries[e].includes(commonBuildFlags)
-    ) {
+    if (e === 'build_flags' && !platformio_entries[e].includes(commonBuildFlags)) {
       platformio_entries[e] = `${commonBuildFlags} ${platformio_entries[e]}`;
     }
   });
 
   const platformioEnvCustom = Object.keys(platformio_entries)
     .map(
-      (e) =>
-        `${e} = ${
-          Array.isArray(platformio_entries[e])
-            ? platformio_entries[e].join(', ')
-            : platformio_entries[e]
-        }`
+      (e) => `${e} = ${Array.isArray(platformio_entries[e]) ? platformio_entries[e].join(', ') : platformio_entries[e]}`
     )
     .join('\n');
 
@@ -212,96 +185,87 @@ const prepareFiles = async (socket, data) => {
   try {
     await fs.writeFileSync(userPlatformioOverrideIni, platformioContent);
   } catch (e) {
-    throw new Error(
-      `Cannot write new content to ${userPlatformioOverrideIni} file\n${e}\n`
-    );
+    throw new Error(`Cannot write new content to ${userPlatformioOverrideIni} file\n${e}\n`);
   }
 };
 
-const compileCode = (socket, data) => {
-  prepareFiles(socket, data)
-    .then((prepared) => {
-      const cdRet = shell.cd(tasmotaRepo);
-      let outputMessages = [];
-      let lastEmmit = 0;
+const compileCode = async (socket, data) => {
+  try {
+    await prepareFiles(socket, data);
+    const cdRet = shell.cd(tasmotaRepo);
+    let outputMessages = [];
+    let lastEmmit = 0;
 
-      const MAX_MESSAGE_BUFFER_SIZE = 2;
-      let bufferSize = 0.1; // starting buffer size
-      const bufferSizeIncrement = 0.1;
+    const MAX_MESSAGE_BUFFER_SIZE = 2;
+    let bufferSize = 0.1; // starting buffer size
+    const bufferSizeIncrement = 0.1;
 
-      const MAX_EMIT_DELAY = 220;
-      let emitDelay = 10; // starting emit delay
-      const emitDelayIncrement = 5;
+    const MAX_EMIT_DELAY = 220;
+    let emitDelay = 10; // starting emit delay
+    const emitDelayIncrement = 5;
 
-      function emitBuffer() {
-        if (
-          outputMessages.length >= bufferSize &&
-          Date.now() - lastEmmit >= emitDelay
-        ) {
-          let messageToEmit;
-          if (bufferSize <= 1) {
-            messageToEmit = outputMessages.shift();
-          } else {
-            messageToEmit = outputMessages
-              .slice(0, Math.floor(bufferSize))
-              .join('');
-            outputMessages = outputMessages.slice(Math.floor(bufferSize));
-          }
-
-          socket.emit('message', messageToEmit);
-          // increment buffer size
-          if (bufferSize < MAX_MESSAGE_BUFFER_SIZE)
-            bufferSize += bufferSizeIncrement;
-          // increment delay
-          if (emitDelay < MAX_EMIT_DELAY) emitDelay += emitDelayIncrement;
-          lastEmmit = Date.now();
+    function emitBuffer() {
+      if (outputMessages.length >= bufferSize && Date.now() - lastEmmit >= emitDelay) {
+        let messageToEmit;
+        if (bufferSize <= 1) {
+          messageToEmit = outputMessages.shift();
+        } else {
+          messageToEmit = outputMessages.slice(0, Math.floor(bufferSize)).join('');
+          outputMessages = outputMessages.slice(Math.floor(bufferSize));
         }
+
+        socket.emit('message', messageToEmit);
+        // increment buffer size
+        if (bufferSize < MAX_MESSAGE_BUFFER_SIZE) bufferSize += bufferSizeIncrement;
+        // increment delay
+        if (emitDelay < MAX_EMIT_DELAY) emitDelay += emitDelayIncrement;
+        lastEmmit = Date.now();
       }
+    }
 
-      if (cdRet.code !== 0) {
-        socket.emit('message', cdRet.stderr);
-        socket.emit('finished', {
-          status: cdRet.code,
-          message: cdRet.stderr,
-        });
-        debug(cdRet.stderr);
-        return;
-      }
-
-      const child = shell.exec('pio run', {
-        silent: true,
-        async: true,
-      });
-
-      child.on('exit', (code, signal) => {
-        const message = `Finished. Exit code: ${code}.\n`;
-        socket.emit('message', outputMessages.join(''));
-        socket.emit('message', message);
-        socket.emit('finished', {
-          ok: code === 0,
-        });
-        debug(message);
-      });
-
-      child.stderr.on('data', (stderrData) => {
-        outputMessages.push(stderrData);
-        emitBuffer();
-        debug(stderrData);
-      });
-
-      child.stdout.on('data', (stdoutData) => {
-        outputMessages.push(stdoutData);
-        emitBuffer();
-        debug(stdoutData);
-      });
-    })
-    .catch((e) => {
-      socket.emit('message', e.message);
+    if (cdRet.code !== 0) {
+      socket.emit('message', cdRet.stderr);
       socket.emit('finished', {
-        ok: false,
+        status: cdRet.code,
+        message: cdRet.stderr,
       });
-      debug(e);
+      debug(cdRet.stderr);
+      return;
+    }
+
+    const child = shell.exec('pio run', {
+      silent: true,
+      async: true,
     });
+
+    child.on('exit', (code, signal) => {
+      const message = `Finished. Exit code: ${code}.\n`;
+      socket.emit('message', outputMessages.join(''));
+      socket.emit('message', message);
+      socket.emit('finished', {
+        ok: code === 0,
+      });
+      debug(message);
+    });
+
+    child.stderr.on('data', (stderrData) => {
+      outputMessages.push(stderrData);
+      emitBuffer();
+      debug(stderrData);
+    });
+
+    child.stdout.on('data', (stdoutData) => {
+      outputMessages.push(stdoutData);
+      emitBuffer();
+      debug(stdoutData);
+    });
+  } catch (e) {
+    socket.emit('message', e.message);
+    socket.emit('finished', {
+      ok: false,
+    });
+    debug(e);
+  }
 };
 
 module.exports = {
