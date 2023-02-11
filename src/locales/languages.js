@@ -70,7 +70,7 @@ const allMessages = {
     source: localeFR,
     nativeName: 'Français',
     flag: 'flags/fr.png',
-    browserLang: ['fr-fr'],
+    browserLang: ['fr', 'fr-fr'],
   },
 };
 
