@@ -7,6 +7,7 @@ import localeCS from './cs.json';
 import localeHU from './hu.json';
 import localePT from './pt.json';
 import localeNL from './nl.json';
+import localeFR from './fr.json';
 
 // nativeName: Language native name https://www.internationalphoneticalphabet.org/languages/language-names-in-native-language/
 // flag: PNG 24px width proportional icon name from public/flags folder for most typical country of this language
@@ -64,6 +65,12 @@ const allMessages = {
     nativeName: 'Nederlands',
     flag: 'flags/nl.png',
     browserLang: ['nl', 'nl-nl', 'nl-be'],
+  },
+  fr: {
+    source: localeFR,
+    nativeName: 'Français',
+    flag: 'flags/fr.png',
+    browserLang: ['fr', 'fr-fr', 'fr-be'],
   },
 };
 
