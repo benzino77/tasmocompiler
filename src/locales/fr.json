@@ -77,7 +77,7 @@
   "stepFeaturesModbusBridgeDesc": "Passerelle Modbus",
 
   "stepCustomParamsTitle": "Paramètres personnalisés",
-  "stepCustomParamsDesc": "Vous pouvez saisir ci-dessous des paramètres personnalisés, qui seront inclus à la fin du fichier {nom du fichier}. Si vous ne savez pas ce que c'est, cliquez sur Suivant..",
+  "stepCustomParamsDesc": "Vous pouvez saisir ci-dessous des paramètres personnalisés, qui seront inclus à la fin du fichier {filename}. Si vous ne savez pas ce que c'est, cliquez sur Suivant..",
 
   "stepVersionTitle": "Sélectionnez la version et compilez",
   "stepVersionDesc": "Sélectionnez la version et la langue de Tasmota.",
