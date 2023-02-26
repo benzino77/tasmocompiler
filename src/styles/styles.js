@@ -9,12 +9,14 @@ const styles = (theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  projectPageContainer: {},
-  projectPageImg: {
-    width: 21,
-    height: 21,
-    paddingTop: 3,
+  projectPageContainer: {
+    width: 24,
+    height: 24,
     marginRight: theme.spacing() * 2,
+  },
+  projectPageImg: {
+    width: '100%',
+    height: '100%',
     filter: 'invert(95%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(102%) contrast(101%)',
   },
   language: {
