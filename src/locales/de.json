@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPage": "Project Github page",
   "stepSourceTitle": "Tasmota Quellcode",
   "stepSourceDescRefresh": "Du kannst den Quellcode auf die neuste Version aktualisieren oder klick auf Weiter für den nächsten Schritt",
   "stepSourceDescDownload": "Bevor du zum nächsten Schritt übergehst, musst du den Quellcode von Tasmota herunterladen",

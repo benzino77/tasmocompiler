@@ -4,6 +4,19 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  toolbarRight: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  projectPageContainer: {},
+  projectPageImg: {
+    width: 21,
+    height: 21,
+    paddingTop: 3,
+    marginRight: theme.spacing() * 2,
+    filter: 'invert(95%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(102%) contrast(101%)',
+  },
   language: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -104,8 +117,7 @@ const styles = (theme) => ({
     minWidth: 230,
     maxWidth: 230,
   },
-  chipTypesContainer: {
-  },
+  chipTypesContainer: {},
   links: {
     marginLeft: theme.spacing(3),
     marginBottom: theme.spacing(3),

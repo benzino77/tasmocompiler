@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPage": "Project Github page",
   "stepSourceTitle": "Código-fonte Tasmota",
   "stepSourceDescRefresh": "Você pode atualizar o código-fonte para o estado mais recente ou clicar em PRÓXIMO para ir para a próxima etapa",
   "stepSourceDescDownload": "Antes de ir para a próxima etapa, você deve baixar o código-fonte do Tasmota",
@@ -75,7 +76,7 @@
   "stepFeaturesI2CDesc": "suporte I2C",
   "stepFeaturesSPIDesc": "suporte SPI",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
-  
+
   "stepCustomParamsTitle": "Parâmetros personalizados",
   "stepCustomParamsDesc": "Abaixo, você pode inserir parâmetros personalizados, que serão incluídos no final do arquivo {filename}. Se você não sabe o que é, apenas clique em Avançar.",
 

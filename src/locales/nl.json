@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPage": "Project Github page",
   "stepSourceTitle": "Tasmota bron code",
   "stepSourceDescRefresh": "U kan de brondcode vernieuwen naar de laatste versie of klik op volgene voor de volgende stap.",
   "stepSourceDescDownload": "Voor je verder kan gaan moet eerst de Tasmota broncode worden gedownload.",
@@ -100,7 +101,7 @@
   "Italian": "Italiaans",
   "Korean": "Koreaans",
   "Dutch": "Nederlands",
-  "Polish": "Pools",		
+  "Polish": "Pools",
   "Portuguese (Brazil)": "Portugees (Brazilië)",
   "Portuguese": "Portugees",
   "Romanian": "Romaans",

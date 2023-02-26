@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPage": "Project Github page",
   "stepSourceTitle": "Code source de Tasmota",
   "stepSourceDescRefresh": "Vous pouvez mettre à jour le code source ou cliquer sur SUIVANT pour passer à l'étape suivante.",
   "stepSourceDescDownload": "Avant de continuer, vous devez télécharger le code source de Tasmota",
