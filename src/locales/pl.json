@@ -1,5 +1,5 @@
 {
-  "headerProjectGithubPage": "Strona projektu na Github",
+  "headerProjectGithubPageTooltip": "Strona projektu na Github",
   "stepSourceTitle": "Kod źródłowy Tasmota'y",
   "stepSourceDescRefresh": "Możesz pobrać ostatnie zmiany w kodzie lub kliknąć NASTĘPNY, aby przejśc do następnego kroku",
   "stepSourceDescDownload": "Przed przejsciem do następnego kroku, muisz pobrać kod źródłowy Tasmota'y",
@@ -27,6 +27,7 @@
   "stepFeaturesBoard8266Tooltip": "To jest płytka, którą najprawdopodobniej powinieneś wybrać",
   "stepFeaturesBoard82664MTooltip": "Płytki ESP8266 4MB takie jak Wemos D1 Mini, NodeMCU, ESP12F, itd..",
   "stepFeaturesDesc": "Jakie funkcjonalności zostaną zawarte w wynikowym firmware?",
+  "stepFeaturesDescriptionLinkTooltip": "Opis grup funkcjonalności",
   "stepFeaturesAGDesc": "Czujniki powietrza/gazu",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",

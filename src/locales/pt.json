@@ -1,5 +1,5 @@
 {
-  "headerProjectGithubPage": "Project Github page",
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Código-fonte Tasmota",
   "stepSourceDescRefresh": "Você pode atualizar o código-fonte para o estado mais recente ou clicar em PRÓXIMO para ir para a próxima etapa",
   "stepSourceDescDownload": "Antes de ir para a próxima etapa, você deve baixar o código-fonte do Tasmota",
@@ -27,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Dispositivos baseados em Shelly com memória flash de 2MB",
   "stepFeaturesBoard82664MTooltip": "Apenas para uso avançado e apenas para dispositivos com ESP8266 e 4 MB como Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Quais recursos devem ser incluídos no firmware final?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Sensores de Ar/Gás",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "MCU Secundário Arduino",

@@ -1,5 +1,5 @@
 {
-  "headerProjectGithubPage": "Project Github page",
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Tasmota Quellcode",
   "stepSourceDescRefresh": "Du kannst den Quellcode auf die neuste Version aktualisieren oder klick auf Weiter für den nächsten Schritt",
   "stepSourceDescDownload": "Bevor du zum nächsten Schritt übergehst, musst du den Quellcode von Tasmota herunterladen",
@@ -27,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Shelly Geräte mit 2MB Flash Speicher",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 basierend z.B. Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Welche Funktionen sollen in der Firmware enthalten sein?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Luft/ Gas Sensoren",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino Klient",

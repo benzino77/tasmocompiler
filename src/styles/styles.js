@@ -17,7 +17,8 @@ const styles = (theme) => ({
   projectPageImg: {
     width: '100%',
     height: '100%',
-    filter: 'invert(95%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(102%) contrast(101%)',
+    color: theme.palette.background.paper,
+    // filter: 'invert(95%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(102%) contrast(101%)',
   },
   language: {
     display: 'flex',
@@ -118,6 +119,10 @@ const styles = (theme) => ({
     marginLeft: theme.spacing(),
     minWidth: 230,
     maxWidth: 230,
+  },
+  featuresHeaderContainer: {
+    display: 'flex',
+    gap: theme.spacing(),
   },
   chipTypesContainer: {},
   links: {

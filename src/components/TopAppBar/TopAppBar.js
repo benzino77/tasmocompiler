@@ -53,7 +53,7 @@ class TopAppBar extends Component {
             </Typography>
 
             <div className={classes.toolbarRight}>
-              <Tooltip title={<FormattedMessage id='headerProjectGithubPage' />}>
+              <Tooltip title={<FormattedMessage id='headerProjectGithubPageTooltip' />}>
                 <div className={classes.projectPageContainer}>
                   <a href='https://github.com/benzino77/tasmocompiler' target='_blank' rel='noopener noreferrer'>
                     <GitHub className={classes.projectPageImg} />

@@ -1,5 +1,5 @@
 {
-  "headerProjectGithubPage": "Project Github page",
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Code source de Tasmota",
   "stepSourceDescRefresh": "Vous pouvez mettre à jour le code source ou cliquer sur SUIVANT pour passer à l'étape suivante.",
   "stepSourceDescDownload": "Avant de continuer, vous devez télécharger le code source de Tasmota",
@@ -28,6 +28,7 @@
   "stepFeaturesBoard82664MTooltip": "Uniquement pour les appareils avec ESP8266 et 4 Mo de mémoire Flash, comme Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Quelles fonctionnalités voulez-vous inclure dans le firmware personnalisé ?",
   "stepFeaturesAGDesc": "Capteurs d'air/gaz",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino esclave",
   "stepFeaturesArduinoSlaveTooltip": "Support de microcontrôleur esclave sur le port série",

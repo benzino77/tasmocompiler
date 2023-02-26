@@ -1,5 +1,5 @@
 {
-  "headerProjectGithubPage": "Project Github page",
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Tasmota forráskód",
   "stepSourceDescRefresh": "Frissítheti a forráskódot a legújabb állapotra, vagy a TOVÁBB gombra kattintva folytathatja a következő lépést",
   "stepSourceDescDownload": "Mielőtt folytatná a következő lépést, le kell töltenie a Tasmota forráskódot",
@@ -27,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Shelly alapú eszközök 2MB flash memóriával",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 alaplapok, például Wemos D1 Mini, NodeMCU, ESP12F, stb.",
   "stepFeaturesDesc": "Mely tulajdonságokat kell tartalmaznia a végleges bináris firmware-nek?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Levegő / gáz érzékelők",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino kliens",
