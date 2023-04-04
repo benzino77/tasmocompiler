@@ -57,36 +57,36 @@ function __setGitCheckoutReject(reject) {
 const gitObject = {
   checkIsRepo: jest.fn(() => Promise.resolve(gitIsRepoRet)),
   tags: jest.fn(() => {
-    if (gitTagsReject) return Promise.reject();
+    if (gitTagsReject) return Promise.reject(new Error('Test'));
     return Promise.resolve({ all: retTags });
   }),
   clone: jest.fn((source, dest) => {
-    if (gitCloneReject) return Promise.reject();
+    if (gitCloneReject) return Promise.reject(new Error('Test'));
 
     return Promise.resolve();
   }),
   pull: jest.fn(() => {
-    if (gitPullReject) return Promise.reject();
+    if (gitPullReject) return Promise.reject(new Error('Test'));
     return Promise.resolve();
   }),
   reset: jest.fn((type) => {
-    if (gitResetReject) return Promise.reject();
+    if (gitResetReject) return Promise.reject(new Error('Test'));
     return Promise.resolve();
   }),
   clean: jest.fn((opts) => {
-    if (gitCleanReject) return Promise.reject();
+    if (gitCleanReject) return Promise.reject(new Error('Test'));
     return Promise.resolve();
   }),
   branchLocal: jest.fn(() => {
-    if (gitBranchLocalReject) return Promise.reject();
+    if (gitBranchLocalReject) return Promise.reject(new Error('Test'));
     return Promise.resolve({ branches: retLocalBranches });
   }),
   checkoutBranch: jest.fn((remote, local) => {
-    if (gitCheckoutBranchReject) return Promise.reject();
+    if (gitCheckoutBranchReject) return Promise.reject(new Error('Test'));
     return Promise.resolve();
   }),
   checkout: jest.fn(() => {
-    if (gitCheckoutReject) return Promise.reject();
+    if (gitCheckoutReject) return Promise.reject(new Error('Test'));
     return Promise.resolve();
   }),
 };

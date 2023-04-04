@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Zdrojový kód Tasmota",
   "stepSourceDescRefresh": "Zdrojový kód můžete aktualizovat na nejnovějšíh verzi nebo přejít na další krok kliknutím na tlačítko DALŠÍ",
   "stepSourceDescDownload": "Než přejdete na další krok, musíte stáhnout zdrojový kód Tasmota",
@@ -26,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Zařízení založená na Shelly s 2MB Flash pamětí",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, ESP12F, etc..",
   "stepFeaturesDesc": "Jaké funkce chcete zahrnout do výsledného binárního FW?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Senzory Vzduch/plyn",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",

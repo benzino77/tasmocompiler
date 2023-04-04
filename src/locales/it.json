@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Codice sorgente Tasmota",
   "stepSourceDescRefresh": "Puoi aggiornare il codice sorgente alla versione più recente o selezionare 'Avanti' per andare allo step successivo",
   "stepSourceDescDownload": "Prima di passare allo step successivo scarica il codice sorgente Tasmota",
@@ -26,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Dispositivi basati su Shelly con 2MB di memoria flash",
   "stepFeaturesBoard82664MTooltip": "Scheda ESP8266 4MB come Wemos D1 Mini, NodeMCU, ESP12F, ecc..",
   "stepFeaturesDesc": "Quali funzionalità vuoi includere nel firmware?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Sensori aria/gas",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino (slave)",
@@ -71,11 +73,11 @@
   "stepFeaturesBluetoothDesc": "Bluetooth",
   "stepFeaturesBluetoothTooltip": "Aggiunge supporto ble e ble-bridge",
   "stepFeaturesEthernetDesc": "Ethernet",
-  "stepFeaturesShutterDesc": "Shutters and Blinds",
+  "stepFeaturesShutterDesc": "Otturatori e tendine",
   "stepFeaturesI2CDesc": "Supporto I2C",
   "stepFeaturesSPIDesc": "Supporto SPI",
-  "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
-  
+  "stepFeaturesModbusBridgeDesc": "Bridge Modbus",
+
   "stepCustomParamsTitle": "Parametri personalizzati",
   "stepCustomParamsDesc": "Qui sotto puoi inserire i parametri personalizzati che verranno inclusi alla fine del file. Se non li conosci o non devi inserirli seleziona 'Avanti'.",
 

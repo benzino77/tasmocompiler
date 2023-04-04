@@ -4,6 +4,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import LanguageIcon from '@material-ui/icons/Language';
+import GitHub from '@material-ui/icons/GitHub';
+import Tooltip from '@material-ui/core/Tooltip';
+import { FormattedMessage } from 'react-intl';
 import { Menu, MenuItem } from '@material-ui/core';
 import { allMessages } from '../../locales/languages';
 
@@ -43,31 +46,38 @@ class TopAppBar extends Component {
     return (
       <div className={classes.root}>
         {/* <AppBar position="static" color="default" {...other} className={classes.appbar}> */}
-        <AppBar {...other} position="static" color="primary">
+        <AppBar {...other} position='static' color='primary'>
           <Toolbar className={classes.toolbar}>
-            <Typography variant="h6" color="inherit">
+            <Typography variant='h6' color='inherit'>
               TasmoCompiler {version}
             </Typography>
-            <div
-              className={classes.language}
-              role="button"
-              tabIndex={0}
-              aria-controls="langs-menu"
-              aria-haspopup="true"
-              onClick={this.handleOpen}
-              onKeyPress={this.handleOpen}
-            >
-              <Typography
-                color="inherit"
+
+            <div className={classes.toolbarRight}>
+              <Tooltip title={<FormattedMessage id='headerProjectGithubPageTooltip' />}>
+                <div className={classes.projectPageContainer}>
+                  <a href='https://github.com/benzino77/tasmocompiler' target='_blank' rel='noopener noreferrer'>
+                    <GitHub className={classes.projectPageImg} />
+                  </a>
+                </div>
+              </Tooltip>
+              <div
                 className={classes.language}
+                role='button'
+                tabIndex={0}
+                aria-controls='langs-menu'
+                aria-haspopup='true'
+                onClick={this.handleOpen}
+                onKeyPress={this.handleOpen}
               >
-                {allMessages[locale].nativeName}
-                <LanguageIcon className={classes.rightIcon} />
-              </Typography>
+                <Typography color='inherit' className={classes.language}>
+                  {allMessages[locale].nativeName}
+                  <LanguageIcon className={classes.rightIcon} />
+                </Typography>
+              </div>
             </div>
             <Menu
               className={classes.languageList}
-              id="langs-menu"
+              id='langs-menu'
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={() => this.handleClose()}
@@ -79,19 +89,9 @@ class TopAppBar extends Component {
                 .sort()
                 .map((lang) => {
                   return (
-                    <MenuItem
-                      onClick={() => this.handleClose(lang, locale)}
-                      key={lang}
-                      selected={locale === lang}
-                    >
-                      <img
-                        src={allMessages[lang].flag}
-                        alt=""
-                        className={classes.flagIcon}
-                      />
-                      <div className={classes.languageName}>
-                        {allMessages[lang].nativeName}
-                      </div>
+                    <MenuItem onClick={() => this.handleClose(lang, locale)} key={lang} selected={locale === lang}>
+                      <img src={allMessages[lang].flag} alt='' className={classes.flagIcon} />
+                      <div className={classes.languageName}>{allMessages[lang].nativeName}</div>
                     </MenuItem>
                   );
                 })}

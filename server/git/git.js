@@ -3,8 +3,7 @@ const fs = require('fs-extra');
 const _ = require('lodash');
 const debug = require('debug')('git');
 const semver = require('semver');
-const package = require('../../package.json');
-const tcVersion = package.version.toLowerCase();
+const helpers = require('../utils/helpers');
 
 const { tasmotaRepo, githubRepo, minVersion, maxVersion, edgeBranch } = require('../config/config');
 
@@ -35,6 +34,7 @@ const isGitRepoAvailable = async () => {
 const getRepoTags = async () => {
   const isRepo = await isGitRepoAvailable();
   const message = 'Unable to get TAGS';
+  const tcVersion = helpers.getTcVersion().toLowerCase();
 
   if (isRepo) {
     try {

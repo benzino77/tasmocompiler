@@ -4,6 +4,22 @@ const styles = (theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
+  toolbarRight: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  projectPageContainer: {
+    width: 24,
+    height: 24,
+    marginRight: theme.spacing() * 2,
+  },
+  projectPageImg: {
+    width: '100%',
+    height: '100%',
+    color: theme.palette.background.paper,
+    // filter: 'invert(95%) sepia(100%) saturate(0%) hue-rotate(125deg) brightness(102%) contrast(101%)',
+  },
   language: {
     display: 'flex',
     justifyContent: 'flex-end',
@@ -84,7 +100,7 @@ const styles = (theme) => ({
     // width: 300,
   },
   compileMessagesBox: {
-    marginLeft: theme.spacing(2),
+    marginLeft: theme.spacing(3),
     marginTop: 0,
     maxWidth: '80%',
   },
@@ -104,10 +120,35 @@ const styles = (theme) => ({
     minWidth: 230,
     maxWidth: 230,
   },
-  chipTypesContainer: {
+  featuresHeaderContainer: {
+    display: 'flex',
+    gap: theme.spacing(),
   },
+  chipTypesContainer: {},
   links: {
     marginLeft: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+  },
+  donationLinks: {
+    marginLeft: theme.spacing(3),
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(1),
+    boxSizing: 'border-box',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    maxWidth: '80%',
+    position: 'relative',
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.palette.primary.dark,
+    borderRadius: theme.shape.borderRadius,
+  },
+  donationImage: {
+    width: 36,
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
   },
   rightIcon: {
     marginLeft: theme.spacing(),

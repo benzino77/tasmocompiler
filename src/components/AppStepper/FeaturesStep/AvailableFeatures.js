@@ -14,6 +14,7 @@ const availableFeatures = [
       'USE_CCS811',
       'USE_SCD30',
       'USE_SPS30',
+      'USE_SEN5X',
       'USE_HPMA',
       'USE_IAQ',
       'USE_T67XX',

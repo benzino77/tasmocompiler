@@ -2,14 +2,10 @@ const fsMock = require('fs-extra');
 const simpleGitMock = require('simple-git/promise');
 const git = require('../git');
 
-const {
-  githubRepo,
-  tasmotaRepo,
-  minVersion,
-  edgeBranch,
-} = require('../../config/config');
+const helpersMock = require('../../utils/helpers');
+jest.mock('../../utils/helpers');
 
-const expectedTags = [minVersion, edgeBranch];
+const { githubRepo, tasmotaRepo, minVersion, edgeBranch, maxVersion } = require('../../config/config');
 
 describe('git.js tests', () => {
   describe('testing isGitRepoAvailable', () => {
@@ -17,6 +13,7 @@ describe('git.js tests', () => {
       fsMock.stat.mockClear();
       fsMock.remove.mockClear();
       simpleGitMock().checkIsRepo.mockClear();
+      helpersMock.getTcVersion.mockClear();
     });
 
     it('should return false when repo directory is not present', async (done) => {
@@ -84,17 +81,32 @@ describe('git.js tests', () => {
       fsMock.remove.mockClear();
       simpleGitMock().checkIsRepo.mockClear();
       simpleGitMock().tags.mockClear();
+      helpersMock.getTcVersion.mockClear();
+    });
+    it('should return only development tag when TC version is development', async (done) => {
+      fsMock.__setFsStatReject(false);
+      simpleGitMock.__setGitIsRepoRet(true);
+      simpleGitMock.__setGitTagsReject(false);
+      helpersMock.__setReturnVersion('100-dev');
+      const tags = await git.getRepoTags();
+
+      expect(tags).toHaveLength(1);
+      expect(tags).toEqual(expect.arrayContaining(['development']));
+      expect(simpleGitMock().tags).toBeCalledTimes(0);
+      expect(helpersMock.getTcVersion).toBeCalledTimes(1);
+      done();
     });
 
-    it('should return filtered repository tags', async (done) => {
+    it('should return filtered repository tags when TC version is NOT development', async (done) => {
       simpleGitMock.__setRepoTags([minVersion]);
       fsMock.__setFsStatReject(false);
       simpleGitMock.__setGitIsRepoRet(true);
       simpleGitMock.__setGitTagsReject(false);
+      helpersMock.__setReturnVersion('100');
       const tags = await git.getRepoTags();
 
-      expect(tags).toHaveLength(2);
-      expect(tags).toEqual(expect.arrayContaining(expectedTags));
+      expect(tags).toHaveLength(1);
+      expect(tags).toEqual(expect.arrayContaining([minVersion]));
       expect(simpleGitMock().tags).toBeCalledTimes(1);
       done();
     });
@@ -116,6 +128,7 @@ describe('git.js tests', () => {
       fsMock.__setFsStatReject(false);
       simpleGitMock.__setGitIsRepoRet(true);
       simpleGitMock.__setGitTagsReject(true);
+      helpersMock.__setReturnVersion('100');
       let error;
       try {
         await git.getRepoTags();
@@ -140,11 +153,12 @@ describe('git.js tests', () => {
       simpleGitMock().clean.mockClear();
       simpleGitMock().checkoutBranch.mockClear();
       simpleGitMock().checkout.mockClear();
+      helpersMock.getTcVersion.mockClear();
     });
 
-    it('should throw an error on rest fail', async (done) => {
+    it('should throw an error on reset branch fail', async (done) => {
       let error;
-
+      simpleGitMock.__setGitResetReject(true);
       try {
         await git.switchToBranch(edgeBranch);
       } catch (e) {
@@ -159,6 +173,7 @@ describe('git.js tests', () => {
 
     it('should throw an error on clean fail', async (done) => {
       simpleGitMock.__setGitResetReject(false);
+      simpleGitMock.__setGitCleanReject(true);
       let error;
 
       try {
@@ -190,6 +205,7 @@ describe('git.js tests', () => {
       simpleGitMock.__setGitResetReject(false);
       simpleGitMock.__setGitCleanReject(false);
       simpleGitMock.__setGitBranchLocalReject(false);
+      helpersMock.__setReturnVersion('100-dev');
       let error;
 
       try {
@@ -203,20 +219,32 @@ describe('git.js tests', () => {
       done();
     });
 
-    it('should checkout to remote branch and return branch name', async (done) => {
+    it('should checkout to remote development branch and return branch name', async (done) => {
       simpleGitMock.__setGitResetReject(false);
       simpleGitMock.__setGitCleanReject(false);
       simpleGitMock.__setGitBranchLocalReject(false);
       simpleGitMock.__setGitCheckoutBranchReject(false);
-
+      helpersMock.__setReturnVersion('100-dev');
       const branch = await git.switchToBranch(edgeBranch);
 
       expect(branch).toBe(edgeBranch);
       expect(simpleGitMock().checkoutBranch).toBeCalledTimes(1);
-      expect(simpleGitMock().checkoutBranch).toBeCalledWith(
-        edgeBranch,
-        edgeBranch
-      );
+      expect(simpleGitMock().checkoutBranch).toBeCalledWith(edgeBranch, edgeBranch);
+
+      done();
+    });
+
+    it('should checkout to remote minVersion branch and return branch name', async (done) => {
+      simpleGitMock.__setGitResetReject(false);
+      simpleGitMock.__setGitCleanReject(false);
+      simpleGitMock.__setGitBranchLocalReject(false);
+      simpleGitMock.__setGitCheckoutBranchReject(false);
+      helpersMock.__setReturnVersion('100');
+      const branch = await git.switchToBranch(minVersion);
+
+      expect(branch).toBe(minVersion);
+      expect(simpleGitMock().checkoutBranch).toBeCalledTimes(1);
+      expect(simpleGitMock().checkoutBranch).toBeCalledWith(minVersion, minVersion);
 
       done();
     });
@@ -256,21 +284,32 @@ describe('git.js tests', () => {
   });
 
   describe('testing cloneRepo', () => {
-    beforeAll(() => {
-      simpleGitMock.__setRepoTags([minVersion]);
-    });
-
     afterEach(() => {
       simpleGitMock().clone.mockClear();
+      helpersMock.getTcVersion.mockClear();
     });
 
-    it('should return tags if Tasmota repo is already there', async (done) => {
+    it('should return development tag if Tasmota repo is already there', async (done) => {
       fsMock.__setFsStatReject(false);
       simpleGitMock.__setGitTagsReject(false);
+      simpleGitMock.__setRepoTags([edgeBranch]);
+      helpersMock.__setReturnVersion('100-dev');
       const tags = await git.cloneRepo();
 
-      expect(tags).toHaveLength(2);
-      expect(tags).toEqual(expect.arrayContaining(expectedTags));
+      expect(tags).toHaveLength(1);
+      expect(tags).toEqual(expect.arrayContaining([edgeBranch]));
+      done();
+    });
+
+    it('should return minVersion tag if Tasmota repo is already there', async (done) => {
+      fsMock.__setFsStatReject(false);
+      simpleGitMock.__setGitTagsReject(false);
+      simpleGitMock.__setRepoTags([minVersion]);
+      helpersMock.__setReturnVersion('100');
+      const tags = await git.cloneRepo();
+
+      expect(tags).toHaveLength(1);
+      expect(tags).toEqual(expect.arrayContaining([minVersion]));
       done();
     });
 
@@ -286,38 +325,30 @@ describe('git.js tests', () => {
 
       expect(error.message).toMatch(/unable to clone/i);
       expect(simpleGitMock().clone).toHaveBeenCalledTimes(1);
-      expect(simpleGitMock().clone).toHaveBeenCalledWith(
-        githubRepo,
-        tasmotaRepo
-      );
+      expect(simpleGitMock().clone).toHaveBeenCalledWith(githubRepo, tasmotaRepo);
       done();
     });
 
     it('should clone Tasmota repo and return tags when repo is not available locally', async (done) => {
       // first for isRepoAvailable at the start of cloneRepo
       // second for getRepoTags called at the end of cloneRepo
-      fsMock.stat
-        .mockReturnValueOnce(Promise.reject())
-        .mockReturnValueOnce(Promise.resolve());
+      fsMock.stat.mockReturnValueOnce(Promise.reject()).mockReturnValueOnce(Promise.resolve());
       simpleGitMock.__setGitCloneReject(false);
+      helpersMock.__setReturnVersion('100');
+      simpleGitMock.__setRepoTags([minVersion, maxVersion]);
 
       const tags = await git.cloneRepo();
       expect(tags).toHaveLength(2);
-      expect(tags).toEqual(expect.arrayContaining(expectedTags));
+      expect(tags).toEqual(expect.arrayContaining([minVersion, maxVersion]));
       expect(simpleGitMock().clone).toHaveBeenCalledTimes(1);
-      expect(simpleGitMock().clone).toHaveBeenCalledWith(
-        githubRepo,
-        tasmotaRepo
-      );
+      expect(simpleGitMock().clone).toHaveBeenCalledWith(githubRepo, tasmotaRepo);
       done();
     });
   });
   describe('testing pullRepo', () => {
-    beforeAll(() => {
-      simpleGitMock.__setRepoTags([minVersion]);
-    });
     beforeEach(() => {
       simpleGitMock().pull.mockClear();
+      helpersMock.getTcVersion.mockClear();
     });
 
     it('should clone the repo if there is no repo available', async (done) => {
@@ -325,10 +356,12 @@ describe('git.js tests', () => {
       // first for isRepoAvailable at the start of pullRepo
       fsMock.stat.mockReturnValueOnce(Promise.reject());
       simpleGitMock.__setGitTagsReject(false);
+      simpleGitMock.__setRepoTags([minVersion, maxVersion]);
+      helpersMock.__setReturnVersion('100');
       const tags = await git.pullRepo();
 
       expect(tags).toHaveLength(2);
-      expect(tags).toEqual(expect.arrayContaining(expectedTags));
+      expect(tags).toEqual(expect.arrayContaining([minVersion, maxVersion]));
       expect(simpleGitMock().pull).toBeCalledTimes(0);
       done();
     });
@@ -351,10 +384,11 @@ describe('git.js tests', () => {
       fsMock.__setFsStatReject(false);
       simpleGitMock.__setGitPullReject(false);
       simpleGitMock.__setGitTagsReject(false);
+      simpleGitMock.__setRepoTags([minVersion, maxVersion]);
       const tags = await git.pullRepo();
 
       expect(tags).toHaveLength(2);
-      expect(tags).toEqual(expect.arrayContaining(expectedTags));
+      expect(tags).toEqual(expect.arrayContaining([minVersion, maxVersion]));
       expect(simpleGitMock().pull).toBeCalledTimes(1);
       done();
     });

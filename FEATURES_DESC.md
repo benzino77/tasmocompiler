@@ -17,7 +17,7 @@
 | `USE_LE01MR`       | `USE_VINDRIKTNING` | `USE_MAX31865`                        | `USE_DISPLAY_SSD1331`   |                  |                |
 | `USE_BL09XX`       | `USE_SCD40`        | `USE_HIH6`                            |                         |                  |                |
 | `USE_TELEINFO`     | `USE_HM330X`       | `USE_DHT12`                           |                         |                  |                |
-| `USE_IEM3000`      |                    | `USE_DS1624`                          |                         |                  |                |
+| `USE_IEM3000`      | `USE_SEN5X`        | `USE_DS1624`                          |                         |                  |                |
 | `USE_WE517`        |                    | `USE_AHT1x`                           |                         |                  |                |
 | `USE_ENERGY_DUMMY` |                    | `USE_HDC1080`                         |                         |                  |                |
 | `USE_IEM3000`      |                    | `USE_MCP9808`                         |                         |                  |                |

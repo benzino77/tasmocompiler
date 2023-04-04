@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Tasmota source code",
   "stepSourceDescRefresh": "You can refresh source code to the latest state or click NEXT to go to the next step",
   "stepSourceDescDownload": "Before you go to the next step, you have to download Tasmota source code",
@@ -26,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Shelly-based devices with 2MB Flash memory",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 boards like Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Which features should be included in final binary firmware?",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Air/gas sensors",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",

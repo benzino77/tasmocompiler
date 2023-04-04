@@ -10,6 +10,7 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControl from '@material-ui/core/FormControl';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Divider from '@material-ui/core/Divider';
+import LinkIcon from '@material-ui/icons/Link';
 
 import availableFeatures from './AvailableFeatures';
 import { availableBoards, availableBoardChipTypes } from './AvailableBoards';
@@ -27,9 +28,7 @@ const getFeaturesDefaultStates = (board) => {
       feature.boards.includes('all') ||
       board.include_features.includes(feature.name)
     ) {
-      const value = board.include_features.includes(feature.name)
-        ? true
-        : feature.value;
+      const value = board.include_features.includes(feature.name) ? true : feature.value;
       const defaultFeatureState = setFeature(feature.name, value);
       defaults = { ...defaults, ...defaultFeatureState };
       // defaults[feature.name] = value;
@@ -61,9 +60,7 @@ const getFeatureGroup = (name) => {
 };
 
 const getFeatureExclude = (name) => {
-  const filtered = availableFeatures.filter(
-    (e) => e.name === name && e.exclude
-  );
+  const filtered = availableFeatures.filter((e) => e.name === name && e.exclude);
 
   if (filtered.length > 0) {
     return filtered[0].exclude;
@@ -73,9 +70,7 @@ const getFeatureExclude = (name) => {
 };
 
 const getFeatureInclude = (name) => {
-  const filtered = availableFeatures.filter(
-    (e) => e.name === name && e.include
-  );
+  const filtered = availableFeatures.filter((e) => e.name === name && e.include);
 
   if (filtered.length > 0) {
     return filtered[0].include;
@@ -94,9 +89,7 @@ const getCustomParametersForFeature = (name) => {
 };
 
 const getPlatformioEntriesForFeature = (name) => {
-  const filtered = availableFeatures.filter(
-    (e) => e.name === name && e.platformio_entries
-  );
+  const filtered = availableFeatures.filter((e) => e.name === name && e.platformio_entries);
   if (filtered.length > 0) {
     return filtered[0].platformio_entries;
   }
@@ -199,53 +192,41 @@ class FeaturesStep extends Component {
     const Wire = ({ children, ...props }) => children(props);
     return (
       <Step {...other}>
-        <StepLabel classes={{label: classes.stepLabel}}>
-          <FormattedMessage id="stepFeaturesTitle" />
+        <StepLabel classes={{ label: classes.stepLabel }}>
+          <FormattedMessage id='stepFeaturesTitle' />
         </StepLabel>
         <StepContent>
           <Typography>
-            <FormattedMessage id="stepFeaturesBoardDesc" />
+            <FormattedMessage id='stepFeaturesBoardDesc' />
           </Typography>
 
           <div className={classes.actionsContainer}>
             <FormControl>
               {availableBoardChipTypes.map((chipType, idx) => {
                 return (
-                  <div
-                    className={classes.chipTypesContainer}
-                    key={chipType.name}
-                  >
+                  <div className={classes.chipTypesContainer} key={chipType.name}>
                     <Typography>{chipType.name.toUpperCase()}</Typography>
                     <RadioGroup
                       row
-                      aria-label="board"
-                      name="board"
+                      aria-label='board'
+                      name='board'
                       value={board.name}
                       onChange={this.handleRadioChange}
                     >
                       {availableBoards.map((item) => {
-                        const { name, description, tooltip, show, chip_type } =
-                          item;
+                        const { name, description, tooltip, show, chip_type } = item;
                         return (
                           chip_type === chipType.name &&
                           show && (
                             // tooltips workaround
                             <Wire value={name} key={item.name}>
                               {(props) => (
-                                <Tooltip
-                                  title={
-                                    tooltip ? (
-                                      <FormattedMessage id={tooltip} />
-                                    ) : (
-                                      ''
-                                    )
-                                  }
-                                >
+                                <Tooltip title={tooltip ? <FormattedMessage id={tooltip} /> : ''}>
                                   <div className={classes.radioContainer}>
                                     <FormControlLabel
                                       control={<Radio />}
                                       label={description}
-                                      labelPlacement="end"
+                                      labelPlacement='end'
                                       {...props}
                                     />
                                   </div>
@@ -256,24 +237,31 @@ class FeaturesStep extends Component {
                         );
                       })}
                     </RadioGroup>
-                    {idx < availableBoardChipTypes.length - 1 && (
-                      <Divider className={classes.boardsDivider} />
-                    )}
+                    {idx < availableBoardChipTypes.length - 1 && <Divider className={classes.boardsDivider} />}
                   </div>
                 );
               })}
             </FormControl>
           </div>
-
-          <Typography>
-            <FormattedMessage id="stepFeaturesDesc" />
-          </Typography>
+          <div className={classes.featuresHeaderContainer}>
+            <Typography>
+              <FormattedMessage id='stepFeaturesDesc' />
+            </Typography>
+            <Tooltip title={<FormattedMessage id='stepFeaturesDescriptionLinkTooltip' />}>
+              <a
+                href='https://github.com/benzino77/tasmocompiler/blob/master/FEATURES_DESC.md'
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <LinkIcon color='primary' />
+              </a>
+            </Tooltip>
+          </div>
           <div className={classes.actionsContainer}>
             {availableFeatures.map(
               (item) =>
                 item.show &&
-                (item.boards.includes(board.name) ||
-                  item.boards.includes('all')) && (
+                (item.boards.includes(board.name) || item.boards.includes('all')) && (
                   <FeaturesSelector
                     classes={classes}
                     // value={this.state[item.name]}

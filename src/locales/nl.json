@@ -1,4 +1,5 @@
 {
+  "headerProjectGithubPageTooltip": "Project Github page",
   "stepSourceTitle": "Tasmota bron code",
   "stepSourceDescRefresh": "U kan de brondcode vernieuwen naar de laatste versie of klik op volgene voor de volgende stap.",
   "stepSourceDescDownload": "Voor je verder kan gaan moet eerst de Tasmota broncode worden gedownload.",
@@ -26,6 +27,7 @@
   "stepFeaturesBoard82662MTooltip": "Shelly-gebasserde apparaten met 2MB Flash geheugen",
   "stepFeaturesBoard82664MTooltip": "4MB ESP8266 borden zoals Wemos D1 Mini, NodeMCU, ESP12F, etc.",
   "stepFeaturesDesc": "Welke functies moeten worden ingebouwd in de binaire firmware??",
+  "stepFeaturesDescriptionLinkTooltip": "Features group description",
   "stepFeaturesAGDesc": "Lucht/gas sensors",
   "stepFeaturesAlexaDesc": "Amazon Alexa",
   "stepFeaturesArduinoSlaveDesc": "Arduino slave",
@@ -100,7 +102,7 @@
   "Italian": "Italiaans",
   "Korean": "Koreaans",
   "Dutch": "Nederlands",
-  "Polish": "Pools",		
+  "Polish": "Pools",
   "Portuguese (Brazil)": "Portugees (Brazilië)",
   "Portuguese": "Portugees",
   "Romanian": "Romaans",
