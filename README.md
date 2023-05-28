@@ -153,7 +153,7 @@ Let's assume that you want to _compile in_ information about your ntp server, yo
 #define APP_TIMEZONE           99
 ```
 
-You can find additional inforamtion what can be set by _Custom parameters_ field in [my_user_config.h](https://github.com/arendst/Tasmota/blob/development/tasmota/my_user_config.h) in Tasmota source code.
+You can find additional information what can be set by _Custom parameters_ field in [my_user_config.h](https://github.com/arendst/Tasmota/blob/development/tasmota/my_user_config.h) in Tasmota source code.
 
 #### Troubleshooting and advanced usage
 
