@@ -1,6 +1,6 @@
 {
   "name": "tasmocompiler",
-  "version": "11-development",
+  "version": "11.0.0-dev",
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
@@ -15,7 +15,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-intl": "^4.5.1",
+    "react-intl": "^6.4.4",
     "react-scripts": "2.1.8",
     "semver": "^7.3.5",
     "shelljs": "^0.8.3",
@@ -29,7 +29,7 @@
     "test": "react-scripts test --env=jsdom-fourteen",
     "testbackend": "jest server/ ",
     "eject": "react-scripts eject",
-    "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/app.js\" \"yarn start\""
+    "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/app.js\" \"npm start\""
   },
   "browserslist": [
     ">0.2%",
