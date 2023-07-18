@@ -1,0 +1,23 @@
+---
+- name: Check compatibility with Tasmota
+  hosts: localhost
+
+  tasks:
+    - name: Compile with one config
+      ansible.builtin.include_role:
+        name: compile
+      loop: "{{ ['esp8266_zigbee-bridge', 'esp32_webcam'] | product(['minimal']) | list }}"
+
+    - name: Compile with two configs
+      ansible.builtin.include_role:
+        name: compile
+      loop: "{{ ['esp32_c3',
+        'esp32_generic',
+        'esp32_m5stackcore2',
+        'esp32_odroidgo',
+        'esp32_s2',
+        'esp32_s3',
+        'esp32_solo1',
+        'esp8266_generic',
+        'esp8266_nodemcu4M',
+        'esp8266_shelly'] | product(['minimal', 'temphum']) | list }}"
