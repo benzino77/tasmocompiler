@@ -11,7 +11,7 @@ ADD public /tasmocompiler/public/
 ADD server /tasmocompiler/server/
 ADD src /tasmocompiler/src/
 ADD package.json package-lock.json /tasmocompiler/
-RUN cd /tasmocompiler && npm install && npm run build
+RUN cd /tasmocompiler && npm ci && npm run build
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 WORKDIR /tasmocompiler
 ENTRYPOINT ["nodemon", "server/app.js"]
