@@ -15,3 +15,4 @@ RUN cd /tasmocompiler && npm ci && npm run build
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 WORKDIR /tasmocompiler
 ENTRYPOINT ["nodemon", "server/app.js"]
+EXPOSE 3000/tcp
