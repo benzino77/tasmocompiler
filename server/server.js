@@ -12,7 +12,7 @@ const io = require('socket.io')(server);
 
 const { isGitRepoAvailable, getRepoTags, cloneRepo, pullRepo } = require('./git/git');
 const { compileCode } = require('./compile/compile');
-const { tasmotaRepo, userPlatformioOverrideIni, userConfigOvewrite, tasmotaMinimalBinary } = require('./config/config');
+const { tasmotaRepo, userPlatformioOverrideIni, userConfigOvewrite, tasmotaMinimalBinary, tasmotaELF } = require('./config/config');
 
 const staticPath = path.join(__dirname, '../build');
 let clientWSSocket;
@@ -96,6 +96,11 @@ app.get('/download/:fileName', (req, res) => {
 
   if (req.params.fileName === 'user_config_override.h') {
     res.download(userConfigOvewrite);
+    return;
+  }
+
+  if (req.params.fileName === 'firmware.elf') {
+    res.download(tasmotaELF);
     return;
   }
 
