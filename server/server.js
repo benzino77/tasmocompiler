@@ -99,8 +99,9 @@ app.get('/download/:fileName', (req, res) => {
     return;
   }
 
-  if (req.params.fileName === 'firmware.elf') {
-    res.download(tasmotaELF);
+  if (req.params.fileName.includes('.elf') {
+    arr = req.parms.fileName.split(".");
+    res.download(path.resolve(tasmotaELF, "${arr[0]}/firmware.elf);
     return;
   }
 
