@@ -91,7 +91,7 @@ class DownloadLinks extends Component {
             href='/download/user_config_override.h'
             className={classes.downloadButtons}
           >
-            firmware.elf
+            user_config_override.h
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
           <Button
@@ -100,7 +100,7 @@ class DownloadLinks extends Component {
             href='/download/firmware.elf'
             className={classes.downloadButtons}
           >
-            user_config_override.h
+            firmware.elf
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
         </div>
