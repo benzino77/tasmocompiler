@@ -97,7 +97,7 @@ class DownloadLinks extends Component {
           <Button
             variant='contained'
             color='primary'
-            href='/download/${envPath}/firmware.elf'
+            href={`'/download/${envPath}/firmware.elf`}
             className={classes.downloadButtons}
           >
             firmware.elf
