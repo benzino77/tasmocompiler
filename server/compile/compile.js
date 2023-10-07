@@ -172,7 +172,8 @@ const prepareFiles = async (socket, data) => {
 
   const platformioEnvCustom = Object.keys(platformio_entries)
     .map(
-      (e) => `${e} = ${Array.isArray(platformio_entries[e]) ? platformio_entries[e].join(', ') : platformio_entries[e]}`
+      (e) =>
+        `${e} = ${Array.isArray(platformio_entries[e]) ? platformio_entries[e].join('\n\t') : platformio_entries[e]}`
     )
     .join('\n');
 

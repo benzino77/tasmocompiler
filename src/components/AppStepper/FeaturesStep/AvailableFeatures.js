@@ -398,6 +398,9 @@ const availableFeatures = [
     description: 'stepFeaturesBluetoothDesc',
     tooltip: 'stepFeaturesBluetoothTooltip',
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
+    platformio_entries: {
+      lib_extra_dirs: ['lib/libesp32', 'lib/libesp32_div', 'lib/lib_basic', 'lib/lib_i2c', 'lib/lib_ssl'],
+    },
     custom: '',
     boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3'],
   },
@@ -448,7 +451,6 @@ const availableFeatures = [
     description: 'stepFeaturesSPIDesc',
     boards: ['all'],
   },
-  
 ];
 
 export default availableFeatures;
