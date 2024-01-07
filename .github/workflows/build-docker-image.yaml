@@ -5,6 +5,7 @@ on:
       branch:
         description: 'Branch to build from'
         required: true
+        type: choice
         default: 'master'
         options:
           - 'master'
