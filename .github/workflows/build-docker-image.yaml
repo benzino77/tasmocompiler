@@ -48,7 +48,7 @@ jobs:
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
             -t benzino77/tasmocompiler:$DOCKER_TAG \
             -t benzino77/tasmocompiler:latest \
-            -f Dockerfile .
+            -f Dockerfile --push .
 
       - name: Build and push development Docker image
         if: ${{ github.event.inputs.branch == 'development' }}
@@ -56,4 +56,4 @@ jobs:
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7 \
             -t benzino77/tasmocompiler:development \
-            -f Dockerfile .
+            -f Dockerfile --push .
