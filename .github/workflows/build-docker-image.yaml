@@ -26,9 +26,6 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: Install jq
-        run: sudo apt-get update && sudo apt-get install -y jq
-
       - name: Load Buildx
         run: docker buildx create --name mybuilder --use
         if: runner.os == 'Linux'
