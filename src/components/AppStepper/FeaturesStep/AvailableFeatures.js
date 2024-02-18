@@ -402,7 +402,7 @@ const availableFeatures = [
       lib_extra_dirs: ['lib/libesp32', 'lib/libesp32_div', 'lib/lib_basic', 'lib/lib_i2c', 'lib/lib_ssl'],
     },
     custom: '',
-    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3'],
+    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3', 'esp32s3'],
   },
   {
     name: 'USE_ETHERNET',
@@ -427,6 +427,7 @@ const availableFeatures = [
       '//!!! Please read https://tasmota.github.io/docs/Blinds-and-Shutters/#specific-configuration to understand what this option is for !!!\n' +
       '\n' +
       '//#define SHUTTER_CLEAR_PWM_ONSTOP\n',
+    include: ['USE_ENERGY_SENSOR'],
     boards: ['all'],
   },
   {
