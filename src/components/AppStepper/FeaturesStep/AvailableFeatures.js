@@ -427,6 +427,7 @@ const availableFeatures = [
       '//!!! Please read https://tasmota.github.io/docs/Blinds-and-Shutters/#specific-configuration to understand what this option is for !!!\n' +
       '\n' +
       '//#define SHUTTER_CLEAR_PWM_ONSTOP\n',
+    include: ['USE_ENERGY_SENSOR'],
     boards: ['all'],
   },
   {
