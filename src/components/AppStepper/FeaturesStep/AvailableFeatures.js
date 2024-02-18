@@ -402,7 +402,7 @@ const availableFeatures = [
       lib_extra_dirs: ['lib/libesp32', 'lib/libesp32_div', 'lib/lib_basic', 'lib/lib_i2c', 'lib/lib_ssl'],
     },
     custom: '',
-    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3'],
+    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3', 'esp32s3'],
   },
   {
     name: 'USE_ETHERNET',
