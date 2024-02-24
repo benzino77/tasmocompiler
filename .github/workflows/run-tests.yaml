@@ -1,0 +1,24 @@
+name: Run compile tests
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: development
+
+      - name: Clone Tasmota
+        uses: actions/checkout@v4
+        with:
+          repository: arendst/Tasmota
+          path: Tasmota
+
+      - name: Install python packages
+        run: |
+          pwd
+          ls
