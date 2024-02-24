@@ -1,6 +1,8 @@
 name: Run compile tests
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 7'
 
 jobs:
   run-tests:
