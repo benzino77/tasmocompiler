@@ -26,4 +26,4 @@ jobs:
 
       - name: Run tests
         run: |
-          ansible-playbook ansible/site.yaml --extra-vars "tasmota_dir=${$GITHUB_WORKSPACE}/Tasmota"
+          ansible-playbook ansible/site.yaml --extra-vars "tasmota_dir=${GITHUB_WORKSPACE}/Tasmota"
