@@ -26,4 +26,5 @@ jobs:
 
       - name: Run tests
         run: |
+          source .venv/bin/activate
           ansible-playbook ansible/site.yaml --extra-vars "tasmota_dir=${GITHUB_WORKSPACE}/Tasmota"
