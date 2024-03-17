@@ -436,7 +436,7 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesModbusBridgeDesc',
-    group: ['USE_MODBUSBRIDGE', 'USE_MODBUSBRIDGE_TCP'],
+    group: ['USE_MODBUS_BRIDGE', 'USE_MODBUS_BRIDGE_TCP'],
     boards: ['all'],
   },
   {
