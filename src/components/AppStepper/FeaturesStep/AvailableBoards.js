@@ -189,6 +189,8 @@ const availableBoards = [
       extends: 'env:tasmota32_base',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota32',
     tooltip: '',
@@ -206,8 +208,11 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       // eslint-disable-next-line
+      'board_build.f_cpu': '240000000L',
+      // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
       board: 'esp32-fix',
+      lib_extra_dirs: ['lib/lib_ssl', 'lib/libesp32'],
     },
     platformio_env_name: 'tasmota32-webcam',
     tooltip: '',
@@ -232,6 +237,8 @@ const availableBoards = [
       extends: 'env:tasmota32-lvgl',
       'board_build.f_cpu': '240000000L',
       board: 'esp32-fix',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32-lvgl.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota32-odroidgo',
     tooltip: '',
@@ -256,6 +263,17 @@ const availableBoards = [
       'board_build.f_flash': '80000000L',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32-lvgl.build_flags}',
+      lib_extra_dirs: [
+        'lib/libesp32',
+        'lib/libesp32_lvgl',
+        'lib/lib_basic',
+        'lib/lib_i2c',
+        'lib/lib_rf',
+        'lib/lib_div',
+        'lib/lib_ssl',
+        'lib/lib_display',
+        'lib/lib_audio',
+      ],
     },
     platformio_env_name: 'tasmota32-core2',
     tooltip: '',
@@ -279,6 +297,8 @@ const availableBoards = [
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32_solo1',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota32solo1',
     tooltip: '',
@@ -302,6 +322,8 @@ const availableBoards = [
       build_flags:
         // eslint-disable-next-line
         '${env:tasmota32_base.build_flags} -fno-lto',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
       lib_ignore: ['TTGO TWatch Library', 'epdiy', 'Micro-RTSP', 'mp3_shine_esp32'],
     },
     platformio_env_name: 'tasmota32c3',
@@ -322,6 +344,8 @@ const availableBoards = [
       board: 'esp32s2',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
       lib_ignore: ['NimBLE-Arduino', 'TTGO TWatch Library', 'epdiy', 'Micro-RTSP'],
     },
     platformio_env_name: 'tasmota32s2',
@@ -342,6 +366,8 @@ const availableBoards = [
       board: 'esp32s3-qio_qspi',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
       lib_ignore: ['TTGO TWatch Library', 'Micro-RTSP', 'epdiy'],
     },
     platformio_env_name: 'tasmota32s3',

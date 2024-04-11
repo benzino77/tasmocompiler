@@ -1,0 +1,18 @@
+---
+- name: Copy platformio_override.ini file for {{ item.0 }}
+  ansible.builtin.copy:
+    src: '{{ item.0 }}/platformio_override.ini'
+    dest: '{{ tasmota_dir }}'
+    mode: '0644'
+- name: Copy user_config_override.h file for {{ item.0 }} {{ item.1 }}
+  ansible.builtin.copy:
+    src: '{{ item.0 }}/user_config_override_{{ item.1 }}.h'
+    dest: '{{ tasmota_dir }}/tasmota/user_config_override.h'
+    mode: '0644'
+- name: Compile {{ item.0 }} {{ item.1 }}
+  ansible.builtin.command:
+    cmd: pio run
+    chdir: '{{ tasmota_dir }}'
+  register: output
+  changed_when: output.rc in [0, 1]
+  failed_when: output.rc != 0

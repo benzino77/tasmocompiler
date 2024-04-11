@@ -14,6 +14,7 @@ const availableFeatures = [
       'USE_CCS811',
       'USE_SCD30',
       'USE_SPS30',
+      'USE_SGP4X',
       'USE_SEN5X',
       'USE_HPMA',
       'USE_IAQ',
@@ -398,8 +399,11 @@ const availableFeatures = [
     description: 'stepFeaturesBluetoothDesc',
     tooltip: 'stepFeaturesBluetoothTooltip',
     group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
+    platformio_entries: {
+      lib_extra_dirs: ['lib/libesp32', 'lib/libesp32_div', 'lib/lib_basic', 'lib/lib_i2c', 'lib/lib_ssl'],
+    },
     custom: '',
-    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3'],
+    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c3', 'esp32s3'],
   },
   {
     name: 'USE_ETHERNET',
@@ -424,6 +428,7 @@ const availableFeatures = [
       '//!!! Please read https://tasmota.github.io/docs/Blinds-and-Shutters/#specific-configuration to understand what this option is for !!!\n' +
       '\n' +
       '//#define SHUTTER_CLEAR_PWM_ONSTOP\n',
+    include: ['USE_ENERGY_SENSOR'],
     boards: ['all'],
   },
   {
@@ -431,7 +436,7 @@ const availableFeatures = [
     value: false,
     show: true,
     description: 'stepFeaturesModbusBridgeDesc',
-    group: ['USE_MODBUSBRIDGE', 'USE_MODBUSBRIDGE_TCP'],
+    group: ['USE_MODBUS_BRIDGE', 'USE_MODBUS_BRIDGE_TCP'],
     boards: ['all'],
   },
   {
@@ -448,7 +453,6 @@ const availableFeatures = [
     description: 'stepFeaturesSPIDesc',
     boards: ['all'],
   },
-  
 ];
 
 export default availableFeatures;

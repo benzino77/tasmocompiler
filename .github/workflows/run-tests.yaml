@@ -1,0 +1,32 @@
+name: Run compile tests
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 0'
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: development
+
+      - name: Clone Tasmota
+        uses: actions/checkout@v4
+        with:
+          repository: arendst/Tasmota
+          path: Tasmota
+
+      - name: Install python packages
+        run: |
+          python3 -m venv .venv
+          source .venv/bin/activate
+          pip install platformio ansible
+
+      - name: Run tests
+        run: |
+          source .venv/bin/activate
+          ansible-playbook ansible/site.yaml --extra-vars "tasmota_dir=${GITHUB_WORKSPACE}/Tasmota"
