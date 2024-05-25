@@ -179,6 +179,7 @@ const availableFeatures = [
       'USE_HP303B',
       'USE_LMT01',
       'USE_AM2320',
+      'USE_BME68X',
     ],
     include: ['USE_I2C'],
     custom: '',
