@@ -292,6 +292,29 @@ const availableBoards = [
     exclude_features: [],
     defines: {},
   },
+  // C6
+  {
+    name: 'esp32c6',
+    chip_type: 'esp32',
+    description: 'ESP32 C6',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32c6',
+      build_unflags:
+        // eslint-disable-next-line
+        '${env:tasmota32_base.build_unflags} -mno-target-align',
+      build_flags:
+        // eslint-disable-next-line
+        '${env:tasmota32_base.build_flags}',
+    },
+    platformio_env_name: 'tasmota32c6',
+    tooltip: '',
+    include_features: ['berry', 'ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
   // ESP32 S2
   {
     name: 'esp32s2',
