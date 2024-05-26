@@ -77,6 +77,7 @@
   "stepFeaturesI2CDesc": "I2C ondersteuning",
   "stepFeaturesSPIDesc": "SPI ondersteuning",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
+  "stepFeaturesMatterDesc": "Matter protocol",
 
   "stepCustomParamsTitle": "Optionele parameters",
   "stepCustomParamsDesc": "Hieronder kunt je optionele parameters toevoegen, welke worden toegevoegd aan het einde van het {filename} bestand. Als je niet weet wat dit is, klik op volgende.",

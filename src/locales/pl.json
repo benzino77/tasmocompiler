@@ -77,6 +77,7 @@
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
+  "stepFeaturesMatterDesc": "Protokół Matter",
 
   "stepCustomParamsTitle": "Parametry użytkownika",
   "stepCustomParamsDesc": "Poniżej możesz wpisać własne parametry, które zostaną dodane na koniec pliku {filename}. Jeśli nie wiesz co to jest, po prostu kliknij NASTĘPNY.",
