@@ -226,67 +226,6 @@ const availableBoards = [
       CAMERA_MODEL_AI_THINKER: true,
     },
   },
-  // esp32odroid-go
-  {
-    name: 'esp32odroid-go',
-    chip_type: 'esp32',
-    description: 'Odroid-Go',
-    default: false,
-    show: true,
-    platformio_entries: {
-      extends: 'env:tasmota32-lvgl',
-      'board_build.f_cpu': '240000000L',
-      board: 'esp32-fix',
-      // eslint-disable-next-line
-      lib_extra_dirs: ['${env:tasmota32-lvgl.lib_extra_dirs}'],
-    },
-    platformio_env_name: 'tasmota32-odroidgo',
-    tooltip: '',
-    include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C'],
-    exclude_features: [],
-    defines: {
-      USE_DISPLAY: true,
-      ARDUINO_ODROID_ESP32: true,
-    },
-  },
-  // esp32m5
-  {
-    name: 'esp32m5',
-    chip_type: 'esp32',
-    description: 'M5Stack Core2',
-    default: false,
-    show: true,
-    platformio_entries: {
-      extends: 'env:tasmota32-lvgl',
-      'board_build.flash_mode': 'qio',
-      'board_build.f_cpu': '240000000L',
-      'board_build.f_flash': '80000000L',
-      // eslint-disable-next-line
-      build_flags: '${env:tasmota32-lvgl.build_flags}',
-      lib_extra_dirs: [
-        'lib/libesp32',
-        'lib/libesp32_lvgl',
-        'lib/lib_basic',
-        'lib/lib_i2c',
-        'lib/lib_rf',
-        'lib/lib_div',
-        'lib/lib_ssl',
-        'lib/lib_display',
-        'lib/lib_audio',
-      ],
-    },
-    platformio_env_name: 'tasmota32-core2',
-    tooltip: '',
-    include_features: ['berry', 'ufilesys', 'rules', 'USE_I2C'],
-    exclude_features: [],
-    defines: {
-      USE_DISPLAY: true,
-      USE_I2S_SAY_TIME: true, // another new name for this feature
-      USE_I2S_WEBRADIO: true, // new changed name
-      USE_SENDMAIL: true,
-      USE_ESP32MAIL: true,
-    },
-  },
   // solo1
   {
     name: 'esp32solo1',
