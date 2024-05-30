@@ -78,6 +78,8 @@
   "stepFeaturesSPIDesc": "Podpora SPI",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
   "stepFeaturesMatterDesc": "Matter protocol",
+  "stepFeaturesLvglDesc": "LVGL",
+  "stepFeaturesLvglTooltip": "Light and Versatile Embedded Graphics Library",
 
   "stepCustomParamsTitle": "Vlastní parametry",
   "stepCustomParamsDesc": "Níže můžete zadat vlastní parametry, které budou zahrnuty na konec souboru {filename}. Pokud nevíte, o co se jedná, stačí kliknout na Další.",

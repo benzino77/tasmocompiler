@@ -78,6 +78,8 @@
   "stepFeaturesSPIDesc": "SPI Unterstützung",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
   "stepFeaturesMatterDesc": "Matter protocol",
+  "stepFeaturesLvglDesc": "LVGL",
+  "stepFeaturesLvglTooltip": "Light and Versatile Embedded Graphics Library",
 
   "stepCustomParamsTitle": "Zusätzliche Parameter",
   "stepCustomParamsDesc": "Unterhalb kannst du individuelle Parameter eintragen, die am Ende der {filename} eingefügt werden. Wenn du nicht weisst, was das ist, klicke einfach Weiter.",

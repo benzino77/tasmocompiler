@@ -78,6 +78,8 @@
   "stepFeaturesSPIDesc": "SPI támogatás",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
   "stepFeaturesMatterDesc": "Matter protocol",
+  "stepFeaturesLvglDesc": "LVGL",
+  "stepFeaturesLvglTooltip": "Light and Versatile Embedded Graphics Library",
 
   "stepCustomParamsTitle": "Egyéni paraméterek",
   "stepCustomParamsDesc": "Az alábbiakban megadhat egyéni paramétereket, amelyek a {filename} fájl végén lesznek. Ha nem tudja, mi ez, kattintson a Tovább gombra.",
