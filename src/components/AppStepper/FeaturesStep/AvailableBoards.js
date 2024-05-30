@@ -238,6 +238,7 @@ const availableBoards = [
       board: 'esp32_solo1',
       // eslint-disable-next-line
       lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
+      // eslint-disable-next-line
       lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP', 'epdiy'],
     },
     platformio_env_name: 'tasmota32solo1',
@@ -329,6 +330,7 @@ const availableBoards = [
       build_flags: '${env:tasmota32_base.build_flags}',
       // eslint-disable-next-line
       lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
+      // eslint-disable-next-line
       lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'epdiy', 'Micro-RTSP'],
     },
     platformio_env_name: 'tasmota32s2',
@@ -351,6 +353,7 @@ const availableBoards = [
       build_flags: '${env:tasmota32_base.build_flags}',
       // eslint-disable-next-line
       lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
+      // eslint-disable-next-line
       lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP', 'epdiy'],
     },
     platformio_env_name: 'tasmota32s3',
