@@ -60,7 +60,6 @@ const availableFeatures = [
     description: 'stepFeaturesDisplaysDesc',
     tooltip: 'stepFeaturesDisplaysTooltip',
     group: [
-      'USE_DISPLAY',
       'USE_DISPLAY_TM1637',
       'USE_DISPLAY_MAX7219',
       'USE_DISPLAY_MODES1TO5',
@@ -71,11 +70,9 @@ const availableFeatures = [
       'USE_DISPLAY_EPAPER_42',
       'USE_DISPLAY_RA8876',
       'USE_DISPLAY_SEVENSEG',
-      'USE_UNIVERSAL_DISPLAY',
-      'USE_UNIVERSAL_TOUCH',
-      'USE_TASMOTA_DISCOVERY',
     ],
-    include: ['USE_SPI', 'USE_I2C'],
+    include: ['USE_SPI', 'USE_I2C', 'common_displays'],
+    exclude: ['lvgl'],
     custom:
       '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
       '#define MTX_ADDRESS2     0x74              // [DisplayAddress2] I2C address of second 8x8 matrix module\n' +
