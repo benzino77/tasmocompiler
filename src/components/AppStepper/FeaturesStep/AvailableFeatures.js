@@ -45,13 +45,14 @@ const availableFeatures = [
     custom: '',
     boards: ['all'],
   },
-  // {
-  //   name: 'USE_DISPLAY',
-  //   value: false,
-  //   show: false,
-  //   description: '',
-  //   boards: ['all'],
-  // },
+  {
+    name: 'common_displays',
+    value: false,
+    show: false,
+    group: ['USE_DISPLAY', 'USE_UNIVERSAL_DISPLAY', 'USE_UNIVERSAL_TOUCH', 'USE_TASMOTA_DISCOVERY'],
+    description: '',
+    boards: ['all'],
+  },
   {
     name: 'displays',
     value: false,
