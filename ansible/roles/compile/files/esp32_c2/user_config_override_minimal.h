@@ -4,7 +4,7 @@
 #ifdef CODE_IMAGE_STR
   #undef CODE_IMAGE_STR
 #endif
-#define CODE_IMAGE_STR "TasmoCompiler-esp32m5"
+#define CODE_IMAGE_STR "TasmoCompiler-esp32c2"
 
 #ifdef USE_ENERGY_SENSOR
   #undef USE_ENERGY_SENSOR
@@ -44,6 +44,10 @@
 
 #ifdef USE_SPS30
   #undef USE_SPS30
+#endif
+
+#ifdef USE_SGP4X
+  #undef USE_SGP4X
 #endif
 
 #ifdef USE_SEN5X
@@ -110,6 +114,66 @@
 
 #ifdef USE_ADC_VCC
   #undef USE_ADC_VCC
+#endif
+
+#ifdef USE_DISPLAY
+  #undef USE_DISPLAY
+#endif
+
+#ifdef USE_DISPLAY_MODES1TO5
+  #undef USE_DISPLAY_MODES1TO5
+#endif
+
+#ifdef USE_DISPLAY_LCD
+  #undef USE_DISPLAY_LCD
+#endif
+
+#ifdef USE_DISPLAY_SSD1306
+  #undef USE_DISPLAY_SSD1306
+#endif
+
+#ifdef USE_DISPLAY_MATRIX
+  #undef USE_DISPLAY_MATRIX
+#endif
+
+#ifdef USE_DISPLAY_ILI9341
+  #undef USE_DISPLAY_ILI9341
+#endif
+
+#ifdef USE_DISPLAY_EPAPER_29
+  #undef USE_DISPLAY_EPAPER_29
+#endif
+
+#ifdef USE_DISPLAY_EPAPER_42
+  #undef USE_DISPLAY_EPAPER_42
+#endif
+
+#ifdef USE_DISPLAY_SH1106
+  #undef USE_DISPLAY_SH1106
+#endif
+
+#ifdef USE_DISPLAY_ILI9488
+  #undef USE_DISPLAY_ILI9488
+#endif
+
+#ifdef USE_DISPLAY_SSD1351
+  #undef USE_DISPLAY_SSD1351
+#endif
+
+#ifdef USE_DISPLAY_RA8876
+  #undef USE_DISPLAY_RA8876
+#endif
+
+#ifdef USE_DISPLAY_SEVENSEG
+  #undef USE_DISPLAY_SEVENSEG
+#endif
+
+#ifdef USE_DISPLAY_ST7789
+  #undef USE_DISPLAY_ST7789
+#endif
+
+#ifdef USE_DISPLAY_SSD1331
+  #undef USE_DISPLAY_SSD1331
 #endif
 
 #ifdef USE_SR04
@@ -215,7 +279,6 @@
 #ifdef USE_I2C
   #undef USE_I2C
 #endif
-#define USE_I2C
 
 #ifdef USE_MCP230xx
   #undef USE_MCP230xx
@@ -260,7 +323,6 @@
 #ifdef USE_APDS9960
   #undef USE_APDS9960
 #endif
-#define USE_APDS9960
 
 #ifdef USE_VEML6075
   #undef USE_VEML6075
@@ -286,12 +348,12 @@
   #undef USE_DISCOVERY
 #endif
 
-#ifdef USE_MODBUSBRIDGE
-  #undef USE_MODBUSBRIDGE
+#ifdef USE_MODBUS_BRIDGE
+  #undef USE_MODBUS_BRIDGE
 #endif
 
-#ifdef USE_MODBUSBRIDGE_TCP
-  #undef USE_MODBUSBRIDGE_TCP
+#ifdef USE_MODBUS_BRIDGE_TCP
+  #undef USE_MODBUS_BRIDGE_TCP
 #endif
 
 #ifdef USE_MQTT_TLS
@@ -353,107 +415,90 @@
 #ifdef USE_SONOFF_SC
   #undef USE_SONOFF_SC
 #endif
-#define USE_SONOFF_SC
 
 #ifdef USE_DS18x20
   #undef USE_DS18x20
 #endif
-#define USE_DS18x20
 
 #ifdef USE_DHT
   #undef USE_DHT
 #endif
-#define USE_DHT
 
 #ifdef USE_SHT
   #undef USE_SHT
 #endif
-#define USE_SHT
 
 #ifdef USE_HTU
   #undef USE_HTU
 #endif
-#define USE_HTU
 
 #ifdef USE_BMP
   #undef USE_BMP
 #endif
-#define USE_BMP
 
 #ifdef USE_SHT3X
   #undef USE_SHT3X
 #endif
-#define USE_SHT3X
 
 #ifdef USE_LM75AD
   #undef USE_LM75AD
 #endif
-#define USE_LM75AD
 
 #ifdef USE_AZ7798
   #undef USE_AZ7798
 #endif
-#define USE_AZ7798
 
 #ifdef USE_MAX31855
   #undef USE_MAX31855
 #endif
-#define USE_MAX31855
 
 #ifdef USE_MLX90614
   #undef USE_MLX90614
 #endif
-#define USE_MLX90614
 
 #ifdef USE_MAX31865
   #undef USE_MAX31865
 #endif
-#define USE_MAX31865
 
 #ifdef USE_HIH6
   #undef USE_HIH6
 #endif
-#define USE_HIH6
 
 #ifdef USE_DHT12
   #undef USE_DHT12
 #endif
-#define USE_DHT12
 
 #ifdef USE_DS1624
   #undef USE_DS1624
 #endif
-#define USE_DS1624
 
 #ifdef USE_AHT1x
   #undef USE_AHT1x
 #endif
-#define USE_AHT1x
 
 #ifdef USE_HDC1080
   #undef USE_HDC1080
 #endif
-#define USE_HDC1080
 
 #ifdef USE_MCP9808
   #undef USE_MCP9808
 #endif
-#define USE_MCP9808
 
 #ifdef USE_HP303B
   #undef USE_HP303B
 #endif
-#define USE_HP303B
 
 #ifdef USE_LMT01
   #undef USE_LMT01
 #endif
-#define USE_LMT01
 
 #ifdef USE_AM2320
   #undef USE_AM2320
 #endif
-#define USE_AM2320
+
+#ifdef USE_BME68X
+  #undef USE_BME68X
+#endif
 
 #ifdef USE_TIMERS
   #undef USE_TIMERS
@@ -476,31 +521,6 @@
 #ifdef USE_ZIGBEE
   #undef USE_ZIGBEE
 #endif
-
-#ifdef USE_DISPLAY
-  #undef USE_DISPLAY
-#endif
-#define USE_DISPLAY
-
-#ifdef USE_I2S_SAY_TIME
-  #undef USE_I2S_SAY_TIME
-#endif
-#define USE_I2S_SAY_TIME
-
-#ifdef USE_I2S_WEBRADIO
-  #undef USE_I2S_WEBRADIO
-#endif
-#define USE_I2S_WEBRADIO
-
-#ifdef USE_SENDMAIL
-  #undef USE_SENDMAIL
-#endif
-#define USE_SENDMAIL
-
-#ifdef USE_ESP32MAIL
-  #undef USE_ESP32MAIL
-#endif
-#define USE_ESP32MAIL
 
 #ifdef MY_LANGUAGE
   #undef MY_LANGUAGE

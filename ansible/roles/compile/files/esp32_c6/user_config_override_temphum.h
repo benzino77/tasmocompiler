@@ -4,7 +4,7 @@
 #ifdef CODE_IMAGE_STR
   #undef CODE_IMAGE_STR
 #endif
-#define CODE_IMAGE_STR "TasmoCompiler-esp32odroid-go"
+#define CODE_IMAGE_STR "TasmoCompiler-esp32c6"
 
 #ifdef USE_ENERGY_SENSOR
   #undef USE_ENERGY_SENSOR
@@ -44,6 +44,10 @@
 
 #ifdef USE_SPS30
   #undef USE_SPS30
+#endif
+
+#ifdef USE_SGP4X
+  #undef USE_SGP4X
 #endif
 
 #ifdef USE_SEN5X
@@ -99,14 +103,6 @@
   #undef USE_BERRY_PSRAM
 #endif
 #define USE_BERRY_PSRAM
-
-#ifdef USE_BLE_ESP32
-  #undef USE_BLE_ESP32
-#endif
-
-#ifdef USE_MI_ESP32
-  #undef USE_MI_ESP32
-#endif
 
 #ifdef USE_ADC_VCC
   #undef USE_ADC_VCC
@@ -260,6 +256,7 @@
 #ifdef USE_APDS9960
   #undef USE_APDS9960
 #endif
+#define USE_APDS9960
 
 #ifdef USE_VEML6075
   #undef USE_VEML6075
@@ -285,12 +282,12 @@
   #undef USE_DISCOVERY
 #endif
 
-#ifdef USE_MODBUSBRIDGE
-  #undef USE_MODBUSBRIDGE
+#ifdef USE_MODBUS_BRIDGE
+  #undef USE_MODBUS_BRIDGE
 #endif
 
-#ifdef USE_MODBUSBRIDGE_TCP
-  #undef USE_MODBUSBRIDGE_TCP
+#ifdef USE_MODBUS_BRIDGE_TCP
+  #undef USE_MODBUS_BRIDGE_TCP
 #endif
 
 #ifdef USE_MQTT_TLS
@@ -352,86 +349,112 @@
 #ifdef USE_SONOFF_SC
   #undef USE_SONOFF_SC
 #endif
+#define USE_SONOFF_SC
 
 #ifdef USE_DS18x20
   #undef USE_DS18x20
 #endif
+#define USE_DS18x20
 
 #ifdef USE_DHT
   #undef USE_DHT
 #endif
+#define USE_DHT
 
 #ifdef USE_SHT
   #undef USE_SHT
 #endif
+#define USE_SHT
 
 #ifdef USE_HTU
   #undef USE_HTU
 #endif
+#define USE_HTU
 
 #ifdef USE_BMP
   #undef USE_BMP
 #endif
+#define USE_BMP
 
 #ifdef USE_SHT3X
   #undef USE_SHT3X
 #endif
+#define USE_SHT3X
 
 #ifdef USE_LM75AD
   #undef USE_LM75AD
 #endif
+#define USE_LM75AD
 
 #ifdef USE_AZ7798
   #undef USE_AZ7798
 #endif
+#define USE_AZ7798
 
 #ifdef USE_MAX31855
   #undef USE_MAX31855
 #endif
+#define USE_MAX31855
 
 #ifdef USE_MLX90614
   #undef USE_MLX90614
 #endif
+#define USE_MLX90614
 
 #ifdef USE_MAX31865
   #undef USE_MAX31865
 #endif
+#define USE_MAX31865
 
 #ifdef USE_HIH6
   #undef USE_HIH6
 #endif
+#define USE_HIH6
 
 #ifdef USE_DHT12
   #undef USE_DHT12
 #endif
+#define USE_DHT12
 
 #ifdef USE_DS1624
   #undef USE_DS1624
 #endif
+#define USE_DS1624
 
 #ifdef USE_AHT1x
   #undef USE_AHT1x
 #endif
+#define USE_AHT1x
 
 #ifdef USE_HDC1080
   #undef USE_HDC1080
 #endif
+#define USE_HDC1080
 
 #ifdef USE_MCP9808
   #undef USE_MCP9808
 #endif
+#define USE_MCP9808
 
 #ifdef USE_HP303B
   #undef USE_HP303B
 #endif
+#define USE_HP303B
 
 #ifdef USE_LMT01
   #undef USE_LMT01
 #endif
+#define USE_LMT01
 
 #ifdef USE_AM2320
   #undef USE_AM2320
 #endif
+#define USE_AM2320
+
+#ifdef USE_BME68X
+  #undef USE_BME68X
+#endif
+#define USE_BME68X
 
 #ifdef USE_TIMERS
   #undef USE_TIMERS
@@ -450,20 +473,6 @@
 #ifdef USE_WS2812
   #undef USE_WS2812
 #endif
-
-#ifdef USE_ZIGBEE
-  #undef USE_ZIGBEE
-#endif
-
-#ifdef USE_DISPLAY
-  #undef USE_DISPLAY
-#endif
-#define USE_DISPLAY
-
-#ifdef ARDUINO_ODROID_ESP32
-  #undef ARDUINO_ODROID_ESP32
-#endif
-#define ARDUINO_ODROID_ESP32
 
 #ifdef MY_LANGUAGE
   #undef MY_LANGUAGE

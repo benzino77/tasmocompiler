@@ -77,6 +77,9 @@
   "stepFeaturesI2CDesc": "I2C support",
   "stepFeaturesSPIDesc": "SPI support",
   "stepFeaturesModbusBridgeDesc": "Modbus Bridge",
+  "stepFeaturesMatterDesc": "Matter protocol",
+  "stepFeaturesLvglDesc": "LVGL",
+  "stepFeaturesLvglTooltip": "Light and Versatile Embedded Graphics Library",
 
   "stepCustomParamsTitle": "Custom parameters",
   "stepCustomParamsDesc": "Below you can enter custom parameters, which will be included at the end of {filename} file. If you don't know what it is, just click Next.",

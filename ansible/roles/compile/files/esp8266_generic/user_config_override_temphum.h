@@ -340,6 +340,11 @@
 #endif
 #define USE_AM2320
 
+#ifdef USE_BME68X
+  #undef USE_BME68X
+#endif
+#define USE_BME68X
+
 #ifdef USE_BH1750
   #undef USE_BH1750
 #endif

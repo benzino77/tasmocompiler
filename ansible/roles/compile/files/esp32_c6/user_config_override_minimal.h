@@ -4,7 +4,7 @@
 #ifdef CODE_IMAGE_STR
   #undef CODE_IMAGE_STR
 #endif
-#define CODE_IMAGE_STR "TasmoCompiler-esp32m5"
+#define CODE_IMAGE_STR "TasmoCompiler-esp32c6"
 
 #ifdef USE_ENERGY_SENSOR
   #undef USE_ENERGY_SENSOR
@@ -44,6 +44,10 @@
 
 #ifdef USE_SPS30
   #undef USE_SPS30
+#endif
+
+#ifdef USE_SGP4X
+  #undef USE_SGP4X
 #endif
 
 #ifdef USE_SEN5X
@@ -99,14 +103,6 @@
   #undef USE_BERRY_PSRAM
 #endif
 #define USE_BERRY_PSRAM
-
-#ifdef USE_BLE_ESP32
-  #undef USE_BLE_ESP32
-#endif
-
-#ifdef USE_MI_ESP32
-  #undef USE_MI_ESP32
-#endif
 
 #ifdef USE_ADC_VCC
   #undef USE_ADC_VCC
@@ -215,7 +211,6 @@
 #ifdef USE_I2C
   #undef USE_I2C
 #endif
-#define USE_I2C
 
 #ifdef USE_MCP230xx
   #undef USE_MCP230xx
@@ -285,12 +280,12 @@
   #undef USE_DISCOVERY
 #endif
 
-#ifdef USE_MODBUSBRIDGE
-  #undef USE_MODBUSBRIDGE
+#ifdef USE_MODBUS_BRIDGE
+  #undef USE_MODBUS_BRIDGE
 #endif
 
-#ifdef USE_MODBUSBRIDGE_TCP
-  #undef USE_MODBUSBRIDGE_TCP
+#ifdef USE_MODBUS_BRIDGE_TCP
+  #undef USE_MODBUS_BRIDGE_TCP
 #endif
 
 #ifdef USE_MQTT_TLS
@@ -433,6 +428,10 @@
   #undef USE_AM2320
 #endif
 
+#ifdef USE_BME68X
+  #undef USE_BME68X
+#endif
+
 #ifdef USE_TIMERS
   #undef USE_TIMERS
 #endif
@@ -450,35 +449,6 @@
 #ifdef USE_WS2812
   #undef USE_WS2812
 #endif
-
-#ifdef USE_ZIGBEE
-  #undef USE_ZIGBEE
-#endif
-
-#ifdef USE_DISPLAY
-  #undef USE_DISPLAY
-#endif
-#define USE_DISPLAY
-
-#ifdef USE_I2S_SAY_TIME
-  #undef USE_I2S_SAY_TIME
-#endif
-#define USE_I2S_SAY_TIME
-
-#ifdef USE_I2S_WEBRADIO
-  #undef USE_I2S_WEBRADIO
-#endif
-#define USE_I2S_WEBRADIO
-
-#ifdef USE_SENDMAIL
-  #undef USE_SENDMAIL
-#endif
-#define USE_SENDMAIL
-
-#ifdef USE_ESP32MAIL
-  #undef USE_ESP32MAIL
-#endif
-#define USE_ESP32MAIL
 
 #ifdef MY_LANGUAGE
   #undef MY_LANGUAGE
