@@ -77,7 +77,7 @@
   "stepFeaturesI2CDesc": "Supporto I2C",
   "stepFeaturesSPIDesc": "Supporto SPI",
   "stepFeaturesModbusBridgeDesc": "Bridge Modbus",
-  "stepFeaturesMatterDesc": "Matter protocol",
+  "stepFeaturesMatterDesc": "Protocollo Matter",
   "stepFeaturesLvglDesc": "LVGL",
   "stepFeaturesLvglTooltip": "Light and Versatile Embedded Graphics Library",
 
