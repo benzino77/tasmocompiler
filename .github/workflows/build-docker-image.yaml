@@ -31,29 +31,67 @@ jobs:
         run: docker buildx create --name mybuilder --use
         if: runner.os == 'Linux'
 
+      # Login Docker Hub registry
+      # https://github.com/docker/login-action
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      # Login Github registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ghcr.io
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract version from package.json
         if: ${{ github.event.inputs.branch == 'master' }}
         run: echo "DOCKER_TAG=$(jq -r '.version' package.json)" >> $GITHUB_ENV
 
-      - name: Build and push production Docker image
+      # Extract metadata (tags, labels)
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata (master)
         if: ${{ github.event.inputs.branch == 'master' }}
-        run: |
-          docker buildx build \
-            --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            -t benzino77/tasmocompiler:$DOCKER_TAG \
-            -t benzino77/tasmocompiler:latest \
-            -f Dockerfile --push .
-
-      - name: Build and push development Docker image
+        id: meta_m
+        uses: docker/metadata-action@v5
+        with:
+          tags: |
+            type=raw,value=latest
+            type=raw,value=${{ env.DOCKER_TAG }}
+          images: |
+            ${{ github.repository }}
+            ghcr.io/${{ github.repository }}
+      - name: Extract Docker metadata (development)
         if: ${{ github.event.inputs.branch == 'development' }}
-        run: |
-          docker buildx build \
-            --platform linux/amd64,linux/arm64,linux/arm/v7 \
-            -t benzino77/tasmocompiler:development \
-            -f Dockerfile --push .
+        id: meta_d
+        uses: docker/metadata-action@v5
+        with:
+          tags: |
+            type=raw,value=development
+          images: |
+            ${{ github.repository }}
+            ghcr.io/${{ github.repository }}
+
+      # Build and push Docker image with Buildx
+      # https://github.com/docker/build-push-action
+      - name: Build and push production Docker image (master)
+        if: ${{ github.event.inputs.branch == 'master' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          tags: ${{ steps.meta_m.outputs.tags }}
+          labels: ${{ steps.meta_m.outputs.labels }}
+      - name: Build and push production Docker image (development)
+        if: ${{ github.event.inputs.branch == 'development' }}
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          push: true
+          tags: ${{ steps.meta_d.outputs.tags }}
+          labels: ${{ steps.meta_d.outputs.labels }}
