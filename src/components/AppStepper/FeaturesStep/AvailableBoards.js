@@ -263,6 +263,8 @@ const availableBoards = [
       build_flags:
         // eslint-disable-next-line
         '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota32c2',
     tooltip: '',

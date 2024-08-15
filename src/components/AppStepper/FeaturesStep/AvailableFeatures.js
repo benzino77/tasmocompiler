@@ -49,7 +49,7 @@ const availableFeatures = [
     name: 'common_displays',
     value: false,
     show: false,
-    group: ['USE_DISPLAY', 'USE_UNIVERSAL_DISPLAY', 'USE_UNIVERSAL_TOUCH', 'USE_TASMOTA_DISCOVERY'],
+    group: ['USE_DISPLAY', 'USE_UNIVERSAL_DISPLAY', 'USE_UNIVERSAL_TOUCH'],
     description: '',
     boards: ['all'],
   },
