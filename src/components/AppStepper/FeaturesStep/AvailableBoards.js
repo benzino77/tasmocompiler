@@ -213,6 +213,7 @@ const availableBoards = [
       build_flags: '${env:tasmota32_base.build_flags}',
       board: 'esp32-fix',
       // use the same lib_extra_dirs as base - this will cause webcam to be less "special"
+      // eslint-disable-next-line
       lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota32-webcam',
