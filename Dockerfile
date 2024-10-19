@@ -1,4 +1,4 @@
-FROM node:14-buster-slim
+FROM node:16-buster-slim
 LABEL maintainer="Piotr Antczak <antczak.piotr@gmail.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 git python3-setuptools && \
