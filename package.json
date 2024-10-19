@@ -20,8 +20,8 @@
     "semver": "^7.3.5",
     "shelljs": "^0.8.3",
     "simple-git": "^1.110.0",
-    "socket.io": "^4.7.1",
-    "socket.io-client": "^4.7.1"
+    "socket.io": "^4.8.0",
+    "socket.io-client": "^4.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
