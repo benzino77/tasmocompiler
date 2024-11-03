@@ -237,7 +237,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
-      board: 'esp32_solo1',
+      board: 'esp32-solo1',
       // eslint-disable-next-line
       lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
       // eslint-disable-next-line
