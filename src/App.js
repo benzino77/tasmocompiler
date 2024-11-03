@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme, makeStyles, withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import io from 'socket.io-client';
 import { IntlProvider } from 'react-intl';
@@ -34,6 +34,12 @@ Object.keys(allMessages).some((l) => {
 
 console.log(`TasmoCompiler GUI language set to ${tcGUILanguage}`);
 
+const theme = createTheme();
+const useStyles = makeStyles((theme) => {
+  // root: {
+  //   // some CSS that accesses the theme
+  // }
+});
 class App extends Component {
   constructor(props) {
     super(props);
@@ -101,15 +107,7 @@ class App extends Component {
         ...data,
       },
       () => {
-        const {
-          compiling,
-          showMessageBox,
-          message,
-          activeStep,
-          tags,
-          compileMessages,
-          ...postData
-        } = this.state;
+        const { compiling, showMessageBox, message, activeStep, tags, compileMessages, ...postData } = this.state;
 
         fetch(uri, {
           method: 'POST',
@@ -135,14 +133,10 @@ class App extends Component {
 
   changeLanguage = (lang) => {
     tasmotaGUILanguages.sort((a, b) => {
-      return allMessages[lang]['source'][a.name].localeCompare(
-        allMessages[lang]['source'][b.name]
-      );
+      return allMessages[lang]['source'][a.name].localeCompare(allMessages[lang]['source'][b.name]);
     });
     availableFeatures.sort((a, b) => {
-      return allMessages[lang]['source'][a.description].localeCompare(
-        allMessages[lang]['source'][b.description]
-      );
+      return allMessages[lang]['source'][a.description].localeCompare(allMessages[lang]['source'][b.description]);
     });
     this.setState({ tcGUILanguage: lang });
   };
@@ -150,16 +144,8 @@ class App extends Component {
   render() {
     const { classes } = this.props;
 
-    const {
-      activeStep,
-      tags,
-      compiling,
-      showMessageBox,
-      showDownloadLinks,
-      compileMessages,
-      tcGUILanguage,
-      ...other
-    } = this.state;
+    const { activeStep, tags, compiling, showMessageBox, showDownloadLinks, compileMessages, tcGUILanguage, ...other } =
+      this.state;
 
     const bnHandlersProps = {
       backHandler: this.handleBack,
@@ -167,26 +153,14 @@ class App extends Component {
     };
 
     return (
-      <IntlProvider
-        locale={tcGUILanguage}
-        messages={allMessages[tcGUILanguage]['source']}
-      >
+      <IntlProvider locale={tcGUILanguage} messages={allMessages[tcGUILanguage]['source']}>
         <div className={classes.root}>
-          <TopAppBar
-            {...this.props}
-            locale={tcGUILanguage}
-            changeLanguage={this.changeLanguage}
-          />
-          <Stepper activeStep={activeStep} orientation="vertical">
+          <TopAppBar {...this.props} locale={tcGUILanguage} changeLanguage={this.changeLanguage} />
+          <Stepper activeStep={activeStep} orientation='vertical'>
             <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
             <WifiStep {...this.props} {...bnHandlersProps} key={2} />
             <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
-            <CustomParametersStep
-              {...this.props}
-              {...bnHandlersProps}
-              pstate={other}
-              key={4}
-            />
+            <CustomParametersStep {...this.props} {...bnHandlersProps} pstate={other} key={4} />
             <VersionStep
               {...this.props}
               repoTags={tags}
@@ -196,12 +170,8 @@ class App extends Component {
               key={5}
             />
           </Stepper>
-          {showMessageBox && (
-            <MessageBox {...this.props} compileMessages={compileMessages} />
-          )}
-          {showDownloadLinks && (
-            <DownloadLinks {...this.props} features={other.features} />
-          )}
+          {showMessageBox && <MessageBox {...this.props} compileMessages={compileMessages} />}
+          {showDownloadLinks && <DownloadLinks {...this.props} features={other.features} />}
         </div>
       </IntlProvider>
     );
