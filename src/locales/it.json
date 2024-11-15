@@ -51,7 +51,7 @@
   "stepFeaturesIRFullTooltip": "Supporto completo infrarossi",
   "stepFeaturesMDNSDesc": "Discovery mDNS",
   "stepFeaturesMQTTTLSDesc": "MQTT su TLS",
-  "stepFeaturesMQTTTLSTooltip": "Questa funzionè è disponibile solo con la versione Tasmota 6.6.0.9 o successive.",
+  "stepFeaturesMQTTTLSTooltip": "Questa funzione è disponibile solo con la versione Tasmota 6.6.0.9 o successive.",
   "stepFeaturesRFTransceiverDesc": "Ricevitore RF",
   "stepFeaturesRFTransceiverTooltip": "Supporto per ricevitore RF usando la libreria RcSwitch",
   "stepFeaturesRulesDesc": "Regole",
