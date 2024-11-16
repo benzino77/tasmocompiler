@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import { FormattedMessage } from 'react-intl';
 
 class DownloadLinks extends Component {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Typography from '@material-ui/core/Typography';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
 import { FormattedMessage } from 'react-intl';
 
 import NextButton from './NextButton';
@@ -81,56 +81,39 @@ class SourceStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel error={message.length > 0 && other.active} classes={{label: classes.stepLabel}}>
-          <FormattedMessage id="stepSourceTitle" />
+        <StepLabel error={message.length > 0 && other.active} classes={{ label: classes.stepLabel }}>
+          <FormattedMessage id='stepSourceTitle' />
         </StepLabel>
         <StepContent>
           {isRepo ? (
             <Typography>
-              <FormattedMessage id="stepSourceDescRefresh" />
+              <FormattedMessage id='stepSourceDescRefresh' />
             </Typography>
           ) : (
             <Typography>
-              <FormattedMessage id="stepSourceDescDownload" />
+              <FormattedMessage id='stepSourceDescDownload' />
             </Typography>
           )}
           <div className={classes.actionsContainer}>
             <div className={classes.wrapper}>
               <Button
                 disabled={cloning || gettingTags}
-                variant="contained"
-                color="primary"
+                variant='contained'
+                color='primary'
                 onClick={this.handleClonePull}
                 // className={classes.button}
               >
-                {isRepo ? (
-                  <FormattedMessage id="btnRefreshSrc" />
-                ) : (
-                  <FormattedMessage id="btnDownloadSrc" />
-                )}
+                {isRepo ? <FormattedMessage id='btnRefreshSrc' /> : <FormattedMessage id='btnDownloadSrc' />}
               </Button>
-              {cloning && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
+              {cloning && <CircularProgress size={24} className={classes.buttonProgress} />}
             </div>
             <div className={classes.wrapper}>
-              <NextButton
-                disabled={!isRepo || cloning || gettingTags}
-                onClick={this.handleNext}
-              />
-              {gettingTags && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
+              <NextButton disabled={!isRepo || cloning || gettingTags} onClick={this.handleNext} />
+              {gettingTags && <CircularProgress size={24} className={classes.buttonProgress} />}
             </div>
           </div>
           {message && (
-            <Typography color="error" variant="subtitle1">
+            <Typography color='error' variant='subtitle1'>
               Error:
               {message}
             </Typography>

@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Typography from '@material-ui/core/Typography';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Typography from '@mui/material/Typography';
 
 import NextButton from './NextButton';
 import ClearButton from './ClearButton';
 import BackButton from './BackButton';
 import TextFieldComponent from './TextFieldComponent';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { FormattedMessage } from 'react-intl';
 
 class WifiStep extends Component {
@@ -30,13 +30,13 @@ class WifiStep extends Component {
       showPassword: false,
       staticIPEnabled: false,
     };
- 
-    if (localStorage.getItem("network") !== null) {
-      this.state = JSON.parse(window.localStorage.getItem("network"));
+
+    if (localStorage.getItem('network') !== null) {
+      this.state = JSON.parse(window.localStorage.getItem('network'));
       // do not show password per default, ever
       this.state.showPassword = false;
     }
-  
+
     this.handleChange = this.handleChange.bind(this);
     this.handleChangeCheckBox = this.handleChangeCheckBox.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -71,7 +71,7 @@ class WifiStep extends Component {
 
   handleNext() {
     const { nextHandler } = this.props;
-    window.localStorage.setItem("network", JSON.stringify(this.state))
+    window.localStorage.setItem('network', JSON.stringify(this.state));
 
     nextHandler({ network: this.state });
   }
@@ -86,7 +86,7 @@ class WifiStep extends Component {
       showPassword: false,
       staticIPEnabled: false,
     });
-    window.localStorage.removeItem("network");
+    window.localStorage.removeItem('network');
   }
   handleBack() {
     const { backHandler } = this.props;
@@ -109,34 +109,34 @@ class WifiStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel classes={{label: classes.stepLabel}}>
-          <FormattedMessage id="stepWifiConfTitle" />
+        <StepLabel classes={{ label: classes.stepLabel }}>
+          <FormattedMessage id='stepWifiConfTitle' />
         </StepLabel>
         <StepContent>
           <Typography>
-            <FormattedMessage id="stepWifiConfDesc" />
+            <FormattedMessage id='stepWifiConfDesc' />
           </Typography>
-          <form noValidate autoComplete="off">
+          <form noValidate autoComplete='off'>
             <div className={classes.actionsContainer}>
               <TextFieldComponent
-                name="STA_SSID1"
-                label={<FormattedMessage id="stepWifiConfSSID" />}
+                name='STA_SSID1'
+                label={<FormattedMessage id='stepWifiConfSSID' />}
                 classes={classes}
                 value={STA_SSID1}
                 onChange={this.handleChange}
               />
               <TextFieldComponent
-                name="STA_PASS1"
-                label={<FormattedMessage id="stepWifiConfPassword" />}
+                name='STA_PASS1'
+                label={<FormattedMessage id='stepWifiConfPassword' />}
                 classes={classes}
                 type={showPassword ? 'text' : 'password'}
                 value={STA_PASS1}
                 onChange={this.handleChange}
                 inputProps={{
                   endAdornment: (
-                    <InputAdornment position="end">
+                    <InputAdornment position='end'>
                       <IconButton
-                        aria-label="toggle password visibility"
+                        aria-label='toggle password visibility'
                         onClick={this.handleClickShowPassword}
                         onMouseDown={this.handleMouseDownPassword}
                       >
@@ -152,41 +152,41 @@ class WifiStep extends Component {
                 control={
                   <Checkbox
                     checked={staticIPEnabled}
-                    name="staticIPEnabled"
+                    name='staticIPEnabled'
                     onChange={this.handleChangeCheckBox}
-                    value="staticIPEnabled"
+                    value='staticIPEnabled'
                   />
                 }
-                label={<FormattedMessage id="stepWifiConfStaticIP" />}
+                label={<FormattedMessage id='stepWifiConfStaticIP' />}
               />
             </div>
 
             {staticIPEnabled && (
               <div className={classes.actionsContainer}>
                 <TextFieldComponent
-                  name="WIFI_IP_ADDRESS"
-                  label={<FormattedMessage id="stepWifiConfIP" />}
+                  name='WIFI_IP_ADDRESS'
+                  label={<FormattedMessage id='stepWifiConfIP' />}
                   classes={classes}
                   value={WIFI_IP_ADDRESS}
                   onChange={this.handleChange}
                 />
                 <TextFieldComponent
-                  name="WIFI_SUBNETMASK"
-                  label={<FormattedMessage id="stepWifiConfMask" />}
+                  name='WIFI_SUBNETMASK'
+                  label={<FormattedMessage id='stepWifiConfMask' />}
                   classes={classes}
                   value={WIFI_SUBNETMASK}
                   onChange={this.handleChange}
                 />
                 <TextFieldComponent
-                  name="WIFI_GATEWAY"
-                  label={<FormattedMessage id="stepWifiConfGateway" />}
+                  name='WIFI_GATEWAY'
+                  label={<FormattedMessage id='stepWifiConfGateway' />}
                   classes={classes}
                   value={WIFI_GATEWAY}
                   onChange={this.handleChange}
                 />
                 <TextFieldComponent
-                  name="WIFI_DNS"
-                  label={<FormattedMessage id="stepWifiConfDNS" />}
+                  name='WIFI_DNS'
+                  label={<FormattedMessage id='stepWifiConfDNS' />}
                   classes={classes}
                   value={WIFI_DNS}
                   onChange={this.handleChange}
