@@ -1,4 +1,4 @@
-const git = require('simple-git/promise');
+const git = require('simple-git');
 const fs = require('fs-extra');
 const _ = require('lodash');
 const debug = require('debug')('git');
