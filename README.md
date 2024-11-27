@@ -37,7 +37,7 @@ The easiest way is to look at the screenshots (the whole process is five steps o
 
 The links to download these files will show up under _Compiling progress_ field (look at the bottom of the last screenshot). **These links will show up only when compilation is successful**.
 
-You have to upload only `firmware.bin` or `firmawre.bin.gz` file to your device. How to do that is perfeclty described on [Tasmota docs](https://tasmota.github.io/docs/Upgrading/).
+You have to upload only `firmware.bin` or `firmware.bin.gz` file to your device. How to do that is perfeclty described on [Tasmota docs](https://tasmota.github.io/docs/Upgrading/).
 
 ![Step01](./docs/images/step01.png)
 ![Step02](./docs/images/step02.png)
