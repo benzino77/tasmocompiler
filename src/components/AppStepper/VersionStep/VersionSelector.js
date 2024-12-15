@@ -1,21 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
 import { FormattedMessage } from 'react-intl';
 
 function VersionSelector(props) {
-  const {
-    name,
-    classes,
-    label,
-    value,
-    onChange,
-    items,
-    preselectedTasmotaGUILanguage,
-  } = props;
+  const { name, classes, label, value, onChange, items, preselectedTasmotaGUILanguage } = props;
 
   const inProps = {
     name,
@@ -23,43 +16,38 @@ function VersionSelector(props) {
   };
 
   return (
-    <FormControl
-      className={
-        name === 'MY_LANGUAGE'
-          ? classes.languageContainer
-          : classes.versionContainer
-      }
+    // <FormControl className={name === 'MY_LANGUAGE' ? classes.languageContainer : classes.versionContainer}>
+    // <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
+    //<Select value={value} onChange={onChange} inputProps={inProps}>
+    <TextField
+      value={value}
+      onChange={onChange}
+      inputProps={inProps}
+      label={label}
+      className={name === 'MY_LANGUAGE' ? classes.languageContainer : classes.versionContainer}
+      select
     >
-      <InputLabel htmlFor={inProps.id}>{label}</InputLabel>
-      <Select value={value} onChange={onChange} inputProps={inProps}>
-        {items.map((item) => (
-          <MenuItem key={item.name || item} value={item.value || item}>
-            {name !== 'MY_LANGUAGE' &&
-              (item === 'development' ? (
-                <FormattedMessage id="stepVersionDevelopment" />
-              ) : (
-                item
-              ))}
-            {name === 'MY_LANGUAGE' && (
-              <div className={classes.tasmotaLangSelector}>
-                <img className={classes.flagIcon} src={item.flag} alt="" />
-                <div className={classes.languageName}>
-                  <FormattedMessage id={item.name}>
-                    {(text) => {
-                      const suffix =
-                        preselectedTasmotaGUILanguage !== item.value
-                          ? ` / ${item.nativeName}`
-                          : '';
-                      return `${text}${suffix}`;
-                    }}
-                  </FormattedMessage>
-                </div>
+      {items.map((item) => (
+        <MenuItem key={item.name || item} value={item.value || item}>
+          {name !== 'MY_LANGUAGE' && (item === 'development' ? <FormattedMessage id='stepVersionDevelopment' /> : item)}
+          {name === 'MY_LANGUAGE' && (
+            <div className={classes.tasmotaLangSelector}>
+              <img className={classes.flagIcon} src={item.flag} alt='' />
+              <div className={classes.languageName}>
+                <FormattedMessage id={item.name}>
+                  {(text) => {
+                    const suffix = preselectedTasmotaGUILanguage !== item.value ? ` / ${item.nativeName}` : '';
+                    return `${text}${suffix}`;
+                  }}
+                </FormattedMessage>
               </div>
-            )}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+            </div>
+          )}
+        </MenuItem>
+      ))}
+    </TextField>
+    // </Select>
+    //  </FormControl>
   );
 }
 

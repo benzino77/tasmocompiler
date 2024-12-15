@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - init: npm ci
-    command: npm run build && pip3 install platformio && PATH=$PATH:$HOME/.local/bin && node server/app.js
+    command: npm run build && pip3 install --break-system-packages platformio && PATH=$PATH:$HOME/.local/bin && node server/app.js
 ports:
   - port: 3000
     onOpen: open-browser

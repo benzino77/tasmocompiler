@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 import { FormattedMessage } from 'react-intl';
 
 class MessageBox extends Component {
@@ -18,16 +18,16 @@ class MessageBox extends Component {
 
     return (
       <TextField
-        name="compileMessages"
-        label={<FormattedMessage id="stepVersionCompProgress" />}
+        name='compileMessages'
+        label={<FormattedMessage id='stepVersionCompProgress' />}
         fullWidth
         multiline
         minRows={9}
         maxRows={9}
         className={classes.compileMessagesBox}
         value={compileMessages}
-        variant="outlined"
-        margin="normal"
+        variant='outlined'
+        margin='normal'
         inputRef={this.messageBoxElement}
         InputProps={{
           classes: {

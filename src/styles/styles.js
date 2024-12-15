@@ -12,7 +12,7 @@ const styles = (theme) => ({
   projectPageContainer: {
     width: 24,
     height: 24,
-    marginRight: theme.spacing() * 2,
+    marginRight: theme.spacing(2),
   },
   projectPageImg: {
     width: '100%',
@@ -40,6 +40,10 @@ const styles = (theme) => ({
   },
   root: {
     width: '100%',
+  },
+  stepper: {
+    marginLeft: theme.spacing(3),
+    marginTop: theme.spacing(2),
   },
   stepLabel: {
     fontSize: theme.typography.body1.fontSize,
@@ -77,13 +81,13 @@ const styles = (theme) => ({
     flexWrap: 'wrap',
   },
   versionContainer: {
-    margin: theme.spacing(2),
-    minWidth: 160,
+    margin: theme.spacing(),
+    minWidth: 180,
   },
   languageContainer: {
-    margin: theme.spacing(2),
-    maxWidth: 400,
-    minWidth: 160,
+    margin: theme.spacing(),
+    maxWidth: 440,
+    minWidth: 180,
   },
   tasmotaLangSelector: {
     display: 'flex',
@@ -93,7 +97,7 @@ const styles = (theme) => ({
     // marginLeft: theme.spacing(),
     // marginRight: theme.spacing(),
     margin: theme.spacing(),
-    width: 160,
+    width: 180,
   },
   multiTextField: {
     margin: theme.spacing(),

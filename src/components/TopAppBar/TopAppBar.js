@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import LanguageIcon from '@material-ui/icons/Language';
-import GitHub from '@material-ui/icons/GitHub';
-import Tooltip from '@material-ui/core/Tooltip';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import LanguageIcon from '@mui/icons-material/Language';
+import GitHub from '@mui/icons-material/GitHub';
+import Tooltip from '@mui/material/Tooltip';
 import { FormattedMessage } from 'react-intl';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem } from '@mui/material';
 import { allMessages } from '../../locales/languages';
 
 class TopAppBar extends Component {
@@ -81,7 +81,6 @@ class TopAppBar extends Component {
               anchorEl={anchorEl}
               open={Boolean(anchorEl)}
               onClose={() => this.handleClose()}
-              getContentAnchorEl={null}
               anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
               transformOrigin={{ vertical: 'top', horizontal: 'right' }}
             >

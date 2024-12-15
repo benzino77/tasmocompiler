@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import Stepper from '@material-ui/core/Stepper';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { withStyles } from '@mui/styles';
+import Stepper from '@mui/material/Stepper';
 import io from 'socket.io-client';
 import { IntlProvider } from 'react-intl';
 
@@ -18,6 +19,8 @@ import { allMessages, defaultLanguage } from './locales/languages';
 import { tasmotaGUILanguages } from './components/AppStepper/VersionStep/Variables/Languages';
 import availableFeatures from './components/AppStepper/FeaturesStep/AvailableFeatures';
 
+import { StyledEngineProvider } from '@mui/material/styles';
+
 const browserLanguage = navigator.language.toLocaleLowerCase();
 
 console.log(`Detected browser language: ${browserLanguage}`);
@@ -33,6 +36,17 @@ Object.keys(allMessages).some((l) => {
 });
 
 console.log(`TasmoCompiler GUI language set to ${tcGUILanguage}`);
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#3F51B5',
+    },
+    secondary: {
+      main: '#F50057',
+    },
+  },
+});
 
 class App extends Component {
   constructor(props) {
@@ -101,15 +115,7 @@ class App extends Component {
         ...data,
       },
       () => {
-        const {
-          compiling,
-          showMessageBox,
-          message,
-          activeStep,
-          tags,
-          compileMessages,
-          ...postData
-        } = this.state;
+        const { compiling, showMessageBox, message, activeStep, tags, compileMessages, ...postData } = this.state;
 
         fetch(uri, {
           method: 'POST',
@@ -135,14 +141,10 @@ class App extends Component {
 
   changeLanguage = (lang) => {
     tasmotaGUILanguages.sort((a, b) => {
-      return allMessages[lang]['source'][a.name].localeCompare(
-        allMessages[lang]['source'][b.name]
-      );
+      return allMessages[lang]['source'][a.name].localeCompare(allMessages[lang]['source'][b.name]);
     });
     availableFeatures.sort((a, b) => {
-      return allMessages[lang]['source'][a.description].localeCompare(
-        allMessages[lang]['source'][b.description]
-      );
+      return allMessages[lang]['source'][a.description].localeCompare(allMessages[lang]['source'][b.description]);
     });
     this.setState({ tcGUILanguage: lang });
   };
@@ -150,16 +152,8 @@ class App extends Component {
   render() {
     const { classes } = this.props;
 
-    const {
-      activeStep,
-      tags,
-      compiling,
-      showMessageBox,
-      showDownloadLinks,
-      compileMessages,
-      tcGUILanguage,
-      ...other
-    } = this.state;
+    const { activeStep, tags, compiling, showMessageBox, showDownloadLinks, compileMessages, tcGUILanguage, ...other } =
+      this.state;
 
     const bnHandlersProps = {
       backHandler: this.handleBack,
@@ -167,43 +161,31 @@ class App extends Component {
     };
 
     return (
-      <IntlProvider
-        locale={tcGUILanguage}
-        messages={allMessages[tcGUILanguage]['source']}
-      >
-        <div className={classes.root}>
-          <TopAppBar
-            {...this.props}
-            locale={tcGUILanguage}
-            changeLanguage={this.changeLanguage}
-          />
-          <Stepper activeStep={activeStep} orientation="vertical">
-            <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
-            <WifiStep {...this.props} {...bnHandlersProps} key={2} />
-            <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
-            <CustomParametersStep
-              {...this.props}
-              {...bnHandlersProps}
-              pstate={other}
-              key={4}
-            />
-            <VersionStep
-              {...this.props}
-              repoTags={tags}
-              backHandler={this.handleBack}
-              compileHandler={this.handleCompile}
-              compiling={compiling}
-              key={5}
-            />
-          </Stepper>
-          {showMessageBox && (
-            <MessageBox {...this.props} compileMessages={compileMessages} />
-          )}
-          {showDownloadLinks && (
-            <DownloadLinks {...this.props} features={other.features} />
-          )}
-        </div>
-      </IntlProvider>
+      <ThemeProvider theme={theme}>
+        <StyledEngineProvider injectFirst>
+          <IntlProvider locale={tcGUILanguage} messages={allMessages[tcGUILanguage]['source']}>
+            <div className={classes.root}>
+              <TopAppBar {...this.props} locale={tcGUILanguage} changeLanguage={this.changeLanguage} />
+              <Stepper activeStep={activeStep} orientation='vertical' className={classes.stepper}>
+                <SourceStep {...this.props} nextHandler={this.handleNext} key={1} />
+                <WifiStep {...this.props} {...bnHandlersProps} key={2} />
+                <FeaturesStep {...this.props} {...bnHandlersProps} key={3} />
+                <CustomParametersStep {...this.props} {...bnHandlersProps} pstate={other} key={4} />
+                <VersionStep
+                  {...this.props}
+                  repoTags={tags}
+                  backHandler={this.handleBack}
+                  compileHandler={this.handleCompile}
+                  compiling={compiling}
+                  key={5}
+                />
+              </Stepper>
+              {showMessageBox && <MessageBox {...this.props} compileMessages={compileMessages} />}
+              {showDownloadLinks && <DownloadLinks {...this.props} features={other.features} />}
+            </div>
+          </IntlProvider>
+        </StyledEngineProvider>
+      </ThemeProvider>
     );
   }
 }
@@ -212,4 +194,4 @@ App.propTypes = {
   classes: PropTypes.oneOfType([PropTypes.object]).isRequired,
 };
 
-export default withStyles(styles)(App);
+export default withStyles(styles(theme))(App);

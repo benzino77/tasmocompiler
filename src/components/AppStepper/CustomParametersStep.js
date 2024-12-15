@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Step from '@material-ui/core/Step';
-import StepLabel from '@material-ui/core/StepLabel';
-import StepContent from '@material-ui/core/StepContent';
-import TextField from '@material-ui/core/TextField';
-import Typography from '@material-ui/core/Typography';
+import Step from '@mui/material/Step';
+import StepLabel from '@mui/material/StepLabel';
+import StepContent from '@mui/material/StepContent';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import NextButton from './NextButton';
 import BackButton from './BackButton';
@@ -60,23 +60,20 @@ class CustomParametersStep extends Component {
 
     return (
       <Step {...other}>
-        <StepLabel classes={{label: classes.stepLabel}}>
-          <FormattedMessage id="stepCustomParamsTitle" />
+        <StepLabel classes={{ label: classes.stepLabel }}>
+          <FormattedMessage id='stepCustomParamsTitle' />
         </StepLabel>
         <StepContent>
           <Typography>
-            <FormattedMessage
-              values={{ filename: <em>user_config_override.h</em> }}
-              id="stepCustomParamsDesc"
-            />
+            <FormattedMessage values={{ filename: <em>user_config_override.h</em> }} id='stepCustomParamsDesc' />
           </Typography>
-          <form noValidate autoComplete="off">
+          <form noValidate autoComplete='off'>
             <div className={classes.actionsContainer}>
               <TextField
                 // id='reg_customParams'
                 placeholder={placeholder}
-                name="customParams"
-                label={<FormattedMessage id="stepCustomParamsTitle" />}
+                name='customParams'
+                label={<FormattedMessage id='stepCustomParamsTitle' />}
                 fullWidth
                 multiline
                 minRows={9}
@@ -84,7 +81,7 @@ class CustomParametersStep extends Component {
                 className={classes.multiTextField}
                 value={customParams}
                 onChange={this.handleChange}
-                margin="normal"
+                margin='normal'
                 InputProps={{
                   classes: {
                     input: classes.inputFont,
