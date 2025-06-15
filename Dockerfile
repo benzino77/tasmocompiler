@@ -3,7 +3,7 @@ LABEL maintainer="Piotr Antczak <antczak.piotr@gmail.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 git python3-setuptools && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y python3-pip && \
-  echo "[global]\nbreak-system-packages = true" > /etc/pip.conf && \
+  echo "[global]\nbreak-system-packages = true\nno-warn-script-location = true\nroot-user-action = ignore" > /etc/pip.conf && \
   pip3 install platformio && \
   DEBIAN_FRONTEND=noninteractive apt-get clean && \
   npm install -g nodemon && \
