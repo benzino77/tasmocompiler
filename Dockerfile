@@ -12,8 +12,10 @@ ADD public /tasmocompiler/public/
 ADD server /tasmocompiler/server/
 ADD src /tasmocompiler/src/
 ADD package.json package-lock.json /tasmocompiler/
-RUN cd /tasmocompiler && npm ci && npm run build
-ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+RUN cd /tasmocompiler && npm ci && npm run build && \
+  chown -R node:node /tasmocompiler
+USER node
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8 PATH=$PATH:/home/node/.local/bin
 WORKDIR /tasmocompiler
 ENTRYPOINT ["nodemon", "server/app.js"]
 EXPOSE 3000/tcp
