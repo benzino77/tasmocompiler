@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 tasks:
   - init: npm ci
-    command: npm run build && PATH=$HOME/.platformio/penv/bin:$HOME/.local/bin:$PATH && node server/app.js
+    command: npm run build && python3 -m venv $HOME/.platformio/penv && PATH=$HOME/.platformio/penv/bin:$HOME/.local/bin:$PATH && pip install uv platformio && node server/app.js
 ports:
   - port: 3000
     onOpen: open-browser
