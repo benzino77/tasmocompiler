@@ -27,11 +27,11 @@
     "socket.io-client": "^4.8.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom-fourteen",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
+    "test": "react-scripts --openssl-legacy-provider test --env=jsdom-fourteen",
     "testbackend": "jest server/ ",
-    "eject": "react-scripts eject",
+    "eject": "react-scripts --openssl-legacy-provider eject",
     "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/app.js\" \"npm start\""
   },
   "browserslist": [
