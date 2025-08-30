@@ -16,10 +16,10 @@
     "ini": "^4.1.3",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-intl": "^6.4.4",
-    "react-scripts": "^4.0.3",
+    "react-scripts": "^5.0.1",
     "semver": "^7.6.3",
     "shelljs": "^0.8.5",
     "simple-git": "^3.27.0",
@@ -27,11 +27,11 @@
     "socket.io-client": "^4.8.0"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build",
-    "test": "react-scripts --openssl-legacy-provider test --env=jsdom-fourteen",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom-fourteen",
     "testbackend": "jest server/ ",
-    "eject": "react-scripts --openssl-legacy-provider eject",
+    "eject": "react-scripts eject",
     "startdev": "concurrently --kill-others \"PORT=3001 DEBUG=\"server,git,compile\" nodemon server/app.js\" \"npm start\""
   },
   "browserslist": [

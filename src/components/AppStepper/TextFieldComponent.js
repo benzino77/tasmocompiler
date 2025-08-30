@@ -30,8 +30,4 @@ TextFieldComponent.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-TextFieldComponent.defaultProps = {
-  type: 'text',
-};
-
 export default TextFieldComponent;
