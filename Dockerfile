@@ -1,4 +1,4 @@
-FROM node:16-bookworm-slim
+FROM node:22-bookworm-slim
 LABEL maintainer="Piotr Antczak <antczak.piotr@gmail.com>"
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y python3 git python3-setuptools && \
