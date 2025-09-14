@@ -6,9 +6,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/icons-material": "^5.18.0",
-    "@mui/material": "^5.18.0",
-    "@mui/styles": "^5.18.0",
+    "@mui/icons-material": "^6.5.0",
+    "@mui/material": "^6.5.0",
+    "@mui/styles": "^6.5.0",
     "body-parser": "^1.20.3",
     "debug": "^4.3.7",
     "express": "^4.21.1",
