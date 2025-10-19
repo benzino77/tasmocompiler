@@ -48,16 +48,6 @@ You have to upload only `firmware.bin` or `firmware.bin.gz` file to your device.
 
 #### How to start using TasmoCompiler?
 
-##### Super easy way (Thanks to @meingraham and @Jason2866)
-
-Click this [link to Gipod](https://gitpod.io/#https://github.com/benzino77/tasmocompiler). You have to have [Github](https://github.com) account and authorize Gitpod to access it. If you don't have it, it is just few clicks to create account on Github. After a while new browser tab should open with TasmoCompiler. If you have pop-up blocked in your browser you will have to accept the new tab open (1 and 2). If the new tab does not open or you cannot see the pop-up notification, click on the _Ports view_ link (3) and then on _Open browser_ (4):
-
-![Open Browser](./docs/images/gitpod_newtab.png)
-
-###### Note
-
-You have to remember that all compilation is performed on Gitpod servers, so you have to decide if you want to put sensitive data like Wifi/MQTT credentials to Gitpod hands :see_no_evil: :hear_no_evil: :speak_no_evil:
-
 ##### Easy way
 
 Start TasmoCompiler in docker:
@@ -161,7 +151,7 @@ If you have problems with the compiler or you are interested in more advance usa
 
 #### Development version
 
-There is a TasmoCompiler branch which tries to follow as much as possible changes made to `development` branch of Tasmota. It is bleeding edge version so you can expect unexpected. To use `development` version of TasmoCompiler go to gitpod using this [link](https://gitpod.io/#https://github.com/benzino77/tasmocompiler/tree/development) or pull and run appriopriate docker image:
+There is a TasmoCompiler branch which tries to follow as much as possible changes made to `development` branch of Tasmota. It is bleeding edge version so you can expect unexpected. To use `development` pull and run appropriate docker image:
 
 `docker run --rm --name tasmocompiler -p 3000:3000 benzino77/tasmocompiler:development`
 
