@@ -72,6 +72,9 @@ const availableFeatures = [
       'USE_DISPLAY_SEVENSEG',
     ],
     include: ['USE_SPI', 'USE_I2C', 'common_displays'],
+    platformio_entries: {
+      lib_extra_dirs: ['lib/lib_div', 'lib/lib_display', 'lib/lib_deprecated'],
+    },
     exclude: ['lvgl'],
     custom:
       '#define MTX_ADDRESS1     0x71              // [DisplayAddress1] I2C address of first 8x8 matrix module\n' +
