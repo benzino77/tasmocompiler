@@ -442,9 +442,10 @@ const availableFeatures = [
     show: true,
     description: 'stepFeaturesBluetoothDesc',
     tooltip: 'stepFeaturesBluetoothTooltip',
-    group: ['USE_BLE_ESP32', 'USE_MI_ESP32'],
+    group: ['USE_BLE_ESP32', 'USE_MI_ESP32', 'USE_EQ3_ESP32', 'CONFIG_NIMBLE_CPP_IDF'],
     platformio_entries: {
       lib_extra_dirs: ['lib/libesp32', 'lib/libesp32_div', 'lib/lib_basic', 'lib/lib_i2c', 'lib/lib_ssl'],
+      lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP'],
     },
     custom: '',
     boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c2', 'esp32c3', 'esp32s3'],
