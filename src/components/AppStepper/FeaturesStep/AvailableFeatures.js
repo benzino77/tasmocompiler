@@ -448,7 +448,17 @@ const availableFeatures = [
       lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP'],
     },
     custom: '',
-    boards: ['esp32generic', 'esp32webcam', 'esp32odroid-go', 'esp32m5', 'esp32solo1', 'esp32c2', 'esp32c3', 'esp32s3'],
+    boards: [
+      'esp32generic',
+      'esp32webcam',
+      'esp32odroid-go',
+      'esp32m5',
+      'esp32solo1',
+      'esp32c2',
+      'esp32c3',
+      'esp32c6',
+      'esp32s3',
+    ],
   },
   {
     name: 'USE_ETHERNET',
