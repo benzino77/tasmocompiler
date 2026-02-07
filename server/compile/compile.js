@@ -109,6 +109,12 @@ const getFeaturePlatformioEntries = (data) => {
           ? platformioEntries.lib_extra_dirs.concat(data[e].lib_extra_dirs)
           : data[e].lib_extra_dirs;
       }
+      if (data[e].lib_ignore) {
+        // lib_ignore is an array
+        platformioEntries.lib_ignore = platformioEntries.lib_ignore
+          ? platformioEntries.lib_ignore.concat(data[e].lib_ignore)
+          : data[e].lib_ignore;
+      }
     }
   });
 
@@ -173,7 +179,7 @@ const prepareFiles = async (socket, data) => {
   const platformioEnvCustom = Object.keys(platformio_entries)
     .map(
       (e) =>
-        `${e} = ${Array.isArray(platformio_entries[e]) ? platformio_entries[e].join('\n\t') : platformio_entries[e]}`
+        `${e} = ${Array.isArray(platformio_entries[e]) ? platformio_entries[e].join('\n\t') : platformio_entries[e]}`,
     )
     .join('\n');
 
