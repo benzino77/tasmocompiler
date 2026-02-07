@@ -347,14 +347,58 @@ const availableBoards = [
   },
   // ESP32 S3
   {
-    name: 'esp32s3',
+    name: 'esp32s3-opi_opi',
     chip_type: 'esp32',
-    description: 'ESP32 S3',
+    description: 'ESP32 S3 OPI Flash/OPI PSRAM',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32s3-opi_opi',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
+      // eslint-disable-next-line
+      lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP', 'epdiy'],
+    },
+    platformio_env_name: 'tasmota32s3',
+    tooltip: '',
+    include_features: ['berry', 'ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  {
+    name: 'esp32s3-qio_qspi',
+    chip_type: 'esp32',
+    description: 'ESP32 S3 QIO Flash/QSPI PSRAM',
     default: false,
     show: true,
     platformio_entries: {
       extends: 'env:tasmota32_base',
       board: 'esp32s3-qio_qspi',
+      // eslint-disable-next-line
+      build_flags: '${env:tasmota32_base.build_flags}',
+      // eslint-disable-next-line
+      lib_extra_dirs: ['${env:tasmota32_base.lib_extra_dirs}'],
+      // eslint-disable-next-line
+      lib_ignore: ['${env:tasmota32_base.lib_ignore}', 'Micro-RTSP', 'epdiy'],
+    },
+    platformio_env_name: 'tasmota32s3',
+    tooltip: '',
+    include_features: ['berry', 'ufilesys', 'rules'],
+    exclude_features: [],
+    defines: {},
+  },
+  {
+    name: 'esp32s3-qio_opi',
+    chip_type: 'esp32',
+    description: 'ESP32 S3 QIO Flash/OPI PSRAM',
+    default: false,
+    show: true,
+    platformio_entries: {
+      extends: 'env:tasmota32_base',
+      board: 'esp32s3-qio_opi',
       // eslint-disable-next-line
       build_flags: '${env:tasmota32_base.build_flags}',
       // eslint-disable-next-line
