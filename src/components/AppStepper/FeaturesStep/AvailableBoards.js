@@ -222,9 +222,11 @@ const availableBoards = [
     exclude_features: [],
     defines: {
       USE_WEBCAM: true,
+      USE_WEBCAM_V2: true,
       USE_TASMOTA_DISCOVERY: true,
       ENABLE_RTSPSERVER: true,
       USE_MI_ESP32: false,
+      USE_BLE_ESP32: false,
       CAMERA_MODEL_AI_THINKER: true,
     },
   },
