@@ -10,7 +10,9 @@ const availableBoards = [
     description: 'Generic',
     default: true,
     show: true,
-    platformio_entries: {},
+    platformio_entries: {
+      lib_extra_dirs: ['${env.lib_extra_dirs}'],
+    },
     platformio_env_name: 'tasmota',
     tooltip: 'stepFeaturesBoard8266Tooltip',
     include_features: ['rules'],
@@ -25,6 +27,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       board: 'esp8266_4M2M',
+      lib_extra_dirs: ['${env.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota4M',
     tooltip: 'stepFeaturesBoard82664MTooltip',
@@ -40,6 +43,7 @@ const availableBoards = [
     show: true,
     platformio_entries: {
       board: 'esp8266_2M1M',
+      lib_extra_dirs: ['${env.lib_extra_dirs}'],
     },
     platformio_env_name: 'tasmota2M',
     tooltip: 'stepFeaturesBoard82662MTooltip',
