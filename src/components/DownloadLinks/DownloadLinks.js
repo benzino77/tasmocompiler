@@ -94,6 +94,15 @@ class DownloadLinks extends Component {
             user_config_override.h
             <CloudDownloadIcon className={classes.rightIcon} />
           </Button>
+          <Button
+            variant='contained'
+            color='primary'
+            href={`/download/${envPath}.elf`}
+            className={classes.downloadButtons}
+          >
+            firmware.elf
+            <CloudDownloadIcon className={classes.rightIcon} />
+          </Button>
         </div>
       </div>
     );
