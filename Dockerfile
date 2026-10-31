@@ -21,7 +21,7 @@ RUN cd /tasmocompiler && npm ci && npm run build && \
 USER node
 RUN python3 -m venv /home/node/.platformio/penv && \
   . /home/node/.platformio/penv/bin/activate && \
-  pip install uv platformio
+  pip install uv platformio==6.1.19
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8 PATH=/home/node/.platformio/penv/bin:/home/node/.local/bin:$PATH
 WORKDIR /tasmocompiler
 ENTRYPOINT ["nodemon", "server/app.js"]
