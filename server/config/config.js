@@ -10,6 +10,7 @@ const userConfigOvewrite = path.resolve(tasmotaRepo, 'tasmota/user_config_overri
 const userPlatformioOverrideIni = path.resolve(tasmotaRepo, 'platformio_override.ini');
 const tasmotaVersionFile = path.resolve(tasmotaRepo, 'tasmota/tasmota_version.h');
 const templatePlatformioIni = path.resolve(__dirname, '../compile/platformio.ini');
+const tasmotaELF = path.resolve(WORKDIR, 'Tasmota/.pio/build/');
 const tasmotaInoFile = path.resolve(tasmotaRepo, 'tasmota/tasmota.ino');
 const tasmotaMinimalBinary = path.resolve(__dirname, '../binaries/tasmota-minimal.bin.gz');
 const listenPort = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ module.exports = {
   userPlatformioOverrideIni,
   tasmotaVersionFile,
   templatePlatformioIni,
+  tasmotaELF,
   tasmotaInoFile,
   tasmotaMinimalBinary,
   listenPort,
